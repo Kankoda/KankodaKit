@@ -14,15 +14,20 @@ let package = Package(
     products: [
         .library(
             name: "KankodaKit",
-            targets: ["KankodaKit"]),
+            targets: ["KankodaKit"]
+        ),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/danielsaidi/SwiftUIKit.git", branch: "master")
+    ],
     targets: [
         .target(
             name: "KankodaKit",
-            dependencies: []),
+            dependencies: ["SwiftUIKit"]
+        ),
         .testTarget(
             name: "KankodaKitTests",
-            dependencies: ["KankodaKit"]),
+            dependencies: ["KankodaKit"]
+        ),
     ]
 )

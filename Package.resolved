@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftuikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/SwiftUIKit.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "a00254707ec5b71043d9bcc48183abdfddf94c9e"
+      }
+    }
+  ],
+  "version" : 2
+}

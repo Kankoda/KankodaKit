@@ -17,12 +17,13 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(url: "https://github.com/simibac/ConfettiSwiftUI", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/danielsaidi/SwiftUIKit.git", branch: "master")
     ],
     targets: [
         .target(
             name: "KankodaKit",
-            dependencies: ["SwiftUIKit"]
+            dependencies: ["ConfettiSwiftUI", "SwiftUIKit"]
         ),
         .testTarget(
             name: "KankodaKitTests",

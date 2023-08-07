@@ -18,7 +18,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/simibac/ConfettiSwiftUI", .upToNextMajor(from: "1.0.0")),
-        .package(url: "https://github.com/danielsaidi/SwiftUIKit.git", branch: "master")
+        .package(url: "https://github.com/danielsaidi/SwiftUIKit.git", .upToNextMajor(from: "3.4.0")),
     ],
     targets: [
         .target(

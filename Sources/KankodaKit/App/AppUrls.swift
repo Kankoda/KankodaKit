@@ -30,6 +30,18 @@ public struct AppUrls {
     public let termsAndConditions: URL?
     public let website: URL?
     
+    public var contactEmailBugReport: URL? {
+        contactEmail(subject: "\(appInfo.appName) Bug Report")
+    }
+    
+    public var contactEmailFeatureRequest: URL? {
+        contactEmail(subject: "\(appInfo.appName) Feature Request")
+    }
+    
+    public var contactEmailFeedback: URL? {
+        contactEmail(subject: "\(appInfo.appName) Feedback")
+    }
+    
     public func contactEmail(subject: String) -> URL? {
         contactEmail?.appending(queryItems: [.init(name: "subject", value: subject)])
     }

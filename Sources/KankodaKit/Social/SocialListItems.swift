@@ -1,0 +1,123 @@
+//
+//  SocialListItems.swift
+//  KankodaKit
+//
+//  Created by Daniel Saidi on 2023-08-17.
+//
+
+import SwiftUI
+
+/**
+ This view can be used to add social items to a Kankoda list.
+ */
+public struct SocialListItems: View {
+    
+    public init(
+        appInfo: AppInfo,
+        localization: Localization = .english
+    ) {
+        self.info = appInfo
+        self.localization = localization
+        self.urls = .init(appInfo: appInfo)
+    }
+    
+    public struct Localization {
+        
+        public init(
+            contactUs: String,
+            sendFeedback: String,
+            requestFeature: String,
+            reportBug: String,
+            reviewApp: String,
+            shareApp: String,
+            aboutApp: String
+        ) {
+            self.contactUs = contactUs
+            self.sendFeedback = sendFeedback
+            self.requestFeature = requestFeature
+            self.reportBug = reportBug
+            self.reviewApp = reviewApp
+            self.shareApp = shareApp
+            self.aboutApp = aboutApp
+        }
+     
+        public let contactUs: String
+        public let sendFeedback: String
+        public let requestFeature: String
+        public let reportBug: String
+        public let reviewApp: String
+        public let shareApp: String
+        public let aboutApp: String
+        
+        public static let english = Localization(
+            contactUs: "Contact Us",
+            sendFeedback: "Send Feedback",
+            requestFeature: "Request a Feature",
+            reportBug: "Report a Bug",
+            reviewApp: "Review this App",
+            shareApp: "Share this App",
+            aboutApp: "About this App"
+        )
+    }
+    
+    private let info: AppInfo
+    private let localization: Localization
+    private let urls: AppUrls
+    
+    public var body: some View {
+        Menu {
+            link(localization.contactUs, .email, urls.contactEmail)
+            link(localization.sendFeedback, .feedback, urls.contactEmailFeedback)
+            link(localization.requestFeature, .feature, urls.contactEmailFeatureRequest)
+            link(localization.reportBug, .bug, urls.contactEmailBugReport)
+        } label: {
+            label(localization.contactUs, .email)
+        }
+        shareLink(localization.shareApp, .share, urls.appStore)
+        link(localization.reviewApp, .review, urls.appStore)
+        link(localization.aboutApp, .info, urls.website)
+    }
+}
+
+private extension SocialListItems {
+    
+    func label(_ text: String, _ icon: Image) -> some View {
+        Label(text, image: icon)
+    }
+    
+    @ViewBuilder
+    func link(_ text: String, _ icon: Image, _ url: URL?) -> some View {
+        if let url {
+            Link(destination: url) {
+                label(text, icon)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func shareLink(_ text: String, _ icon: Image, _ url: URL?) -> some View {
+        if let url {
+            ShareLink(item: url) {
+                label(text, icon)
+            }
+        }
+    }
+}
+
+struct SocialListItems_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        List {
+            SocialListItems(
+                appInfo: .init(
+                    appName: "My App",
+                    appBundleIdentifier: "com.my.app",
+                    appStoreId: 12345,
+                    contactEmail: "my@app.com",
+                    privacyUrl: "https://my.app/privacy",
+                    websiteUrl: "https://my.app"
+                )
+            )
+        }
+    }
+}

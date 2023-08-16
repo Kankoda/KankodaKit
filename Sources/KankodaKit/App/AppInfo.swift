@@ -20,7 +20,7 @@ public struct AppInfo {
         appGroupId: String? = nil,
         appStoragePrefix: String? = nil,
         contactEmail: String,
-        privacyUrl: String,
+        privacyUrl: String? = nil,
         termsUrl: String = "https://apple.com/legal/internet-services/itunes/dev/stdeula/",
         websiteUrl: String
     ) {
@@ -30,7 +30,7 @@ public struct AppInfo {
         self.appGroupId = appGroupId ?? "group.\(appBundleIdentifier)"
         self.appStoragePrefix = appStoragePrefix ?? "\(appBundleIdentifier).data"
         self.contactEmail = contactEmail
-        self.privacyUrl = privacyUrl
+        self.privacyUrl = privacyUrl ?? "\(websiteUrl)/privacy"
         self.termsUrl = termsUrl
         self.websiteUrl = websiteUrl
     }

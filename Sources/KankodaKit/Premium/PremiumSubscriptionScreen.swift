@@ -6,6 +6,7 @@
 //  Copyright © 2023 Daniel Saidi. All rights reserved.
 //
 
+#if os(iOS)
 import StoreKit
 import SwiftUI
 import SwiftUIKit
@@ -378,3 +379,4 @@ private extension PremiumSubscriptionScreenInfo {
         isPurchasedText: "Thank you for going premium"
     )
 }
+#endif

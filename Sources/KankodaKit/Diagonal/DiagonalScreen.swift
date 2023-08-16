@@ -111,7 +111,9 @@ struct DiagonalScreen_Previews: PreviewProvider {
                 Color.red
             }
             .navigationTitle("Testing")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
         // .previewInterfaceOrientation(.landscapeLeft)
     }

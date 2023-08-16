@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftUIKit
 
 /**
  This view can be used as a list item when listing alternate
@@ -37,7 +38,7 @@ public struct AlternateIconListItem: View {
     private let isSelected: Bool
     
     public var body: some View {
-        Image(uiImage: UIImage(named: iconName) ?? UIImage())
+        Image(image: ImageRepresentable(named: iconName) ?? ImageRepresentable())
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: iconSize, height: iconSize)

@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## 1.0.4
+
+- `AppInfo` has a new `appUrlScheme` property.
+- `AppUrls` has a new `app` property.
+
+
 ## 1.0.3
 
 - `AppInfo` now requires a `privacyUrl`.

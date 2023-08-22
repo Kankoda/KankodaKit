@@ -19,6 +19,7 @@ public struct AppInfo {
         appStoreId: Int,
         appGroupId: String? = nil,
         appStoragePrefix: String? = nil,
+        appUrlScheme: String = "",
         contactEmail: String,
         websiteUrl: String,
         privacyUrl: String,
@@ -29,6 +30,7 @@ public struct AppInfo {
         self.appStoreId = appStoreId
         self.appGroupId = appGroupId ?? "group.\(appBundleIdentifier)"
         self.appStoragePrefix = appStoragePrefix ?? "\(appBundleIdentifier).data"
+        self.appUrlScheme = appUrlScheme
         self.contactEmail = contactEmail
         self.websiteUrl = websiteUrl
         self.privacyUrl = privacyUrl
@@ -40,6 +42,7 @@ public struct AppInfo {
     public let appStoreId: Int
     public let appGroupId: String
     public let appStoragePrefix: String
+    public let appUrlScheme: String
     public let contactEmail: String
     public let websiteUrl: String
     public let privacyUrl: String

@@ -13,17 +13,19 @@ import Foundation
  */
 public struct AppUrls {
     
-    public init(appInfo: AppInfo) {
-        self.appInfo = appInfo
-        self.appStore = URL(string: "https://itunes.apple.com/app/id\(appInfo.appStoreId)")
-        self.contactEmail = URL(string: "mailto:\(appInfo.contactEmail)")
-        self.privacyPolicy = URL(string: "\(appInfo.privacyUrl)")
-        self.termsAndConditions = URL(string: appInfo.termsUrl)
-        self.website = URL(string: appInfo.websiteUrl)
+    public init(appInfo info: AppInfo) {
+        self.appInfo = info
+        self.app =  URL(string: info.appUrlScheme)
+        self.appStore = URL(string: "https://itunes.apple.com/app/id\(info.appStoreId)")
+        self.contactEmail = URL(string: "mailto:\(info.contactEmail)")
+        self.privacyPolicy = URL(string: "\(info.privacyUrl)")
+        self.termsAndConditions = URL(string: info.termsUrl)
+        self.website = URL(string: info.websiteUrl)
     }
     
     private let appInfo: AppInfo
     
+    public let app: URL?
     public let appStore: URL?
     public let contactEmail: URL?
     public let privacyPolicy: URL?

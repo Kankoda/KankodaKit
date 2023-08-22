@@ -3,13 +3,18 @@
 
 ## 1.0.2
 
-- New SocialListItem view icon customization
+- `AppInfo` has a new computed `.urls` property
+- `AppInfo` has a new static `.preview` property
+- `PremiumSubscriptionScreen` is now created with an `AppInfo` value.
+- `SocialListItem` view is renamed to `SocialMenuItems`.
+- `SocialMenuItem` view has a new initializer for icon customization
 
 
 ## 1.0.1
 
-- New AppInfo and AppUrl types
-- New SocialListItem view
+- `AppInfo` is a new struct with app icons.
+- `AppUrls` is a new struct with app urls.
+- `SocialListItem` is a new view that can be used in the main menu.
 
 
 ## 1.0

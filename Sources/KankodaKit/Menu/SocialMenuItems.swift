@@ -1,8 +1,9 @@
 //
-//  SocialListItems.swift
+//  SocialMenuItems.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-08-17.
+//  Copyright © 2023 Daniel Saidi. All rights reserved.
 //
 
 import SwiftUI
@@ -10,7 +11,7 @@ import SwiftUI
 /**
  This view can be used to add social items to a Kankoda list.
  */
-public struct SocialListItems<Icon: View>: View {
+public struct SocialMenuItems<Icon: View>: View {
     
     public init(
         appInfo: KankodaKit.AppInfo,
@@ -94,7 +95,7 @@ public struct SocialListItems<Icon: View>: View {
     }
 }
 
-private extension SocialListItems {
+private extension SocialMenuItems {
     
     func label(_ text: String, _ icon: Image) -> some View {
         Label {
@@ -123,11 +124,11 @@ private extension SocialListItems {
     }
 }
 
-struct SocialListItems_Previews: PreviewProvider {
+struct SocialMenuItems_Previews: PreviewProvider {
     
     static var previews: some View {
         List {
-            SocialListItems(
+            SocialMenuItems(
                 appInfo: .init(
                     appName: "My App",
                     appBundleIdentifier: "com.my.app",

@@ -10,16 +10,33 @@ import SwiftUI
 /**
  This view can be used to add social items to a Kankoda list.
  */
-public struct SocialListItems: View {
+public struct SocialListItems<Icon: View>: View {
     
     public init(
-        appInfo: AppInfo,
-        localization: Localization = .english
+        appInfo: KankodaKit.AppInfo,
+        localization: Localization = .english,
+        icon: @escaping (Image) -> Icon
     ) {
         self.info = appInfo
         self.localization = localization
         self.urls = .init(appInfo: appInfo)
+        self.icon = icon
     }
+    
+    public init(
+        appInfo: KankodaKit.AppInfo,
+        localization: Localization = .english
+    ) where Icon == Image {
+        self.info = appInfo
+        self.localization = localization
+        self.urls = .init(appInfo: appInfo)
+        self.icon = { $0 }
+    }
+    
+    private let info: KankodaKit.AppInfo
+    private let localization: Localization
+    private let urls: AppUrls
+    private let icon: (Image) -> Icon
     
     public struct Localization {
         
@@ -49,20 +66,18 @@ public struct SocialListItems: View {
         public let shareApp: String
         public let aboutApp: String
         
-        public static let english = Localization(
-            contactUs: "Contact Us",
-            sendFeedback: "Send Feedback",
-            requestFeature: "Request a Feature",
-            reportBug: "Report a Bug",
-            reviewApp: "Review this App",
-            shareApp: "Share this App",
-            aboutApp: "About this App"
-        )
+        public static var english: Localization {
+            .init(
+                contactUs: "Contact Us",
+                sendFeedback: "Send Feedback",
+                requestFeature: "Request a Feature",
+                reportBug: "Report a Bug",
+                reviewApp: "Review this App",
+                shareApp: "Share this App",
+                aboutApp: "About this App"
+            )
+        }
     }
-    
-    private let info: AppInfo
-    private let localization: Localization
-    private let urls: AppUrls
     
     public var body: some View {
         Menu {
@@ -82,7 +97,11 @@ public struct SocialListItems: View {
 private extension SocialListItems {
     
     func label(_ text: String, _ icon: Image) -> some View {
-        Label(text, image: icon)
+        Label {
+            Text(text)
+        } icon: {
+            self.icon(icon)
+        }
     }
     
     @ViewBuilder
@@ -116,7 +135,8 @@ struct SocialListItems_Previews: PreviewProvider {
                     contactEmail: "my@app.com",
                     privacyUrl: "https://my.app/privacy",
                     websiteUrl: "https://my.app"
-                )
+                ),
+                icon: { $0 }
             )
         }
     }

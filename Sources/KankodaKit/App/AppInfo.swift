@@ -44,4 +44,17 @@ public struct AppInfo {
     public let privacyUrl: String
     public let termsUrl: String
     public let websiteUrl: String
+    
+    public var urls: AppUrls { .init(appInfo: self) }
+}
+
+public extension AppInfo {
+    
+    static var preview = Self.init(
+        appName: "Preview",
+        appBundleIdentifier: "com.kankoda.app",
+        appStoreId: 123456,
+        contactEmail: "info@kankoda.com",
+        websiteUrl: "https://kankoda.com"
+    )
 }

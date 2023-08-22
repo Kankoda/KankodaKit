@@ -17,7 +17,8 @@ import SwiftUIKit
 public struct PremiumSubscriptionScreen<Product: PremiumProduct, Background: View>: View {
 
     public init(
-        info: PremiumSubscriptionScreenInfo,
+        appInfo: AppInfo,
+        subscriptionInfo: PremiumSubscriptionScreenInfo,
         isPurchased: Bool,
         icon: Image,
         iconSize: Double = 200,
@@ -31,7 +32,9 @@ public struct PremiumSubscriptionScreen<Product: PremiumProduct, Background: Vie
         purchaseAction: @escaping (Product) async throws -> Bool,
         restoreAction: @escaping () async throws -> Void
     ) {
-        self.info = info
+        self.appInfo = appInfo
+        self.appUrls = appInfo.urls
+        self.subscriptionInfo = subscriptionInfo
         self.isPurchased = isPurchased
         self.icon = icon
         self.iconSize = iconSize
@@ -46,7 +49,9 @@ public struct PremiumSubscriptionScreen<Product: PremiumProduct, Background: Vie
         self.restoreAction = restoreAction
     }
     
-    private let info: PremiumSubscriptionScreenInfo
+    private let appInfo: AppInfo
+    private let appUrls: AppUrls
+    private let subscriptionInfo: PremiumSubscriptionScreenInfo
     private let isPurchased: Bool
     private let icon: Image
     private let iconSize: Double
@@ -105,9 +110,7 @@ public struct PremiumSubscriptionScreenInfo {
         disclaimerText: String,
         restorePurchasesText: String,
         termsText: String,
-        termsUrl: String,
         privacyText: String,
-        privacyUrl: String,
         manageSubscriptionsText: String,
         trialPromotionText: String,
         monthlyPriceText: @escaping (_ priceText: String) -> String,
@@ -122,9 +125,7 @@ public struct PremiumSubscriptionScreenInfo {
         self.disclaimerText = disclaimerText
         self.restorePurchasesText = restorePurchasesText
         self.termsText = termsText
-        self.termsUrl = termsUrl
         self.privacyText = privacyText
-        self.privacyUrl = privacyUrl
         self.manageSubscriptionsText = manageSubscriptionsText
         self.trialPromotionText = trialPromotionText
         self.monthlyPriceText = monthlyPriceText
@@ -140,9 +141,7 @@ public struct PremiumSubscriptionScreenInfo {
     public let disclaimerText: String
     public let restorePurchasesText: String
     public let termsText: String
-    public let termsUrl: String
     public let privacyText: String
-    public let privacyUrl: String
     public let manageSubscriptionsText: String
     public let trialPromotionText: String
     public let monthlyPriceText: (_ priceText: String) -> String
@@ -173,9 +172,9 @@ private extension PremiumSubscriptionScreen {
     @ViewBuilder
     var nonPurchasedContent: some View {
         Group {
-            Text(info.text)
-            PremiumUspLabelStack(info.usps)
-            Text(info.disclaimerText)
+            Text(subscriptionInfo.text)
+            PremiumUspLabelStack(subscriptionInfo.usps)
+            Text(subscriptionInfo.disclaimerText)
                 .font(.footnote)
         }
         .frame(maxWidth: maxWidth)
@@ -184,10 +183,10 @@ private extension PremiumSubscriptionScreen {
 
     var purchasedContent: some View {
         VStack(spacing: 30) {
-            Text(info.isPurchasedTitle)
+            Text(subscriptionInfo.isPurchasedTitle)
                 .font(.title)
                 .minimumScaleFactor(0.8)
-            Text(info.isPurchasedText)
+            Text(subscriptionInfo.isPurchasedText)
                 .fixedSize(horizontal: false, vertical: true)
         }.frame(maxWidth: maxWidth)
     }
@@ -198,23 +197,23 @@ private extension PremiumSubscriptionScreen {
     var linkStack: some View {
         VStack(spacing: 20) {
             restorePurchsesButton
-            link(info.termsText, url: info.termsUrl)
-            link(info.privacyText, url: info.privacyUrl)
-            Button(info.manageSubscriptionsText) {
+            link(subscriptionInfo.termsText, url: appUrls.termsAndConditions)
+            link(subscriptionInfo.privacyText, url: appUrls.privacyPolicy)
+            Button(subscriptionInfo.manageSubscriptionsText) {
                 Task { await manageSubscriptions() }
             }
         }.font(.callout)
     }
 
     @ViewBuilder
-    func link(_ title: String, url: String) -> some View {
-        if let url = URL(string: url) {
+    func link(_ title: String, url: URL?) -> some View {
+        if let url {
             Link(title, destination: url)
         }
     }
 
     var maybeLaterButton: some View {
-        Button(info.maybeLaterText) {
+        Button(subscriptionInfo.maybeLaterText) {
             dismiss.callAsFunction()
         }.font(.footnote)
     }
@@ -222,7 +221,7 @@ private extension PremiumSubscriptionScreen {
     @ViewBuilder
     var restorePurchsesButton: some View {
         if !isPurchased {
-            Button(info.restorePurchasesText) {
+            Button(subscriptionInfo.restorePurchasesText) {
                 Task { try await restoreAction() }
             }
         }
@@ -232,7 +231,7 @@ private extension PremiumSubscriptionScreen {
     var purchaseButtons: some View {
         if !isPurchased {
             VStack(spacing: 20) {
-                Text(info.trialPromotionText)
+                Text(subscriptionInfo.trialPromotionText)
                     .bold()
         
                 VStack(spacing: 15) {
@@ -262,7 +261,7 @@ private extension PremiumSubscriptionScreen {
     
     var monthlyPuchaseButtonPriceText: String? {
         guard let monthlyPriceText else { return nil }
-        return info.monthlyPriceText(monthlyPriceText)
+        return subscriptionInfo.monthlyPriceText(monthlyPriceText)
     }
     
     var yearlyPuchaseButton: some View {
@@ -277,12 +276,12 @@ private extension PremiumSubscriptionScreen {
     
     var yearlyPuchaseButtonPriceText: String? {
         guard let yearlyPriceText else { return nil }
-        return info.yearlyPriceText(yearlyPriceText)
+        return subscriptionInfo.yearlyPriceText(yearlyPriceText)
     }
     
     var yearlyPuchaseButtonSavingsText: String? {
         guard let yearlySavingsPercentage else { return nil }
-        return info.yearlySavingsText(yearlySavingsPercentage)
+        return subscriptionInfo.yearlySavingsText(yearlySavingsPercentage)
     }
 }
 
@@ -336,7 +335,8 @@ struct PremiumSubscriptionScreen_Previews: PreviewProvider {
 
     static var previews: some View {
         PremiumSubscriptionScreen(
-            info: .preview,
+            appInfo: .preview,
+            subscriptionInfo: .preview,
             isPurchased: false,
             icon: Image(systemName: "crown"),
             background: { Color.blue },
@@ -366,9 +366,7 @@ private extension PremiumSubscriptionScreenInfo {
         disclaimerText: "No commitment, cancel any time.",
         restorePurchasesText: "Restore purchases",
         termsText: "Terms & Conditions",
-        termsUrl: "https://terms.com",
         privacyText: "Privacy Policy",
-        privacyUrl: "https://privacy.com",
         manageSubscriptionsText: "Manage Subscriptios",
         trialPromotionText: "Try for FREE!",
         monthlyPriceText: { "\($0) / Month" },

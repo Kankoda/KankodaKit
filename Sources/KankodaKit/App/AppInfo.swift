@@ -20,9 +20,9 @@ public struct AppInfo {
         appGroupId: String? = nil,
         appStoragePrefix: String? = nil,
         contactEmail: String,
-        privacyUrl: String? = nil,
-        termsUrl: String = "https://apple.com/legal/internet-services/itunes/dev/stdeula/",
-        websiteUrl: String
+        websiteUrl: String,
+        privacyUrl: String,
+        termsUrl: String = "https://apple.com/legal/internet-services/itunes/dev/stdeula/"
     ) {
         self.appName = appName
         self.appBundleIdentifier = appBundleIdentifier
@@ -30,9 +30,9 @@ public struct AppInfo {
         self.appGroupId = appGroupId ?? "group.\(appBundleIdentifier)"
         self.appStoragePrefix = appStoragePrefix ?? "\(appBundleIdentifier).data"
         self.contactEmail = contactEmail
-        self.privacyUrl = privacyUrl ?? "\(websiteUrl)/privacy"
-        self.termsUrl = termsUrl
         self.websiteUrl = websiteUrl
+        self.privacyUrl = privacyUrl
+        self.termsUrl = termsUrl
     }
     
     public let appName: String
@@ -41,9 +41,9 @@ public struct AppInfo {
     public let appGroupId: String
     public let appStoragePrefix: String
     public let contactEmail: String
+    public let websiteUrl: String
     public let privacyUrl: String
     public let termsUrl: String
-    public let websiteUrl: String
     
     public var urls: AppUrls { .init(appInfo: self) }
 }
@@ -55,6 +55,7 @@ public extension AppInfo {
         appBundleIdentifier: "com.kankoda.app",
         appStoreId: 123456,
         contactEmail: "info@kankoda.com",
-        websiteUrl: "https://kankoda.com"
+        websiteUrl: "https://kankoda.com",
+        privacyUrl: "https://kankoda.com/privacy"
     )
 }

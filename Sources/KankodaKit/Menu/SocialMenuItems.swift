@@ -129,14 +129,7 @@ struct SocialMenuItems_Previews: PreviewProvider {
     static var previews: some View {
         List {
             SocialMenuItems(
-                appInfo: .init(
-                    appName: "My App",
-                    appBundleIdentifier: "com.my.app",
-                    appStoreId: 12345,
-                    contactEmail: "my@app.com",
-                    privacyUrl: "https://my.app/privacy",
-                    websiteUrl: "https://my.app"
-                ),
+                appInfo: .preview,
                 icon: { $0 }
             )
         }

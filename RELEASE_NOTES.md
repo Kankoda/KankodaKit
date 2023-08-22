@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 1.0.3
+
+- `AppInfo` now requires a `privacyUrl`.
+
+
 ## 1.0.2
 
 - `AppInfo` has a new computed `.urls` property

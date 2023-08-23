@@ -45,9 +45,22 @@ import SystemNotification
  */
 public struct AppNotification {
     
-    init(_ message: SystemNotificationMessage<Image>) {
-        self.message = message
+    public init(_ message: SystemNotificationMessage<Image>) {
+        self.view = message
     }
     
-    let message: SystemNotificationMessage<Image>
+    public let view: SystemNotificationMessage<Image>
+}
+
+public extension SystemNotificationContext {
+
+    /// Present an app notification with an optional delay.
+    func present(
+        _ notification: AppNotification,
+        withDelay delay: TimeInterval = 0.5
+    ) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            self.present(content: notification.view)
+        }
+    }
 }

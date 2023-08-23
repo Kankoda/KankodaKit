@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## 1.1.0
+
+- There is a new `AppNotification` struct.
+- The package now pulls in `SystemNotification`. 
+
+
 ## 1.0.4
 
 - `AppInfo` has a new `appUrlScheme` property.

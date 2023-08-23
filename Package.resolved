@@ -17,6 +17,15 @@
         "revision" : "afc21fe01bc656366c43dd7e327ed2a6599e94eb",
         "version" : "3.4.0"
       }
+    },
+    {
+      "identity" : "systemnotification",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/SystemNotification",
+      "state" : {
+        "revision" : "53a23f15ea9d62376179681d24f6ef0d53b03f8c",
+        "version" : "0.7.2"
+      }
     }
   ],
   "version" : 2

@@ -4,7 +4,8 @@
 ## 1.1.0
 
 - There is a new `AppNotification` struct.
-- The package now pulls in `SystemNotification`. 
+- There is a new `AppOnboarding` struct.
+- The package now pulls in `SystemNotification` and `OnboardingKit`. 
 
 
 ## 1.0.4

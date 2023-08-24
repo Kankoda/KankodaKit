@@ -12,8 +12,7 @@ import SwiftUI
 import SwiftUIKit
 
 /**
- This view can be used to manage premium subscriptions for a
- Kankoda app.
+ This view can manage premium subscriptions for Kankoda apps.
  */
 public struct PremiumScreenContent<Product: PremiumProduct, Background: View>: View {
 

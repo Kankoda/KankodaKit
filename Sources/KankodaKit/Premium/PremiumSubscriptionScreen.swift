@@ -1,5 +1,5 @@
 //
-//  PremiumSubscriptionScreen.swift
+//  PremiumScreenContent.swift
 //  KeyboardKit
 //
 //  Created by Daniel Saidi on 2023-06-22.
@@ -12,13 +12,14 @@ import SwiftUI
 import SwiftUIKit
 
 /**
- This screen can be used to manage premium subscriptions.
+ This view can be used to manage premium subscriptions for a
+ Kankoda app.
  */
-public struct PremiumSubscriptionScreen<Product: PremiumProduct, Background: View>: View {
+public struct PremiumScreenContent<Product: PremiumProduct, Background: View>: View {
 
     public init(
         appInfo: AppInfo,
-        subscriptionInfo: PremiumSubscriptionScreenInfo,
+        subscriptionInfo: PremiumScreenContentInfo,
         isPurchased: Bool,
         icon: Image,
         iconSize: Double = 200,
@@ -51,7 +52,7 @@ public struct PremiumSubscriptionScreen<Product: PremiumProduct, Background: Vie
     
     private let appInfo: AppInfo
     private let appUrls: AppUrls
-    private let subscriptionInfo: PremiumSubscriptionScreenInfo
+    private let subscriptionInfo: PremiumScreenContentInfo
     private let isPurchased: Bool
     private let icon: Image
     private let iconSize: Double
@@ -97,12 +98,12 @@ public struct PremiumSubscriptionScreen<Product: PremiumProduct, Background: Vie
 
 /**
  This struct is used to define all localized information for
- a ``PremiumSubscriptionScreen``.
+ a ``PremiumScreenContent``.
  
  The reason for having this is to be able to define a static,
  app-specific premium information value without the screen.
  */
-public struct PremiumSubscriptionScreenInfo {
+public struct PremiumScreenContentInfo {
     
     public init(
         text: String,
@@ -152,7 +153,7 @@ public struct PremiumSubscriptionScreenInfo {
     public let isPurchasedText: String
 }
 
-private extension PremiumSubscriptionScreen {
+private extension PremiumScreenContent {
 
     func content() -> some View {
         VStack(spacing: 35) {
@@ -192,7 +193,7 @@ private extension PremiumSubscriptionScreen {
     }
 }
 
-private extension PremiumSubscriptionScreen {
+private extension PremiumScreenContent {
 
     var linkStack: some View {
         VStack(spacing: 20) {
@@ -285,7 +286,7 @@ private extension PremiumSubscriptionScreen {
     }
 }
 
-private extension PremiumSubscriptionScreen {
+private extension PremiumScreenContent {
 
     @Sendable
     func refresh() {
@@ -304,7 +305,7 @@ private extension PremiumSubscriptionScreen {
 }
 
 @MainActor
-private extension PremiumSubscriptionScreen {
+private extension PremiumScreenContent {
 
     func manageSubscriptions() async {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
@@ -323,7 +324,7 @@ private extension PremiumSubscriptionScreen {
     }
 }
 
-struct PremiumSubscriptionScreen_Previews: PreviewProvider {
+struct PremiumScreenContent_Previews: PreviewProvider {
 
     enum PreviewProduct: String, PremiumProduct {
 
@@ -334,7 +335,7 @@ struct PremiumSubscriptionScreen_Previews: PreviewProvider {
     }
 
     static var previews: some View {
-        PremiumSubscriptionScreen(
+        PremiumScreenContent(
             appInfo: .preview,
             subscriptionInfo: .preview,
             isPurchased: false,
@@ -352,7 +353,7 @@ struct PremiumSubscriptionScreen_Previews: PreviewProvider {
     }
 }
 
-private extension PremiumSubscriptionScreenInfo {
+private extension PremiumScreenContentInfo {
     
     static let usp = PremiumUsp(
         title: "Great value",
@@ -360,7 +361,7 @@ private extension PremiumSubscriptionScreenInfo {
         iconName: "person.crop.square"
     )
     
-    static var preview = PremiumSubscriptionScreenInfo(
+    static var preview = PremiumScreenContentInfo(
         text: "Subscribe to unlock premium features.",
         usps: [usp, usp],
         disclaimerText: "No commitment, cancel any time.",

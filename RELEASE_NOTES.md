@@ -3,9 +3,10 @@
 
 ## 1.1.0
 
-- There is a new `AppNotification` struct.
-- There is a new `AppOnboarding` struct.
-- The package now pulls in `SystemNotification` and `OnboardingKit`. 
+- `PremiumSubscriptionScreen` is renamed to `PremiumScreenContent`.
+- `AppNotification` is a new struct.
+- `AppOnboarding` is a new struct.
+- `SystemNotification` and `OnboardingKit` are now pulled in by the package. 
 
 
 ## 1.0.4

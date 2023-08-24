@@ -14,24 +14,24 @@ extension DiagonalContent {
      This view draws a diagonal shape that has a transparent
      header section.
      */
-    struct Diagonal: View {
+    struct Diagonal<Style: ShapeStyle>: View {
 
         init(
-            _ color: Color,
-            headerHeight: CGFloat = 200
+            _ style: Style,
+            diagonalOffset: CGFloat
         ) {
-            self.color = color
-            self.headerHeight = headerHeight
+            self.style = style
+            self.diagonalOffset = diagonalOffset
         }
 
-        private let color: Color
-        private let headerHeight: CGFloat
+        private let style: Style
+        private let diagonalOffset: CGFloat
 
         var body: some View {
             DiagonalShape(
-                headerHeight: headerHeight
+                diagonalOffset: diagonalOffset
             )
-            .fill(color)
+            .fill(style)
             .edgesIgnoringSafeArea(.bottom)
         }
     }
@@ -41,19 +41,19 @@ extension DiagonalContent {
      */
     struct DiagonalShape: Shape {
 
-        init(headerHeight: CGFloat) {
-            self.headerHeight = headerHeight
+        init(diagonalOffset: CGFloat) {
+            self.diagonalOffset = diagonalOffset
         }
 
-        private let headerHeight: CGFloat
+        private let diagonalOffset: CGFloat
 
         func path(in rect: CGRect) -> Path {
             var path = Path()
-            path.move(to: CGPoint(x: 0, y: headerHeight))
-            path.addLine(to: CGPoint(x: rect.width, y: headerHeight - 100))
+            path.move(to: CGPoint(x: 0, y: diagonalOffset))
+            path.addLine(to: CGPoint(x: rect.width, y: diagonalOffset - 100))
             path.addLine(to: CGPoint(x: rect.width, y: rect.height))
             path.addLine(to: CGPoint(x: 0, y: rect.height))
-            path.addLine(to: CGPoint(x: 0, y: headerHeight))
+            path.addLine(to: CGPoint(x: 0, y: diagonalOffset))
             return path
         }
     }

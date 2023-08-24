@@ -9,44 +9,33 @@
 import SwiftUI
 
 /**
- This view can be used to create Kankoda-diagonal screens.
-
- The screen has a custom title icon, a customizable diagonal
- header line and scrollable content.
+ This view can be used to create diagonal styled content for
+ Kankoda apps.
  */
-public struct DiagonalContent<TitleView: View, Content: View, Background: View>: View {
+public struct DiagonalContent<Background: View, DiagonalStyle: ShapeStyle, Content: View>: View {
 
     public init(
-        titleView: TitleView,
-        diagonalColor: Color,
-        headerHeight: CGFloat = 200,
-        content: @escaping () -> Content,
-        background: @escaping () -> Background
+        background: Background,
+        diagonal: DiagonalStyle,
+        diagonalOffset: CGFloat = 200,
+        content: @escaping () -> Content
     ) {
-        self.titleView = titleView
-        self.diagonalColor = diagonalColor
-        self.headerHeight = headerHeight
-        self.content = content
         self.background = background
+        self.diagonal = diagonal
+        self.diagonalOffset = diagonalOffset
+        self.content = content
     }
 
-    private let titleView: TitleView
-    private let diagonalColor: Color
-    private let headerHeight: CGFloat
+    private let background: Background
+    private let diagonal: DiagonalStyle
+    private let diagonalOffset: CGFloat
     private let content: () -> Content
-    private let background: () -> Background
 
     public var body: some View {
         GeometryReader { geo in
             ZStack {
                 backgroundView
-                ScrollView {
-                    ZStack(alignment: .top) {
-                        diagonalView(for: geo)
-                        contentView(for: geo)
-                    }
-                    .contentShape(Rectangle())
-                }.edgesIgnoringSafeArea(.horizontal)
+                scrollView(for: geo)
             }
         }
     }
@@ -56,27 +45,32 @@ private extension DiagonalContent {
 
     var backgroundView: some View {
         VStack(spacing: 0) {
-            background()
-            diagonalColor
+            background
+            Color.clear.background(diagonal)
         }.ignoresSafeArea()
+    }
+    
+    func scrollView(for geo: GeometryProxy) -> some View {
+        ScrollView {
+            ZStack(alignment: .top) {
+                diagonalView(for: geo)
+                contentView(for: geo)
+            }
+            .contentShape(Rectangle())
+        }.edgesIgnoringSafeArea(.horizontal)
     }
 
     func contentView(for geo: GeometryProxy) -> some View {
-        VStack {
-            titleView
-            content()
-                .frame(maxWidth: .infinity)
-                .padding(.leading, geo.safeAreaInsets.leading)
-                .padding(.trailing, geo.safeAreaInsets.trailing)
-                .background(diagonalColor)
-        }
-        
+        content()
+            .frame(maxWidth: .infinity)
+            .padding(.leading, geo.safeAreaInsets.leading)
+            .padding(.trailing, geo.safeAreaInsets.trailing)
     }
 
     func diagonalView(for geo: GeometryProxy) -> some View {
         Diagonal(
-            diagonalColor,
-            headerHeight: geo.shouldCompressHeader ? 0.75 * headerHeight : headerHeight
+            diagonal,
+            diagonalOffset: geo.shouldCompressHeader ? 0.75 * diagonalOffset : diagonalOffset
         ).frame(height: geo.size.height)
     }
 }
@@ -99,16 +93,16 @@ struct DiagonalContent_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             DiagonalContent(
-                titleView: Color.green.frame(square: 300),
-                diagonalColor: .yellow// .opacity(0.4)
+                background: Color.red,
+                diagonal: .yellow,// .opacity(0.4)
+                diagonalOffset: 250
             ) {
-                VStack {
+                VStack(spacing: 20) {
+                    RoundedRectangle(cornerRadius: 20).fill(.green).frame(square: 300)
                     Text("1")
                     Text("2")
                     Text("3")
                 }
-            } background: {
-                Color.red
             }
             .navigationTitle("Testing")
             #if os(iOS)

@@ -5,6 +5,7 @@
 
 - `AppNotification` is a new struct.
 - `AppOnboarding` is a new struct.
+- `DiagonalContent` has been simplified.
 - `DiagonalScreen` has been renamed to `DiagonalContent`.
 - `PremiumSubscriptionScreen` has been renamed to `PremiumScreenContent`.
 - `SystemNotification` and `OnboardingKit` are now pulled in by the package.

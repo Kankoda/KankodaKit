@@ -22,7 +22,7 @@ public struct PremiumScreenContent<Product: PremiumProduct, Background: View>: V
         isPurchased: Bool,
         icon: Image,
         iconSize: Double = 200,
-        background: @escaping () -> Background,
+        background: Background,
         diagonalColor: Color,
         monthlyProduct: Product,
         monthlyPriceText: String?,
@@ -55,7 +55,7 @@ public struct PremiumScreenContent<Product: PremiumProduct, Background: View>: V
     private let isPurchased: Bool
     private let icon: Image
     private let iconSize: Double
-    private let background: () -> Background
+    private let background: Background
     private let diagonalColor: Color
     private let monthlyProduct: Product
     private let monthlyPriceText: String?
@@ -79,13 +79,10 @@ public struct PremiumScreenContent<Product: PremiumProduct, Background: View>: V
     public var body: some View {
         ZStack(alignment: .bottom) {
             DiagonalContent(
-                titleView: icon.resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(square: iconSize),
-                diagonalColor: diagonalColor,
-                headerHeight: 0.75 * iconSize,
-                content: content,
-                background: background
+                background: background,
+                diagonal: diagonalColor,
+                diagonalOffset: 0.75 * iconSize,
+                content: content
             )
             purchaseButtons
         }
@@ -156,6 +153,9 @@ private extension PremiumScreenContent {
 
     func content() -> some View {
         VStack(spacing: 35) {
+            icon.resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(square: iconSize)
             if isPurchased {
                 purchasedContent
             } else {
@@ -334,21 +334,24 @@ struct PremiumScreenContent_Previews: PreviewProvider {
     }
 
     static var previews: some View {
-        PremiumScreenContent(
-            appInfo: .preview,
-            subscriptionInfo: .preview,
-            isPurchased: false,
-            icon: Image(systemName: "crown"),
-            background: { Color.blue },
-            diagonalColor: .yellow,
-            monthlyProduct: PreviewProduct.monthly,
-            monthlyPriceText: "$1.99",
-            yearlyProduct: PreviewProduct.yearly,
-            yearlyPriceText: "$19.99",
-            yearlySavingsPercentage: 20,
-            purchaseAction: { _ in true },
-            restoreAction: {}
-        )
+        NavigationView {
+            PremiumScreenContent(
+                appInfo: .preview,
+                subscriptionInfo: .preview,
+                isPurchased: false,
+                icon: Image(systemName: "crown"),
+                background: Color.blue,
+                diagonalColor: .yellow,
+                monthlyProduct: PreviewProduct.monthly,
+                monthlyPriceText: "$1.99",
+                yearlyProduct: PreviewProduct.yearly,
+                yearlyPriceText: "$19.99",
+                yearlySavingsPercentage: 20,
+                purchaseAction: { _ in true },
+                restoreAction: {}
+            )
+            .navigationBarTitle("Test", displayMode: .inline)
+        }
     }
 }
 

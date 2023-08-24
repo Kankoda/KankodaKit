@@ -78,7 +78,7 @@ public struct PremiumScreenContent<Product: PremiumProduct, Background: View>: V
 
     public var body: some View {
         ZStack(alignment: .bottom) {
-            DiagonalScreen(
+            DiagonalContent(
                 titleView: icon.resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(square: iconSize),

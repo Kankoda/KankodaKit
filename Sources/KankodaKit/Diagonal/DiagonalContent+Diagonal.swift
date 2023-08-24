@@ -1,5 +1,5 @@
 //
-//  DiagonalScreen+Diagonal.swift
+//  DiagonalContent+Diagonal.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-08-28.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-extension DiagonalScreen {
+extension DiagonalContent {
     
     /**
      This view draws a diagonal shape that has a transparent

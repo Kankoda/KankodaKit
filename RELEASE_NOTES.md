@@ -3,9 +3,10 @@
 
 ## 1.1.0
 
-- `PremiumSubscriptionScreen` is renamed to `PremiumScreenContent`.
 - `AppNotification` is a new struct.
 - `AppOnboarding` is a new struct.
+- `DiagonalScreen` has been renamed to `DiagonalContent`.
+- `PremiumSubscriptionScreen` has been renamed to `PremiumScreenContent`.
 - `SystemNotification` and `OnboardingKit` are now pulled in by the package.
 - `TutorialScreenContent` is a new view that displays standardized tutorial pages. 
 

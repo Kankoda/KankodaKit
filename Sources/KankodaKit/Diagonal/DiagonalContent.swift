@@ -1,5 +1,5 @@
 //
-//  DiagonalScreen.swift
+//  DiagonalContent.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-08-28.
@@ -14,7 +14,7 @@ import SwiftUI
  The screen has a custom title icon, a customizable diagonal
  header line and scrollable content.
  */
-public struct DiagonalScreen<TitleView: View, Content: View, Background: View>: View {
+public struct DiagonalContent<TitleView: View, Content: View, Background: View>: View {
 
     public init(
         titleView: TitleView,
@@ -52,7 +52,7 @@ public struct DiagonalScreen<TitleView: View, Content: View, Background: View>: 
     }
 }
 
-private extension DiagonalScreen {
+private extension DiagonalContent {
 
     var backgroundView: some View {
         VStack(spacing: 0) {
@@ -94,11 +94,11 @@ private extension GeometryProxy {
     }
 }
 
-struct DiagonalScreen_Previews: PreviewProvider {
+struct DiagonalContent_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationStack {
-            DiagonalScreen(
+            DiagonalContent(
                 titleView: Color.green.frame(square: 300),
                 diagonalColor: .yellow// .opacity(0.4)
             ) {

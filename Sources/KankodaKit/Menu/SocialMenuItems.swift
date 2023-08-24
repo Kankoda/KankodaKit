@@ -88,6 +88,7 @@ public struct SocialMenuItems<Icon: View>: View {
             link(localization.reportBug, .bug, urls.contactEmailBugReport)
         } label: {
             label(localization.contactUs, .email)
+                .fullWidthContent()
         }
         shareLink(localization.shareApp, .share, urls.appStore)
         link(localization.reviewApp, .review, urls.appStore)

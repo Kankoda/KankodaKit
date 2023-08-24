@@ -46,14 +46,26 @@ private extension DiagonalContent {
     var backgroundView: some View {
         VStack(spacing: 0) {
             background
-            Color.clear.background(diagonal)
+            diagonalBackground
         }.ignoresSafeArea()
+    }
+    
+    var diagonalBackground: some View {
+        Color.clear.background(diagonal)
+    }
+    
+    var scrollBackground: some View {
+        VStack {
+            Color.clear
+            diagonalBackground
+        }
     }
     
     func scrollView(for geo: GeometryProxy) -> some View {
         ScrollView {
             ZStack(alignment: .top) {
                 diagonalView(for: geo)
+                scrollBackground
                 contentView(for: geo)
             }
             .contentShape(Rectangle())
@@ -94,14 +106,19 @@ struct DiagonalContent_Previews: PreviewProvider {
         NavigationStack {
             DiagonalContent(
                 background: Color.red,
-                diagonal: .yellow,// .opacity(0.4)
-                diagonalOffset: 250
+                diagonal: .yellow // .opacity(0.4)
+                // diagonalOffset: 250
             ) {
                 VStack(spacing: 20) {
                     RoundedRectangle(cornerRadius: 20).fill(.green).frame(square: 300)
-                    Text("1")
-                    Text("2")
-                    Text("3")
+                    Color.purple.frame(height: 100)
+                    Color.purple.frame(height: 100)
+                    Color.purple.frame(height: 100)
+                    Color.purple.frame(height: 100)
+                    Color.purple.frame(height: 100)
+                    Color.purple.frame(height: 100)
+                    Color.purple.frame(height: 100)
+                    Color.purple.frame(height: 100)
                 }
             }
             .navigationTitle("Testing")

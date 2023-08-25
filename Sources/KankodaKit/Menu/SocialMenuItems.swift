@@ -43,6 +43,7 @@ public struct SocialMenuItems<Icon: View>: View {
         
         public init(
             contactUs: String,
+            sendEmail: String,
             sendFeedback: String,
             requestFeature: String,
             reportBug: String,
@@ -51,6 +52,7 @@ public struct SocialMenuItems<Icon: View>: View {
             aboutApp: String
         ) {
             self.contactUs = contactUs
+            self.sendEmail = sendEmail
             self.sendFeedback = sendFeedback
             self.requestFeature = requestFeature
             self.reportBug = reportBug
@@ -60,6 +62,7 @@ public struct SocialMenuItems<Icon: View>: View {
         }
      
         public let contactUs: String
+        public let sendEmail: String
         public let sendFeedback: String
         public let requestFeature: String
         public let reportBug: String
@@ -70,29 +73,33 @@ public struct SocialMenuItems<Icon: View>: View {
         public static var english: Localization {
             .init(
                 contactUs: "Contact Us",
-                sendFeedback: "Send Feedback",
+                sendEmail: "Email",
+                sendFeedback: "Feedback & Ideas",
                 requestFeature: "Request a Feature",
                 reportBug: "Report a Bug",
-                reviewApp: "Review this App",
-                shareApp: "Share this App",
+                reviewApp: "Review App",
+                shareApp: "Share App",
                 aboutApp: "About this App"
             )
         }
     }
     
     public var body: some View {
-        Menu {
-            link(localization.contactUs, .email, urls.contactEmail)
-            link(localization.sendFeedback, .feedback, urls.contactEmailFeedback)
-            link(localization.requestFeature, .feature, urls.contactEmailFeatureRequest)
-            link(localization.reportBug, .bug, urls.contactEmailBugReport)
-        } label: {
-            label(localization.contactUs, .email)
-                .fullWidthContent()
+        Group {
+            DisclosureGroup {
+                link(localization.sendEmail, .email, urls.contactEmail)
+                link(localization.sendFeedback, .feedback, urls.contactEmailFeedback)
+                link(localization.reportBug, .bug, urls.contactEmailBugReport)
+                link(localization.requestFeature, .feature, urls.contactEmailFeatureRequest)
+            } label: {
+                label(localization.contactUs, .email)
+                    .fullWidthContent()
+            }
+            shareLink(localization.shareApp, .share, urls.appStore)
+            link(localization.reviewApp, .review, urls.appStore)
+            link(localization.aboutApp, .info, urls.website)
         }
-        shareLink(localization.shareApp, .share, urls.appStore)
-        link(localization.reviewApp, .review, urls.appStore)
-        link(localization.aboutApp, .info, urls.website)
+        .buttonStyle(.plain)
     }
 }
 

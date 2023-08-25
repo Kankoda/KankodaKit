@@ -8,7 +8,7 @@
 - `DiagonalContent` has been simplified.
 - `DiagonalScreen` has been renamed to `DiagonalContent`.
 - `PremiumSubscriptionScreen` has been renamed to `PremiumScreenContent`.
-- `SocialMenuItems` menu is now full width interactable.
+- `SocialMenuItems` now uses a disclosure group instead of a menu.
 - `SystemNotification` and `OnboardingKit` are now pulled in by the package.
 - `TutorialScreenContent` is a new view that displays standardized tutorial pages. 
 

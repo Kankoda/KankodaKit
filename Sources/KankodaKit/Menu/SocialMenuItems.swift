@@ -87,17 +87,17 @@ public struct SocialMenuItems<Icon: View>: View {
     public var body: some View {
         Group {
             DisclosureGroup {
-                link(localization.sendEmail, .email, urls.contactEmail)
-                link(localization.sendFeedback, .feedback, urls.contactEmailFeedback)
-                link(localization.reportBug, .bug, urls.contactEmailBugReport)
-                link(localization.requestFeature, .feature, urls.contactEmailFeatureRequest)
+                plainLink(localization.sendEmail, .email, urls.contactEmail)
+                plainLink(localization.sendFeedback, .feedback, urls.contactEmailFeedback)
+                plainLink(localization.reportBug, .bug, urls.contactEmailBugReport)
+                plainLink(localization.requestFeature, .feature, urls.contactEmailFeatureRequest)
             } label: {
-                label(localization.contactUs, .email)
+                styledLabel(localization.contactUs, .email)
                     .fullWidthContent()
             }
             shareLink(localization.shareApp, .share, urls.appStore)
-            link(localization.reviewApp, .review, urls.appStore)
-            link(localization.aboutApp, .info, urls.website)
+            styledLink(localization.reviewApp, .review, urls.appStore)
+            styledLink(localization.aboutApp, .info, urls.website)
         }
         .buttonStyle(.plain)
     }
@@ -105,7 +105,20 @@ public struct SocialMenuItems<Icon: View>: View {
 
 private extension SocialMenuItems {
     
-    func label(_ text: String, _ icon: Image) -> some View {
+    @ViewBuilder
+    func plainLink(_ text: String, _ icon: Image, _ url: URL?) -> some View {
+        if let url {
+            Link(destination: url) {
+                Label {
+                    Text(text)
+                } icon: {
+                    icon
+                }
+            }
+        }
+    }
+    
+    func styledLabel(_ text: String, _ icon: Image) -> some View {
         Label {
             Text(text)
         } icon: {
@@ -114,10 +127,10 @@ private extension SocialMenuItems {
     }
     
     @ViewBuilder
-    func link(_ text: String, _ icon: Image, _ url: URL?) -> some View {
+    func styledLink(_ text: String, _ icon: Image, _ url: URL?) -> some View {
         if let url {
             Link(destination: url) {
-                label(text, icon)
+                styledLabel(text, icon)
             }
         }
     }
@@ -126,7 +139,7 @@ private extension SocialMenuItems {
     func shareLink(_ text: String, _ icon: Image, _ url: URL?) -> some View {
         if let url {
             ShareLink(item: url) {
-                label(text, icon)
+                styledLabel(text, icon)
             }
         }
     }
@@ -138,7 +151,12 @@ struct SocialMenuItems_Previews: PreviewProvider {
         List {
             SocialMenuItems(
                 appInfo: .preview,
-                icon: { $0 }
+                icon: {
+                    Circle()
+                        .fill(.yellow)
+                        .frame(square: 30)
+                        .overlay($0)
+                }
             )
         }
     }

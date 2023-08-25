@@ -243,11 +243,17 @@ private extension PremiumScreenContent {
                     .frame(maxWidth: .infinity)
             }
             .padding()
-            .background(diagonalColor
-                .shadow(.init(color: .black.opacity(0.1), radius: 3, y: -5))
-                .edgesIgnoringSafeArea(.bottom)
-            )
+            .background(purchaseButtonSheetBody)
         }
+    }
+    
+    var purchaseButtonSheetBody: some View {
+        ZStack {
+            Color.white
+            diagonalColor.opacity(0.9)
+        }
+        .shadow(.init(color: .black.opacity(0.1), radius: 3, y: -5))
+        .edgesIgnoringSafeArea(.bottom)
     }
     
     var monthlyPuchaseButton: some View {

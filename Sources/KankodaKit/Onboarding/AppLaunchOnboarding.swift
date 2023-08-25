@@ -1,5 +1,5 @@
 //
-//  AppOnboarding+App.swift
+//  AppLaunchOnboarding.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-08-25.
@@ -22,7 +22,7 @@ public extension View {
      and is ready to review and upgrade.
      */
     @MainActor
-    func standardLaunchOnboarding(
+    func appLaunchOnboarding(
         userIsReadyToReview: Bool,
         presentWelcomeScreen: @escaping () -> Void,
         presentPremiumScreen: @escaping () -> Void

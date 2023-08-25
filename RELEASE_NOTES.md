@@ -7,6 +7,7 @@
 - `AppOnboarding` is a new struct.
 - `DiagonalContent` has been simplified.
 - `DiagonalScreen` has been renamed to `DiagonalContent`.
+- `LocalizedTutorial.welcome` is a new, standard welcome tutorial.
 - `PremiumSubscriptionScreen` has been renamed to `PremiumScreenContent`.
 - `SocialMenuItems` now uses a disclosure group instead of a menu.
 - `SystemNotification` and `OnboardingKit` are now pulled in by the package.

@@ -10,7 +10,8 @@
 - `PremiumSubscriptionScreen` has been renamed to `PremiumScreenContent`.
 - `SocialMenuItems` now uses a disclosure group instead of a menu.
 - `SystemNotification` and `OnboardingKit` are now pulled in by the package.
-- `TutorialScreenContent` is a new view that displays standardized tutorial pages. 
+- `TutorialScreenContent` is a new view that displays standardized tutorial pages.
+- `View` has a new `.standardLaunchOnboarding` modifier that performs a launch onboarding flow. 
 
 
 ## 1.0.4

@@ -1,18 +1,22 @@
 # Release Notes
 
 
-## 1.1.0
+## 1.1
+
+The library adds new depedendencies and a bunch of new functionality. 
 
 - `AppNotification` is a new struct.
 - `AppOnboarding` is a new struct.
 - `DiagonalContent` has been simplified.
 - `DiagonalScreen` has been renamed to `DiagonalContent`.
 - `LocalizedTutorial.welcome` is a new, standard welcome tutorial.
+- `PremiumFeature` is a new protocol.
+- `PremiumProduct` is renamed to `AppProduct` and converted to `struct`.
 - `PremiumSubscriptionScreen` has been renamed to `PremiumScreenContent`.
 - `SocialMenuItems` now uses a disclosure group instead of a menu.
 - `SystemNotification` and `OnboardingKit` are now pulled in by the package.
 - `TutorialScreenContent` is a new view that displays standardized tutorial pages.
-- `View` has a new `.standardLaunchOnboarding` modifier that performs a launch onboarding flow. 
+- `View` has a new `.standardLaunchOnboarding` modifier that performs a launch onboarding flow.
 
 
 ## 1.0.4

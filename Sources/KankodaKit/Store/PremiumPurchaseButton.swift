@@ -12,7 +12,7 @@ import SwiftUI
  This button can be used to purchase a premium product, such
  as a monthly or yearly subscription.
  */
-public struct PremiumPurchaseButton<Product: PremiumProduct>: View {
+public struct PremiumPurchaseButton: View {
 
     /**
      Create a premium purchase button.
@@ -21,7 +21,7 @@ public struct PremiumPurchaseButton<Product: PremiumProduct>: View {
      indicates that purchase details are still being fetched.
      */
     public init(
-        product: Product,
+        product: AppProduct,
         priceText: String?,
         footerText: String? = nil,
         action: @escaping () -> Void
@@ -32,7 +32,7 @@ public struct PremiumPurchaseButton<Product: PremiumProduct>: View {
         self.action = action
     }
 
-    private let product: Product
+    private let product: AppProduct
     private let priceText: String?
     private let footerText: String
     private let action: () -> Void
@@ -99,31 +99,23 @@ private extension PremiumPurchaseButton {
 
 struct PremiumPurchaseButton_Previews: PreviewProvider {
 
-    enum PreviewProduct: String, PremiumProduct {
-
-        case yearly, monthly
-
-        var id: String { rawValue }
-        var name: String { rawValue.capitalized }
-    }
-
     static var previews: some View {
         VStack {
             PremiumPurchaseButton(
-                product: PreviewProduct.monthly,
+                product: .preview,
                 priceText: "20,00 kr / Month",
                 action: {}
             ).buttonStyle(.bordered)
 
             PremiumPurchaseButton(
-                product: PreviewProduct.monthly,
+                product: .preview,
                 priceText: nil,
                 footerText: "Save 10%",
                 action: {}
             ).buttonStyle(.bordered)
 
             PremiumPurchaseButton(
-                product: PreviewProduct.monthly,
+                product: .preview,
                 priceText: "100,00 kr / Month",
                 footerText: "Save 10%",
                 action: {}

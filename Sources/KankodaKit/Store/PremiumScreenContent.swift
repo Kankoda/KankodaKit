@@ -14,7 +14,7 @@ import SwiftUIKit
 /**
  This view can manage premium subscriptions for Kankoda apps.
  */
-public struct PremiumScreenContent<Product: PremiumProduct, Background: View>: View {
+public struct PremiumScreenContent<Background: View>: View {
 
     public init(
         appInfo: AppInfo,
@@ -24,12 +24,12 @@ public struct PremiumScreenContent<Product: PremiumProduct, Background: View>: V
         iconSize: Double = 200,
         background: Background,
         diagonalColor: Color,
-        monthlyProduct: Product,
+        monthlyProduct: AppProduct,
         monthlyPriceText: String?,
-        yearlyProduct: Product,
+        yearlyProduct: AppProduct,
         yearlyPriceText: String?,
         yearlySavingsPercentage: Int?,
-        purchaseAction: @escaping (Product) async throws -> Bool,
+        purchaseAction: @escaping (AppProduct) async throws -> Bool,
         restoreAction: @escaping () async throws -> Void
     ) {
         self.appInfo = appInfo
@@ -57,12 +57,12 @@ public struct PremiumScreenContent<Product: PremiumProduct, Background: View>: V
     private let iconSize: Double
     private let background: Background
     private let diagonalColor: Color
-    private let monthlyProduct: Product
+    private let monthlyProduct: AppProduct
     private let monthlyPriceText: String?
-    private let yearlyProduct: Product
+    private let yearlyProduct: AppProduct
     private let yearlyPriceText: String?
     private let yearlySavingsPercentage: Int?
-    private let purchaseAction: (Product) async throws -> Bool
+    private let purchaseAction: (AppProduct) async throws -> Bool
     private let restoreAction: () async throws -> Void
     
     private let maxWidth = 500.0
@@ -300,7 +300,7 @@ private extension PremiumScreenContent {
         }
     }
 
-    func tryPurchase(_ product: Product) {
+    func tryPurchase(_ product: AppProduct) {
         Task {
             await setIsPurchasing(true)
             let result = try await purchaseAction(product)
@@ -331,14 +331,6 @@ private extension PremiumScreenContent {
 
 struct PremiumScreenContent_Previews: PreviewProvider {
 
-    enum PreviewProduct: String, PremiumProduct {
-
-        case yearly, monthly
-
-        var id: String { rawValue }
-        var name: String { rawValue.capitalized }
-    }
-
     static var previews: some View {
         NavigationView {
             PremiumScreenContent(
@@ -348,9 +340,9 @@ struct PremiumScreenContent_Previews: PreviewProvider {
                 icon: Image(systemName: "crown"),
                 background: Color.blue,
                 diagonalColor: .yellow,
-                monthlyProduct: PreviewProduct.monthly,
+                monthlyProduct: .preview("Monthly"),
                 monthlyPriceText: "$1.99",
-                yearlyProduct: PreviewProduct.yearly,
+                yearlyProduct: .preview("Yearly"),
                 yearlyPriceText: "$19.99",
                 yearlySavingsPercentage: 20,
                 purchaseAction: { _ in true },

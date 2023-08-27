@@ -11,11 +11,7 @@ import SwiftUI
 import SystemNotification
 
 /**
- This type can be used to specify app-specific notifications
- that use `SystemNotificationMessage` with plain image icons.
- 
- Since this struct is non-generic, it works much better than
- the `SystemNotification` views, when it comes to extensions.
+ This type can be used to specify app-specific notifications.
  
  You can create app-specific notifications like this:
  
@@ -39,9 +35,8 @@ import SystemNotification
  context.present(.themeCopied)
  ```
  
- For custom notification content views, use the notification
- library directly or create other notification types in this
- library.
+ For custom notifications, use `SystemNotification` directly
+ or create other notification types in this library.
  */
 public struct AppNotification {
     

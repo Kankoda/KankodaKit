@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "storekitplus",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/StoreKitPlus.git",
+      "state" : {
+        "revision" : "6c592da317443a53f99e20f731d9fca2c6f41cb3",
+        "version" : "0.2.0"
+      }
+    },
+    {
       "identity" : "swiftuikit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/SwiftUIKit.git",

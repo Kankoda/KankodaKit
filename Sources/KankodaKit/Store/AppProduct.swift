@@ -6,20 +6,21 @@
 //  Copyright © 2023 Daniel Saidi. All rights reserved.
 //
 
-import Foundation
+import StoreKit
 import StoreKitPlus
 
 /**
- This type can be used to specify app-specific products.
+ This type can be used to specify app-specific products, e.g.
+ premium subscriptions and consumables.
  
- You can create app-specific products like this:
+ You can create an app-specific product like this:
  
  ```swift
  extension AppProduct {
  
      static let premiumYearly = Self(
          .init(
-             id: "com.myapp.iap.yearly",
+             id: "com.myapp.iap.premium.yearly",
              name: "Premium Yearly"
          )
      )
@@ -44,6 +45,19 @@ public struct AppProduct: Identifiable, ProductRepresentable {
 
     public let id: String
     public let name: String
+}
+
+public extension StoreContext {
+    
+    /// Whether or not a certain app product is purchased.
+    func isProductPurchased(_ prod: AppProduct) -> Bool {
+        isProductPurchased(id: prod.id)
+    }
+    
+    /// Get the App Store product for a certain app product.
+    func product(_ prod: AppProduct) -> Product? {
+        product(withId: prod.id)
+    }
 }
 
 public extension AppProduct {

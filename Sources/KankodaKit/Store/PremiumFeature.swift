@@ -11,6 +11,9 @@ import Foundation
 /**
  This protocol can be implemented by any types that can be a
  premium feature.
+ 
+ This information can be used to know what to do when a user
+ tries to access a premium feature.
  */
 public protocol PremiumFeature {
     

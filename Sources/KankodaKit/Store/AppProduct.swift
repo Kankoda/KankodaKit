@@ -1,6 +1,6 @@
 //
 //  PremiumProduct.swift
-//  KeyboardKit
+//  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-06-22.
 //  Copyright © 2023 Daniel Saidi. All rights reserved.
@@ -33,31 +33,22 @@ import StoreKitPlus
 public struct AppProduct: Identifiable, ProductRepresentable {
     
     /**
-     Create a new pro
+     Create a new product.
+     
+     - Parameters:
+       - id: The App Store string ID of the product.
+       - name: The product display name.
      */
-    public init(
-        id: String,
-        name: String
-    ) {
+    public init(id: String, name: String) {
         self.id = id
         self.name = name
     }
-
+    
+    /// The App Store string ID of the product.
     public let id: String
+    
+    /// The product display name.
     public let name: String
-}
-
-public extension StoreContext {
-    
-    /// Whether or not a certain app product is purchased.
-    func isProductPurchased(_ prod: AppProduct) -> Bool {
-        isProductPurchased(id: prod.id)
-    }
-    
-    /// Get the App Store product for a certain app product.
-    func product(_ prod: AppProduct) -> Product? {
-        product(withId: prod.id)
-    }
 }
 
 public extension AppProduct {

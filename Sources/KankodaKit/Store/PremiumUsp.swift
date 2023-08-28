@@ -1,6 +1,6 @@
 //
 //  PremiumUsp.swift
-//  KeyboardKit
+//  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-07-13.
 //  Copyright © 2023 Daniel Saidi. All rights reserved.

@@ -24,25 +24,27 @@ public extension StoreContext {
     /// Get the yearly savings percentage in rounded in form
     /// (50 instead of 0.5) for two app products.
     func yearlySavingsPercentage(
-        forMonthlyProduct monthly: AppProduct,
-        yearlyProduct yearly: AppProduct
+        forYearlyProduct yearly: AppProduct,
+        comparedToMonthly monthly: AppProduct
     ) -> Int? {
-        guard let monthlyProd = product(monthly) else { return nil }
-        guard let yearlyProd = product(yearly) else { return nil }
-        return yearlySavingsPercentage(
-            forMonthlyProduct: monthlyProd,
-            yearlyProduct: yearlyProd
-        )
+        guard let monthly = product(monthly) else { return nil }
+        return product(yearly)?
+            .yearlySavingsPercentage(
+                comparedToMonthlyProduct: monthly
+            )
     }
+}
+
+public extension Product {
     
     /// Get the yearly savings percentage in rounded in form,
-    /// (50 instead of 0.5) for two StoreKit products.
+    /// (50 instead of 0.5) for a yearly product compared to
+    /// a monthly variant.
     func yearlySavingsPercentage(
-        forMonthlyProduct monthly: Product,
-        yearlyProduct yearly: Product
+        comparedToMonthlyProduct product: Product
     ) -> Int? {
-        guard monthly.price > 0 else { return nil }
-        let percentage = 1 - (yearly.price / (12 * monthly.price))
+        guard product.price > 0 else { return nil }
+        let percentage = 1 - (price / (12 * product.price))
         let result = 100 * Double(truncating: percentage as NSNumber)
         return Int(result.rounded())
     }

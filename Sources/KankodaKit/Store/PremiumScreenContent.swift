@@ -1,6 +1,6 @@
 //
 //  PremiumScreenContent.swift
-//  KankodaKit
+//  KeyboardKit
 //
 //  Created by Daniel Saidi on 2023-06-22.
 //  Copyright © 2023 Daniel Saidi. All rights reserved.
@@ -13,20 +13,22 @@ import SwiftUIKit
 
 /**
  This view can manage premium subscriptions for Kankoda apps.
+ 
+ The view takes in ``AppProduct`` values instead of StoreKit
+ products to make it easier to design. The price information
+ can be fetched from real StoreKit products.
  */
 public struct PremiumScreenContent<Background: View>: View {
 
     public init(
         appInfo: AppInfo,
-        subscriptionInfo: PremiumScreenContentInfo,
+        premiumInfo: PremiumPurchaseInfo,
         isPurchased: Bool,
         icon: Image,
         iconSize: Double = 200,
         background: Background,
         diagonalColor: Color,
-        monthlyProduct: AppProduct,
         monthlyPriceText: String?,
-        yearlyProduct: AppProduct,
         yearlyPriceText: String?,
         yearlySavingsPercentage: Int?,
         purchaseAction: @escaping (AppProduct) async throws -> Bool,
@@ -34,15 +36,13 @@ public struct PremiumScreenContent<Background: View>: View {
     ) {
         self.appInfo = appInfo
         self.appUrls = appInfo.urls
-        self.subscriptionInfo = subscriptionInfo
+        self.premiumInfo = premiumInfo
         self.isPurchased = isPurchased
         self.icon = icon
         self.iconSize = iconSize
         self.background = background
         self.diagonalColor = diagonalColor
-        self.monthlyProduct = monthlyProduct
         self.monthlyPriceText = monthlyPriceText
-        self.yearlyProduct = yearlyProduct
         self.yearlyPriceText = yearlyPriceText
         self.yearlySavingsPercentage = yearlySavingsPercentage
         self.purchaseAction = purchaseAction
@@ -51,15 +51,13 @@ public struct PremiumScreenContent<Background: View>: View {
     
     private let appInfo: AppInfo
     private let appUrls: AppUrls
-    private let subscriptionInfo: PremiumScreenContentInfo
+    private let premiumInfo: PremiumPurchaseInfo
     private let isPurchased: Bool
     private let icon: Image
     private let iconSize: Double
     private let background: Background
     private let diagonalColor: Color
-    private let monthlyProduct: AppProduct
     private let monthlyPriceText: String?
-    private let yearlyProduct: AppProduct
     private let yearlyPriceText: String?
     private let yearlySavingsPercentage: Int?
     private let purchaseAction: (AppProduct) async throws -> Bool
@@ -92,63 +90,6 @@ public struct PremiumScreenContent<Background: View>: View {
     }
 }
 
-/**
- This struct is used to define all localized information for
- a ``PremiumScreenContent``.
- 
- The reason for having this is to be able to define a static,
- app-specific premium information value without the screen.
- */
-public struct PremiumScreenContentInfo {
-    
-    public init(
-        text: String,
-        usps: [PremiumUsp],
-        disclaimerText: String,
-        restorePurchasesText: String,
-        termsText: String,
-        privacyText: String,
-        manageSubscriptionsText: String,
-        trialPromotionText: String,
-        monthlyPriceText: @escaping (_ priceText: String) -> String,
-        yearlyPriceText: @escaping (_ priceText: String) -> String,
-        yearlySavingsText: @escaping (_ roundedPercentage: Int) -> String,
-        maybeLaterText: String,
-        isPurchasedTitle: String,
-        isPurchasedText: String
-    ) {
-        self.text = text
-        self.usps = usps
-        self.disclaimerText = disclaimerText
-        self.restorePurchasesText = restorePurchasesText
-        self.termsText = termsText
-        self.privacyText = privacyText
-        self.manageSubscriptionsText = manageSubscriptionsText
-        self.trialPromotionText = trialPromotionText
-        self.monthlyPriceText = monthlyPriceText
-        self.yearlyPriceText = yearlyPriceText
-        self.yearlySavingsText = yearlySavingsText
-        self.maybeLaterText = maybeLaterText
-        self.isPurchasedTitle = isPurchasedTitle
-        self.isPurchasedText = isPurchasedText
-    }
-    
-    public let text: String
-    public let usps: [PremiumUsp]
-    public let disclaimerText: String
-    public let restorePurchasesText: String
-    public let termsText: String
-    public let privacyText: String
-    public let manageSubscriptionsText: String
-    public let trialPromotionText: String
-    public let monthlyPriceText: (_ priceText: String) -> String
-    public let yearlyPriceText: (_ priceText: String) -> String
-    public let yearlySavingsText: (_ roundedPercentage: Int) -> String
-    public let maybeLaterText: String
-    public let isPurchasedTitle: String
-    public let isPurchasedText: String
-}
-
 private extension PremiumScreenContent {
 
     func content() -> some View {
@@ -172,9 +113,9 @@ private extension PremiumScreenContent {
     @ViewBuilder
     var nonPurchasedContent: some View {
         Group {
-            Text(subscriptionInfo.text)
-            PremiumUspLabelStack(subscriptionInfo.usps)
-            Text(subscriptionInfo.disclaimerText)
+            Text(premiumInfo.text)
+            PremiumUspLabelStack(premiumInfo.usps)
+            Text(premiumInfo.disclaimerText)
                 .font(.footnote)
         }
         .frame(maxWidth: maxWidth)
@@ -183,10 +124,10 @@ private extension PremiumScreenContent {
 
     var purchasedContent: some View {
         VStack(spacing: 30) {
-            Text(subscriptionInfo.isPurchasedTitle)
+            Text(premiumInfo.isPurchasedTitle)
                 .font(.title)
                 .minimumScaleFactor(0.8)
-            Text(subscriptionInfo.isPurchasedText)
+            Text(premiumInfo.isPurchasedText)
                 .fixedSize(horizontal: false, vertical: true)
         }.frame(maxWidth: maxWidth)
     }
@@ -197,9 +138,9 @@ private extension PremiumScreenContent {
     var linkStack: some View {
         VStack(spacing: 20) {
             restorePurchsesButton
-            link(subscriptionInfo.termsText, url: appUrls.termsAndConditions)
-            link(subscriptionInfo.privacyText, url: appUrls.privacyPolicy)
-            Button(subscriptionInfo.manageSubscriptionsText) {
+            link(premiumInfo.termsText, url: appUrls.termsAndConditions)
+            link(premiumInfo.privacyText, url: appUrls.privacyPolicy)
+            Button(premiumInfo.manageSubscriptionsText) {
                 Task { await manageSubscriptions() }
             }
         }.font(.callout)
@@ -213,7 +154,7 @@ private extension PremiumScreenContent {
     }
 
     var maybeLaterButton: some View {
-        Button(subscriptionInfo.maybeLaterText) {
+        Button(premiumInfo.maybeLaterText) {
             dismiss.callAsFunction()
         }.font(.footnote)
     }
@@ -221,7 +162,7 @@ private extension PremiumScreenContent {
     @ViewBuilder
     var restorePurchsesButton: some View {
         if !isPurchased {
-            Button(subscriptionInfo.restorePurchasesText) {
+            Button(premiumInfo.restorePurchasesText) {
                 Task { try await restoreAction() }
             }
         }
@@ -231,7 +172,7 @@ private extension PremiumScreenContent {
     var purchaseButtons: some View {
         if !isPurchased {
             VStack(spacing: 20) {
-                Text(subscriptionInfo.trialPromotionText)
+                Text(premiumInfo.trialPromotionText)
                     .bold()
         
                 VStack(spacing: 15) {
@@ -258,36 +199,36 @@ private extension PremiumScreenContent {
     
     var monthlyPuchaseButton: some View {
         PremiumPurchaseButton(
-            product: monthlyProduct,
+            product: premiumInfo.monthlyProduct,
             priceText: monthlyPuchaseButtonPriceText,
-            action: { tryPurchase(monthlyProduct) }
+            action: { tryPurchase(premiumInfo.monthlyProduct) }
         )
         .buttonStyle(.bordered)
     }
     
     var monthlyPuchaseButtonPriceText: String? {
         guard let monthlyPriceText else { return nil }
-        return subscriptionInfo.monthlyPriceText(monthlyPriceText)
+        return premiumInfo.monthlyPriceText(monthlyPriceText)
     }
     
     var yearlyPuchaseButton: some View {
         PremiumPurchaseButton(
-            product: yearlyProduct,
+            product: premiumInfo.yearlyProduct,
             priceText: yearlyPuchaseButtonPriceText,
             footerText: yearlyPuchaseButtonSavingsText,
-            action: { tryPurchase(yearlyProduct) }
+            action: { tryPurchase(premiumInfo.yearlyProduct) }
         )
         .buttonStyle(.borderedProminent)
     }
     
     var yearlyPuchaseButtonPriceText: String? {
         guard let yearlyPriceText else { return nil }
-        return subscriptionInfo.yearlyPriceText(yearlyPriceText)
+        return premiumInfo.yearlyPriceText(yearlyPriceText)
     }
     
     var yearlyPuchaseButtonSavingsText: String? {
         guard let yearlySavingsPercentage else { return nil }
-        return subscriptionInfo.yearlySavingsText(yearlySavingsPercentage)
+        return premiumInfo.yearlySavingsText(yearlySavingsPercentage)
     }
 }
 
@@ -335,14 +276,12 @@ struct PremiumScreenContent_Previews: PreviewProvider {
         NavigationView {
             PremiumScreenContent(
                 appInfo: .preview,
-                subscriptionInfo: .preview,
+                premiumInfo: .preview,
                 isPurchased: false,
                 icon: Image(systemName: "crown"),
                 background: Color.blue,
                 diagonalColor: .yellow,
-                monthlyProduct: .preview("Monthly"),
                 monthlyPriceText: "$1.99",
-                yearlyProduct: .preview("Yearly"),
                 yearlyPriceText: "$19.99",
                 yearlySavingsPercentage: 20,
                 purchaseAction: { _ in true },
@@ -351,31 +290,5 @@ struct PremiumScreenContent_Previews: PreviewProvider {
             .navigationBarTitle("Test", displayMode: .inline)
         }
     }
-}
-
-private extension PremiumScreenContentInfo {
-    
-    static let usp = PremiumUsp(
-        title: "Great value",
-        text: "Subscribe for great value.",
-        iconName: "person.crop.square"
-    )
-    
-    static var preview = PremiumScreenContentInfo(
-        text: "Subscribe to unlock premium features.",
-        usps: [usp, usp],
-        disclaimerText: "No commitment, cancel any time.",
-        restorePurchasesText: "Restore purchases",
-        termsText: "Terms & Conditions",
-        privacyText: "Privacy Policy",
-        manageSubscriptionsText: "Manage Subscriptios",
-        trialPromotionText: "Try for FREE!",
-        monthlyPriceText: { "\($0) / Month" },
-        yearlyPriceText: { "\($0) / Year" },
-        yearlySavingsText: { "Save \($0)%" },
-        maybeLaterText: "Maybe later",
-        isPurchasedTitle: "Premium is active!",
-        isPurchasedText: "Thank you for going premium"
-    )
 }
 #endif

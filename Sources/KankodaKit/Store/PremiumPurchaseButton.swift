@@ -6,6 +6,7 @@
 //  Copyright © 2022 Daniel Saidi. All rights reserved.
 //
 
+import StoreKit
 import SwiftUI
 
 /**
@@ -13,9 +14,9 @@ import SwiftUI
  as a monthly or yearly subscription.
  */
 public struct PremiumPurchaseButton: View {
-
+    
     /**
-     Create a premium purchase button.
+     Create a premium purchase button for an `AppProduct`.
 
      If the `priceText` is nil, a spinner is shown, since it
      indicates that purchase details are still being fetched.
@@ -26,13 +27,13 @@ public struct PremiumPurchaseButton: View {
         footerText: String? = nil,
         action: @escaping () -> Void
     ) {
-        self.product = product
+        self.productName = product.name
         self.priceText = priceText
         self.footerText = footerText ?? ""
         self.action = action
     }
 
-    private let product: AppProduct
+    private let productName: String
     private let priceText: String?
     private let footerText: String
     private let action: () -> Void
@@ -61,7 +62,7 @@ private extension PremiumPurchaseButton {
     var buttonContent: some View {
         ZStack {
             VStack(spacing: 5) {
-                Text(product.name).font(.headline)
+                Text(productName).font(.headline)
                 Text(priceText ?? "")
             }
             .opacity(isLoading ? 0 : 1)
@@ -81,7 +82,7 @@ private extension PremiumPurchaseButton {
     }
 
     var name: some View {
-        Text(product.name)
+        Text(productName)
             .font(.footnote)
     }
 }

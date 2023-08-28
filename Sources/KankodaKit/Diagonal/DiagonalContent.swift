@@ -1,5 +1,5 @@
 //
-//  DiagonalContent.swift
+//  Diagonal+Content.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-08-28.
@@ -9,28 +9,24 @@
 import SwiftUI
 
 /**
- This view can be used to create diagonal styled content for
- Kankoda apps.
+ This view can be used to create diagonal styled content.
  */
-public struct DiagonalContent<Background: View, DiagonalStyle: ShapeStyle, Content: View>: View {
-
+public struct DiagonalContent<Content: View>: View {
+    
     public init(
-        background: Background,
-        diagonal: DiagonalStyle,
+        style: DiagonalStyle,
         diagonalOffset: CGFloat = 200,
         content: @escaping () -> Content
     ) {
-        self.background = background
-        self.diagonal = diagonal
+        self.style = style
         self.diagonalOffset = diagonalOffset
         self.content = content
     }
-
-    private let background: Background
-    private let diagonal: DiagonalStyle
+    
+    private let style: DiagonalStyle
     private let diagonalOffset: CGFloat
     private let content: () -> Content
-
+    
     public var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -45,13 +41,13 @@ private extension DiagonalContent {
 
     var backgroundView: some View {
         VStack(spacing: 0) {
-            background
+            style.background
             diagonalBackground
         }.ignoresSafeArea()
     }
     
     var diagonalBackground: some View {
-        Color.clear.background(diagonal)
+        Color.clear.background(style.diagonal)
     }
     
     var scrollBackground: some View {
@@ -80,10 +76,12 @@ private extension DiagonalContent {
     }
 
     func diagonalView(for geo: GeometryProxy) -> some View {
-        Diagonal(
-            diagonal,
+        DiagonalShape(
             diagonalOffset: geo.shouldCompressHeader ? 0.75 * diagonalOffset : diagonalOffset
-        ).frame(height: geo.size.height)
+        )
+        .fill(style.diagonal)
+        .edgesIgnoringSafeArea(.bottom)
+        .frame(height: geo.size.height)
     }
 }
 
@@ -105,9 +103,10 @@ struct DiagonalContent_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             DiagonalContent(
-                background: Color.red,
-                diagonal: .yellow // .opacity(0.4)
-                // diagonalOffset: 250
+                style: .init(
+                    background: .red,
+                    diagonal: .yellow
+                )
             ) {
                 VStack(spacing: 20) {
                     RoundedRectangle(cornerRadius: 20).fill(.green).frame(square: 300)

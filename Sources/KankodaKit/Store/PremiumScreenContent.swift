@@ -18,7 +18,7 @@ import SwiftUIKit
  products to make it easier to design. The price information
  can be fetched from real StoreKit products.
  */
-public struct PremiumScreenContent<Background: View>: View {
+public struct PremiumScreenContent: View {
 
     public init(
         appInfo: AppInfo,
@@ -26,8 +26,7 @@ public struct PremiumScreenContent<Background: View>: View {
         isPurchased: Bool,
         icon: Image,
         iconSize: Double = 200,
-        background: Background,
-        diagonalColor: Color,
+        diagonalStyle: DiagonalStyle,
         monthlyPriceText: String?,
         yearlyPriceText: String?,
         yearlySavingsPercentage: Int?,
@@ -40,8 +39,7 @@ public struct PremiumScreenContent<Background: View>: View {
         self.isPurchased = isPurchased
         self.icon = icon
         self.iconSize = iconSize
-        self.background = background
-        self.diagonalColor = diagonalColor
+        self.diagonalStyle = diagonalStyle
         self.monthlyPriceText = monthlyPriceText
         self.yearlyPriceText = yearlyPriceText
         self.yearlySavingsPercentage = yearlySavingsPercentage
@@ -55,8 +53,7 @@ public struct PremiumScreenContent<Background: View>: View {
     private let isPurchased: Bool
     private let icon: Image
     private let iconSize: Double
-    private let background: Background
-    private let diagonalColor: Color
+    private let diagonalStyle: DiagonalStyle
     private let monthlyPriceText: String?
     private let yearlyPriceText: String?
     private let yearlySavingsPercentage: Int?
@@ -77,8 +74,7 @@ public struct PremiumScreenContent<Background: View>: View {
     public var body: some View {
         ZStack(alignment: .bottom) {
             DiagonalContent(
-                background: background,
-                diagonal: diagonalColor,
+                style: diagonalStyle,
                 diagonalOffset: 0.75 * iconSize,
                 content: content
             )
@@ -191,7 +187,7 @@ private extension PremiumScreenContent {
     var purchaseButtonSheetBody: some View {
         ZStack {
             Color.white
-            diagonalColor.opacity(0.9)
+            diagonalStyle.diagonal.opacity(0.9)
         }
         .shadow(.init(color: .black.opacity(0.1), radius: 3, y: -5))
         .edgesIgnoringSafeArea(.bottom)
@@ -279,8 +275,10 @@ struct PremiumScreenContent_Previews: PreviewProvider {
                 premiumInfo: .preview,
                 isPurchased: false,
                 icon: Image(systemName: "crown"),
-                background: Color.blue,
-                diagonalColor: .yellow,
+                diagonalStyle: .init(
+                    background: Color.blue,
+                    diagonal: .yellow
+                ),
                 monthlyPriceText: "$1.99",
                 yearlyPriceText: "$19.99",
                 yearlySavingsPercentage: 20,

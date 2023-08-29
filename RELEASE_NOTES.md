@@ -9,6 +9,7 @@ The library adds new depedendencies and a bunch of new functionality.
 - `AppOnboarding` is a new struct.
 - `DiagonalContent` has been simplified.
 - `DiagonalScreen` has been renamed to `DiagonalContent`.
+- `Items` is a new namespace with app-items related types.
 - `LocalizedTutorial.welcome` is a new, standard welcome tutorial.
 - `PremiumFeature` is a new protocol.
 - `PremiumProduct` is renamed to `AppProduct` and converted to `struct`.

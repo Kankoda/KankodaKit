@@ -14,6 +14,9 @@ import CoreTransferable
  */
 public protocol AppItemData: Codable, Transferable {
     
+    /// Create item data from raw `Data`.
+    init(from data: Data) throws
+    
     /// The name of the export data.
     var name: String { get }
     

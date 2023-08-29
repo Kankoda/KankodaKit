@@ -15,7 +15,7 @@ import SwiftUI
  Only use this approach for limited amounts of data. If your
  app needs a LOT of data, consider using databases.
  */
-public protocol AppItemContext: AnyObject {
+public protocol AppItemContext: ObservableObject {
 
     associatedtype Item: AppItem
 

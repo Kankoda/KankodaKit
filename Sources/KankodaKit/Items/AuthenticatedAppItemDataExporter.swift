@@ -1,5 +1,5 @@
 //
-//  AuthenticatedAppItemExporter.swift
+//  AuthenticatedAppItemDataExporter.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-07-03.
@@ -13,7 +13,7 @@ import LocalAuthentication
  This data exporter wraps another exporter and adds an extra
  authentication step before exporting data.
  */
-public class AuthenticatedAppItemExporter: AppItemExporter {
+public class AuthenticatedAppItemDataExporter: AppItemDataExporter {
 
     /**
      Create an authenticated data exporter.
@@ -23,7 +23,7 @@ public class AuthenticatedAppItemExporter: AppItemExporter {
        - authReason: The authentication reason to display to the user.
      */
     public init(
-        baseExporter: AppItemExporter,
+        baseExporter: AppItemDataExporter,
         authPolicy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics,
         authReason: String
     ) {
@@ -33,7 +33,7 @@ public class AuthenticatedAppItemExporter: AppItemExporter {
         self.authReason = authReason
     }
 
-    private let baseExporter: AppItemExporter
+    private let baseExporter: AppItemDataExporter
     private let authContext: LAContext
     private let authPolicy: LAPolicy
     private let authReason: String

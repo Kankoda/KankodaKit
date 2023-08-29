@@ -1,5 +1,5 @@
 //
-//  AppItemExporter.swift
+//  AppItemDataExporter.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-07-03.
@@ -12,7 +12,7 @@ import Foundation
  This protocol can be implemented by classes that can export
  ``AppItemData`` to export files.
  */
-public protocol AppItemExporter {
+public protocol AppItemDataExporter {
     
     /// Generate an export file for the provided data.
     func generateExportFile(

@@ -1,5 +1,5 @@
 //
-//  StandardAppItemExporter.swift
+//  StandardAppItemDataExporter.swift
 //  WallyKit
 //
 //  Created by Daniel Saidi on 2022-07-03.
@@ -13,7 +13,7 @@ import UniformTypeIdentifiers
  This exporter can export ``AppItemData`` to a file, using a
  certain `UTType`.
  */
-public class StandardAppItemExporter: AppItemExporter {
+public class StandardAppItemDataExporter: AppItemDataExporter {
 
     /**
      Create a standard data exporter.
@@ -52,7 +52,7 @@ public class StandardAppItemExporter: AppItemExporter {
     }
 }
 
-private extension StandardAppItemExporter {
+private extension StandardAppItemDataExporter {
 
     func fileUrl(for data: any AppItemData) -> URL? {
         fileManager.urls(for: .cachesDirectory, in: .userDomainMask)

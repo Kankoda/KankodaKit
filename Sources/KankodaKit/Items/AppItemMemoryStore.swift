@@ -1,5 +1,5 @@
 //
-//  MemoryAppItemStore.swift
+//  AppItemMemoryStore.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-08-29.
@@ -12,7 +12,7 @@ import Foundation
  This store stores items in working memory. Only use it when
  testing or previewing, since it will reset on app restart.
  */
-public class MemoryAppItemStore<Item: AppItem>: AppItemStore {
+open class AppItemMemoryStore<Item: AppItem>: AppItemStore {
 
     /**
      Create a memory store instance.

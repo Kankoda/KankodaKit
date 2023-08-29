@@ -38,7 +38,7 @@ public class AuthenticatedAppItemExporter: AppItemExporter {
     private let authPolicy: LAPolicy
     private let authReason: String
 
-    public func generateExportFile(for data: any AppItemExportData) async throws -> URL {
+    public func generateExportFile(for data: any AppItemData) async throws -> URL {
         let url = try await baseExporter.generateExportFile(for: data)
         let result = try await authContext.evaluatePolicy(authPolicy, localizedReason: authReason)
         guard result else { return url }

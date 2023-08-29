@@ -10,12 +10,12 @@ import Foundation
 
 /**
  This protocol can be implemented by classes that can export
- ``AppItemExportData`` to export files.
+ ``AppItemData`` to export files.
  */
 public protocol AppItemExporter {
     
     /// Generate an export file for the provided data.
     func generateExportFile(
-        for data: any AppItemExportData
+        for data: any AppItemData
     ) async throws -> URL
 }

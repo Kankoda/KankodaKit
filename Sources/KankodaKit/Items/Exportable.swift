@@ -15,5 +15,5 @@ import CoreTransferable
 public protocol Exportable {
 
     /// Generate exportable data.
-    func exportData() -> any AppItemExportData
+    func exportData() -> any AppItemData
 }

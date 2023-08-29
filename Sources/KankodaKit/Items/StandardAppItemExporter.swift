@@ -10,8 +10,8 @@ import Foundation
 import UniformTypeIdentifiers
 
 /**
- This exporter can ``AppItemExportData`` data to a file with
- a certain `UTType`.
+ This exporter can export ``AppItemData`` to a file, using a
+ certain `UTType`.
  */
 public class StandardAppItemExporter: AppItemExporter {
 
@@ -44,7 +44,7 @@ public class StandardAppItemExporter: AppItemExporter {
     private let fileManager: FileManager
     private let type: UTType
 
-    public func generateExportFile(for data: any AppItemExportData) async throws -> URL {
+    public func generateExportFile(for data: any AppItemData) async throws -> URL {
         let fileData = try data.toData()
         guard let url = fileUrl(for: data) else { throw ExportError.errorGeneratingUrl }
         try fileData.write(to: url, options: .atomicWrite)
@@ -54,7 +54,7 @@ public class StandardAppItemExporter: AppItemExporter {
 
 private extension StandardAppItemExporter {
 
-    func fileUrl(for data: any AppItemExportData) -> URL? {
+    func fileUrl(for data: any AppItemData) -> URL? {
         fileManager.urls(for: .cachesDirectory, in: .userDomainMask)
             .first?
             .appendingPathComponent(data.name)

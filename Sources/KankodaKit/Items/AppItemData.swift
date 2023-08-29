@@ -23,3 +23,12 @@ public protocol AppItemData: Codable, Transferable {
     /// Convert the export data to raw data.
     func toData() throws -> Data
 }
+
+public extension AppItemData {
+    
+    /// Create item data from raw `Data` at a certain `URL`.
+    init(contentsOf url: URL) throws {
+        let data = try Data(contentsOf: url)
+        try self.init(from: data)
+    }
+}

@@ -10,12 +10,12 @@ import CoreTransferable
 import KankodaKit
 import UniformTypeIdentifiers
 
-struct TestAppItem: AppItem {
+struct TestAppItem: AppItem, Named, Sortable {
     
     init(
         id: UUID = .init(),
         name: String = "",
-        sortOrder: Int = 0
+        sortOrder: UInt = 0
     ) {
         self.id = id
         self.name = name
@@ -24,7 +24,7 @@ struct TestAppItem: AppItem {
     
     let id: UUID
     var name: String
-    var sortOrder: Int
+    var sortOrder: UInt
     
     var formData: TestFormData { .init(self) }
     

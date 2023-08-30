@@ -185,12 +185,10 @@ private extension PremiumScreenContent {
     }
     
     var purchaseButtonSheetBody: some View {
-        ZStack {
-            Color.white
-            diagonalStyle.diagonal.opacity(0.9)
-        }
-        .shadow(.init(color: .black.opacity(0.1), radius: 3, y: -5))
-        .edgesIgnoringSafeArea(.bottom)
+        Color.clear
+            .background(.thinMaterial)
+            .shadow(.init(color: .black.opacity(0.1), radius: 3, y: -5))
+            .edgesIgnoringSafeArea(.bottom)
     }
     
     var monthlyPuchaseButton: some View {
@@ -277,7 +275,7 @@ struct PremiumScreenContent_Previews: PreviewProvider {
                 icon: Image(systemName: "crown"),
                 diagonalStyle: .init(
                     background: Color.blue,
-                    diagonal: .yellow
+                    diagonal: .black
                 ),
                 monthlyPriceText: "$1.99",
                 yearlyPriceText: "$19.99",

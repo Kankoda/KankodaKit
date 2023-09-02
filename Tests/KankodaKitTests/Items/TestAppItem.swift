@@ -30,8 +30,9 @@ struct TestAppItem: AppItem, Named, Sortable {
     
     func update(with data: TestFormData) {}
     
-    static let typeName = "TestItem"
-    static let typePluralName = "TestItems"
+    static let typeName: StaticString = "TestItem"
+    static let typePluralName: StaticString = "TestItems"
+    
     static var preview: Self { .placeholderItem() }
     
     static var transferRepresentation: some TransferRepresentation {

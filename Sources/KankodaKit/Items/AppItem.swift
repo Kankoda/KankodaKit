@@ -34,15 +34,6 @@ public protocol AppItem: Codable, Equatable, Identifiable, Transferable {
     mutating func update(with data: FormData)
 }
 
-public extension AppItem {
-    
-    /// The type name, as defined by the type.
-    var typeName: String { Self.typeName }
-    
-    /// The type's plural name, as defined by the type.
-    var typePluralName: String { Self.typePluralName }
-}
-
 /**
  This protocol describes observable data for an ``AppItem``.
  */

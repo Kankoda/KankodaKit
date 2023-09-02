@@ -24,14 +24,12 @@ public class AppItemAuthContext: ObservableObject {
         stores: [any AppItemStore]
     ) {
         self.authPolicy = policy
-        self.authContext = LAContext()
         self.stores = stores
         self.isAuthenticationNeeded = true
         resetAuthentication()
     }
     
     private let authPolicy: LAPolicy
-    private let authContext: LAContext
     private let stores: [any AppItemStore]
     
     /// Whether or not authentication is needed to use the app.
@@ -40,14 +38,14 @@ public class AppItemAuthContext: ObservableObject {
     
     /// Whether or not authentication is enabled for the app.
     public var isAuthenticationEnabled: Bool {
-        authContext.canEvaluatePolicy(authPolicy, error: nil)
+        LAContext().canEvaluatePolicy(authPolicy, error: nil)
     }
     
     /// Try to authenticate the user, provided that it's needed.
     public func authenticateUser(reason: String) {
         guard isAuthenticationNeeded else { return }
         Task {
-            let result = try await authContext.evaluatePolicy(authPolicy, localizedReason: reason)
+            let result = try await LAContext().evaluatePolicy(authPolicy, localizedReason: reason)
             await updateState(isAuthenticationNeeded: !result)
         }
     }

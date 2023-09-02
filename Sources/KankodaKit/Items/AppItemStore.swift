@@ -46,7 +46,9 @@ public extension AppItemStore {
 
     /// Get all items that matches a certain id collection.
     func getItems(for identifiers: [UUID]) async throws -> [Item] {
-        try await getItems().filter { identifiers.contains($0.id) }
+        try await getItems().filter {
+            identifiers.contains($0.id)
+        }
     }
 }
 
@@ -54,6 +56,8 @@ public extension AppItemStore where Item: Searchable {
     
     /// Get all items that matches a certain query.
     func getItems(matching query: String) async throws -> [Item] {
-        try await getItems().filter { $0.matches(searchQuery: query) }
+        try await getItems().filter {
+            $0.matches(searchQuery: query)
+        }
     }
 }

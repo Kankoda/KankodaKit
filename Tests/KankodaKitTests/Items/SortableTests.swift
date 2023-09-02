@@ -52,7 +52,7 @@ final class SortableTests: XCTestCase {
 
     func test_sortingSortsOnSortOrder() {
         let items = orderedItems
-        let result = items.sorted()
+        let result = items.sortedBySortOrder()
         XCTAssertEqual(result[0].id, items[2].id)
         XCTAssertEqual(result[1].id, items[1].id)
         XCTAssertEqual(result[2].id, items[0].id)

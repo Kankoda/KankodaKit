@@ -29,3 +29,12 @@ public extension Named {
         hasName ? name : fallback
     }
 }
+
+public extension Collection where Element: Named {
+    
+    func sortedByName() -> [Element] {
+        sorted {
+            $0.name.localizedCompare($1.name) == .orderedAscending
+        }
+    }
+}

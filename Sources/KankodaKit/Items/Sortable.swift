@@ -36,7 +36,7 @@ public extension Collection where Element: Sortable {
     }
 
     /// Sort the collection using the item sort order.
-    func sorted() -> [Element] {
+    func sortedBySortOrder() -> [Element] {
         sorted { $0.sortOrder < $1.sortOrder }
     }
 

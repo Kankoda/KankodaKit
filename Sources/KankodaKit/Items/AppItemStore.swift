@@ -37,10 +37,23 @@ public protocol AppItemStore: AnyObject {
 }
 
 public extension AppItemStore {
-
+    
     /// Whether or not the store has any items.
     var hasItems: Bool { itemCount > 0 }
-
+    
     /// Whether or not the store has multiple items.
     var hasMultipleItems: Bool { itemCount > 1 }
+
+    /// Get all items that matches a certain id collection.
+    func getItems(for identifiers: [UUID]) async throws -> [Item] {
+        try await getItems().filter { identifiers.contains($0.id) }
+    }
+}
+
+public extension AppItemStore where Item: Searchable {
+    
+    /// Get all items that matches a certain query.
+    func getItems(matching query: String) async throws -> [Item] {
+        try await getItems().filter { $0.matches(searchQuery: query) }
+    }
 }

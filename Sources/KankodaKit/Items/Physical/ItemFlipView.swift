@@ -1,9 +1,9 @@
 //
-//  AppItemFlipView.swift
-//  WallyKit
+//  ItemFlipView.swift
+//  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-07-11.
-//  Copyright © 2022 Daniel Saidi. All rights reserved.
+//  Copyright © 2022-2023 Daniel Saidi. All rights reserved.
 //
 
 import SwiftUI
@@ -14,7 +14,7 @@ import UniformTypeIdentifiers
  This view can be used to render an item that can be flipped
  to show the front and back side.
  */
-public struct AppItemFlipView<
+public struct ItemFlipView<
     Item: Identifiable,
     ItemView: View>: View {
 
@@ -29,10 +29,12 @@ public struct AppItemFlipView<
     public init(
         item: Item,
         isFlipped: Binding<Bool>,
+        accessibilityHint: String = "Tap or swipe to flip",
         @ViewBuilder itemView: @escaping ItemViewBuilder
     ) {
         self.item = item
         self.isFlipped = isFlipped
+        self.accessibilityHint = accessibilityHint
         self.itemView = itemView
     }
 
@@ -40,9 +42,18 @@ public struct AppItemFlipView<
 
     private let item: Item
     private let isFlipped: Binding<Bool>
+    private let accessibilityHint: String
     private let itemView: ItemViewBuilder
-
+    
     public var body: some View {
+        content
+            .accessibilityHint(accessibilityHint)
+    }
+}
+
+private extension ItemFlipView {
+    
+    var content: some View {
         #if os(tvOS)
         FlipView(
             front: itemView(item, .front),
@@ -60,7 +71,7 @@ public struct AppItemFlipView<
     }
 }
 
-struct AppItemFlipView_Previews: PreviewProvider {
+struct ItemFlipView_Previews: PreviewProvider {
 
     struct Preview: View {
 
@@ -69,7 +80,7 @@ struct AppItemFlipView_Previews: PreviewProvider {
 
         var body: some View {
             VStack {
-                AppItemFlipView(
+                ItemFlipView(
                     item: FlipItem(),
                     isFlipped: $isItemFlipped
                 ) { item, face in

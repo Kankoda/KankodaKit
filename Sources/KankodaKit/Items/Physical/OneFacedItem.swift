@@ -1,25 +1,24 @@
 //
-//  OneFacedAppItem.swift
+//  OneFacedItem.swift
 //  WallyKit
 //
 //  Created by Daniel Saidi on 2022-08-21.
-//  Copyright © 2022 Daniel Saidi. All rights reserved.
+//  Copyright © 2022-2023 Daniel Saidi. All rights reserved.
 //
 
 import Foundation
 import SwiftUIKit
 
 /**
- This protocol specializes the ``AppItem`` protocol for item
- types that represent physical things with a single face.
+ This protocol represents a physical item with a single face.
  */
-public protocol OneFacedAppItem: AppItem {
+public protocol OneFacedItem: Identifiable, ImageItem where ID == UUID {
 
     /// The items's image data.
     var imageData: Data { get set }
 }
 
-public extension OneFacedAppItem {
+public extension OneFacedItem {
 
     /// Whether or not the item has an image.
     var hasImage: Bool {
@@ -41,7 +40,7 @@ public extension OneFacedAppItem {
     }
 }
 
-private extension OneFacedAppItem {
+private extension OneFacedItem {
 
     /// The cache key to use for the item.
     var imageCacheKey: String {

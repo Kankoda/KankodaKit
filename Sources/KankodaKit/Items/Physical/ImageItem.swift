@@ -9,7 +9,12 @@
 import Foundation
 import SwiftUIKit
 
-extension AppItem {
+/**
+ This protocol represents a physical item with image data.
+ */
+public protocol ImageItem {}
+
+extension ImageItem {
 
     /// The image cache to use for caching images.
     var imageCache: ImageCache { .shared }

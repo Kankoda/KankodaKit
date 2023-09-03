@@ -1,19 +1,18 @@
 //
-//  TwoFacedAppItem.swift
+//  TwoFacedItem.swift
 //  WallyKit
 //
 //  Created by Daniel Saidi on 2022-08-21.
-//  Copyright © 2022 Daniel Saidi. All rights reserved.
+//  Copyright © 2022-2023 Daniel Saidi. All rights reserved.
 //
 
 import Foundation
 import SwiftUIKit
 
 /**
- This protocol specializes the ``AppItem`` protocol for item
- types that represent physical things with a two faces.
+ This protocol represents a physical item with a single face.
  */
-public protocol TwoFacedAppItem: AppItem {
+public protocol TwoFacedItem: Identifiable, ImageItem where ID == UUID {
 
     /// The items's front image data.
     var frontImageData: Data { get set }
@@ -22,7 +21,7 @@ public protocol TwoFacedAppItem: AppItem {
     var backImageData: Data { get set }
 }
 
-public extension TwoFacedAppItem {
+public extension TwoFacedItem {
 
     /// Whether or not the item has an image for a face.
     func hasImage(for face: ItemFace) -> Bool {
@@ -53,7 +52,7 @@ public extension TwoFacedAppItem {
     }
 }
 
-private extension TwoFacedAppItem {
+private extension TwoFacedItem {
 
     /// Clear the image cache for a certain item face.
     func clearImageCache(for face: ItemFace) {

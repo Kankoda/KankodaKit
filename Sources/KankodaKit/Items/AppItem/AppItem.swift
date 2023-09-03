@@ -10,10 +10,10 @@ import CoreTransferable
 import Foundation
 
 /**
- This protocol describes an item that can be stored and used
- in an app, such as wallet items in Wally.
+ This protocol describes an named item that can be persisted
+ and used in an app, such as wallet items in Wally.
  */
-public protocol AppItem: Codable, Equatable, Identifiable, Transferable {
+public protocol AppItem: Codable, Equatable, Identifiable, Named, Transferable {
     
     /// The unique item id.
     var id: UUID { get }
@@ -32,6 +32,18 @@ public protocol AppItem: Codable, Equatable, Identifiable, Transferable {
     
     /// Update the item with the provided form data.
     mutating func update(with data: FormData)
+}
+
+public extension AppItem {
+    
+    /// The display name, resolves to ``nameWithTypeFallback``.
+    var displayName: String {
+        nameWithTypeFallback
+    }
+    /// Get the name of the item, with the type name if none.
+    var nameWithTypeFallback: String {
+        name(fallback: Self.typeName)
+    }
 }
 
 /**

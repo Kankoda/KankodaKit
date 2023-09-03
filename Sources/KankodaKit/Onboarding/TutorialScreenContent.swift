@@ -6,6 +6,7 @@
 //  Copyright © 2023 Daniel Saidi. All rights reserved.
 //
 
+#if os(iOS)
 import OnboardingKit
 import SwiftUI
 
@@ -70,3 +71,4 @@ private extension TutorialScreenContent {
         pageIndex == tutorial.pages.count - 1
     }
 }
+#endif

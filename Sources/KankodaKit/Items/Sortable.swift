@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- This protocol can be implemented by sortable types.
+ This protocol can be implemented by sortable data types.
  */
 public protocol Sortable {
 

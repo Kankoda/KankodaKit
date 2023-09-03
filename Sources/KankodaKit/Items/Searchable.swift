@@ -9,8 +9,7 @@
 import Foundation
 
 /**
- This protocol can be implemented by types that can have one
- or multiple tags, which can be used to group, search etc.
+ This protocol can be implemented by searchable data types.
  */
 public protocol Searchable {
 

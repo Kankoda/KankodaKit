@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- This protocol can be implemented by types with name.
+ This protocol can be implemented by named data types.
  */
 public protocol Named {
 

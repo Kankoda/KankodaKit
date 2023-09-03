@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- This protocol can be implemented by numbered items.
+ This protocol can be implemented by numbered data types.
  */
 public protocol Numbered {
 

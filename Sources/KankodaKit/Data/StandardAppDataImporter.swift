@@ -37,19 +37,19 @@ public extension StandardAppDataImporter {
 
     func importFileData(from url: URL) async throws {
         let data = try DataType(compressedDataAt: url)
-        try await importThemes(from: data)
+        try await importData(data)
     }
 
     func importQrCodeData(from url: URL) async throws {
         let data = try DataType(qrCodeDataUrl: url, urlPrefix: qrCodeUrlPrefix)
-        try await importThemes(from: data)
+        try await importData(data)
     }
 }
 
 @MainActor
 private extension StandardAppDataImporter {
 
-    func importThemes(from data: DataType) async throws {
+    func importData(_ data: DataType) async throws {
         importer(data)
     }
 }

@@ -12,6 +12,8 @@ import UniformTypeIdentifiers
 /**
  This exporter can export ``AppItemData`` to a file, using a
  certain `UTType`.
+ 
+ `TODO` Replace this with a standard app data exporter.
  */
 public class StandardAppItemDataExporter: AppItemDataExporter {
 

@@ -12,6 +12,8 @@ import LocalAuthentication
 /**
  This data exporter wraps another exporter and adds an extra
  authentication step before exporting data.
+ 
+ `TODO` Convert this to an authenticated app data exporter.
  */
 public class AuthenticatedAppItemDataExporter: AppItemDataExporter {
 

@@ -11,6 +11,8 @@ import Foundation
 /**
  This protocol can be implemented by classes that can import
  ``AppItemData`` values.
+ 
+ `TODO` Replace this with ``AppDataImporter``.
  */
 public protocol AppItemDataImporter {
     

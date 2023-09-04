@@ -8,9 +8,12 @@
 
 import Foundation
 import CoreTransferable
+import UniformTypeIdentifiers
 
 /**
  This protocol can be implemented by exportable data types.
+ 
+ `TODO` Replace this with ``AppData``.
  */
 public protocol AppItemData: Codable, Transferable {
     

@@ -11,6 +11,8 @@ import Foundation
 /**
  This protocol can be implemented by classes that can export
  ``AppItemData`` to export files.
+ 
+ `TODO` Replace this with ``AppDataExporter``.
  */
 public protocol AppItemDataExporter {
     

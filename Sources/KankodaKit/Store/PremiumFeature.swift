@@ -12,8 +12,9 @@ import Foundation
  This protocol can be implemented by any types that can be a
  premium feature.
  
- This information can be used to know what to do when a user
- tries to access a premium feature.
+ Use the static property to indicate that the entire type is
+ a premium feature, and the non-static one when e.g. an enum
+ has a few premium cases.
  */
 public protocol PremiumFeature {
     

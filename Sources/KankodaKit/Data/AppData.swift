@@ -10,8 +10,8 @@ import Foundation
 import UniformTypeIdentifiers
 
 /**
- This protocol can be implemented by Kankoda data types that
- can be compressed, converted to QR code data etc.
+ This protocol can be implemented by app-specific data types,
+ that can be exported, imported, compressed, etc.
  */
 public protocol AppData: Codable {
     

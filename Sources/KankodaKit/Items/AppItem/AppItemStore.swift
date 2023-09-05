@@ -50,6 +50,17 @@ public extension AppItemStore {
             identifiers.contains($0.id)
         }
     }
+    
+    /// Import items from an external data source.
+    func importItems(
+        _ items: [Item]?,
+        overwrite: Bool
+    ) async throws {
+        guard let items else { return }
+        let storeIds = try await getItems().map { $0.id }
+        let newItems = overwrite ? items : items.filter { !storeIds.contains($0.id) }
+        try await store(newItems)
+    }
 }
 
 public extension AppItemStore where Item: Searchable {

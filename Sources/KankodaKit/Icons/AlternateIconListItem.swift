@@ -12,6 +12,8 @@ import SwiftUIKit
 /**
  This view can be used as a list item when listing alternate
  app icons.
+ 
+ TODO: Rename to AlternateAppIconListItem
  */
 public struct AlternateIconListItem: View {
     

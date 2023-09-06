@@ -12,6 +12,9 @@ import SwiftUI
 
 /**
  This class can be used to get and set an alternate app icon.
+ 
+ TODO: Rename to AlternateAppIconContext + for all functions
+ and properties, app in name.
  */
 public class AlternateIconContext: ObservableObject {
     
@@ -33,6 +36,11 @@ public extension AlternateIconContext {
     /// Check if a certain icon name is currently selected.
     func isCurrentAlternateIcon(_ name: String) -> Bool {
         name == alternateAppIconName
+    }
+    
+    /// Reset the alternate app icon name.
+    func resetAlternateIcon() {
+        alternateAppIconName = nil
     }
     
     /// Set the alternate app icon name to use.

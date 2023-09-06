@@ -1,5 +1,5 @@
 //
-//  AlternateIconListItem.swift
+//  AlternateAppIconListItem.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-07-06.
@@ -10,24 +10,21 @@ import SwiftUI
 import SwiftUIKit
 
 /**
- This view can be used as a list item when listing alternate
- app icons.
- 
- TODO: Rename to AlternateAppIconListItem
+ This view can be used as a list alternate app icons by name.
  */
-public struct AlternateIconListItem: View {
+public struct AlternateAppIconListItem: View {
     
     /**
      Create an alternate icon list item.
      
      - Parameters:
        - iconName: The name of the icon.
-       - iconSize: The size of the icon.
+       - iconSize: The size of the icon, if any.
        - isSelected: Whether or not the icon is selected.
      */
     public init(
         iconName: String,
-        iconSize: Double = 120,
+        iconSize: CGFloat? = nil,
         isSelected: Bool = false
     ) {
         self.iconName = iconName
@@ -36,7 +33,7 @@ public struct AlternateIconListItem: View {
     }
     
     private let iconName: String
-    private let iconSize: Double
+    private let iconSize: CGFloat?
     private let isSelected: Bool
     
     public var body: some View {
@@ -44,7 +41,6 @@ public struct AlternateIconListItem: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: iconSize, height: iconSize)
-            .cornerRadius(0.225 * iconSize)
             .shadow(.sticker)
             .overlay(alignment: .topLeading) {
                 if isSelected {
@@ -54,12 +50,24 @@ public struct AlternateIconListItem: View {
     }
 }
 
-struct AlternateIconListItem_Previews: PreviewProvider {
+struct AlternateAppIconListItem_Previews: PreviewProvider {
     
     static var previews: some View {
-        AlternateIconListItem(
-            iconName: "Icon-Standard",
-            isSelected: true
-        )
+        HStack {
+            AlternateAppIconListItem(
+                iconName: "Icon-Standard",
+                iconSize: 120,
+                isSelected: true
+            ).background(Color.red)
+            
+            AlternateAppIconListItem(
+                iconName: "Icon-Standard",
+                isSelected: true
+            )
+            .background(Color.red)
+            .frame(width: 100)
+            
+            Spacer()
+        }
     }
 }

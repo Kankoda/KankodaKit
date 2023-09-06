@@ -1,5 +1,5 @@
 //
-//  AlternateIconContext.swift
+//  AlternateAppIconContext.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-07-06.
@@ -12,11 +12,8 @@ import SwiftUI
 
 /**
  This class can be used to get and set an alternate app icon.
- 
- TODO: Rename to AlternateAppIconContext + for all functions
- and properties, app in name.
  */
-public class AlternateIconContext: ObservableObject {
+public class AlternateAppIconContext: ObservableObject {
     
     public init() {
         sync()
@@ -26,16 +23,16 @@ public class AlternateIconContext: ObservableObject {
     public var alternateAppIconName: String?
 }
 
-public extension AlternateIconContext {
+public extension AlternateAppIconContext {
     
     /// Whether or not an alternate icon is set.
-    var hasAlternateIcon: Bool {
+    var hasAlternateAppIcon: Bool {
         alternateAppIconName != nil
     }
     
     /// Check if a certain icon name is currently selected.
-    func isCurrentAlternateIcon(_ name: String) -> Bool {
-        name == alternateAppIconName
+    func isCurrentAlternateAppIcon(_ iconName: String) -> Bool {
+        iconName == alternateAppIconName
     }
     
     /// Reset the alternate app icon name.
@@ -44,8 +41,8 @@ public extension AlternateIconContext {
     }
     
     /// Set the alternate app icon name to use.
-    func setAlternateIcon(_ name: String) {
-        UIApplication.shared.setAlternateIconName(name) { (error) in
+    func setAlternateIcon(_ newIconName: String) {
+        UIApplication.shared.setAlternateIconName(newIconName) { (error) in
             if let error = error {
                 print("Failed request to update the app’s icon: \(error)")
             } else {
@@ -57,7 +54,7 @@ public extension AlternateIconContext {
     }
 }
 
-private extension AlternateIconContext {
+private extension AlternateAppIconContext {
     
     func sync() {
         alternateAppIconName = UIApplication.shared.alternateIconName

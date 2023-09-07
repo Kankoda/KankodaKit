@@ -37,16 +37,43 @@ public struct AlternateAppIconListItem: View {
     private let isSelected: Bool
     
     public var body: some View {
-        Image(image: ImageRepresentable(named: iconName) ?? ImageRepresentable())
+        imageView
+            .frame(width: iconSize, height: iconSize)
+            .opacity(0)
+            .overlay(overlay)
+            .overlay(alignment: .topLeading) { checkmark }
+    }
+}
+
+private extension AlternateAppIconListItem {
+    
+    @ViewBuilder
+    var checkmark: some View {
+        if isSelected {
+            Image.checkmarkSticker.padding(5)
+        }
+    }
+    
+    var image: Image {
+        if let image = ImageRepresentable(named: iconName) {
+            return Image(image: image)
+        } else {
+            return Image(systemName: "squareshape.fill")
+        }
+    }
+    
+    var imageView: some View {
+        image
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: iconSize, height: iconSize)
-            .shadow(.sticker)
-            .overlay(alignment: .topLeading) {
-                if isSelected {
-                    Image.checkmarkSticker.padding(5)
-                }
-            }
+    }
+    
+    var overlay: some View {
+        GeometryReader { geo in
+            imageView
+                .cornerRadius(0.225 * geo.size.width)
+                .shadow(.sticker)
+        }
     }
 }
 
@@ -58,16 +85,13 @@ struct AlternateAppIconListItem_Previews: PreviewProvider {
                 iconName: "Icon-Standard",
                 iconSize: 120,
                 isSelected: true
-            ).background(Color.red)
+            )
             
             AlternateAppIconListItem(
                 iconName: "Icon-Standard",
                 isSelected: true
             )
-            .background(Color.red)
             .frame(width: 100)
-            
-            Spacer()
         }
     }
 }

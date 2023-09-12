@@ -26,10 +26,6 @@ struct TestAppItem: AppItem, Named, Sortable {
     var name: String
     var sortOrder: UInt
     
-    var formData: TestFormData { .init(self) }
-    
-    func update(with data: TestFormData) {}
-    
     static let typeName: String = "TestItem"
     
     static let typePluralName: String = "TestItems"
@@ -42,13 +38,6 @@ struct TestAppItem: AppItem, Named, Sortable {
     
     static func placeholderItem() -> TestAppItem {
         .init(id: UUID())
-    }
-    
-    class TestFormData: AppItemFormData {
-        
-        required init(_ item: TestAppItem) {}
-        
-        var hasInformation: Bool = false
     }
 }
 

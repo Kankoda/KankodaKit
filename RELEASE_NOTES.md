@@ -3,10 +3,11 @@
 
 ## 1.2
 
-- `AlternateIconContext` is reneamed to `AlternateAppIconContext`.  
-- `AlternateIconListItem` is renamed to `AlternateAppIconListItem`.
+- `AlternateIconContext` has been reneamed to `AlternateAppIconContext`.  
+- `AlternateIconListItem` has been renamed to `AlternateAppIconListItem`.
 - `AlternateAppIconListItem` no longer has a size parameter.
-- `ImageCache` is moved to SwiftUIKit.
+- `ImageCache` has been moved to SwiftUIKit.
+- `ImageRepresentable` `jpegData` extension has been moved to SwiftUIKit.
 
 
 ## 1.1

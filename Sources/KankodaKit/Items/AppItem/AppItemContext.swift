@@ -36,10 +36,15 @@ public extension AppItemContext {
         remove(item)
         items.append(item)
     }
-
+    
     /// Add multiple items to the context.
     func add(_ items: [Item]) {
         items.forEach(add)
+    }
+    
+    /// Try getting an item with a certain ID.
+    func item(withId id: Item.ID) -> Item? {
+        items.first { $0.id == id }
     }
 
     /// Remove an item from the context.

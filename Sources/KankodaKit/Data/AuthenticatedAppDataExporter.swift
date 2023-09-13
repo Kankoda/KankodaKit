@@ -13,8 +13,7 @@ import LocalAuthentication
  This exporter performs local authentication before it calls
  the provided `baseExporter` to perform the exporting.
  */
-public class AuthenticatedAppDataExporter<DataType: AppData, Exporter: AppDataExporter>: 
-    AppDataExporter where Exporter.DataType == DataType {
+public class AuthenticatedAppDataExporter: AppDataExporter {
 
     /**
      Create an authenticated exporter.
@@ -24,7 +23,7 @@ public class AuthenticatedAppDataExporter<DataType: AppData, Exporter: AppDataEx
        - authReason: The authentication reason to display to the user.
      */
     public init(
-        baseExporter: Exporter,
+        baseExporter: any AppDataExporter,
         authPolicy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics,
         authReason: String
     ) {
@@ -38,18 +37,22 @@ public class AuthenticatedAppDataExporter<DataType: AppData, Exporter: AppDataEx
         case userAuthenticationFailed
     }
 
-    private let baseExporter: Exporter
+    private let baseExporter: any AppDataExporter
     private let authContext: LAContext
     private let authPolicy: LAPolicy
     private let authReason: String
 
-    public func generateExportFile(for data: DataType) async throws -> URL {
+    public func generateExportFile<DataType: AppData>(
+        for data: DataType
+    ) async throws -> URL {
         let url = try await baseExporter.generateExportFile(for: data)
         guard try await performAuthentication() else { throw AuthError.userAuthenticationFailed }
         return url
     }
     
-    public func generateQrCodeDataString(for data: DataType) async throws -> String {
+    public func generateQrCodeDataString<DataType: AppData>(
+        for data: DataType
+    ) async throws -> String {
         guard try await performAuthentication() else { throw AuthError.userAuthenticationFailed }
         return try await baseExporter.generateQrCodeDataString(for: data)
     }
@@ -58,6 +61,9 @@ public class AuthenticatedAppDataExporter<DataType: AppData, Exporter: AppDataEx
 private extension AuthenticatedAppDataExporter {
     
     func performAuthentication() async throws -> Bool {
-        try await authContext.evaluatePolicy(authPolicy, localizedReason: authReason)
+        try await authContext.evaluatePolicy(
+            authPolicy,
+            localizedReason: authReason
+        )
     }
 }

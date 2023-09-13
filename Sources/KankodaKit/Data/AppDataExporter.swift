@@ -16,15 +16,18 @@ import SwiftUIKit
  */
 public protocol AppDataExporter {
     
-    associatedtype DataType: AppData
-
-    func generateExportFile(for data: DataType) async throws -> URL
-    func generateQrCodeDataString(for data: DataType) async throws -> String
+    func generateExportFile<DataType: AppData>(
+        for data: DataType
+    ) async throws -> URL
+    
+    func generateQrCodeDataString<DataType: AppData>(
+        for data: DataType
+    ) async throws -> String
 }
 
 public extension AppDataExporter {
     
-    func generateQrCode(
+    func generateQrCode<DataType: AppData>(
         for data: DataType,
         with generator: ScanCodeGenerator
     ) async throws -> ImageRepresentable? {

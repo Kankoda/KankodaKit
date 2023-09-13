@@ -14,7 +14,5 @@ import Foundation
  */
 public protocol AppDataImporter {
     
-    associatedtype DataType: AppData
-    
     func importData(from url: URL) async throws
 }

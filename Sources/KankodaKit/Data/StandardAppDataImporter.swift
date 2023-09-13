@@ -15,14 +15,14 @@ open class StandardAppDataImporter<DataType: AppData>: AppDataImporter {
     
     public init(
         qrCodeUrlPrefix: String = "",
-        importer: @escaping (DataType) -> Void
+        importer: @escaping (DataType) async throws -> Void
     ) {
         self.qrCodeUrlPrefix = qrCodeUrlPrefix
         self.importer = importer
     }
     
     private let qrCodeUrlPrefix: String
-    private let importer: (DataType) -> Void
+    private let importer: (DataType) async throws -> Void
 }
 
 public extension StandardAppDataImporter {
@@ -50,6 +50,6 @@ public extension StandardAppDataImporter {
 private extension StandardAppDataImporter {
 
     func importData(_ data: DataType) async throws {
-        importer(data)
+        try await importer(data)
     }
 }

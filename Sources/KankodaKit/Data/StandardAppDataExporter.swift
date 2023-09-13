@@ -11,7 +11,7 @@ import SwiftUIKit
 import UniformTypeIdentifiers
 
 /**
- This is a standard ``AppDataExporter`` implementation.
+ This exporter exports compressed data for the provided type.
  */
 public class StandardAppDataExporter<DataType: AppData>: AppDataExporter {
     

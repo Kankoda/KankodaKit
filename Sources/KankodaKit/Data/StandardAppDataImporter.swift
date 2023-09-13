@@ -9,12 +9,12 @@
 import Foundation
 
 /**
- This is a standard ``AppDataImporter`` implementation.
+ This importer imports compressed data for the provided type.
  */
 public class StandardAppDataImporter<DataType: AppData>: AppDataImporter {
     
     public init(
-        qrCodeUrlPrefix: String,
+        qrCodeUrlPrefix: String = "",
         importer: @escaping (DataType) -> Void
     ) {
         self.qrCodeUrlPrefix = qrCodeUrlPrefix

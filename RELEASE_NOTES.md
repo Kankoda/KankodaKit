@@ -3,6 +3,7 @@
 
 ## 1.3
 
+- `AuthenticatedAppDataExporter` is a new app data exporter.
 - `TutorialScreenContent` has fixed the broken animation.  
 
 

@@ -16,7 +16,7 @@ import UniformTypeIdentifiers
 open class StandardAppDataExporter<DataType: AppData>: AppDataExporter {
     
     public init(
-        qrCodeUrlPrefix: String
+        qrCodeUrlPrefix: String = ""
     ) {
         self.qrCodeUrlPrefix = qrCodeUrlPrefix
     }

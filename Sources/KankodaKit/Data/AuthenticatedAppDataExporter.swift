@@ -1,5 +1,5 @@
 //
-//  AuthenticatedAppItemDataExporter.swift
+//  AuthenticatedAppDataExporter.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-07-03.

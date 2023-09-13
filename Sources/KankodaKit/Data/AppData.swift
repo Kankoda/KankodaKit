@@ -12,6 +12,9 @@ import UniformTypeIdentifiers
 /**
  This protocol can be implemented by app-specific data types,
  that can be exported, imported, compressed, etc.
+ 
+ It can be used with the ``AppItem`` type, to handle codable
+ data in a convenient and standardized way.
  */
 public protocol AppData: Codable {
     

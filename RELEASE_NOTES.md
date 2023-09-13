@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## 1.3
+
+- `TutorialScreenContent` has fixed the broken animation.  
+
+
+
 ## 1.2
 
 - `AlternateIconContext` has been reneamed to `AlternateAppIconContext`.  
@@ -9,6 +15,7 @@
 - `AppItem` no longer has form data.  
 - `ImageCache` has been moved to SwiftUIKit.
 - `ImageRepresentable` `jpegData` extension has been moved to SwiftUIKit.
+
 
 
 ## 1.1

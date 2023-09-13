@@ -11,7 +11,7 @@ import OnboardingKit
 import SwiftUI
 
 /**
- This view can manage tutorial pages for Kankoda apps.
+ This view renders screen content for Kankoda app tutorials.
  */
 public struct TutorialScreenContent: View {
     
@@ -31,6 +31,12 @@ public struct TutorialScreenContent: View {
     @Binding
     private var pageIndex: Int
     
+    @State
+    private var activePageIndex = 0
+    
+    @State
+    private var animationTrigger = 0
+    
     @Environment(\.dismiss)
     private var dismiss
     
@@ -45,7 +51,7 @@ public struct TutorialScreenContent: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: 320)
-                    .scaleEffect(info.pageIndex == pageIndex ? 1 : 0.80)
+                    .scaleEffect(info.isCurrentPage ? 1 : 0.9)
                 Text(page.title)
                     .font(.title)
                 Text(page.text)
@@ -59,8 +65,13 @@ public struct TutorialScreenContent: View {
             }
             .padding()
             .multilineTextAlignment(.center)
-            .animation(.default, value: pageIndex)
+            .scaleEffect(info.isCurrentPage ? 1 : 0.9)
             .frame(maxWidth: 500)
+        }
+        .onChange(of: pageIndex) { newValue in
+            withAnimation {
+                animationTrigger = newValue
+            }
         }
     }
 }

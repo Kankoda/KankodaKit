@@ -10,11 +10,15 @@ import Foundation
 
 /**
  This importer imports compressed data for the provided type.
+ 
+ The `qrCodeUrlPrefix` is optional, and only used when using
+ QR codes to import and export small amounts of data. It has
+ a default value of `qr:`.
  */
 open class StandardAppDataImporter<DataType: AppData>: AppDataImporter {
     
     public init(
-        qrCodeUrlPrefix: String = "",
+        qrCodeUrlPrefix: String = "qr:",
         importer: @escaping (DataType) async throws -> Void
     ) {
         self.qrCodeUrlPrefix = qrCodeUrlPrefix

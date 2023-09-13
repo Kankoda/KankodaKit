@@ -11,7 +11,7 @@ import Foundation
 /**
  This importer imports compressed data for the provided type.
  */
-public class StandardAppDataImporter<DataType: AppData>: AppDataImporter {
+open class StandardAppDataImporter<DataType: AppData>: AppDataImporter {
     
     public init(
         qrCodeUrlPrefix: String = "",

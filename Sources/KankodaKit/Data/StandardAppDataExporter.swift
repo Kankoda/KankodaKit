@@ -13,7 +13,7 @@ import UniformTypeIdentifiers
 /**
  This exporter exports compressed data for the provided type.
  */
-public class StandardAppDataExporter<DataType: AppData>: AppDataExporter {
+open class StandardAppDataExporter<DataType: AppData>: AppDataExporter {
     
     public init(
         qrCodeUrlPrefix: String

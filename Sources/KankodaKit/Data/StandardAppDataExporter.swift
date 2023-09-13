@@ -53,6 +53,6 @@ private extension StandardAppDataExporter {
     ) -> URL {
         URL.cachesDirectory
             .appendingPathComponent(data.name)
-            .appendingPathExtension(for: data.uniformType)
+            .appendingPathExtension(for: DataType.uniformType)
     }
 }

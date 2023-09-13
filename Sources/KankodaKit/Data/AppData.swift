@@ -19,7 +19,7 @@ public protocol AppData: Codable {
     var name: String { get }
     
     /// The uniform type to use when handling the data.
-    var uniformType: UTType { get }
+    static var uniformType: UTType { get }
 }
 
 /**

@@ -65,7 +65,6 @@ public struct TutorialScreenContent: View {
             }
             .padding()
             .multilineTextAlignment(.center)
-            .scaleEffect(info.isCurrentPage ? 1 : 0.9)
             .frame(maxWidth: 500)
         }
         .onChange(of: pageIndex) { newValue in

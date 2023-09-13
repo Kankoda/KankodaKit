@@ -1,5 +1,5 @@
 //
-//  Exportable.swift
+//  AppDataExportable.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-08-29.
@@ -12,7 +12,7 @@ import CoreTransferable
 /**
  This protocol can be implemented by exportable data types.
  */
-public protocol Exportable {
+public protocol AppDataExportable {
 
     /// Generate exportable data.
     func exportData() -> any AppData

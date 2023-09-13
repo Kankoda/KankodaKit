@@ -4,6 +4,7 @@
 ## 1.3
 
 - `AuthenticatedAppDataExporter` is a new app data exporter.
+- `AuthenticatedAppDataExporter` removes the stored `LAContext` to enforce authentication on each export.
 - `Exportable` has been renamed to `AppDataExportable` and now uses `AppData`.
 - `TutorialScreenContent` has fixed the broken animation.  
 

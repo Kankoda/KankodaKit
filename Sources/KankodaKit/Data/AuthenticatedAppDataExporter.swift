@@ -27,8 +27,7 @@ public class AuthenticatedAppDataExporter: AppDataExporter {
         authPolicy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics,
         authReason: String
     ) {
-        self.baseExporter = baseExporter
-        self.authContext = LAContext()
+        self.exporter = baseExporter
         self.authPolicy = authPolicy
         self.authReason = authReason
     }
@@ -37,15 +36,14 @@ public class AuthenticatedAppDataExporter: AppDataExporter {
         case userAuthenticationFailed
     }
 
-    private let baseExporter: any AppDataExporter
-    private let authContext: LAContext
+    private let exporter: any AppDataExporter
     private let authPolicy: LAPolicy
     private let authReason: String
 
     public func generateExportFile<DataType: AppData>(
         for data: DataType
     ) async throws -> URL {
-        let url = try await baseExporter.generateExportFile(for: data)
+        let url = try await exporter.generateExportFile(for: data)
         guard try await performAuthentication() else { throw AuthError.userAuthenticationFailed }
         return url
     }
@@ -54,14 +52,14 @@ public class AuthenticatedAppDataExporter: AppDataExporter {
         for data: DataType
     ) async throws -> String {
         guard try await performAuthentication() else { throw AuthError.userAuthenticationFailed }
-        return try await baseExporter.generateQrCodeDataString(for: data)
+        return try await exporter.generateQrCodeDataString(for: data)
     }
 }
 
 private extension AuthenticatedAppDataExporter {
     
     func performAuthentication() async throws -> Bool {
-        try await authContext.evaluatePolicy(
+        try await LAContext().evaluatePolicy(
             authPolicy,
             localizedReason: authReason
         )

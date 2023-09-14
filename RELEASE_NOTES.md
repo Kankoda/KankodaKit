@@ -8,6 +8,7 @@
 - `AppItemDataImporter` has been replaced by `AppDataImporter`.
 - `AuthenticatedAppDataExporter` is a new app data exporter.
 - `Exportable` has been renamed to `AppDataExportable` and now uses `AppData`.
+- `TextRecognitionContext` is a new type for handling image text recognition.
 - `TutorialScreenContent` has fixed the broken animation.  
 
 

@@ -11,38 +11,29 @@ import SwiftUIKit
 import Vision
 
 /**
- This class can be used to store text recognition results.
- 
- A SwiftUI view can use `.performTextRecognition` to perform
- text recognition in a collection of images.
+ This class can be used to perform image text recognition.
  */
-class TextRecognitionContext: ObservableObject {
+public class TextRecognitionContext: ObservableObject {
     
-    init() {}
+    public init() {}
     
     @Published
-    var recognizedTexts: [String] = []
+    public var result: [String] = []
     
-    func reset() { recognizedTexts = [] }
+    public func reset() { result = [] }
 }
 
-extension View {
+public extension TextRecognitionContext {
     
-    /**
-     Perform text recognition in a list of images then write
-     the result to the provided context.
-     */
-    func performTextRecognition(
-        in images: [ImageRepresentable],
-        with context: TextRecognitionContext
-    ) {
-        context.reset()
+    /// Perform text recognition in a collection of images.
+    func performTextRecognition(in images: [ImageRepresentable]) {
+        reset()
         let queue = DispatchQueue(label: "imageTextRecognition", qos: .userInitiated)
         queue.async {
             let images = images.compactMap { $0.cgImage }
             for image in images {
                 let requestHandler = VNImageRequestHandler(cgImage: image, options: [:])
-                let request = textRecognitionRequest(for: context)
+                let request = self.textRecognitionRequest()
                 do {
                     try requestHandler.perform([request])
                 } catch {
@@ -53,16 +44,16 @@ extension View {
     }
 }
 
-private extension View {
+private extension TextRecognitionContext {
     
-    func textRecognitionRequest(
-        for context: TextRecognitionContext
-    ) -> VNRecognizeTextRequest {
+    func textRecognitionRequest() -> VNRecognizeTextRequest {
         let request = VNRecognizeTextRequest { request, error in
             if let error = error { return print(error) }
             guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
             let texts = observations.compactMap { $0.topCandidates(1).first?.string }
-            context.recognizedTexts.append(contentsOf: texts)
+            DispatchQueue.main.async {
+                self.result.append(contentsOf: texts)
+            }
         }
         request.recognitionLevel = .accurate
         request.usesLanguageCorrection = true

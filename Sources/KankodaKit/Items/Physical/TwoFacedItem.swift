@@ -22,6 +22,12 @@ public protocol TwoFacedItem: Identifiable, ImageItem where ID == UUID {
 }
 
 public extension TwoFacedItem {
+    
+    /// Get the item front & back images from cache or data.
+    var images: [ImageRepresentable] {
+        [image(for: .front), image(for: .back)]
+            .compactMap { $0 }
+    }
 
     /// Whether or not the item has an image for a face.
     func hasImage(for face: ItemFace) -> Bool {

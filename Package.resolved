@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/SwiftUIKit.git",
       "state" : {
-        "revision" : "475efb06485e119340eab6642e607bc52b7b20ce",
-        "version" : "3.8.3"
+        "branch" : "master",
+        "revision" : "2233669258acde24baab0c1981d2c5b1a9809541"
       }
     },
     {

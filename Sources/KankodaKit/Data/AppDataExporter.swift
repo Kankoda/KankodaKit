@@ -29,11 +29,11 @@ public extension AppDataExporter {
     
     func generateQrCode<DataType: AppData>(
         for data: DataType,
-        with generator: ScanCodeGenerator
+        scale: CGFloat = 1
     ) async throws -> ImageRepresentable? {
         guard
-            let dataString = try? await generateQrCodeDataString(for: data),
-            let image = generator.generateScanCode(ofType: .qr, from: dataString)
+            let str = try? await generateQrCodeDataString(for: data),
+            let image = ImageRepresentable(scanCode: str, type: .qr, scale: scale)
         else { return nil }
         return image
     }

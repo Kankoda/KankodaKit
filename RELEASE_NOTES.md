@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## 1.4
+
+- `SwiftUIKit` is updated to 4.0.
+
+
+
 ## 1.3
 
 - `AppItemData` has been replaced by `AppData`.

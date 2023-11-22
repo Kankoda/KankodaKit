@@ -28,6 +28,7 @@ public extension Image {
     static let globe = symbol("globe")
     static let hint = symbol("lightbulb")
     static let info = symbol("info.circle")
+    static let menubar = symbol("menubar.rectangle")
     static let navigationArrow = symbol("chevron.right")
     static let plus = symbol("plus")
     static let premium = symbol("crown")
@@ -106,6 +107,7 @@ public extension Image {
             .feature,
             .globe,
             .hint,
+            .menubar,
             .navigationArrow,
             .plus,
             .premium,

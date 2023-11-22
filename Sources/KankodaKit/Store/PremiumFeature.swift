@@ -13,8 +13,7 @@ import Foundation
  premium feature.
  
  Use the static property to indicate that the entire type is
- a premium feature, and the non-static one when e.g. an enum
- has a few premium cases.
+ a premium feature, and the non-static one for e.g. enums.
  */
 public protocol PremiumFeature {
     

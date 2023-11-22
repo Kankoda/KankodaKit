@@ -10,7 +10,7 @@ import SwiftUI
 
 /**
  This protocol describes an ``AppItem`` context, that can be
- used to store items in memory.
+ used to store items.
  
  Only use this approach for limited amounts of data. If your
  app needs a LOT of data, consider using databases.

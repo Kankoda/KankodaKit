@@ -264,27 +264,25 @@ private extension PremiumScreenContent {
     }
 }
 
-struct PremiumScreenContent_Previews: PreviewProvider {
+#Preview {
 
-    static var previews: some View {
-        NavigationView {
-            PremiumScreenContent(
-                appInfo: .preview,
-                premiumInfo: .preview,
-                isPurchased: false,
-                icon: Image(systemName: "crown"),
-                diagonalStyle: .init(
-                    background: Color.blue,
-                    diagonal: .black
-                ),
-                monthlyPriceText: "$1.99",
-                yearlyPriceText: "$19.99",
-                yearlySavingsPercentage: 20,
-                purchaseAction: { _ in true },
-                restoreAction: {}
-            )
-            .navigationBarTitle("Test", displayMode: .inline)
-        }
+    NavigationView {
+        PremiumScreenContent(
+            appInfo: .preview,
+            premiumInfo: .preview,
+            isPurchased: false,
+            icon: Image(systemName: "crown"),
+            diagonalStyle: .init(
+                background: Color.blue,
+                diagonal: .yellow
+            ),
+            monthlyPriceText: "$1.99",
+            yearlyPriceText: "$19.99",
+            yearlySavingsPercentage: 20,
+            purchaseAction: { _ in true },
+            restoreAction: {}
+        )
+        .navigationBarTitle("Preview.Test", displayMode: .inline)
     }
 }
 #endif

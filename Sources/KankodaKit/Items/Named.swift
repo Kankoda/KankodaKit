@@ -21,7 +21,7 @@ public extension Named {
 
     /// Whether or not the value has a name.
     var hasName: Bool {
-        !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        name.hasTrimmedContent
     }
 
     /// Get the name of the value, with a fallback if empty.

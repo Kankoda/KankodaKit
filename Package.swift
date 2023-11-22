@@ -1,9 +1,10 @@
-// swift-tools-version: 5.7
+// swift-tools-version: 5.9
 
 import PackageDescription
 
 let package = Package(
     name: "KankodaKit",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v16),
         .macOS(.v13),
@@ -32,7 +33,8 @@ let package = Package(
                 "SwiftUIKit",
                 "StoreKitPlus",
                 "SystemNotification"
-            ]
+            ],
+            resources: [.process("Resources")]
         ),
         .testTarget(
             name: "KankodaKitTests",

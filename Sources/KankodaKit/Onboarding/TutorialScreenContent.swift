@@ -55,7 +55,7 @@ public struct TutorialScreenContent: View {
                 Text(page.title)
                     .font(.title)
                 Text(page.text)
-                Button("Done") {
+                Button("Tutorial.Done") {
                     dismiss.callAsFunction()
                 }
                 .opacity(isLastPage ? 1 : 0)

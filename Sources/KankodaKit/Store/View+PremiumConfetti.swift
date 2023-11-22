@@ -12,11 +12,14 @@ import SwiftUI
 public extension View {
 
     /// Show premium purchase confetti from the view.
-    func withPremiumPurchaseConfetti(_ trigger: Binding<Int>) -> some View {
+    func withPremiumPurchaseConfetti(
+        _ trigger: Binding<Int>,
+        emoji: String = "👑"
+    ) -> some View {
         self.confettiCannon(
             counter: trigger,
             num: 50,
-            confettis: [.text("👑")],
+            confettis: [.text(emoji)],
             confettiSize: 50,
             openingAngle: .degrees(0),
             closingAngle: .degrees(360)
@@ -25,7 +28,7 @@ public extension View {
     }
 }
 
-struct View_PremiumConfetti_Previews: PreviewProvider {
+#Preview {
     
     struct Preview: View {
         
@@ -33,13 +36,14 @@ struct View_PremiumConfetti_Previews: PreviewProvider {
         var trigger = 0
         
         var body: some View {
-            Button("Trigger") {
+            Button("Preview.Trigger") {
                 trigger += 1
-            }.withPremiumPurchaseConfetti($trigger)
+            }.withPremiumPurchaseConfetti(
+                $trigger,
+                emoji: "🥳"
+            )
         }
     }
     
-    static var previews: some View {
-        Preview()
-    }
+    return Preview()
 }

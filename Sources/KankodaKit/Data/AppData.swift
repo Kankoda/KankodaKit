@@ -10,11 +10,7 @@ import Foundation
 import UniformTypeIdentifiers
 
 /**
- This protocol can be implemented by app-specific data types,
- that can be exported, imported, compressed, etc.
- 
- It can be used with the ``AppItem`` type, to handle codable
- data in a convenient and standardized way.
+ This protocol can be implemented by app-specific data types.
  */
 public protocol AppData: Codable {
     
@@ -35,18 +31,18 @@ public enum AppDataError: Error {
 
 public extension AppData {
     
-    /// Create a type instance with raw, uncompressed data.
+    /// Create an instance with raw, uncompressed data.
     init(data: Data) throws {
         self = try JSONDecoder().decode(Self.self, from: data)
     }
     
-    /// Create a type instance with data from a certain url.
+    /// Create an instance with data from a certain url.
     init(dataAt url: URL) throws {
         let data = try Data(contentsOf: url)
         try self.init(data: data)
     }
     
-    /// Create a type instance with raw, compressed data.
+    /// Create an instance with raw, compressed data.
     init(compressedData data: Data) throws {
         let nsdata = data as NSData
         let unzipped = try nsdata.decompressed(using: .appDataCompression)
@@ -54,13 +50,13 @@ public extension AppData {
         try self.init(data: unzippedData)
     }
     
-    /// Create a type instance with data from a certain url.
+    /// Create an instance with data from a certain url.
     init(compressedDataAt url: URL) throws {
         let data = try Data(contentsOf: url)
         try self.init(compressedData: data)
     }
     
-    /// Create a type instance from a QR code data url.
+    /// Create an instance from a QR code data url.
     init(
         qrCodeDataUrl url: URL,
         urlPrefix prefix: String
@@ -79,19 +75,19 @@ public extension AppData {
 
 public extension AppData {
     
-    /// Convert the item to raw, uncompressed data.
+    /// Convert the value to raw, uncompressed data.
     func toData() throws -> Data {
         try JSONEncoder().encode(self)
     }
     
-    /// Convert the item to raw, compressed data.
+    /// Convert the value to raw, compressed data.
     func toCompressedData() throws -> Data {
         let data = try toData() as NSData
         let compressedData = try data.compressed(using: .appDataCompression)
         return compressedData as Data
     }
     
-    /// Convert the item to a QR code data url string.
+    /// Convert the value to a QR code data url string.
     func toQrCodeDataString(withUrlPrefix prefix: String) throws -> String {
         let jsonData = try JSONEncoder().encode(self)
         let nsData = jsonData as NSData

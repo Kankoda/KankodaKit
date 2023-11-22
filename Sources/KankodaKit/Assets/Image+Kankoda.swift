@@ -31,7 +31,7 @@ public extension Image {
     static let navigationArrow = symbol("chevron.right")
     static let plus = symbol("plus")
     static let premium = symbol("crown")
-    static let privacy = symbol("person.badge.shield.checkmark")
+    static let privacy = symbol("checkmark.shield")
     static let qrCode = symbol("qrcode")
     static let reset = symbol("xmark.circle")
     static let review = symbol("star")
@@ -87,9 +87,9 @@ public extension Image {
     }
 }
 
-struct Image_Kankoda_Previews: PreviewProvider {
+#Preview {
 
-    static var previewIcons: [Image] {
+    var previewIcons: [Image] {
         [
             .adminModeDisabled,
             .adminModeEnabled,
@@ -120,19 +120,17 @@ struct Image_Kankoda_Previews: PreviewProvider {
         ]
     }
 
-    static var previews: some View {
-        List {
-            Section("Symbolic") {
-                ForEach(Array(previewIcons.enumerated()), id: \.offset) {
-                    $0.element
-                }
+    return List {
+        Section("Preview.Symbolic") {
+            ForEach(Array(previewIcons.enumerated()), id: \.offset) {
+                $0.element
             }
-            Section("Semantic") {
-                Image.checkmarkSticker
-                Image.favoriteSticker
-                Image.favorite(isActive: false)
-                Image.favorite(isActive: true)
-            }
+        }
+        Section("Preview.Semantic") {
+            Image.checkmarkSticker
+            Image.favoriteSticker
+            Image.favorite(isActive: false)
+            Image.favorite(isActive: true)
         }
     }
 }

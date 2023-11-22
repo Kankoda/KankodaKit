@@ -14,12 +14,6 @@ import Foundation
  */
 open class AppItemMemoryStore<Item: AppItem>: AppItemStore {
 
-    /**
-     Create a memory store instance.
-
-     - Parameters:
-     - items: The initial collection of items in the store.
-     */
     public init(items: [Item] = []) {
         self.items = items
     }

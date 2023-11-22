@@ -19,22 +19,18 @@ public struct ToolbarCancelButton: View {
      Create a toolbar cancel button.
 
      - Parameters:
-       - text: An text to apply, by default a localized cancel text.
        - action: The action to perform when the button is tapped.
      */
     public init(
-        text: String? = nil,
         action: @escaping () -> Void
     ) {
-        self.text = text ?? "Cancel"
         self.action = action
     }
 
-    private let text: String
     private let action: () -> Void
 
     public var body: some View {
-        Button(text, action: action)
+        Button("General.Cancel", action: action)
             .keyboardShortcut(.escape)
     }
 }

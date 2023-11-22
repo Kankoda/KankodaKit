@@ -1,5 +1,5 @@
 //
-//  PremiumProduct.swift
+//  AppProduct.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-06-22.

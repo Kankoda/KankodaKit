@@ -10,12 +10,11 @@ import SwiftUI
 import SwiftUIKit
 
 /**
- This modifier can be applied to any view, and will make the
- view request authentication when the app starts, then reset
- authentication when it moves to the background.
+ This modifier makes the view request authentication when it
+ appears and the app starts, then reset authentication state
+ when the app moves into the background.
 
- Note that only a single app should use this, preferably the
- application root view.
+ Note that only a single view within the app should use this.
  */
 struct AppItemAuthModifier: ViewModifier {
 

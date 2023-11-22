@@ -13,9 +13,8 @@ import SwiftUI
  This class can manage authentication for an app that stores
  sensitive `AppItem` data.
  
- Authentication will be disabled is biometric authentication
- is not supported by the device, or if the user has disabled
- it in System Settings.
+ Authentication will be disabled if biometric authentication
+ is not supported or if the user has disabled it in Settings.
  */
 public class AppItemAuthContext: ObservableObject {
     

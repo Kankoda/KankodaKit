@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- This struct provides app-specific information.
+ This struct can be used to specify app-specific information.
  */
 public struct AppInfo {
  
@@ -35,6 +35,9 @@ public struct AppInfo {
         self.websiteUrl = websiteUrl
         self.privacyUrl = privacyUrl
         self.termsUrl = termsUrl
+        
+        self.urls = .init()
+        self.urls = .init(appInfo: self)
     }
     
     public let appName: String
@@ -48,7 +51,7 @@ public struct AppInfo {
     public let privacyUrl: String
     public let termsUrl: String
     
-    public var urls: AppUrls { .init(appInfo: self) }
+    public var urls: AppUrls
 }
 
 public extension AppInfo {

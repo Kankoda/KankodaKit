@@ -21,6 +21,6 @@ public extension Numbered {
 
     /// Whether or not the value has a number.
     var hasNumber: Bool {
-        !number.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        number.hasTrimmedContent
     }
 }

@@ -1,0 +1,146 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "General.Cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "General.Done" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "General.Edit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        }
+      }
+    },
+    "SocialLinks.Contact" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact"
+          }
+        }
+      }
+    },
+    "SocialLinks.Email" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-mail"
+          }
+        }
+      }
+    },
+    "SocialLinks.PrivacyPolicy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        }
+      }
+    },
+    "SocialLinks.ReportBug" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report Bug"
+          }
+        }
+      }
+    },
+    "SocialLinks.RequestFeature" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request Feature"
+          }
+        }
+      }
+    },
+    "SocialLinks.ReviewApp" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review App"
+          }
+        }
+      }
+    },
+    "SocialLinks.SendFeedback" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send Feedback"
+          }
+        }
+      }
+    },
+    "SocialLinks.ShareApp" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sare App"
+          }
+        }
+      }
+    },
+    "SocialLinks.Title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        }
+      }
+    },
+    "SocialLinks.Website" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Website"
+          }
+        }
+      }
+    },
+    "Tutorial.Done" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

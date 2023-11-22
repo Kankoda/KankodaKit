@@ -13,9 +13,19 @@ import Foundation
  */
 public struct AppUrls {
     
+    init() {
+        self.app = nil
+        self.appName = ""
+        self.appStore = nil
+        self.contactEmail = nil
+        self.privacyPolicy = nil
+        self.termsAndConditions = nil
+        self.website = nil
+    }
+    
     public init(appInfo info: AppInfo) {
-        self.appInfo = info
         self.app =  URL(string: info.appUrlScheme)
+        self.appName = info.appName
         self.appStore = URL(string: "https://itunes.apple.com/app/id\(info.appStoreId)")
         self.contactEmail = URL(string: "mailto:\(info.contactEmail)")
         self.privacyPolicy = URL(string: "\(info.privacyUrl)")
@@ -23,7 +33,7 @@ public struct AppUrls {
         self.website = URL(string: info.websiteUrl)
     }
     
-    private let appInfo: AppInfo
+    private let appName: String
     
     public let app: URL?
     public let appStore: URL?
@@ -33,15 +43,15 @@ public struct AppUrls {
     public let website: URL?
     
     public var contactEmailBugReport: URL? {
-        contactEmail(subject: "\(appInfo.appName) Bug Report")
+        contactEmail(subject: "\(appName) Bug Report")
     }
     
     public var contactEmailFeatureRequest: URL? {
-        contactEmail(subject: "\(appInfo.appName) Feature Request")
+        contactEmail(subject: "\(appName) Feature Request")
     }
     
     public var contactEmailFeedback: URL? {
-        contactEmail(subject: "\(appInfo.appName) Feedback")
+        contactEmail(subject: "\(appName) Feedback")
     }
     
     public func contactEmail(subject: String) -> URL? {

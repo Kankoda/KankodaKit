@@ -4,7 +4,7 @@
 ## 1.4
 
 - `SwiftUIKit` is updated to 4.0.
-
+- This version localizes all texts.
 
 
 ## 1.3
@@ -18,7 +18,6 @@
 - `TutorialScreenContent` has fixed the broken animation.  
 
 
-
 ## 1.2
 
 - `AlternateIconContext` has been reneamed to `AlternateAppIconContext`.  
@@ -27,7 +26,6 @@
 - `AppItem` no longer has form data.  
 - `ImageCache` has been moved to SwiftUIKit.
 - `ImageRepresentable` `jpegData` extension has been moved to SwiftUIKit.
-
 
 
 ## 1.1
@@ -49,18 +47,15 @@ The library adds new depedendencies and a bunch of new functionality.
 - `View` has a new `.standardLaunchOnboarding` modifier that performs a launch onboarding flow.
 
 
-
 ## 1.0.4
 
 - `AppInfo` has a new `appUrlScheme` property.
 - `AppUrls` has a new `app` property.
 
 
-
 ## 1.0.3
 
 - `AppInfo` now requires a `privacyUrl`.
-
 
 
 ## 1.0.2
@@ -72,13 +67,11 @@ The library adds new depedendencies and a bunch of new functionality.
 - `SocialMenuItem` view has a new initializer for icon customization
 
 
-
 ## 1.0.1
 
 - `AppInfo` is a new struct with app icons.
 - `AppUrls` is a new struct with app urls.
 - `SocialListItem` is a new view that can be used in the main menu.
-
 
 
 ## 1.0

@@ -14,103 +14,53 @@ import SwiftUI
 public struct SocialMenuItems<Icon: View>: View {
     
     public init(
-        appInfo: KankodaKit.AppInfo,
-        localization: Localization = .english,
+        appInfo: AppInfo,
         icon: @escaping (Image) -> Icon
     ) {
         self.info = appInfo
-        self.localization = localization
         self.urls = .init(appInfo: appInfo)
         self.icon = icon
     }
     
     public init(
-        appInfo: KankodaKit.AppInfo,
-        localization: Localization = .english
+        appInfo: AppInfo
     ) where Icon == Image {
         self.info = appInfo
-        self.localization = localization
         self.urls = .init(appInfo: appInfo)
         self.icon = { $0 }
     }
     
-    private let info: KankodaKit.AppInfo
-    private let localization: Localization
+    private let info: AppInfo
     private let urls: AppUrls
     private let icon: (Image) -> Icon
     
-    public struct Localization {
-        
-        public init(
-            contactUs: String,
-            sendEmail: String,
-            sendFeedback: String,
-            requestFeature: String,
-            reportBug: String,
-            reviewApp: String,
-            shareApp: String,
-            aboutApp: String
-        ) {
-            self.contactUs = contactUs
-            self.sendEmail = sendEmail
-            self.sendFeedback = sendFeedback
-            self.requestFeature = requestFeature
-            self.reportBug = reportBug
-            self.reviewApp = reviewApp
-            self.shareApp = shareApp
-            self.aboutApp = aboutApp
-        }
-     
-        public let contactUs: String
-        public let sendEmail: String
-        public let sendFeedback: String
-        public let requestFeature: String
-        public let reportBug: String
-        public let reviewApp: String
-        public let shareApp: String
-        public let aboutApp: String
-        
-        public static var english: Localization {
-            .init(
-                contactUs: "Contact Us",
-                sendEmail: "Email",
-                sendFeedback: "Feedback & Ideas",
-                requestFeature: "Request a Feature",
-                reportBug: "Report a Bug",
-                reviewApp: "Review App",
-                shareApp: "Share App",
-                aboutApp: "About this App"
-            )
-        }
-    }
-    
     public var body: some View {
-        Group {
+        Section("SocialLinks.Title") {
             DisclosureGroup {
-                plainLink(localization.sendEmail, .email, urls.contactEmail)
-                plainLink(localization.sendFeedback, .feedback, urls.contactEmailFeedback)
-                plainLink(localization.reportBug, .bug, urls.contactEmailBugReport)
-                plainLink(localization.requestFeature, .feature, urls.contactEmailFeatureRequest)
+                plainLink("SocialLinks.Email", .email, urls.contactEmail)
+                plainLink("SocialLinks.SendFeedback", .feedback, urls.contactEmailFeedback)
+                plainLink("SocialLinks.RequestFeature", .feature, urls.contactEmailFeatureRequest)
+                plainLink("SocialLinks.ReportBug", .bug, urls.contactEmailBugReport)
             } label: {
-                styledLabel(localization.contactUs, .email)
-                    .fullWidthContent()
+                styledLabel("SocialLinks.Contact", .email)
             }
-            shareLink(localization.shareApp, .share, urls.appStore)
-            styledLink(localization.reviewApp, .review, urls.appStore)
-            styledLink(localization.aboutApp, .info, urls.website)
+            shareLink("SocialLinks.ShareApp", .share, urls.appStore)
+            styledLink("SocialLinks.ReviewApp", .review, urls.appStore)
+            styledLink("SocialLinks.Website", .info, urls.website)
+            styledLink("SocialLinks.PrivacyPolicy", .privacy, urls.privacyPolicy)
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.list)
     }
 }
 
 private extension SocialMenuItems {
     
     @ViewBuilder
-    func plainLink(_ text: String, _ icon: Image, _ url: URL?) -> some View {
+    func plainLink(_ title: LocalizedStringKey, _ icon: Image, _ url: URL?) -> some View {
         if let url {
             Link(destination: url) {
                 Label {
-                    Text(text)
+                    Text(title)
                 } icon: {
                     icon
                 }
@@ -118,28 +68,28 @@ private extension SocialMenuItems {
         }
     }
     
-    func styledLabel(_ text: String, _ icon: Image) -> some View {
+    func styledLabel(_ title: LocalizedStringKey, _ icon: Image) -> some View {
         Label {
-            Text(text)
+            Text(title)
         } icon: {
             self.icon(icon)
         }
     }
     
     @ViewBuilder
-    func styledLink(_ text: String, _ icon: Image, _ url: URL?) -> some View {
+    func styledLink(_ title: LocalizedStringKey, _ icon: Image, _ url: URL?) -> some View {
         if let url {
             Link(destination: url) {
-                styledLabel(text, icon)
+                styledLabel(title, icon)
             }
         }
     }
     
     @ViewBuilder
-    func shareLink(_ text: String, _ icon: Image, _ url: URL?) -> some View {
+    func shareLink(_ title: LocalizedStringKey, _ icon: Image, _ url: URL?) -> some View {
         if let url {
             ShareLink(item: url) {
-                styledLabel(text, icon)
+                styledLabel(title, icon)
             }
         }
     }
@@ -151,12 +101,7 @@ struct SocialMenuItems_Previews: PreviewProvider {
         List {
             SocialMenuItems(
                 appInfo: .preview,
-                icon: {
-                    Circle()
-                        .fill(.yellow)
-                        .frame(square: 30)
-                        .overlay($0)
-                }
+                icon: { $0 }
             )
         }
     }

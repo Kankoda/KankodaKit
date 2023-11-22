@@ -18,8 +18,7 @@ public extension View {
      
      This will present an initial welcome tutorial, then ask
      for an App Store review and show a premium upsell after
-     a user has interacted with the app in a significant way
-     and is ready to review and upgrade.
+     a user has interacted with the app in a significant way.
      */
     @MainActor
     func appLaunchOnboarding(

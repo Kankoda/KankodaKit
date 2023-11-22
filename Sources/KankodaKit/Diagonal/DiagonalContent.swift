@@ -98,33 +98,31 @@ private extension GeometryProxy {
     }
 }
 
-struct DiagonalContent_Previews: PreviewProvider {
+#Preview {
     
-    static var previews: some View {
-        NavigationStack {
-            DiagonalContent(
-                style: .init(
-                    background: .red,
-                    diagonal: .yellow
-                )
-            ) {
-                VStack(spacing: 20) {
-                    RoundedRectangle(cornerRadius: 20).fill(.green).frame(square: 300)
-                    Color.purple.frame(height: 100)
-                    Color.purple.frame(height: 100)
-                    Color.purple.frame(height: 100)
-                    Color.purple.frame(height: 100)
-                    Color.purple.frame(height: 100)
-                    Color.purple.frame(height: 100)
-                    Color.purple.frame(height: 100)
-                    Color.purple.frame(height: 100)
-                }
+    NavigationStack {
+        DiagonalContent(
+            style: .init(
+                background: .red,
+                diagonal: .yellow
+            )
+        ) {
+            VStack(spacing: 20) {
+                RoundedRectangle(cornerRadius: 20).fill(.green).frame(square: 300)
+                Color.purple.frame(height: 100)
+                Color.purple.frame(height: 100)
+                Color.purple.frame(height: 100)
+                Color.purple.frame(height: 100)
+                Color.purple.frame(height: 100)
+                Color.purple.frame(height: 100)
+                Color.purple.frame(height: 100)
+                Color.purple.frame(height: 100)
             }
-            .navigationTitle("Testing")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.inline)
-            #endif
         }
-        // .previewInterfaceOrientation(.landscapeLeft)
+        .navigationTitle("Preview.Testing")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
+    // .previewInterfaceOrientation(.landscapeLeft)
 }

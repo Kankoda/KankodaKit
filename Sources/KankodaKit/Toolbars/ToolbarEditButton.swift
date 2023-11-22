@@ -20,12 +20,12 @@ public struct ToolbarEditButton: View {
      Create a toolbar edit button.
 
      - Parameters:
-       - icon: The icon to use, by default `.edit`.
+       - icon: The icon to use, by default `nil`.
        - accessibilityLabel: An accessibility label to apply.
        - action: The action to perform when the button is tapped.
      */
     public init(
-        icon: Image = .edit,
+        icon: Image? = nil,
         accessibilityLabel: String,
         action: @escaping () -> Void
     ) {
@@ -34,13 +34,17 @@ public struct ToolbarEditButton: View {
         self.action = action
     }
 
-    private let icon: Image
+    private let icon: Image?
     private let accessibilityLabel: String
     private let action: () -> Void
 
     public var body: some View {
         Button(action: action) {
-            icon
+            if let icon {
+                icon
+            } else {
+                Text("General.Edit")
+            }
         }
         .accessibilityLabel(accessibilityLabel)
         .keyboardShortcut("e", modifiers: .command)
@@ -51,7 +55,7 @@ struct ToolbarEditButton_Previews: PreviewProvider {
 
     static var previews: some View {
         ToolbarEditButton(
-            icon: .bookmark,
+            icon: .edit,
             accessibilityLabel: "test",
             action: {}
         )

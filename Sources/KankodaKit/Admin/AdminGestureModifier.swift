@@ -9,13 +9,10 @@
 import SwiftUI
 
 /**
- This modifier applies an admin mode switcher gesture to
- any view, which currently is a certain number of taps.
+ This modifier can apply an admin toggle gesture to any view.
 
- You can apply it with `.withAdminModeToggleGesture()`.
-
- The modifier requires that an admin context is injected
- into the view hierarchy, otherwise it will crash.
+ The modifier currently requires that an ``AdminContext`` is
+ injected into the view hierarchy, or otherwise crashes.
  */
 struct AdminGestureModifier: ViewModifier {
     

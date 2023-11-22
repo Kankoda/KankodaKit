@@ -1,2 +1,3 @@
 # KankodaKit
-KankodaKit is a Kankoda-specific package that contains colors and components that are used to get a uniform style between Kankoda's apps
+
+KankodaKit is a package with stuff that are used to get a uniform style between Kankoda's apps

@@ -4,6 +4,7 @@
 ## 0.4
 
 - This version localizes all texts.
+- This version updates `SwiftUIKit` to 4.0.
 
 - `PremiumFeature` is renamed to `SubscriptionFeature`.
 - `PremiumPurchaseButton` is renamed to `SubscriptionButton`.
@@ -11,7 +12,7 @@
 - `PremiumScreenContent` is renamed to `SubscriptionScreenContent`.
 - `PremiumUsp` is renamed to `SubscriptionUsp`.
 - `PremiumUspLabel` is renamed to `SubscriptionUsp`.
-- `SwiftUIKit` is updated to 4.0.
+- `ToolbarButton` replaces all previous buttons.
 
 
 ## 0.3

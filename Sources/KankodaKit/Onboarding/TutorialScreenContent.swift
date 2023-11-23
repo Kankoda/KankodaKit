@@ -55,13 +55,8 @@ public struct TutorialScreenContent: View {
                 Text(page.title)
                     .font(.title)
                 Text(page.text)
-                Button("Tutorial.Done") {
-                    dismiss.callAsFunction()
-                }
-                .opacity(isLastPage ? 1 : 0)
-                .buttonStyle(.borderedProminent)
-                .controlSize(.regular)
-                .padding()
+                
+                doneButton
             }
             .padding()
             .multilineTextAlignment(.center)
@@ -72,6 +67,21 @@ public struct TutorialScreenContent: View {
                 animationTrigger = newValue
             }
         }
+    }
+}
+
+private extension TutorialScreenContent {
+    
+    var doneButton: some View {
+        Button {
+            dismiss.callAsFunction()
+        } label: {
+            LocalizedText("Tutorial.Done")
+        }
+        .opacity(isLastPage ? 1 : 0)
+        .buttonStyle(.borderedProminent)
+        .controlSize(.regular)
+        .padding()
     }
 }
 

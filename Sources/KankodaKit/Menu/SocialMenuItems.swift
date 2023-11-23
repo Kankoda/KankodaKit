@@ -35,19 +35,22 @@ public struct SocialMenuItems<Icon: View>: View {
     private let icon: (Image) -> Icon
     
     public var body: some View {
-        Section("SocialLinks.Title") {
+        Section {
             DisclosureGroup {
-                plainLink("SocialLinks.Email", .email, urls.contactEmail)
-                plainLink("SocialLinks.SendFeedback", .feedback, urls.contactEmailFeedback)
-                plainLink("SocialLinks.RequestFeature", .feature, urls.contactEmailFeatureRequest)
-                plainLink("SocialLinks.ReportBug", .bug, urls.contactEmailBugReport)
+                LocalizedLink("SocialLinks.Email", Image.email, urls.contactEmail)
+                LocalizedLink("SocialLinks.SendFeedback", Image.feedback, urls.contactEmailFeedback)
+                LocalizedLink("SocialLinks.RequestFeature", Image.feature, urls.contactEmailFeatureRequest)
+                LocalizedLink("SocialLinks.ReportBug", Image.bug, urls.contactEmailBugReport)
             } label: {
-                styledLabel("SocialLinks.Contact", .email)
+                LocalizedLabel("SocialLinks.Contact", Image.email)
             }
-            shareLink("SocialLinks.ShareApp", .share, urls.appStore)
-            styledLink("SocialLinks.ReviewApp", .review, urls.appStore)
-            styledLink("SocialLinks.Website", .info, urls.website)
-            styledLink("SocialLinks.PrivacyPolicy", .privacy, urls.privacyPolicy)
+            
+            LocalizedShareLink("SocialLinks.ShareApp", Image.share, urls.appStore)
+            LocalizedLink("SocialLinks.ReviewApp", Image.review, urls.appStore)
+            LocalizedLink("SocialLinks.Website", Image.info, urls.website)
+            LocalizedLink("SocialLinks.PrivacyPolicy", Image.privacy, urls.privacyPolicy)
+        } header: {
+            LocalizedText("SocialLinks.Title")
         }
         .buttonStyle(.list)
     }
@@ -55,32 +58,15 @@ public struct SocialMenuItems<Icon: View>: View {
 
 private extension SocialMenuItems {
     
-    @ViewBuilder
-    func plainLink(_ title: LocalizedStringKey, _ icon: Image, _ url: URL?) -> some View {
-        if let url {
-            Link(destination: url) {
-                Label {
-                    Text(title)
-                } icon: {
-                    icon
-                }
-            }
-        }
-    }
-    
-    func styledLabel(_ title: LocalizedStringKey, _ icon: Image) -> some View {
-        Label {
-            Text(title)
-        } icon: {
-            self.icon(icon)
-        }
+    func text(_ title: LocalizedStringKey) -> some View {
+        Text(title, bundle: .module)
     }
     
     @ViewBuilder
-    func styledLink(_ title: LocalizedStringKey, _ icon: Image, _ url: URL?) -> some View {
+    func link(_ title: LocalizedStringKey, _ icon: Image, _ url: URL?) -> some View {
         if let url {
             Link(destination: url) {
-                styledLabel(title, icon)
+                LocalizedLabel(title, icon)
             }
         }
     }
@@ -89,7 +75,7 @@ private extension SocialMenuItems {
     func shareLink(_ title: LocalizedStringKey, _ icon: Image, _ url: URL?) -> some View {
         if let url {
             ShareLink(item: url) {
-                styledLabel(title, icon)
+                LocalizedLabel(title, icon)
             }
         }
     }

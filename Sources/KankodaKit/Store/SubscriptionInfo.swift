@@ -1,5 +1,5 @@
 //
-//  PremiumPurchaseInfo.swift
+//  SubscriptionInfo.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-08-28.
@@ -17,12 +17,12 @@ import SwiftUIKit
  The reason for having this is to be able to define a static,
  app-specific premium information value without the screen.
  */
-public struct PremiumPurchaseInfo {
+public struct SubscriptionInfo {
     
     public init(
         monthlyProduct: AppProduct,
         yearlyProduct: AppProduct,
-        usps: [PremiumUsp],
+        usps: [SubscriptionUsp],
         text: String,
         disclaimerText: String,
         restorePurchasesText: String,
@@ -57,7 +57,7 @@ public struct PremiumPurchaseInfo {
     
     public let monthlyProduct: AppProduct
     public let yearlyProduct: AppProduct
-    public let usps: [PremiumUsp]
+    public let usps: [SubscriptionUsp]
     public let text: String
     public let disclaimerText: String
     public let restorePurchasesText: String
@@ -73,7 +73,7 @@ public struct PremiumPurchaseInfo {
     public let isPurchasedText: String
 }
 
-extension PremiumPurchaseInfo {
+extension SubscriptionInfo {
     
     static var preview = Self(
         monthlyProduct: .preview("Monthly"),

@@ -1,5 +1,5 @@
 //
-//  PremiumUspLabel.swift
+//  SubscriptionUspLabel.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-07-13.
@@ -9,15 +9,15 @@
 import SwiftUI
 
 /**
- This label can be used to display a ``PremiumUsp``.
+ This label can be used to display a ``SubscriptionUsp``.
  */
-public struct PremiumUspLabel: View {
+public struct SubscriptionUspLabel: View {
     
-    public init(_ usp: PremiumUsp) {
+    public init(_ usp: SubscriptionUsp) {
         self.usp = usp
     }
     
-    private let usp: PremiumUsp
+    private let usp: SubscriptionUsp
     
     public var body: some View {
         HStack(alignment: .top, spacing: 20) {
@@ -33,18 +33,18 @@ public struct PremiumUspLabel: View {
     }
 }
 
-public struct PremiumUspLabelStack: View {
+public struct SubscriptionUspLabelStack: View {
     
-    public init(_ usps: [PremiumUsp]) {
+    public init(_ usps: [SubscriptionUsp]) {
         self.usps = usps
     }
     
-    private let usps: [PremiumUsp]
+    private let usps: [SubscriptionUsp]
     
     public var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             ForEach(Array(usps.enumerated()), id: \.offset) {
-                PremiumUspLabel($0.element)
+                SubscriptionUspLabel($0.element)
             }
         }
         .multilineTextAlignment(.leading)
@@ -52,24 +52,22 @@ public struct PremiumUspLabelStack: View {
     }
 }
 
-struct PremiumUspLabel_Previews: PreviewProvider {
+#Preview {
     
-    static var usp1 = PremiumUsp(
+    let usp1 = SubscriptionUsp(
         title: "Pretty long title to see how it handles line breaks",
         text: "Pretty long text to see how it handles line breaks.",
         iconName: "person.crop.square"
     )
     
-    static var usp2 = PremiumUsp(
+    let usp2 = SubscriptionUsp(
         title: "Short title",
         text: "A short text.",
         iconName: "a.square"
     )
     
-    static var previews: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            PremiumUspLabel(usp1)
-            PremiumUspLabel(usp2)
-        }
+    return VStack(alignment: .leading, spacing: 20) {
+        SubscriptionUspLabel(usp1)
+        SubscriptionUspLabel(usp2)
     }
 }

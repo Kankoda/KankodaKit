@@ -1,5 +1,5 @@
 //
-//  PremiumUsp.swift
+//  SubscriptionUsp.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-07-13.
@@ -12,7 +12,7 @@ import Foundation
  This struct describes a premium USP, which is way to market
  why the user should go premium.
  */
-public struct PremiumUsp {
+public struct SubscriptionUsp {
     
     public init(
         title: String,

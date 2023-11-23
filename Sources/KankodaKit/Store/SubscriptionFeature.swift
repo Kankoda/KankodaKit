@@ -1,5 +1,5 @@
 //
-//  PremiumFeature.swift
+//  SubscriptionFeature.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-08-30.
@@ -10,16 +10,17 @@ import Foundation
 
 /**
  This protocol can be implemented by any types that can be a
- premium feature.
+ subscription feature.
  
  Use the static property to indicate that the entire type is
- a premium feature, and the non-static one for e.g. enums.
+ a subscription feature, and the non-static one for parts of
+ a type, e.g. enum cases.
  */
-public protocol PremiumFeature {
+public protocol SubscriptionFeature {
     
     /// Whether or not this type is a premium feature.
-    static var isPremiumFeature: Bool { get }
+    static var isSubscriptionFeature: Bool { get }
 
     /// Whether or not this value is a premium feature.
-    var isPremiumFeature: Bool { get }
+    var isSubscriptionFeature: Bool { get }
 }

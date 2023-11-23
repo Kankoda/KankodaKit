@@ -3,6 +3,12 @@
 
 ## 1.4
 
+- `PremiumFeature` is renamed to `SubscriptionFeature`.
+- `PremiumPurchaseButton` is renamed to `SubscriptionButton`.
+- `PremiumPurchaseInfo` is renamed to `SubscriptionInfo`.
+- `PremiumScreenContent` is renamed to `SubscriptionScreenContent`.
+- `PremiumUsp` is renamed to `SubscriptionUsp`.
+- `PremiumUspLabel` is renamed to `SubscriptionUsp`.
 - `SwiftUIKit` is updated to 4.0.
 - This version localizes all texts.
 

@@ -1,5 +1,5 @@
 //
-//  PremiumPurchaseButton.swift
+//  SubscriptionButton.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-08-28.
@@ -13,7 +13,7 @@ import SwiftUI
  This button can be used to purchase a premium product, such
  as a monthly or yearly subscription.
  */
-public struct PremiumPurchaseButton: View {
+public struct SubscriptionButton: View {
     
     /**
      Create a premium purchase button for an `AppProduct`.
@@ -46,7 +46,7 @@ public struct PremiumPurchaseButton: View {
     }
 }
 
-private extension PremiumPurchaseButton {
+private extension SubscriptionButton {
 
     var button: some View {
         Button(action: action) {
@@ -87,7 +87,7 @@ private extension PremiumPurchaseButton {
     }
 }
 
-private extension PremiumPurchaseButton {
+private extension SubscriptionButton {
 
     var hasPrice: Bool {
         !isLoading
@@ -98,29 +98,27 @@ private extension PremiumPurchaseButton {
     }
 }
 
-struct PremiumPurchaseButton_Previews: PreviewProvider {
+#Preview {
 
-    static var previews: some View {
-        VStack {
-            PremiumPurchaseButton(
-                product: .preview,
-                priceText: "20,00 kr / Month",
-                action: {}
-            ).buttonStyle(.bordered)
+    VStack {
+        SubscriptionButton(
+            product: .preview,
+            priceText: "20,00 kr / Month",
+            action: {}
+        ).buttonStyle(.bordered)
 
-            PremiumPurchaseButton(
-                product: .preview,
-                priceText: nil,
-                footerText: "Save 10%",
-                action: {}
-            ).buttonStyle(.bordered)
+        SubscriptionButton(
+            product: .preview,
+            priceText: nil,
+            footerText: "Save 10%",
+            action: {}
+        ).buttonStyle(.bordered)
 
-            PremiumPurchaseButton(
-                product: .preview,
-                priceText: "100,00 kr / Month",
-                footerText: "Save 10%",
-                action: {}
-            ).buttonStyle(.borderedProminent)
-        }.padding()
-    }
+        SubscriptionButton(
+            product: .preview,
+            priceText: "100,00 kr / Month",
+            footerText: "Save 10%",
+            action: {}
+        ).buttonStyle(.borderedProminent)
+    }.padding()
 }

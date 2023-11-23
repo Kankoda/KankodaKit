@@ -1,5 +1,5 @@
 //
-//  PremiumScreenContent.swift
+//  SubscriptionScreenContent.swift
 //  KeyboardKit
 //
 //  Created by Daniel Saidi on 2023-06-22.
@@ -18,11 +18,11 @@ import SwiftUIKit
  products to make it easier to design. The price information
  can be fetched from real StoreKit products.
  */
-public struct PremiumScreenContent: View {
+public struct SubscriptionScreenContent: View {
 
     public init(
         appInfo: AppInfo,
-        premiumInfo: PremiumPurchaseInfo,
+        subscriptionInfo: SubscriptionInfo,
         isPurchased: Bool,
         icon: Image,
         iconSize: Double = 200,
@@ -35,7 +35,7 @@ public struct PremiumScreenContent: View {
     ) {
         self.appInfo = appInfo
         self.appUrls = appInfo.urls
-        self.premiumInfo = premiumInfo
+        self.info = subscriptionInfo
         self.isPurchased = isPurchased
         self.icon = icon
         self.iconSize = iconSize
@@ -49,7 +49,7 @@ public struct PremiumScreenContent: View {
     
     private let appInfo: AppInfo
     private let appUrls: AppUrls
-    private let premiumInfo: PremiumPurchaseInfo
+    private let info: SubscriptionInfo
     private let isPurchased: Bool
     private let icon: Image
     private let iconSize: Double
@@ -86,7 +86,7 @@ public struct PremiumScreenContent: View {
     }
 }
 
-private extension PremiumScreenContent {
+private extension SubscriptionScreenContent {
 
     func content() -> some View {
         VStack(spacing: 35) {
@@ -109,9 +109,9 @@ private extension PremiumScreenContent {
     @ViewBuilder
     var nonPurchasedContent: some View {
         Group {
-            Text(premiumInfo.text)
-            PremiumUspLabelStack(premiumInfo.usps)
-            Text(premiumInfo.disclaimerText)
+            Text(info.text)
+            SubscriptionUspLabelStack(info.usps)
+            Text(info.disclaimerText)
                 .font(.footnote)
         }
         .frame(maxWidth: maxWidth)
@@ -120,23 +120,23 @@ private extension PremiumScreenContent {
 
     var purchasedContent: some View {
         VStack(spacing: 30) {
-            Text(premiumInfo.isPurchasedTitle)
+            Text(info.isPurchasedTitle)
                 .font(.title)
                 .minimumScaleFactor(0.8)
-            Text(premiumInfo.isPurchasedText)
+            Text(info.isPurchasedText)
                 .fixedSize(horizontal: false, vertical: true)
         }.frame(maxWidth: maxWidth)
     }
 }
 
-private extension PremiumScreenContent {
+private extension SubscriptionScreenContent {
 
     var linkStack: some View {
         VStack(spacing: 20) {
             restorePurchsesButton
-            link(premiumInfo.termsText, url: appUrls.termsAndConditions)
-            link(premiumInfo.privacyText, url: appUrls.privacyPolicy)
-            Button(premiumInfo.manageSubscriptionsText) {
+            link(info.termsText, url: appUrls.termsAndConditions)
+            link(info.privacyText, url: appUrls.privacyPolicy)
+            Button(info.manageSubscriptionsText) {
                 Task { await manageSubscriptions() }
             }
         }.font(.callout)
@@ -150,7 +150,7 @@ private extension PremiumScreenContent {
     }
 
     var maybeLaterButton: some View {
-        Button(premiumInfo.maybeLaterText) {
+        Button(info.maybeLaterText) {
             dismiss.callAsFunction()
         }.font(.footnote)
     }
@@ -158,7 +158,7 @@ private extension PremiumScreenContent {
     @ViewBuilder
     var restorePurchsesButton: some View {
         if !isPurchased {
-            Button(premiumInfo.restorePurchasesText) {
+            Button(info.restorePurchasesText) {
                 Task { try await restoreAction() }
             }
         }
@@ -168,7 +168,7 @@ private extension PremiumScreenContent {
     var purchaseButtons: some View {
         if !isPurchased {
             VStack(spacing: 20) {
-                Text(premiumInfo.trialPromotionText)
+                Text(info.trialPromotionText)
                     .bold()
         
                 VStack(spacing: 15) {
@@ -192,41 +192,41 @@ private extension PremiumScreenContent {
     }
     
     var monthlyPuchaseButton: some View {
-        PremiumPurchaseButton(
-            product: premiumInfo.monthlyProduct,
+        SubscriptionButton(
+            product: info.monthlyProduct,
             priceText: monthlyPuchaseButtonPriceText,
-            action: { tryPurchase(premiumInfo.monthlyProduct) }
+            action: { tryPurchase(info.monthlyProduct) }
         )
         .buttonStyle(.bordered)
     }
     
     var monthlyPuchaseButtonPriceText: String? {
         guard let monthlyPriceText else { return nil }
-        return premiumInfo.monthlyPriceText(monthlyPriceText)
+        return info.monthlyPriceText(monthlyPriceText)
     }
     
     var yearlyPuchaseButton: some View {
-        PremiumPurchaseButton(
-            product: premiumInfo.yearlyProduct,
+        SubscriptionButton(
+            product: info.yearlyProduct,
             priceText: yearlyPuchaseButtonPriceText,
             footerText: yearlyPuchaseButtonSavingsText,
-            action: { tryPurchase(premiumInfo.yearlyProduct) }
+            action: { tryPurchase(info.yearlyProduct) }
         )
         .buttonStyle(.borderedProminent)
     }
     
     var yearlyPuchaseButtonPriceText: String? {
         guard let yearlyPriceText else { return nil }
-        return premiumInfo.yearlyPriceText(yearlyPriceText)
+        return info.yearlyPriceText(yearlyPriceText)
     }
     
     var yearlyPuchaseButtonSavingsText: String? {
         guard let yearlySavingsPercentage else { return nil }
-        return premiumInfo.yearlySavingsText(yearlySavingsPercentage)
+        return info.yearlySavingsText(yearlySavingsPercentage)
     }
 }
 
-private extension PremiumScreenContent {
+private extension SubscriptionScreenContent {
 
     @Sendable
     func refresh() {
@@ -245,7 +245,7 @@ private extension PremiumScreenContent {
 }
 
 @MainActor
-private extension PremiumScreenContent {
+private extension SubscriptionScreenContent {
 
     func manageSubscriptions() async {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
@@ -267,9 +267,9 @@ private extension PremiumScreenContent {
 #Preview {
 
     NavigationView {
-        PremiumScreenContent(
+        SubscriptionScreenContent(
             appInfo: .preview,
-            premiumInfo: .preview,
+            subscriptionInfo: .preview,
             isPurchased: false,
             icon: Image(systemName: "crown"),
             diagonalStyle: .init(

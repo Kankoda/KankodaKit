@@ -124,16 +124,6 @@
         }
       }
     },
-    "SocialLinks.Title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Social & Support"
-          }
-        }
-      }
-    },
     "SocialLinks.Website" : {
       "localizations" : {
         "en" : {

@@ -9,7 +9,8 @@
 import SwiftUI
 
 /**
- This view can be used to add social items to a Kankoda list.
+ This view can be used to add social items to a Kankoda main
+ app menu.
  */
 public struct SocialMenuItems<Icon: View>: View {
     
@@ -35,7 +36,7 @@ public struct SocialMenuItems<Icon: View>: View {
     private let icon: (Image) -> Icon
     
     public var body: some View {
-        Section {
+        Group {
             DisclosureGroup {
                 LocalizedLink("SocialLinks.Email", Image.email, urls.contactEmail)
                 LocalizedLink("SocialLinks.SendFeedback", Image.feedback, urls.contactEmailFeedback)
@@ -44,13 +45,10 @@ public struct SocialMenuItems<Icon: View>: View {
             } label: {
                 LocalizedLabel("SocialLinks.Contact", Image.email)
             }
-            
             LocalizedShareLink("SocialLinks.ShareApp", Image.share, urls.appStore)
             LocalizedLink("SocialLinks.ReviewApp", Image.review, urls.appStore)
             LocalizedLink("SocialLinks.Website", Image.info, urls.website)
             LocalizedLink("SocialLinks.PrivacyPolicy", Image.privacy, urls.privacyPolicy)
-        } header: {
-            LocalizedText("SocialLinks.Title")
         }
         .buttonStyle(.list)
     }

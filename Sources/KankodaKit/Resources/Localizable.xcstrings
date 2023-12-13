@@ -44,6 +44,16 @@
         }
       }
     },
+    "SocialLinks.AppStore" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
+          }
+        }
+      }
+    },
     "SocialLinks.Contact" : {
       "localizations" : {
         "en" : {
@@ -59,7 +69,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "E-mail"
+            "value" : "Send an E-mail"
           }
         }
       }
@@ -94,32 +104,12 @@
         }
       }
     },
-    "SocialLinks.ReviewApp" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Review App"
-          }
-        }
-      }
-    },
     "SocialLinks.SendFeedback" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Send Feedback"
-          }
-        }
-      }
-    },
-    "SocialLinks.ShareApp" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Share App"
           }
         }
       }

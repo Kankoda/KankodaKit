@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftUIKit
 
 /**
  This view can be used to add social items to a Kankoda main
@@ -38,17 +39,32 @@ public struct SocialMenuItems<Icon: View>: View {
     public var body: some View {
         Group {
             DisclosureGroup {
-                LocalizedLink("SocialLinks.Email", Image.email, urls.contactEmail)
-                LocalizedLink("SocialLinks.SendFeedback", Image.feedback, urls.contactEmailFeedback)
-                LocalizedLink("SocialLinks.RequestFeature", Image.feature, urls.contactEmailFeatureRequest)
-                LocalizedLink("SocialLinks.ReportBug", Image.bug, urls.contactEmailBugReport)
+                Link(destination: urls.contactEmail!) {
+                    LocalizedLabel("SocialLinks.Email", ListBadgeIcon.email)
+                }
+                Link(destination: urls.contactEmailFeedback!) {
+                    LocalizedLabel("SocialLinks.SendFeedback", ListBadgeIcon.lightbulb)
+                }
+                Link(destination: urls.contactEmailFeatureRequest!) {
+                    LocalizedLabel("SocialLinks.RequestFeature", ListBadgeIcon.featureRequest)
+                }
+                Link(destination: urls.contactEmailBugReport!) {
+                    LocalizedLabel("SocialLinks.ReportBug", ListBadgeIcon.bug)
+                }
             } label: {
-                LocalizedLabel("SocialLinks.Contact", Image.email)
+                LocalizedLabel("SocialLinks.Contact", ListBadgeIcon.email)
             }
-            LocalizedShareLink("SocialLinks.ShareApp", Image.share, urls.appStore)
-            LocalizedLink("SocialLinks.ReviewApp", Image.review, urls.appStore)
-            LocalizedLink("SocialLinks.Website", Image.info, urls.website)
-            LocalizedLink("SocialLinks.PrivacyPolicy", Image.privacy, urls.privacyPolicy)
+            Link(destination: urls.website!) {
+                LocalizedLabel("SocialLinks.Website", ListBadgeIcon.safari)
+            }
+            Link(destination: urls.privacyPolicy!) {
+                LocalizedLabel("SocialLinks.PrivacyPolicy", ListBadgeIcon.privacy)
+            }
+            Link(destination: urls.appStore!) {
+                LocalizedLabel("SocialLinks.AppStore", ListBadgeIcon(
+                    icon: Image(systemName: "apple.logo"),
+                    iconColor: .black.opacity(0.5)))
+            }
         }
         .buttonStyle(.list)
     }

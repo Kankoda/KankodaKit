@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.5
+
+- `SocialMenuItems` are redesigned.
+
+
 ## 0.4
 
 - This version localizes all texts.

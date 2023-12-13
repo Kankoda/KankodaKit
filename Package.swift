@@ -21,7 +21,7 @@ let package = Package(
         .package(url: "https://github.com/simibac/ConfettiSwiftUI", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/danielsaidi/OnboardingKit.git", .upToNextMajor(from: "6.2.0")),
         .package(url: "https://github.com/danielsaidi/StoreKitPlus.git", .upToNextMajor(from: "0.2.0")),
-        .package(url: "https://github.com/danielsaidi/SwiftUIKit.git", .upToNextMajor(from: "4.0.1")), // branch: "master"),
+        .package(url: "https://github.com/danielsaidi/SwiftUIKit.git", .upToNextMajor(from: "4.1.0")), // branch: "master"),
         .package(url: "https://github.com/danielsaidi/SystemNotification", .upToNextMajor(from: "0.7.2")),
     ],
     targets: [

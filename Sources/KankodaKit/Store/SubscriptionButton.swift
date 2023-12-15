@@ -55,7 +55,9 @@ private extension SubscriptionButton {
                 .padding(-2)
         }
         .disabled(isLoading)
+        #if os(macOS) || os(iOS) || os(watchOS)
         .controlSize(.large)
+        #endif
     }
 
     @ViewBuilder

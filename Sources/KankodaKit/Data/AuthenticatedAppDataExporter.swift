@@ -6,6 +6,7 @@
 //  Copyright © 2022-2023 Daniel Saidi. All rights reserved.
 //
 
+#if os(macOS) || os(iOS)
 import Foundation
 import LocalAuthentication
 
@@ -65,3 +66,4 @@ private extension AuthenticatedAppDataExporter {
         )
     }
 }
+#endif

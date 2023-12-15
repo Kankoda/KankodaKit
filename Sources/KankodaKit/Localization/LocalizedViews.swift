@@ -70,6 +70,7 @@ struct LocalizedLink<Icon: View>: View {
     }
 }
 
+#if os(macOS) || os(iOS) || os(watchOS)
 struct LocalizedShareLink<Icon: View>: View {
     
     init(
@@ -94,3 +95,4 @@ struct LocalizedShareLink<Icon: View>: View {
         }
     }
 }
+#endif

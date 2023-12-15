@@ -6,6 +6,8 @@
 //  Copyright © 2023 Daniel Saidi. All rights reserved.
 //
 
+#if os(macOS) || os(iOS)
+import BadgeIcon
 import SwiftUI
 import SwiftUIKit
 
@@ -40,30 +42,28 @@ public struct SocialMenuItems<Icon: View>: View {
         Group {
             DisclosureGroup {
                 Link(destination: urls.contactEmail!) {
-                    LocalizedLabel("SocialLinks.Email", ListBadgeIcon.email)
+                    LocalizedLabel("SocialLinks.Email", BadgeIcon.email)
                 }
                 Link(destination: urls.contactEmailFeedback!) {
-                    LocalizedLabel("SocialLinks.SendFeedback", ListBadgeIcon.lightbulb)
+                    LocalizedLabel("SocialLinks.SendFeedback", BadgeIcon.lightbulb)
                 }
                 Link(destination: urls.contactEmailFeatureRequest!) {
-                    LocalizedLabel("SocialLinks.RequestFeature", ListBadgeIcon.featureRequest)
+                    LocalizedLabel("SocialLinks.RequestFeature", BadgeIcon.featureRequest)
                 }
                 Link(destination: urls.contactEmailBugReport!) {
-                    LocalizedLabel("SocialLinks.ReportBug", ListBadgeIcon.bug)
+                    LocalizedLabel("SocialLinks.ReportBug", BadgeIcon.bug)
                 }
             } label: {
-                LocalizedLabel("SocialLinks.Contact", ListBadgeIcon.email)
+                LocalizedLabel("SocialLinks.Contact", BadgeIcon.email)
             }
             Link(destination: urls.website!) {
-                LocalizedLabel("SocialLinks.Website", ListBadgeIcon.safari)
+                LocalizedLabel("SocialLinks.Website", BadgeIcon.safari)
             }
             Link(destination: urls.privacyPolicy!) {
-                LocalizedLabel("SocialLinks.PrivacyPolicy", ListBadgeIcon.privacy)
+                LocalizedLabel("SocialLinks.PrivacyPolicy", BadgeIcon.privacy)
             }
             Link(destination: urls.appStore!) {
-                LocalizedLabel("SocialLinks.AppStore", ListBadgeIcon(
-                    icon: Image(systemName: "apple.logo"),
-                    iconColor: .black.opacity(0.5)))
+                LocalizedLabel("SocialLinks.AppStore", BadgeIcon.appStore)
             }
         }
         .buttonStyle(.list)
@@ -95,14 +95,13 @@ private extension SocialMenuItems {
     }
 }
 
-struct SocialMenuItems_Previews: PreviewProvider {
+#Preview {
     
-    static var previews: some View {
-        List {
-            SocialMenuItems(
-                appInfo: .preview,
-                icon: { $0 }
-            )
-        }
+    List {
+        SocialMenuItems(
+            appInfo: .preview,
+            icon: { $0 }
+        )
     }
 }
+#endif

@@ -6,6 +6,7 @@
 //  Copyright © 2023 Daniel Saidi. All rights reserved.
 //
 
+#if os(macOS) || os(iOS)
 import SwiftUI
 
 /**
@@ -46,3 +47,4 @@ public extension View {
         }
     }
 }
+#endif

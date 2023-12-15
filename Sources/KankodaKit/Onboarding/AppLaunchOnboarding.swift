@@ -6,6 +6,7 @@
 //  Copyright © 2023 Daniel Saidi. All rights reserved.
 //
 
+#if os(macOS) || os(iOS)
 import OnboardingKit
 import StoreKit
 import SwiftUI
@@ -97,3 +98,4 @@ private extension AppOnboarding {
         Onboarding(id: "welcome")
     )
 }
+#endif

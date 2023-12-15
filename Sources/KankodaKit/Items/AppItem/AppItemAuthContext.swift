@@ -6,6 +6,7 @@
 //  Copyright © 2022-2023 Daniel Saidi. All rights reserved.
 //
 
+#if os(macOS) || os(iOS)
 import LocalAuthentication
 import SwiftUI
 
@@ -71,3 +72,4 @@ private extension AppItemAuthContext {
         stores.contains { $0.hasItems }
     }
 }
+#endif

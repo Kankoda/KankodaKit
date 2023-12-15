@@ -25,6 +25,7 @@ public protocol AppDataExporter {
     ) async throws -> String
 }
 
+#if os(macOS) || os(iOS) || os(tvOS)
 public extension AppDataExporter {
     
     func generateQrCode<DataType: AppData>(
@@ -38,3 +39,4 @@ public extension AppDataExporter {
         return image
     }
 }
+#endif

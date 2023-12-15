@@ -23,11 +23,12 @@ public extension Image {
     static let edit = symbol("square.and.pencil")
     static let email = symbol("envelope")
     static let exclamation = symbol("exclamationmark")
-    static let feature = symbol("gift")
+    static let featureRequest = symbol("gift")
     static let feedback = symbol("lightbulb")
     static let globe = symbol("globe")
     static let hint = symbol("lightbulb")
     static let info = symbol("info.circle")
+    static let lightbulb = symbol("lightbulb")
     static let menubar = symbol("menubar.rectangle")
     static let navigationArrow = symbol("chevron.right")
     static let plus = symbol("plus")
@@ -42,7 +43,7 @@ public extension Image {
     static let star = symbol("star")
     static let termsAndConditions = symbol("pencil.circle")
     static let trash = symbol("trash")
-    static let tutorial = symbol("lightbulb")
+    static let tutorial = lightbulb
 
     static let favorite = star
 
@@ -104,9 +105,10 @@ public extension Image {
             .edit,
             .email,
             .exclamation,
-            .feature,
+            .featureRequest,
             .globe,
             .hint,
+            .lightbulb,
             .menubar,
             .navigationArrow,
             .plus,

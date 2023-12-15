@@ -3,7 +3,9 @@
 
 ## 0.5
 
-- `SocialMenuItems` are redesigned.
+- The library now builds on all platforms.
+
+- `SocialMenuItems` are redesigned to look better on macOS.
 
 
 ## 0.4

@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "badgeicon",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/BadgeIcon.git",
+      "state" : {
+        "revision" : "8b44bc71357ca68c0b358fd7b850b4496b538fc6",
+        "version" : "0.2.0"
+      }
+    },
+    {
       "identity" : "confettiswiftui",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/simibac/ConfettiSwiftUI",
@@ -14,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/OnboardingKit.git",
       "state" : {
-        "revision" : "60fc5b1af96445461fbdcf7447014aca6cc8e886",
-        "version" : "6.2.0"
+        "revision" : "34ff294cc93a0530cb964da12a94166be276d8e6",
+        "version" : "6.3.0"
       }
     },
     {
@@ -32,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/SwiftUIKit.git",
       "state" : {
-        "revision" : "35562e240461e899f6eade858cb31cf96a142fca",
-        "version" : "4.1.0"
+        "revision" : "4027af06475ca407161e55e0db6539b1eccefb5d",
+        "version" : "4.1.2"
       }
     },
     {

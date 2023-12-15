@@ -6,6 +6,7 @@
 //  Copyright © 2023 Daniel Saidi. All rights reserved.
 //
 
+#if os(macOS) || os(iOS) || os(tvOS)
 import SwiftUI
 import SwiftUIKit
 import Vision
@@ -60,3 +61,4 @@ private extension TextRecognitionContext {
         return request
     }
 }
+#endif

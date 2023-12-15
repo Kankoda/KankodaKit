@@ -6,6 +6,7 @@
 //  Copyright © 2022-2023 Daniel Saidi. All rights reserved.
 //
 
+#if os(macOS) || os(iOS)
 import SwiftUI
 
 /**
@@ -158,3 +159,4 @@ public extension ToolbarButton {
         ToolbarButton.edit(icon: nil, title: "HEJ") {}
     }
 }
+#endif

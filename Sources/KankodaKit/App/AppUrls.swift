@@ -28,9 +28,9 @@ public struct AppUrls {
         self.appName = info.appName
         self.appStore = URL(string: "https://itunes.apple.com/app/id\(info.appStoreId)")
         self.contactEmail = URL(string: "mailto:\(info.contactEmail)")
-        self.privacyPolicy = URL(string: "\(info.privacyUrl)")
-        self.termsAndConditions = URL(string: info.termsUrl)
-        self.website = URL(string: info.websiteUrl)
+        self.privacyPolicy = info.privacyUrl
+        self.termsAndConditions = info.termsUrl
+        self.website = info.websiteUrl
     }
     
     private let appName: String

@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## 0.5.4
+
+- `AppInfo` has subscription group ID.
+- `AppInfo` now hides its URL properties.
+
+
 ## 0.5.2
 
 - `Color` has more Kankoda-specific colors.

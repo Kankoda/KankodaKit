@@ -21,6 +21,7 @@ public struct AppInfo {
         appStoragePrefix: String? = nil,
         appUrlScheme: String = "",
         contactEmail: String,
+        subscriptionGroupId: String = "",
         websiteUrl: String,
         privacyUrl: String,
         termsUrl: String = "https://apple.com/legal/internet-services/itunes/dev/stdeula/"
@@ -32,9 +33,11 @@ public struct AppInfo {
         self.appStoragePrefix = appStoragePrefix ?? "\(appBundleIdentifier).data"
         self.appUrlScheme = appUrlScheme
         self.contactEmail = contactEmail
-        self.websiteUrl = websiteUrl
-        self.privacyUrl = privacyUrl
-        self.termsUrl = termsUrl
+        self.subscriptionGroupId = subscriptionGroupId
+        
+        self.websiteUrl = URL(string: websiteUrl)
+        self.privacyUrl = URL(string: privacyUrl)
+        self.termsUrl = URL(string: termsUrl)
         
         self.urls = .init()
         self.urls = .init(appInfo: self)
@@ -47,11 +50,13 @@ public struct AppInfo {
     public let appStoragePrefix: String
     public let appUrlScheme: String
     public let contactEmail: String
-    public let websiteUrl: String
-    public let privacyUrl: String
-    public let termsUrl: String
+    public let subscriptionGroupId: String
     
-    public var urls: AppUrls
+    let websiteUrl: URL?
+    let privacyUrl: URL?
+    let termsUrl: URL?
+    
+    public private(set) var urls: AppUrls
 }
 
 public extension AppInfo {

@@ -13,7 +13,7 @@ import StoreKitPlus
 import SwiftUI
 
 @available(iOS 17.0, macOS 14.0, *)
-struct SubscriptionScreenContentNew: View {
+public struct SubscriptionScreenContentNew: View {
     
     public init(
         icon: Image,
@@ -41,7 +41,7 @@ struct SubscriptionScreenContentNew: View {
     @State
     private var confettiTrigger = 0
     
-    var body: some View {
+    public var body: some View {
         ScrollView {
             SubscriptionStoreView(groupID: appInfo.subscriptionGroupId) {
                 VStack(spacing: 15) {

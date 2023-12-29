@@ -98,10 +98,16 @@ private extension SocialMenuItems {
 #Preview {
     
     List {
-        SocialMenuItems(
-            appInfo: .preview,
-            icon: { $0 }
-        )
+        Section {
+            Label(
+                title: { Text("Label") },
+                icon: { BadgeIcon.email }
+            )
+            SocialMenuItems(
+                appInfo: .preview,
+                icon: { $0 }
+            )
+        }
     }
 }
 #endif

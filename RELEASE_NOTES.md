@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.5.1
+
+- `TutorialScreenContent` now builds on macOS.
+
+
 ## 0.5
 
 - The library now builds on all platforms.

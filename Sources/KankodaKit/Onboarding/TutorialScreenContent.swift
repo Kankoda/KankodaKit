@@ -6,7 +6,7 @@
 //  Copyright © 2023 Daniel Saidi. All rights reserved.
 //
 
-#if os(iOS)
+#if os(iOS) || os(macOS)
 import OnboardingKit
 import SwiftUI
 
@@ -18,15 +18,18 @@ public struct TutorialScreenContent: View {
     public init(
         _ tutorial: LocalizedTutorial,
         pageIndex: Binding<Int>,
-        style: TutorialPageViewStyle = .standard
+        style: TutorialPageViewStyle = .standard,
+        showDoneButton: Bool = true
     ) {
         self.tutorial = tutorial
         self._pageIndex = pageIndex
         self.style = style
+        self.showDoneButton = showDoneButton
     }
     
     private let tutorial: LocalizedTutorial
     private let style: TutorialPageViewStyle
+    private let showDoneButton: Bool
     
     @Binding
     private var pageIndex: Int
@@ -56,7 +59,11 @@ public struct TutorialScreenContent: View {
                     .font(.title)
                 Text(page.text)
                 
-                doneButton
+                if !isLastPage {
+                    nextButton
+                } else {
+                    doneButton
+                }
             }
             .padding()
             .multilineTextAlignment(.center)
@@ -72,23 +79,41 @@ public struct TutorialScreenContent: View {
 
 private extension TutorialScreenContent {
     
+    var isLastPage: Bool {
+        pageIndex == tutorial.pages.count - 1
+    }
+}
+
+private extension TutorialScreenContent {
+    
     var doneButton: some View {
         Button {
             dismiss.callAsFunction()
         } label: {
             LocalizedText("Tutorial.Done")
         }
-        .opacity(isLastPage ? 1 : 0)
-        .buttonStyle(.borderedProminent)
-        .controlSize(.regular)
-        .padding()
+        .tutorialButton()
+        .opacity(showDoneButton ? 1 : 0)
+    }
+    
+    var nextButton: some View {
+        Button {
+            withAnimation {
+                pageIndex += 1
+            }
+        } label: {
+            LocalizedText("Tutorial.Next")
+        }
+        .tutorialButton()
     }
 }
 
-private extension TutorialScreenContent {
-
-    var isLastPage: Bool {
-        pageIndex == tutorial.pages.count - 1
+private extension View {
+    
+    func tutorialButton() -> some View {
+        self.buttonStyle(.borderedProminent)
+            .controlSize(.regular)
+            .padding()
     }
 }
 #endif

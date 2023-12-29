@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.5.5
+
+- `SubscriptionScreenContentNew` is a new subscription screen.
+
+
 ## 0.5.4
 
 - `AppInfo` has subscription group ID.

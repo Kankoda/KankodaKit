@@ -83,7 +83,7 @@ struct ItemFlipView_Previews: PreviewProvider {
                 ItemFlipView(
                     item: FlipItem(),
                     isFlipped: $isItemFlipped
-                ) { item, face in
+                ) { _, face in
                     switch face {
                     case .front: Color.red
                     case .back: Color.blue

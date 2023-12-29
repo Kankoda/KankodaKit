@@ -135,7 +135,14 @@
       }
     },
     "Tutorial.Next" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

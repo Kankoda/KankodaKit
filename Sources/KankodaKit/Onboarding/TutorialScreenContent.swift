@@ -16,7 +16,7 @@ import SwiftUI
 public struct TutorialScreenContent: View {
     
     public init(
-        _ tutorial: LocalizedTutorial,
+        _ tutorial: Tutorial,
         pageIndex: Binding<Int>,
         style: TutorialPageViewStyle = .standard,
         showDoneButton: Bool = true
@@ -27,7 +27,7 @@ public struct TutorialScreenContent: View {
         self.showDoneButton = showDoneButton
     }
     
-    private let tutorial: LocalizedTutorial
+    private let tutorial: Tutorial
     private let style: TutorialPageViewStyle
     private let showDoneButton: Bool
     

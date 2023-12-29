@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.5.2
+
+- `TutorialScreenContent` now uses `Tutorial` instead of `LocalizedTutorial`.
+
+
 ## 0.5.1
 
 - `TutorialScreenContent` now builds on macOS.

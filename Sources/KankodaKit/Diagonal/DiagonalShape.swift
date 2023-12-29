@@ -13,7 +13,9 @@ import SwiftUI
  */
 public struct DiagonalShape: Shape {
     
-    public init(diagonalOffset: CGFloat) {
+    public init(
+        diagonalOffset: CGFloat
+    ) {
         self.diagonalOffset = diagonalOffset
     }
     

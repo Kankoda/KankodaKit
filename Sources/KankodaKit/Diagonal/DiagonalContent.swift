@@ -9,12 +9,15 @@
 import SwiftUI
 
 /**
- This view can be used to create diagonal styled content.
+ This view can be used to create diagonally styled content.
+ 
+ Since this view uses some hacks to make the diagonal behave
+ well when scrolling, make sure to use a solid color.
  */
 public struct DiagonalContent<Content: View>: View {
     
     public init(
-        style: DiagonalStyle,
+        style: DiagonalStyle = .standard,
         diagonalOffset: CGFloat = 200,
         content: @escaping () -> Content
     ) {
@@ -100,23 +103,27 @@ private extension GeometryProxy {
 
 #Preview {
     
-    NavigationStack {
+    func square() -> some View {
+        Color.purple.frame(width: 100, height: 100)
+    }
+    
+    return NavigationStack {
         DiagonalContent(
             style: .init(
                 background: .red,
-                diagonal: .yellow
+                diagonal: .yellow.opacity(0.5)
             )
         ) {
             VStack(spacing: 20) {
                 RoundedRectangle(cornerRadius: 20).fill(.green).frame(square: 300)
-                Color.purple.frame(height: 100)
-                Color.purple.frame(height: 100)
-                Color.purple.frame(height: 100)
-                Color.purple.frame(height: 100)
-                Color.purple.frame(height: 100)
-                Color.purple.frame(height: 100)
-                Color.purple.frame(height: 100)
-                Color.purple.frame(height: 100)
+                square()
+                square()
+                square()
+                square()
+                square()
+                square()
+                square()
+                square()
             }
         }
         .navigationTitle("Preview.Testing")

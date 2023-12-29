@@ -10,6 +10,9 @@ import SwiftUI
 
 /**
  This style can be used to style ``DiagonalContent`` views.
+ 
+ You can use the ``standard`` style for any apps that should
+ use the same color palette.
  */
 public struct DiagonalStyle {
     
@@ -23,4 +26,12 @@ public struct DiagonalStyle {
 
     public var background: Color
     public var diagonal: Color
+}
+
+public extension DiagonalStyle {
+    
+    static let standard = Self(
+        background: .diagonalBackground,
+        diagonal: .diagonalForeground
+    )
 }

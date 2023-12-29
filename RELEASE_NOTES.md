@@ -3,6 +3,8 @@
 
 ## 0.5.2
 
+- `Color` has more Kankoda-specific colors.
+- `DiagonalStyle` now has a `.standard` style.
 - `TutorialScreenContent` now uses `Tutorial` instead of `LocalizedTutorial`.
 
 

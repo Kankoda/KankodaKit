@@ -12,6 +12,9 @@ import SwiftUIKit
 public extension Color {
 
     static let favorite = Color.yellow
+    
+    static let diagonalBackground = diagonalForeground.opacity(0.5)
+    static let diagonalForeground = Color("DiagonalForeground", bundle: .module)
 }
 
 struct Color_Kankoda_Previews: PreviewProvider {
@@ -26,6 +29,8 @@ struct Color_Kankoda_Previews: PreviewProvider {
 
     static var previews: some View {
         List {
+            preview(.diagonalBackground, name: ".diagonalBackground")
+            preview(.diagonalForeground, name: ".diagonalForeground")
             preview(.favorite, name: ".favorite")
         }
     }

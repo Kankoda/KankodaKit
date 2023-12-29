@@ -42,33 +42,29 @@ struct SubscriptionScreenContentNew: View {
     private var confettiTrigger = 0
     
     var body: some View {
-        DiagonalContent(
-            diagonalOffset: 150
-        ) {
-            ScrollView {
-                SubscriptionStoreView(groupID: appInfo.subscriptionGroupId) {
-                    VStack(spacing: 15) {
-                        iconView
-                        Text("Subscription")
-                            .font(.title2)
-                            .bold()
-                        Text("Subscription.Text")
-                    }
-                    .padding()
-                    .confettiCannon(
-                        counter: $confettiTrigger,
-                        confettis: confettis.map { .text($0) },
-                        confettiSize: 45
-                    )
+        ScrollView {
+            SubscriptionStoreView(groupID: appInfo.subscriptionGroupId) {
+                VStack(spacing: 15) {
+                    iconView
+                    Text("Subscription")
+                        .font(.title2)
+                        .bold()
+                    Text("Subscription.Text")
                 }
-                .background(Color.clear)
+                .padding()
+                .confettiCannon(
+                    counter: $confettiTrigger,
+                    confettis: confettis.map { .text($0) },
+                    confettiSize: 45
+                )
             }
-            .navigationTitle("Subscription")
-            .onInAppPurchaseCompletion(perform: handleSubscription)
-            .storeButton(.hidden, for: .cancellation)
-            .subscriptionStorePolicyDestination(url: appInfo.urls.privacyPolicy!, for: .privacyPolicy)
-            .subscriptionStorePolicyDestination(url: appInfo.urls.termsAndConditions!, for: .termsOfService)
+            .background(Color.clear)
         }
+        .navigationTitle("Subscription")
+        .onInAppPurchaseCompletion(perform: handleSubscription)
+        .storeButton(.hidden, for: .cancellation)
+        .subscriptionStorePolicyDestination(url: appInfo.urls.privacyPolicy!, for: .privacyPolicy)
+        .subscriptionStorePolicyDestination(url: appInfo.urls.termsAndConditions!, for: .termsOfService)
     }
 }
 

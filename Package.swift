@@ -18,7 +18,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/danielsaidi/BadgeIcon.git", .upToNextMajor(from: "0.2.1")),
+        .package(url: "https://github.com/danielsaidi/BadgeIcon.git", .upToNextMajor(from: "0.3.0")),
         .package(url: "https://github.com/simibac/ConfettiSwiftUI", .upToNextMajor(from: "1.1.0")),
         .package(url: "https://github.com/danielsaidi/OnboardingKit.git", .upToNextMajor(from: "6.3.0")),
         .package(url: "https://github.com/danielsaidi/StoreKitPlus.git", .upToNextMajor(from: "0.2.0")),

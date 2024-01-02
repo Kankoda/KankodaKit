@@ -46,10 +46,10 @@ public struct SubscriptionScreenContentNew: View {
             SubscriptionStoreView(groupID: appInfo.subscriptionGroupId) {
                 VStack(spacing: 15) {
                     iconView
-                    Text("Subscription")
+                    Text(title)
                         .font(.title2)
                         .bold()
-                    Text("Subscription.Text")
+                    Text(text)
                 }
                 .padding()
                 .confettiCannon(
@@ -60,9 +60,11 @@ public struct SubscriptionScreenContentNew: View {
             }
             .background(Color.clear)
         }
-        .navigationTitle("Subscription")
+        .navigationTitle(title)
         .onInAppPurchaseCompletion(perform: handleSubscription)
         .storeButton(.hidden, for: .cancellation)
+        .storeButton(.visible, for: .redeemCode)
+        .storeButton(.visible, for: .restorePurchases)
         .subscriptionStorePolicyDestination(url: appInfo.urls.privacyPolicy!, for: .privacyPolicy)
         .subscriptionStorePolicyDestination(url: appInfo.urls.termsAndConditions!, for: .termsOfService)
     }

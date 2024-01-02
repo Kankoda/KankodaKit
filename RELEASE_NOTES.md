@@ -1,27 +1,17 @@
 # Release Notes
 
 
-## 0.5.5
+## 0.6
 
-- `SubscriptionScreenContentNew` is a new subscription screen.
-
-
-## 0.5.4
-
-- `AppInfo` has subscription group ID.
-- `AppInfo` now hides its URL properties.
-
-
-## 0.5.2
-
+- `AppInfo` has made the URL properties private.
+- `AppInfo` has a new `subscriptionGroupId` property.
 - `Color` has more Kankoda-specific colors.
 - `DiagonalStyle` now has a `.standard` style.
-- `TutorialScreenContent` now uses `Tutorial` instead of `LocalizedTutorial`.
-
-
-## 0.5.1
-
+- `SubscriptionScreenContentNew` is a new subscription screen.
+- `SubscriptionUsp` has been renamed to `ProductUsp`.
+- `SubscriptionUspLabel` has been renamed to `ProductUspLabel`.
 - `TutorialScreenContent` now builds on macOS.
+- `TutorialScreenContent` now uses `Tutorial` instead of `LocalizedTutorial`.
 
 
 ## 0.5
@@ -36,12 +26,12 @@
 - This version localizes all texts.
 - This version updates `SwiftUIKit` to 4.0.
 
-- `PremiumFeature` is renamed to `SubscriptionFeature`.
-- `PremiumPurchaseButton` is renamed to `SubscriptionButton`.
-- `PremiumPurchaseInfo` is renamed to `SubscriptionInfo`.
-- `PremiumScreenContent` is renamed to `SubscriptionScreenContent`.
-- `PremiumUsp` is renamed to `SubscriptionUsp`.
-- `PremiumUspLabel` is renamed to `SubscriptionUsp`.
+- `PremiumFeature` has been renamed to `SubscriptionFeature`.
+- `PremiumPurchaseButton` has been renamed to `SubscriptionButton`.
+- `PremiumPurchaseInfo` has been renamed to `SubscriptionInfo`.
+- `PremiumScreenContent` has been renamed to `SubscriptionScreenContent`.
+- `PremiumUsp` has been renamed to `SubscriptionUsp`.
+- `PremiumUspLabel` has been renamed to `SubscriptionUsp`.
 - `ToolbarButton` replaces all previous buttons.
 
 

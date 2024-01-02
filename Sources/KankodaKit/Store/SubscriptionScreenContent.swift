@@ -110,7 +110,7 @@ private extension SubscriptionScreenContent {
     var nonPurchasedContent: some View {
         Group {
             Text(info.text)
-            SubscriptionUspLabelStack(info.usps)
+            ProductUspLabelStack(info.usps)
             Text(info.disclaimerText)
                 .font(.footnote)
         }

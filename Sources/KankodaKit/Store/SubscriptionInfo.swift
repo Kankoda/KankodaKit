@@ -22,7 +22,7 @@ public struct SubscriptionInfo {
     public init(
         monthlyProduct: AppProduct,
         yearlyProduct: AppProduct,
-        usps: [SubscriptionUsp],
+        usps: [ProductUsp],
         text: String,
         disclaimerText: String,
         restorePurchasesText: String,
@@ -57,7 +57,7 @@ public struct SubscriptionInfo {
     
     public let monthlyProduct: AppProduct
     public let yearlyProduct: AppProduct
-    public let usps: [SubscriptionUsp]
+    public let usps: [ProductUsp]
     public let text: String
     public let disclaimerText: String
     public let restorePurchasesText: String

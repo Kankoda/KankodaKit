@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/BadgeIcon.git",
       "state" : {
-        "revision" : "585eabfe3f9f7ee5f1ea3653d6c1866429be7291",
-        "version" : "0.2.1"
+        "revision" : "57ed0bbb05588e432ec7e521bc7e3dad268da59b",
+        "version" : "0.3.0"
       }
     },
     {

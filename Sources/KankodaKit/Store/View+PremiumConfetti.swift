@@ -12,15 +12,15 @@ import SwiftUI
 public extension View {
 
     /// Show premium purchase confetti from the view.
-    func withPremiumPurchaseConfetti(
+    func withPurchaseConfetti(
         _ trigger: Binding<Int>,
-        emoji: String = "👑"
+        emojis: String = "👑"
     ) -> some View {
         self.confettiCannon(
             counter: trigger,
             num: 50,
-            confettis: [.text(emoji)],
-            confettiSize: 50,
+            confettis: emojis.map { .text(String($0)) },
+            confettiSize: 45,
             openingAngle: .degrees(0),
             closingAngle: .degrees(360)
         )
@@ -38,9 +38,9 @@ public extension View {
         var body: some View {
             Button("Preview.Trigger") {
                 trigger += 1
-            }.withPremiumPurchaseConfetti(
+            }.withPurchaseConfetti(
                 $trigger,
-                emoji: "🥳"
+                emojis: "🥳🫠👋"
             )
         }
     }

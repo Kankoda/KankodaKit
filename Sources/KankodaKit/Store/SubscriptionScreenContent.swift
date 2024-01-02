@@ -82,7 +82,7 @@ public struct SubscriptionScreenContent: View {
         }
         .task(refresh)
         .scrollIndicators(.hidden)
-        .withPremiumPurchaseConfetti($isPurchasedTrigger)
+        .withPurchaseConfetti($isPurchasedTrigger)
     }
 }
 

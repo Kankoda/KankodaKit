@@ -19,14 +19,14 @@ public struct SubscriptionScreenContentNew: View {
         icon: Image,
         title: LocalizedStringKey,
         text: LocalizedStringKey,
-        confettis: [String],
+        confettiEmojis: String,
         appInfo: AppInfo,
         storeService: StoreService
     ) {
         self.icon = icon
         self.title = title
         self.text = text
-        self.confettis = confettis
+        self.confettiEmojis = confettiEmojis
         self.appInfo = appInfo
         self.storeService = storeService
     }
@@ -34,7 +34,7 @@ public struct SubscriptionScreenContentNew: View {
     private let icon: Image
     private let title: LocalizedStringKey
     private let text: LocalizedStringKey
-    private let confettis: [String]
+    private let confettiEmojis: String
     private let appInfo: AppInfo
     private let storeService: StoreService
     
@@ -52,10 +52,9 @@ public struct SubscriptionScreenContentNew: View {
                     Text(text)
                 }
                 .padding()
-                .confettiCannon(
-                    counter: $confettiTrigger,
-                    confettis: confettis.map { .text($0) },
-                    confettiSize: 45
+                .withPurchaseConfetti(
+                    $confettiTrigger,
+                    emojis: confettiEmojis
                 )
             }
             .background(Color.clear)

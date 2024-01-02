@@ -62,7 +62,9 @@ public struct SubscriptionScreenContentNew: View {
         .navigationTitle(title)
         .onInAppPurchaseCompletion(perform: handleSubscription)
         .storeButton(.hidden, for: .cancellation)
+        #if os(iOS)
         .storeButton(.visible, for: .redeemCode)
+        #endif
         .storeButton(.visible, for: .restorePurchases)
         .subscriptionStorePolicyDestination(url: appInfo.urls.privacyPolicy!, for: .privacyPolicy)
         .subscriptionStorePolicyDestination(url: appInfo.urls.termsAndConditions!, for: .termsOfService)

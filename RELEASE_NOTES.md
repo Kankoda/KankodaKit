@@ -3,11 +3,16 @@
 
 ## 0.6
 
+- This version requires iOS 17, macOS 14, etc.
+- This version updates `BadgeIcon` to 0.3.
+- This version updates `SwiftUIKit` to 4.1.5.
+
 - `AppInfo` has made the URL properties private.
 - `AppInfo` has a new `subscriptionGroupId` property.
 - `Color` has more Kankoda-specific colors.
 - `DiagonalStyle` now has a `.standard` style.
-- `SubscriptionScreenContentNew` is a new subscription screen.
+- `SubscriptionView` replaces `SubscriptionScreenContent`.
+- `SubscriptionView` supports macOS and wraps a native view.
 - `SubscriptionUsp` has been renamed to `ProductUsp`.
 - `SubscriptionUspLabel` has been renamed to `ProductUspLabel`.
 - `TutorialScreenContent` now builds on macOS.

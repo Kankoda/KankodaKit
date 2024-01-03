@@ -1,5 +1,5 @@
 //
-//  SubscriptionScreenContentNew.swift
+//  SubscriptionView.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-12-29.
@@ -13,7 +13,7 @@ import StoreKitPlus
 import SwiftUI
 
 @available(iOS 17.0, macOS 14.0, *)
-public struct SubscriptionScreenContentNew: View {
+public struct SubscriptionView: View {
     
     public init(
         icon: Image,
@@ -72,7 +72,7 @@ public struct SubscriptionScreenContentNew: View {
 }
 
 @available(iOS 17.0, macOS 14.0, *)
-private extension SubscriptionScreenContentNew {
+private extension SubscriptionView {
     
     var iconView: some View {
         icon.resizable()

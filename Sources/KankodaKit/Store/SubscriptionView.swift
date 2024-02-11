@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-12-29.
-//  Copyright © 2023 Daniel Saidi. All rights reserved.
+//  Copyright © 2023-2024 Kankoda. All rights reserved.
 //
 
 #if os(iOS) || os(macOS)
@@ -12,7 +12,6 @@ import StoreKit
 import StoreKitPlus
 import SwiftUI
 
-@available(iOS 17.0, macOS 14.0, *)
 public struct SubscriptionView: View {
     
     public init(
@@ -71,7 +70,6 @@ public struct SubscriptionView: View {
     }
 }
 
-@available(iOS 17.0, macOS 14.0, *)
 private extension SubscriptionView {
     
     var iconView: some View {

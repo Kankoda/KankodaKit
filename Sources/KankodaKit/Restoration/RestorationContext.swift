@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-09-05.
-//  Copyright © 2023 Daniel Saidi. All rights reserved.
+//  Copyright © 2023-2024 Kankoda. All rights reserved.
 //
 
 import SwiftUI
@@ -29,14 +29,16 @@ public class RestorationContext<Item: Identifiable & Equatable>: ObservableObjec
     
     @AppStorage("com.kankoda.restoration.id")
     private var lastId: Item.ID?
+}
+
+public extension RestorationContext {
     
-    public func tryRestoreItem() -> Item? {
+    func tryRestoreItem() -> Item? {
         items.first { $0.id == lastId }
     }
  
-    public func tryUpdateItem(_ item: Item?) {
-        guard let item else { return }
-        guard items.contains(item) else { return }
+    func tryUpdateItem(_ item: Item?) {
+        guard let item, items.contains(item) else { return }
         lastId = item.id
     }
 }

@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-09-04.
-//  Copyright © 2022-2023 Daniel Saidi. All rights reserved.
+//  Copyright © 2022-2024 Kankoda. All rights reserved.
 //
 
 #if os(iOS)
@@ -123,15 +123,13 @@ public extension StorySlideStyle {
 
 // MARK: - Preview
 
-struct Stories_Slide_Previews: PreviewProvider {
+#Preview {
     
-    static var previews: some View {
-        StorySlide(
-            title: "Manage your loans – all in one place",
-            text: "Track, pay, and refinance your loans so you can be in control of your debt. ",
-            image: Image(systemName: "rectangle.and.pencil.and.ellipsis")
-        )
-        .padding()
-    }
+    StorySlide(
+        title: "Manage your loans – all in one place",
+        text: "Track, pay, and refinance your loans so you can be in control of your debt. ",
+        image: Image(systemName: "rectangle.and.pencil.and.ellipsis")
+    )
+    .padding()
 }
 #endif

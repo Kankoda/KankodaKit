@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-08-25.
-//  Copyright © 2023 Daniel Saidi. All rights reserved.
+//  Copyright © 2023-2024 Kankoda. All rights reserved.
 //
 
 #if os(iOS) || os(macOS)
@@ -69,7 +69,7 @@ public struct TutorialScreenContent: View {
             .multilineTextAlignment(.center)
             .frame(maxWidth: 500)
         }
-        .onChange(of: pageIndex) { newValue in
+        .onChange(of: pageIndex) { _, newValue in
             withAnimation {
                 animationTrigger = newValue
             }

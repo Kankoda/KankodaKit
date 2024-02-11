@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-09-04.
-//  Copyright © 2022-2023 Daniel Saidi. All rights reserved.
+//  Copyright © 2022-2024 Kankoda. All rights reserved.
 //
 
 #if os(iOS)
@@ -41,14 +41,12 @@ public struct StorySlideshowProgressView: View {
     private let style: StorySlideshowStyle
     
     public var body: some View {
-        ZStack(alignment: .top) {
-            GeometryReader { geometry in
-                Capsule()
-                    .fill(style.progressBarBackgroundColor)
-                Capsule()
-                    .fill(style.progressBarForegroundColor)
-                    .frame(width: barWidth(for: geometry), alignment: .leading)
-            }
+        GeometryReader { geometry in
+            Capsule()
+                .fill(style.progressBarBackgroundColor)
+            Capsule()
+                .fill(style.progressBarForegroundColor)
+                .frame(width: barWidth(for: geometry), alignment: .leading)
         }
         .frame(height: style.progressBarHeight)
     }
@@ -67,23 +65,21 @@ private extension StorySlideshowProgressView {
     }
 }
 
-struct Stories_SlideshowProgressView_Previews: PreviewProvider {
+#Preview {
 
-    static let slideshowIndex = 4
-    static let slideshowProgress = 0.5
+    let slideshowIndex = 4
+    let slideshowProgress = 0.5
 
-    static var previews: some View {
-        HStack {
-            ForEach(0...5, id: \.self) {
-                StorySlideshowProgressView(
-                    index: $0,
-                    slideshowIndex: slideshowIndex,
-                    slideshowProgress: slideshowProgress,
-                    style: .preview
-                )
-            }
-        }.padding()
-    }
+    return HStack {
+        ForEach(0...5, id: \.self) {
+            StorySlideshowProgressView(
+                index: $0,
+                slideshowIndex: slideshowIndex,
+                slideshowProgress: slideshowProgress,
+                style: .preview
+            )
+        }
+    }.padding()
 }
 
 private extension StorySlideshowStyle {

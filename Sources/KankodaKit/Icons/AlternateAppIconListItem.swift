@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-07-06.
-//  Copyright © 2023 Daniel Saidi. All rights reserved.
+//  Copyright © 2023-2024 Daniel Saidi. All rights reserved.
 //
 
 import SwiftUI
@@ -77,21 +77,19 @@ private extension AlternateAppIconListItem {
     }
 }
 
-struct AlternateAppIconListItem_Previews: PreviewProvider {
+#Preview {
     
-    static var previews: some View {
-        HStack {
-            AlternateAppIconListItem(
-                iconName: "Icon-Standard",
-                iconSize: 120,
-                isSelected: true
-            )
-            
-            AlternateAppIconListItem(
-                iconName: "Icon-Standard",
-                isSelected: true
-            )
-            .frame(width: 100)
-        }
+    HStack {
+        AlternateAppIconListItem(
+            iconName: "Icon-Standard",
+            iconSize: 120,
+            isSelected: true
+        )
+        
+        AlternateAppIconListItem(
+            iconName: "Icon-Standard",
+            isSelected: true
+        )
+        .frame(width: 100)
     }
 }

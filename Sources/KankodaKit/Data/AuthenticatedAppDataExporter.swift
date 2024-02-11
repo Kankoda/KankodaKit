@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-07-03.
-//  Copyright © 2022-2023 Daniel Saidi. All rights reserved.
+//  Copyright © 2022-2024 Daniel Saidi. All rights reserved.
 //
 
 #if os(macOS) || os(iOS)
@@ -15,13 +15,13 @@ import LocalAuthentication
  the provided `baseExporter` to perform the exporting.
  */
 public class AuthenticatedAppDataExporter: AppDataExporter {
-
+    
     /**
      Create an authenticated exporter.
-
+     
      - Parameters:
-       - baseExporter: The base exporter to use.
-       - authReason: The authentication reason to display to the user.
+     - baseExporter: The base exporter to use.
+     - authReason: The authentication reason to display to the user.
      */
     public init(
         baseExporter: any AppDataExporter,
@@ -36,23 +36,29 @@ public class AuthenticatedAppDataExporter: AppDataExporter {
     public enum AuthError: Error {
         case userAuthenticationFailed
     }
-
+    
     private let exporter: any AppDataExporter
     private let authPolicy: LAPolicy
     private let authReason: String
+}
 
-    public func generateExportFile<DataType: AppData>(
+public extension AuthenticatedAppDataExporter {
+
+    func generateExportFile<DataType: AppData>(
         for data: DataType
     ) async throws -> URL {
-        let url = try await exporter.generateExportFile(for: data)
-        guard try await performAuthentication() else { throw AuthError.userAuthenticationFailed }
-        return url
+        guard try await performAuthentication() else {
+            throw AuthError.userAuthenticationFailed
+        }
+        return try await exporter.generateExportFile(for: data)
     }
     
-    public func generateQrCodeDataString<DataType: AppData>(
+    func generateQrCodeDataString<DataType: AppData>(
         for data: DataType
     ) async throws -> String {
-        guard try await performAuthentication() else { throw AuthError.userAuthenticationFailed }
+        guard try await performAuthentication() else {
+            throw AuthError.userAuthenticationFailed
+        }
         return try await exporter.generateQrCodeDataString(for: data)
     }
 }

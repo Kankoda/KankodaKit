@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-06-26.
-//  Copyright © 2023 Daniel Saidi. All rights reserved.
+//  Copyright © 2023-2024 Daniel Saidi. All rights reserved.
 //
 
 import Foundation
@@ -13,9 +13,8 @@ import UniformTypeIdentifiers
 /**
  This exporter exports compressed data for the provided type.
  
- The `qrCodeUrlPrefix` is optional, and only used when using
- QR codes to import and export small amounts of data. It has
- a default value of `qr:`.
+ The `qrCodeUrlPrefix` is optional and only used by QR codes
+ to import and export small amounts of data.
  */
 open class StandardAppDataExporter: AppDataExporter {
     

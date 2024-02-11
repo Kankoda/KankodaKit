@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-06-26.
-//  Copyright © 2023 Daniel Saidi. All rights reserved.
+//  Copyright © 2023-2024 Daniel Saidi. All rights reserved.
 //
 
 import SwiftUI
@@ -17,21 +17,20 @@ public extension Color {
     static let diagonalForeground = Color("DiagonalForeground", bundle: .module)
 }
 
-struct Color_Kankoda_Previews: PreviewProvider {
+#Preview {
 
-    static func preview(_ color: Color, name: String) -> some View {
+    func preview(_ color: Color, name: String) -> some View {
         Label {
             Text(name)
         } icon: {
             Circle().fill(color)
         }
     }
-
-    static var previews: some View {
-        List {
-            preview(.diagonalBackground, name: ".diagonalBackground")
-            preview(.diagonalForeground, name: ".diagonalForeground")
-            preview(.favorite, name: ".favorite")
-        }
+    
+    
+    return List {
+        preview(.diagonalBackground, name: ".diagonalBackground")
+        preview(.diagonalForeground, name: ".diagonalForeground")
+        preview(.favorite, name: ".favorite")
     }
 }

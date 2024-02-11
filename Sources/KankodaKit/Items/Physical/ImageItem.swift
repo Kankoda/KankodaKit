@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-08-21.
-//  Copyright © 2022-2023 Daniel Saidi. All rights reserved.
+//  Copyright © 2022-2024 Daniel Saidi. All rights reserved.
 //
 
 import Foundation
@@ -14,7 +14,7 @@ import SwiftUIKit
  */
 public protocol ImageItem {}
 
-extension ImageItem {
+public extension ImageItem {
 
     /// The image cache to use for caching images.
     var imageCache: ImageCache { .shared }

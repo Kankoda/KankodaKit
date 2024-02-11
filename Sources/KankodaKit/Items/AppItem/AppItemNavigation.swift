@@ -23,19 +23,22 @@ public class AppItemNavigation: ObservableObject {
     
     @Published
     public var item: (any AppItem)?
+}
+
+public extension AppItemNavigation {
     
     /// Whether or not the navigation has an item.
-    public var hasItem: Bool {
+    var hasItem: Bool {
         item != nil
     }
     
     /// Reset the navigation.
-    public func reset() {
+    func reset() {
         item = nil
     }
     
     /// Show a wallet item.
-    public func present(_ item: any AppItem) {
+    func present(_ item: any AppItem) {
         self.item = item
     }
 }

@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-07-11.
-//  Copyright © 2022-2023 Daniel Saidi. All rights reserved.
+//  Copyright © 2022-2024 Daniel Saidi. All rights reserved.
 //
 
 import SwiftUI
@@ -59,19 +59,21 @@ private extension ItemFlipView {
             front: itemView(item, .front),
             back: itemView(item, .back),
             isFlipped: isFlipped,
-            tapDirection: .right)
+            tapDirection: .right
+        )
         #else
         FlipView(
             front: itemView(item, .front),
             back: itemView(item, .back),
             isFlipped: isFlipped,
             tapDirection: .right,
-            swipeDirections: [.right, .left])
+            swipeDirections: [.right, .left]
+        )
         #endif
     }
 }
 
-struct ItemFlipView_Previews: PreviewProvider {
+#Preview {
 
     struct Preview: View {
 
@@ -93,9 +95,7 @@ struct ItemFlipView_Previews: PreviewProvider {
         }
     }
 
-    static var previews: some View {
-        Preview()
-    }
+    return Preview()
 }
 
 private struct FlipItem: Identifiable {

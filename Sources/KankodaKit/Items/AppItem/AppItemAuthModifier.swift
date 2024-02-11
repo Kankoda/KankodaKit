@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-07-13.
-//  Copyright © 2022-2023 Daniel Saidi. All rights reserved.
+//  Copyright © 2022-2024 Daniel Saidi. All rights reserved.
 //
 
 #if os(macOS) || os(iOS)
@@ -37,8 +37,8 @@ struct AppItemAuthModifier: ViewModifier {
     private let authReason: String
     private let center: NotificationCenter
 
-    @EnvironmentObject
-    private var authContext: AppItemAuthContext
+    @Environment(AppItemAuthContext.self)
+    private var authContext
 
     @EnvironmentObject
     private var sheet: SheetContext

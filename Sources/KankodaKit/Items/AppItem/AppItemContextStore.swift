@@ -12,9 +12,9 @@ import Foundation
  This store keeps a context in sync when it adds and removes
  items from a base store, e.g. a database-based one.
 
- Note that this store reads the entire base store from start
- and syncs it with the context. Although it's done async, it
- is not recommended for a store with a large amount of items.
+ Note that this store reads the entire store from start then
+ syncs it with the context. Although it is done async, it is
+ not recommended for a large amount of items.
  */
 open class AppItemContextStore<
     Item: AppItem,

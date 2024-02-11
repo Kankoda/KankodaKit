@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-06-30.
-//  Copyright © 2022-2023 Daniel Saidi. All rights reserved.
+//  Copyright © 2022-2024 Daniel Saidi. All rights reserved.
 //
 
 #if os(macOS) || os(iOS)
@@ -17,7 +17,8 @@ import SwiftUI
  Authentication will be disabled if biometric authentication
  is not supported or if the user has disabled it in Settings.
  */
-public class AppItemAuthContext: ObservableObject {
+@Observable
+public class AppItemAuthContext {
     
     public init(
         policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics,
@@ -32,17 +33,19 @@ public class AppItemAuthContext: ObservableObject {
     private let authPolicy: LAPolicy
     private let stores: [any AppItemStore]
     
-    /// Whether or not authentication is needed to use the app.
-    @Published
+    /// Whether or not authentication is needed.
     public var isAuthenticationNeeded: Bool
+}
+
+public extension AppItemAuthContext {
     
     /// Whether or not authentication is enabled for the app.
-    public var isAuthenticationEnabled: Bool {
+    var isAuthenticationEnabled: Bool {
         LAContext().canEvaluatePolicy(authPolicy, error: nil)
     }
     
     /// Try to authenticate the user, provided that it's needed.
-    public func authenticateUser(reason: String) {
+    func authenticateUser(reason: String) {
         guard isAuthenticationNeeded else { return }
         Task {
             let result = try await LAContext().evaluatePolicy(authPolicy, localizedReason: reason)
@@ -51,7 +54,7 @@ public class AppItemAuthContext: ObservableObject {
     }
     
     /// Reset authentication for the app.
-    public func resetAuthentication() {
+    func resetAuthentication() {
         isAuthenticationNeeded = isAuthenticationEnabled && hasItems
     }
 }

@@ -10,8 +10,8 @@ import CoreTransferable
 import Foundation
 
 /**
- This protocol describes an named item that can be persisted
- and used in an app, such as wallet items in Wally.
+ This protocol defines named items that can be persisted and
+ used in an app, such as wallet items in Wally.
  */
 public protocol AppItem: Codable, Equatable, Identifiable, Named, Transferable {
     

@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-08-17.
-//  Copyright © 2023 Daniel Saidi. All rights reserved.
+//  Copyright © 2023-2024 Daniel Saidi. All rights reserved.
 //
 
 import Foundation
@@ -41,20 +41,25 @@ public struct AppUrls {
     public let privacyPolicy: URL?
     public let termsAndConditions: URL?
     public let website: URL?
+}
+
+public extension AppUrls {
     
-    public var contactEmailBugReport: URL? {
+    var contactEmailBugReport: URL? {
         contactEmail(subject: "\(appName) Bug Report")
     }
     
-    public var contactEmailFeatureRequest: URL? {
+    var contactEmailFeatureRequest: URL? {
         contactEmail(subject: "\(appName) Feature Request")
     }
     
-    public var contactEmailFeedback: URL? {
+    var contactEmailFeedback: URL? {
         contactEmail(subject: "\(appName) Feedback")
     }
     
-    public func contactEmail(subject: String) -> URL? {
-        contactEmail?.appending(queryItems: [.init(name: "subject", value: subject)])
+    func contactEmail(subject: String) -> URL? {
+        contactEmail?.appending(
+            queryItems: [.init(name: "subject", value: subject)]
+        )
     }
 }

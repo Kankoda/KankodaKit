@@ -38,7 +38,12 @@ public extension StandardAppDataImporter {
             try await importFileData(from: url)
         }
     }
-
+    
+    func importFileData(_ data: Data) async throws {
+        let data = try DataType(compressedData: data)
+        try await importData(data)
+    }
+    
     func importFileData(from url: URL) async throws {
         _ = url.startAccessingSecurityScopedResource()
         let data = try DataType(compressedDataAt: url)

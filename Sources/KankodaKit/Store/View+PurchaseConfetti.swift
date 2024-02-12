@@ -1,5 +1,5 @@
 //
-//  View+PremiumConfetti.swift
+//  View+PurchaseConfetti.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-06-22.

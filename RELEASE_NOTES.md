@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## 0.7
+
+- This version removes old subscription types.
+
+
+
 ## 0.6
 
 - This version requires iOS 17, macOS 14, etc.

@@ -4,7 +4,7 @@
 ## 0.7
 
 - This version removes old subscription types.
-
+- This version adds new controls, list items and label styles.
 
 
 ## 0.6

@@ -8,9 +8,7 @@
 
 import Foundation
 
-/**
- This struct provides app-specific URLs.
- */
+/// This struct defines app-specific URLs.
 public struct AppUrls {
     
     init() {

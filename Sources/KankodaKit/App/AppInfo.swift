@@ -8,9 +8,7 @@
 
 import Foundation
 
-/**
- This struct can be used to specify app-specific information.
- */
+/// This struct defines app-specific information.
 public struct AppInfo {
  
     public init(

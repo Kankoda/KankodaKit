@@ -9,9 +9,7 @@
 import Foundation
 import SwiftUIKit
 
-/**
- This protocol represents a physical item with image data.
- */
+/// This protocol represents a physical item with image data.
 public protocol ImageItem {}
 
 public extension ImageItem {

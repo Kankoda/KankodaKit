@@ -10,42 +10,39 @@ import Foundation
 import OnboardingKit
 import SwiftUI
 
-/**
- This type can be used to specify app-specific onboardings.
- 
- You can create app-specific onboardings like this:
- 
- ```swift
- extension AppOnboarding {
- 
-     static let requestReview = Self(
-        DelayedOnboarding(
-            id: "requestReview",
-            requiredPresentationAttempts: 2
-        )
-    )
- }
- ```
- 
- You can then call the `tryPresentOnboarding` view extension
- to present any app onboarding:
- 
- ```swift
- struct ContentView: View {
- 
-    var body: some View {
-        Button("Request review") {
-            tryPresentOnboarding(.requestReview, after: 1) {
-                requestReview()
-            }
-        }
-    }
- }
- ```
- 
- For custom onboardings, use the onboarding library directly
- or create other onboarding types in this library.
- */
+/// This type can be used to define app-specific onboardings.
+///
+/// You can create app-specific onboardings like this:
+/// 
+/// ```swift
+/// extension AppOnboarding {
+///
+///     static let requestReview = Self(
+///         DelayedOnboarding(
+///             id: "requestReview",
+///             requiredPresentationAttempts: 2
+///         )
+///     )
+/// }
+/// ```
+///
+/// You can then use `tryPresentOnboarding` to present it:
+///
+/// ```swift
+/// struct ContentView: View {
+///
+///     var body: some View {
+///         Button("Request review") {
+///             tryPresentOnboarding(.requestReview, after: 1) {
+///                 requestReview()
+///             }
+///         }
+///     }
+/// }
+/// ```
+///
+/// To create custom onboardings, use the onboarding library
+/// directly or create custom types in this library.
 public struct AppOnboarding {
     
     public init(_ onboarding: Onboarding) {

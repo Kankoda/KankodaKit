@@ -8,12 +8,9 @@
 
 import SwiftUI
 
-/**
- This class can be used to describe a navigation destination
- for a certain ``AppItem``.
- 
- This can for instance be used by an intent-based navigation.
- */
+/// This class can be used for ``AppItem``-based navigation.
+///
+/// This can for instance be used by intent-based navigation.
 @MainActor
 public class AppItemNavigation: ObservableObject {
     

@@ -9,7 +9,7 @@
 import SwiftUI
 import SwiftUIKit
 
-/// This is a standard add button with a custom title text.
+/// This is a standard add button with a custom text.
 public struct AddButton: View {
     
     public init(

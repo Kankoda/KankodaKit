@@ -9,7 +9,7 @@
 import SwiftUI
 import SwiftUIKit
 
-/// This add button can be used in lists.
+/// This button can be used to add things within lists.
 public struct ListAddButton: View {
     
     public init(
@@ -25,9 +25,8 @@ public struct ListAddButton: View {
     
     public var body: some View {
         AddButton(title, action: action)
-            .buttonStyle(.list)
             .symbolVariant(.circle.fill)
-            .labelStyle(.iconTint(.green))
+            .labelStyle(.iconTint(.accentColor))
     }
 }
 

@@ -9,12 +9,9 @@
 #if os(macOS) || os(iOS)
 import SwiftUI
 
-/**
- This button can be added to a toolbar.
- 
- There are some default button types like `.add` and `.edit`.
- They can be customized and apply a ``KeyboardShortcutType``.
- */
+/// This button can be added to a toolbar.
+///
+/// There are some default buttons like `.add` and `.edit`.
 public struct ToolbarButton: View {
     
     public init(

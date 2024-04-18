@@ -1,5 +1,5 @@
 //
-//  Diagonal+Content.swift
+//  DiagonalContent.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-08-28.
@@ -8,12 +8,10 @@
 
 import SwiftUI
 
-/**
- This view can be used to create diagonally styled content.
- 
- Since this view uses some hacks to make the diagonal behave
- well when scrolling, make sure to use a solid color.
- */
+/// This view can be used to create diagonal styled content.
+///
+/// This view uses hacks to make the diagonal behave well in
+/// a scroll view. Make sure to use a solid color.
 public struct DiagonalContent<Content: View>: View {
     
     public init(

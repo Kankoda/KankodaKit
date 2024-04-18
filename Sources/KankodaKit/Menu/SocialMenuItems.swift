@@ -11,10 +11,8 @@ import BadgeIcon
 import SwiftUI
 import SwiftUIKit
 
-/**
- This view can be used to add social items to a Kankoda main
- app menu.
- */
+/// This view can be used to add standard social items to an
+/// app made by Kankoda.
 public struct SocialMenuItems<Icon: View>: View {
     
     public init(

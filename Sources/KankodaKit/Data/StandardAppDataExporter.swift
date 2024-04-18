@@ -10,12 +10,10 @@ import Foundation
 import SwiftUIKit
 import UniformTypeIdentifiers
 
-/**
- This exporter exports compressed data for the provided type.
- 
- The `qrCodeUrlPrefix` is optional and only used by QR codes
- to import and export small amounts of data.
- */
+/// This exporter exports compressed data.
+///
+/// The `qrCodeUrlPrefix` is optional, and will only be used
+/// by QR codes to import & export small amounts of data.
 open class StandardAppDataExporter: AppDataExporter {
     
     public init(

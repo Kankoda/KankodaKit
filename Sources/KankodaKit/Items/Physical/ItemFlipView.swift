@@ -10,22 +10,17 @@ import SwiftUI
 import SwiftUIKit
 import UniformTypeIdentifiers
 
-/**
- This view can be used to render an item that can be flipped
- to show the front and back side.
- */
+/// This view can be flipped to show the front and back side.
 public struct ItemFlipView<
     Item: Identifiable,
     ItemView: View>: View {
 
-    /**
-     Create a flip view.
-
-     - Parameters:
-       - item: The item to display.
-       - isFlipped: Whether or not the item view is flipped.
-       - itemView: The view builder used to render item views.
-     */
+    /// Create a flip view.
+    ///
+    /// - Parameters:
+    ///   - item: The item to display.
+    ///   - isFlipped: Whether or not the item view is flipped.
+    ///   - itemView: The view builder used to render item views.
     public init(
         item: Item,
         isFlipped: Binding<Bool>,

@@ -11,9 +11,7 @@ import SwiftUI
 import SwiftUIKit
 import Vision
 
-/**
- This class can be used to perform image text recognition.
- */
+/// This class can be used to perform image text recognition.
 public class TextRecognitionContext: ObservableObject {
     
     public init() {}

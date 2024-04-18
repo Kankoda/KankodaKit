@@ -8,9 +8,7 @@
 
 import SwiftUI
 
-/**
- This class can manage the admin mode of an app.
- */
+/// This class can manage the admin mode of an app.
 public class AdminContext: ObservableObject {
     
     /// Whether or not admin mode is enabled.

@@ -9,20 +9,16 @@
 #if os(iOS)
 import SwiftUI
 
-/**
- This view can present a progress bar in a story slideshow.
- */
+/// This view can present progress in a story slideshow.
 public struct StorySlideshowProgressView: View {
     
-    /**
-     Create a slideshow progress view.
-     
-     - Parameters:
-       - index: The slide index.
-       - slideshowIndex: The current slideshow index.
-       - slideshowProgress: The current slideshow progress.
-       - style: The style to use, by default ``StorySlideshowStyle/standard``.
-     */
+    /// Create a slideshow progress view.
+    ///
+    /// - Parameters:
+    ///   - index: The slide index.
+    ///   - slideshowIndex: The current slideshow index.
+    ///   - slideshowProgress: The current slideshow progress.
+    ///   - style: The style to use, by default ``StorySlideshowStyle/standard``.
     public init(
         index: Int,
         slideshowIndex: Int,

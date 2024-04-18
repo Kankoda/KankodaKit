@@ -10,22 +10,18 @@
 import SwiftUI
 import SwiftUIKit
 
-/**
- This modifier makes the view request authentication when it
- appears and the app starts, then reset authentication state
- when the app moves into the background.
-
- Note that only a single view within the app should use this.
- */
+/// This modifier makes the view request authentication when
+/// it appears and the app starts, then reset authentication
+/// state when the app moves into the background.
+///
+/// Note that only a single view in the app should use this.
 struct AppItemAuthModifier: ViewModifier {
 
-    /**
-     Create an authentication view modifier.
-
-     - Parameters:
-       - reason: The authentication reason to show the user, by default the app unlock message.
-       - notificationCenter: The notification center to use, by default `.default`.
-     */
+    /// Create an authentication view modifier.
+    ///
+    /// - Parameters:
+    ///   - reason: The authentication reason to show the user, by default the app unlock message.
+    ///   - notificationCenter: The notification center to use, by default `.default`.
     init(
         authReason: String,
         notificationCenter: NotificationCenter = .default
@@ -52,17 +48,13 @@ struct AppItemAuthModifier: ViewModifier {
 
 public extension View {
 
-    /**
-     This modifier will make the view request authentication
-     when an app launches, then reset authentication when it
-     moves to the background.
-     
-     Only a single view should use this, preferably the root.
-     
-     - Parameters:
-       - reason: The authentication reason to show the user, by default the app unlock message.
-       - notificationCenter: The notification center to use, by default `.default`.
-     */
+    /// This modifier makes a view request authentication as
+    /// the app launches, then reset authentication when the
+    /// app moves to the background.
+    ///
+    /// - Parameters:
+    ///   - reason: The authentication reason to show the user, by default the app unlock message.
+    ///   - notificationCenter: The notification center to use, by default `.default`.
     func withAppItemAuthentication(
         authReason: String,
         notificationCenter: NotificationCenter = .default

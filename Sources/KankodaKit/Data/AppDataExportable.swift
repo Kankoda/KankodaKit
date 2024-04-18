@@ -9,9 +9,7 @@
 import Foundation
 import CoreTransferable
 
-/**
- This protocol can be implemented by exportable data types.
- */
+/// This protocol can be implemented by export data types.
 public protocol AppDataExportable {
 
     /// Generate exportable data.

@@ -1,5 +1,5 @@
 //
-//  Diagonal+Style.swift
+//  DiagonalStyle.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-08-28.
@@ -8,12 +8,10 @@
 
 import SwiftUI
 
-/**
- This style can be used to style ``DiagonalContent`` views.
- 
- You can use the ``standard`` style for any apps that should
- use the same color palette.
- */
+/// This style can be used to style ``DiagonalContent``.
+///
+/// You can use the ``standard`` style for apps that use the
+/// same color palette.
 public struct DiagonalStyle {
     
     public init(

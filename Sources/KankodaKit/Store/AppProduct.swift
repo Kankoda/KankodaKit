@@ -9,36 +9,29 @@
 import StoreKit
 import StoreKitPlus
 
-/**
- This type can be used to specify app-specific products, e.g.
- premium subscriptions and consumables.
- 
- You can create an app-specific product like this:
- 
- ```swift
- extension AppProduct {
- 
-     static let premiumYearly = Self(
-         .init(
-             id: "com.myapp.iap.premium.yearly",
-             name: "Premium Yearly"
-         )
-     )
- }
- ```
- 
- For custom products, use `StoreKitPlus` directly, or create
- other product types in this library.
- */
+/// This type can be used to specify an app-specific product,
+/// e.g. a premium subscription or a consumables.
+///
+/// You can create an app-specific product like this:
+///
+/// ```swift
+/// extension AppProduct {
+///
+///     static let premiumYearly = Self(
+///         .init(
+///             id: "com.myapp.iap.premium.yearly",
+///             name: "Premium Yearly"
+///         )
+///     )
+/// }
+/// ```
 public struct AppProduct: Identifiable, ProductRepresentable {
     
-    /**
-     Create a new product.
-     
-     - Parameters:
-       - id: The App Store string ID of the product.
-       - name: The product display name.
-     */
+    /// Create a new product.
+    ///
+    /// - Parameters:
+    ///   - id: The App Store string ID of the product.
+    ///   - name: The product display name.
     public init(id: String, name: String) {
         self.id = id
         self.name = name

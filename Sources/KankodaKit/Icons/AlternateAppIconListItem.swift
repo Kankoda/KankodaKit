@@ -9,19 +9,15 @@
 import SwiftUI
 import SwiftUIKit
 
-/**
- This view can be used as a list alternate app icons by name.
- */
+/// This view can be used to list alternate app icons.
 public struct AlternateAppIconListItem: View {
     
-    /**
-     Create an alternate icon list item.
-     
-     - Parameters:
-       - iconName: The name of the icon.
-       - iconSize: The size of the icon, if any.
-       - isSelected: Whether or not the icon is selected.
-     */
+    /// Create an alternate icon list item.
+    ///
+    /// - Parameters:
+    ///   - iconName: The name of the icon.
+    ///   - iconSize: The size of the icon, if any.
+    ///   - isSelected: Whether or not the icon is selected.
     public init(
         iconName: String,
         iconSize: CGFloat? = nil,

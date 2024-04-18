@@ -8,9 +8,7 @@
 
 import Foundation
 
-/**
- This protocol can be implemented by searchable data types.
- */
+/// This protocol can be implemented by any searchable type.
 public protocol Searchable {
 
     /// Whether or not the value matches a certain query.

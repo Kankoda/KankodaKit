@@ -10,13 +10,11 @@
 import LocalAuthentication
 import SwiftUI
 
-/**
- This class can manage authentication for an app that stores
- sensitive `AppItem` data.
- 
- Authentication will be disabled if biometric authentication
- is not supported or if the user has disabled it in Settings.
- */
+/// This class manages authentication for an app that stores
+/// sensitive ``AppItem`` data.
+///
+/// Authentication is disabled when biometric authentication
+/// is not supported, or if it's disabled it in Settings.
 @Observable
 public class AppItemAuthContext {
     

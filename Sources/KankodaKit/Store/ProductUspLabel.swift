@@ -8,9 +8,7 @@
 
 import SwiftUI
 
-/**
- This label can be used to display a ``ProductUsp``.
- */
+/// This label can be used to display a ``ProductUsp``.
 public struct ProductUspLabel: View {
     
     public init(_ usp: ProductUsp) {

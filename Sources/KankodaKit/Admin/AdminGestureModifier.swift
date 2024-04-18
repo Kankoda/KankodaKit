@@ -8,12 +8,10 @@
 
 import SwiftUI
 
-/**
- This modifier can apply an admin toggle gesture to any view.
-
- The modifier currently requires that an ``AdminContext`` is
- injected into the view hierarchy, or otherwise crashes.
- */
+/// This modifier can apply an admin toggle gesture to views.
+///
+/// The modifier currently requires that an ``AdminContext`` 
+/// is injected into the view hierarchy.
 struct AdminGestureModifier: ViewModifier {
     
     public init(

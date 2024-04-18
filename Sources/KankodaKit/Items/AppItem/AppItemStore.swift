@@ -8,10 +8,8 @@
 
 import Foundation
 
-/**
- This protocol can be implemented by stores that can store a
- certain ``AppItem`` type.
- */
+/// This protocol can be implemented by any type that can be
+/// used to store ``AppItem`` types.
 public protocol AppItemStore: AnyObject {
 
     /// The item type that is persisted by the store.

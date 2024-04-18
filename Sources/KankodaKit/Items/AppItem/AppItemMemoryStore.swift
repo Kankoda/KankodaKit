@@ -8,10 +8,7 @@
 
 import Foundation
 
-/**
- This store stores items in working memory. Only use it when
- testing or previewing, since it will reset on app restart.
- */
+/// This store will store items in memory.
 open class AppItemMemoryStore<Item: AppItem>: AppItemStore {
 
     public init(items: [Item] = []) {

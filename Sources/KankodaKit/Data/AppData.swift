@@ -9,9 +9,7 @@
 import Foundation
 import UniformTypeIdentifiers
 
-/**
- This protocol can be implemented by app-specific data types.
- */
+/// This protocol can be implemented by app data types.
 public protocol AppData: Codable {
     
     /// The name to use when exporting the data.

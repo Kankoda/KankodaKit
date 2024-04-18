@@ -8,10 +8,8 @@
 
 import Foundation
 
-/**
- This protocol can be implemented by types that can import a
- type that implements ``AppData``.
- */
+/// This protocol can be implemented by any type that can be
+/// used to import ``AppData`` types.
 public protocol AppDataImporter {
     
     func importData(from url: URL) async throws

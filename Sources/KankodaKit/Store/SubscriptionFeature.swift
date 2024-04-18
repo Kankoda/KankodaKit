@@ -8,14 +8,8 @@
 
 import Foundation
 
-/**
- This protocol can be implemented by any types that can be a
- subscription feature.
- 
- Use the static property to indicate that the entire type is
- a subscription feature, and the non-static one for parts of
- a type, e.g. enum cases.
- */
+/// This protocol can be implemented by any type that can be
+/// used as a subscription feature.
 public protocol SubscriptionFeature {
     
     /// Whether or not this type is a premium feature.

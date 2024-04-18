@@ -8,9 +8,7 @@
 
 import Foundation
 
-/**
- This enum represents the faces of a physical app items.
- */
+/// This enum represents the faces of a physical item.
 public enum ItemFace: String, CaseIterable, Identifiable {
 
     case front, back

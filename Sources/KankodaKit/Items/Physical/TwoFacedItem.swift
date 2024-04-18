@@ -9,9 +9,7 @@
 import Foundation
 import SwiftUIKit
 
-/**
- This protocol represents a physical item with a single face.
- */
+/// This protocol represents an item with two faces.
 public protocol TwoFacedItem: Identifiable, ImageItem where ID == UUID {
 
     /// The items's front image data.

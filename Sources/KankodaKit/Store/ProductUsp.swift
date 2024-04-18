@@ -8,10 +8,8 @@
 
 import Foundation
 
-/**
- This struct describes a product USP, which is way to market
- why a user should purchase or subscribe to the product.
- */
+/// This struct describes a product USP, which is the way to
+/// market why a user should purchase a product.
 public struct ProductUsp {
     
     public init(

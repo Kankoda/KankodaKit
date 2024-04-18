@@ -8,9 +8,7 @@
 
 import Foundation
 
-/**
- This class can be used to configure the package.
- */
+/// This class can be used to configure the package.
 public class PackageInfo {
     
     /// The prefix to apply before app storage keys.

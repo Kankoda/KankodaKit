@@ -9,10 +9,8 @@
 import SwiftUI
 import SwiftUIKit
 
-/**
- This protocol can be implemented by types that can export a
- type that implements ``AppData``.
- */
+/// This protocol can be implemented by any type that can be
+/// used to export a ``AppData`` types.
 public protocol AppDataExporter {
     
     func generateExportFile<DataType: AppData>(

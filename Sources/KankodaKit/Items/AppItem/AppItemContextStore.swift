@@ -8,26 +8,21 @@
 
 import Foundation
 
-/**
- This store keeps a context in sync when it adds and removes
- items from a base store, e.g. a database-based one.
-
- Note that this store reads the entire store from start then
- syncs it with the context. Although it is done async, it is
- not recommended for a large amount of items.
- */
+/// This store will keep a context in sync with a base store.
+///
+/// Note that the store reads the entire store at start then
+/// syncs it with the context. Although it is done async, it
+/// is not recommended for a large amount of data.
 open class AppItemContextStore<
     Item: AppItem,
     BaseStore: AppItemStore,
     Context: AppItemContext>: AppItemStore where BaseStore.Item == Item, Context.Item == Item {
 
-    /**
-     Create a contextual store instance.
-
-     - Parameters:
-       - baseStore: The base store to use for storage.
-       - context: The context to keep in sync.
-     */
+    /// Create a contextual store instance.
+    ///
+    /// - Parameters:
+    ///   - baseStore: The base store to use for storage.
+    ///   - context: The context to keep in sync.
     public init(
         baseStore: BaseStore,
         context: Context

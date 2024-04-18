@@ -8,9 +8,7 @@
 
 import Foundation
 
-/**
- This protocol can be implemented by named data types.
- */
+/// This protocol can be implemented by any named type.
 public protocol Named {
 
     /// The item name.

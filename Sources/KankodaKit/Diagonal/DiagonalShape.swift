@@ -1,5 +1,5 @@
 //
-//  Diagonal+Shape.swift
+//  DiagonalShape.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-08-28.
@@ -8,9 +8,7 @@
 
 import SwiftUI
 
-/**
- This shape draws a diagonal with a transparent header.
- */
+/// This shape draws a diagonal with a transparent header.
 public struct DiagonalShape: Shape {
     
     public init(

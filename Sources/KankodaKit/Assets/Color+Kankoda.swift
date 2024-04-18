@@ -27,7 +27,6 @@ public extension Color {
         }
     }
     
-    
     return List {
         preview(.diagonalBackground, name: ".diagonalBackground")
         preview(.diagonalForeground, name: ".diagonalForeground")

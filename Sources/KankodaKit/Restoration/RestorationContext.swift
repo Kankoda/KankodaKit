@@ -8,17 +8,13 @@
 
 import SwiftUI
 
-/**
- This class can be used to restore the last "something" like
- an app screen or something like that.
- 
- To use the class, just provide it with a list of restorable
- values, then call ``tryUpdateItem(_:)`` with values of this
- type. If the item is in the original list, it will be saved
- for later and can be restored with ``tryRestoreItem()``.
- 
- For now, because of `AppStorage` the `ID` must be a `String`.
- */
+/// This class can be used to restore something, like an app
+/// screen or something like that.
+///
+/// To use the class, just pass in a list of restorable item
+/// values, then call ``tryUpdateItem(_:)``. If that item is
+/// in the original list, it will be saved for later and can
+/// be restored with ``tryRestoreItem()``.
 public class RestorationContext<Item: Identifiable & Equatable>: ObservableObject where Item.ID == String {
     
     public init(restorableItems items: [Item]) {

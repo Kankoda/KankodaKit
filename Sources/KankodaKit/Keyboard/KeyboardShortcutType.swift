@@ -9,11 +9,9 @@
 #if os(macOS) || os(iOS)
 import SwiftUI
 
-/**
- This enum defined common keyboard shortcuts.
- 
- You can apply it to any view using `.keyboardShortcut(...)`.
- */
+/// This enum defined common keyboard shortcuts.
+///
+/// You can apply it to any view with `.keyboardShortcut(...)`.
 public enum KeyboardShortcutType: String {
     
     /// Represents `cmd+a`.

@@ -8,9 +8,7 @@
 
 import Foundation
 
-/**
- This protocol can be implemented by sortable data types.
- */
+/// This protocol can be implemented by any sortable type.
 public protocol Sortable {
 
     /// The sortable value's sort order.

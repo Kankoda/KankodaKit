@@ -10,9 +10,7 @@
 import OnboardingKit
 import SwiftUI
 
-/**
- This view renders screen content for Kankoda app tutorials.
- */
+/// This view renders screen content for a Kankoda tutorial.
 public struct TutorialScreenContent: View {
     
     public init(

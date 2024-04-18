@@ -13,14 +13,12 @@ import SwiftUI
 
 public extension View {
     
-    /**
-     Apply this view modifier to your root view to perform a
-     standard Kankoda launch onboarding.
-     
-     This will present an initial welcome tutorial, then ask
-     for an App Store review and show a premium upsell after
-     a user has interacted with the app in a significant way.
-     */
+    /// Apply this modifier to your root view to perform the
+    /// standard Kankoda launch onboarding.
+    ///
+    /// This will show an initial welcome tutorial, then ask
+    /// for a review, then show a premium upsell screen when
+    /// the user has interacted with the app "enough".
     @MainActor
     func appLaunchOnboarding(
         userIsReadyToReview: Bool,

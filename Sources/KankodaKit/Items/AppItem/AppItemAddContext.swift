@@ -8,10 +8,8 @@
 
 import Foundation
 
-/**
- This protocol can be implemented by any context that can be
- used when adding a new item.
- */
+/// This protocol can be implemented by any context that can
+/// be used to add a new item.
 public protocol AppItemAddContext: ObservableObject {
 
     associatedtype Item: AppItem

@@ -9,21 +9,16 @@
 #if os(iOS)
 import SwiftUI
 
-/**
- This is a standard story slideshow slide with a title, text,
- image and an optional primary button.
- */
+/// This is a standard story slideshow slide view.
 public struct StorySlide: View {
     
-    /**
-     Create a story slideshow slide view.
-     
-     - Parameters:
-       - title: The slide title.
-       - text: The slide text.
-       - image: The background image of the slide.
-       - style: The style to use, by default `.standard`.
-     **/
+    /// Create a story slideshow slide view.
+    ///
+    /// - Parameters:
+    ///   - title: The slide title.
+    ///   - text: The slide text.
+    ///   - image: The background image of the slide.
+    ///   - style: The style to use, by default `.standard`.
     public init(
         title: String,
         text: String,
@@ -80,15 +75,13 @@ private extension StorySlide {
  */
 public struct StorySlideStyle {
 
-    /**
-     Create a story slide style.
-
-     - Parameters:
-       - titleFont: The font to use for the slide title, by default `.title`.
-       - textFont: The font to use for the slide text, by default `.body`.
-       - imageScaleFactor: The scale factor to apply to the image, by default `1`.
-       - imageAlignment: The alignment apply to the image, by default `.bottom`.
-     */
+    /// Create a story slide style.
+    ///
+    /// - Parameters:
+    ///   - titleFont: The font to use for the slide title, by default `.title`.
+    ///   - textFont: The font to use for the slide text, by default `.body`.
+    ///   - imageScaleFactor: The scale factor to apply to the image, by default `1`.
+    ///   - imageAlignment: The alignment apply to the image, by default `.bottom`.
     public init(
         titleFont: Font = .title,
         textFont: Font = .body,

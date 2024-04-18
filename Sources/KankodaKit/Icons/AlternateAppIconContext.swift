@@ -10,9 +10,7 @@
 import Foundation
 import SwiftUI
 
-/**
- This class can be used to get and set an alternate app icon.
- */
+/// This class can be used to handle alternate app icons.
 public class AlternateAppIconContext: ObservableObject {
     
     public init() {

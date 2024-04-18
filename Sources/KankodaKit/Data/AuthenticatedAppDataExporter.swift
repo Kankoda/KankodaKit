@@ -10,19 +10,15 @@
 import Foundation
 import LocalAuthentication
 
-/**
- This exporter performs local authentication before it calls
- the provided `baseExporter` to perform the exporting.
- */
+/// This exporter performs local authentication before using
+/// the provided `baseExporter` to perform an export.
 public class AuthenticatedAppDataExporter: AppDataExporter {
     
-    /**
-     Create an authenticated exporter.
-     
-     - Parameters:
-     - baseExporter: The base exporter to use.
-     - authReason: The authentication reason to display to the user.
-     */
+    /// Create an authenticated exporter.
+    /// 
+    /// - Parameters:
+    ///   - baseExporter: The base exporter to use.
+    ///   - authReason: The authentication reason to display to the user.
     public init(
         baseExporter: any AppDataExporter,
         authPolicy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics,

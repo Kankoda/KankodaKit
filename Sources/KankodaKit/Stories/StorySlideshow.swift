@@ -10,22 +10,18 @@
 import Combine
 import SwiftUI
 
-/**
- This slideshow automatically swipes through a set of slides.
- */
+/// This slideshow slides through a set of slide views.
 public struct StorySlideshow<StorySlide, BackgroundView: View, ButtonView: View, SlideView: View>: View {
     
-    /**
-     Create a story slideshow.
-     
-     - Parameters:
-       - slides: The slides to present.
-       - config: The configuration to use, by default `.standard`.
-       - style: The style to use, by default `.standard`.
-       - onStoryCompleted: The action to trigger once the story completes.
-       - background: The background to render for a certain slide.
-       - button: The bottommost button to render for a certain slide.
-     */
+    /// Create a story slideshow.
+    ///
+    /// - Parameters:
+    ///   - slides: The slides to present.
+    ///   - config: The configuration to use, by default `.standard`.
+    ///   - style: The style to use, by default `.standard`.
+    ///   - onStoryCompleted: The action to trigger once the story completes.
+    ///   - background: The background to render for a certain slide.
+    ///   - button: The bottommost button to render for a certain slide.
     public init(
         slides: [StorySlide],
         config: StorySlideshowConfiguration = .standard,
@@ -235,16 +231,14 @@ private extension StorySlideshow {
  */
 public struct StorySlideshowConfiguration {
     
-    /**
-     Create a slideshow configuration.
-     
-     - Parameters:
-       - isAnimated: Whether or not the slideshow should animates the slide, by default `true`.
-       - slideDuration: The duration of each slide, by default `5`.
-       - timeTickIncrement: The duration of each tick, by default `0.05`.
-       - nextAccessibilityLabel: The accessibility label for the next button overlay, by default "Next".
-       - previousAccessibilityLabel: The accessibility label for the previous button overlay, by default "Previous".
-     */
+    /// Create a slideshow configuration.
+    ///
+    /// - Parameters:
+    ///   - isAnimated: Whether or not the slideshow should animates the slide, by default `true`.
+    ///   - slideDuration: The duration of each slide, by default `5`.
+    ///   - timeTickIncrement: The duration of each tick, by default `0.05`.
+    ///   - nextAccessibilityLabel: The accessibility label for the next button overlay, by default "Next".
+    ///   - previousAccessibilityLabel: The accessibility label for the previous button overlay, by default "Previous".
     public init(
         isAnimated: Bool = true,
         slideDuration: TimeInterval = 5,
@@ -289,14 +283,12 @@ public extension StorySlideshowConfiguration {
  */
 public struct StorySlideshowStyle {
 
-    /**
-     Create a story slideshow style.
-
-     - Parameters:
-       - progressBarBackgroundColor: The color to use below the progress bar, by default `.primary`.
-       - progressBarForegroundColor: The color to use for the progress bar, by default `.primary` with opacity.
-       - progressBarHeight: The height of the progress bar, by default `3.0`.
-     */
+    /// Create a story slideshow style.
+    ///
+    /// - Parameters:
+    ///   - progressBarBackgroundColor: The color to use below the progress bar, by default `.primary`.
+    ///   - progressBarForegroundColor: The color to use for the progress bar, by default `.primary` with opacity.
+    ///   - progressBarHeight: The height of the progress bar, by default `3.0`.
     public init(
         progressBarBackgroundColor: Color = .primary.opacity(0.2),
         progressBarForegroundColor: Color = .primary,

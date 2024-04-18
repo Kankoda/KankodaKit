@@ -9,7 +9,7 @@
 import SwiftUI
 import SwiftUIKit
 
-/// This is a standard add label with a custom title text.
+/// This is a standard add label with a custom text.
 public struct AddLabel: View {
     
     public init(
@@ -23,9 +23,7 @@ public struct AddLabel: View {
     public var body: some View {
         Label(
             title: { Text(title) },
-            icon: {
-                Image.plus
-            }
+            icon: { Image.plus }
         )
     }
 }

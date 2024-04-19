@@ -52,6 +52,27 @@ public struct AppOnboarding {
     public let onboarding: Onboarding
 }
 
+extension AppOnboarding {
+ 
+    static let premium = Self(
+        DelayedOnboarding(
+            id: "premium",
+            requiredPresentationAttempts: 3
+        )
+    )
+
+    static let requestReview = Self(
+        DelayedOnboarding(
+            id: "requestReview",
+            requiredPresentationAttempts: 2
+        )
+    )
+
+    static let welcome = Self(
+        Onboarding(id: "welcome")
+    )
+}
+
 public extension View {
 
     /// Present an app onboarding with an optional delay.

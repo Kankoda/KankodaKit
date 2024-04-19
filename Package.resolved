@@ -1,0 +1,59 @@
+{
+  "pins" : [
+    {
+      "identity" : "badgeicon",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/BadgeIcon.git",
+      "state" : {
+        "revision" : "39c9a17f3edf0bdd6230c05b9e72451f50ad71aa",
+        "version" : "0.4.0"
+      }
+    },
+    {
+      "identity" : "confettiswiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/simibac/ConfettiSwiftUI",
+      "state" : {
+        "revision" : "f45961f97bbae6fff6e2e64546fea0189425ad92",
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "onboardingkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/OnboardingKit.git",
+      "state" : {
+        "revision" : "0cfc46b130ea8a18cbc64a4e11f1dd419ff215a7",
+        "version" : "6.3.1"
+      }
+    },
+    {
+      "identity" : "storekitplus",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/StoreKitPlus.git",
+      "state" : {
+        "revision" : "58a61065c3f4c66a7f8dcc5aaa70a884d4026ea7",
+        "version" : "0.3.0"
+      }
+    },
+    {
+      "identity" : "swiftuikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/SwiftUIKit.git",
+      "state" : {
+        "revision" : "fa6fbf643d7bea11f69d45ab4115865f7a056d0b",
+        "version" : "4.2.0"
+      }
+    },
+    {
+      "identity" : "systemnotification",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/SystemNotification",
+      "state" : {
+        "revision" : "f1b33de2a379230bcfc0ec8cab88d011dae043d4",
+        "version" : "0.8.0"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -6,6 +6,9 @@
 - This version removes old subscription types.
 - This version adds new controls, list items and label styles.
 
+- `.appLaunchOnboarding` has been renamed to `.appOnboarding`.
+- `SubscriptionScreen` is a new screen with diagonal content.
+
 
 ## 0.6
 

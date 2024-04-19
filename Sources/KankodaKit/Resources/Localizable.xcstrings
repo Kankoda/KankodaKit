@@ -145,6 +145,18 @@
         }
       }
     },
+    "SubscriptionView.BarTitle" : {
+
+    },
+    "SubscriptionView.CloseTitle" : {
+
+    },
+    "SubscriptionView.Text" : {
+
+    },
+    "SubscriptionView.Title" : {
+
+    },
     "Tutorial.Done" : {
       "localizations" : {
         "en" : {

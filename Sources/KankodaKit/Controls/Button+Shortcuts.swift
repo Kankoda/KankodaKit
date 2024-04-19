@@ -13,7 +13,7 @@ public func Button(
     _ icon: Image,
     action: @escaping () -> Void
 ) -> some View {
-    Button(action: action) {
+    Button(action: action) {
         Label(
             title: { Text(text) },
             icon: { icon }

@@ -12,78 +12,107 @@ import StoreKit
 import StoreKitPlus
 import SwiftUI
 
+/// This view shows a subscription store view configured for
+/// the provided app information.
+///
+/// This view can be used standalone if the app does not fit
+/// the subscription screen template.
 public struct SubscriptionView: View {
     
     public init(
-        icon: Image,
-        title: LocalizedStringKey,
-        text: LocalizedStringKey,
-        confettiEmojis: String,
-        appInfo: AppInfo,
-        storeService: StoreService
+        config: SubscriptionView.Configuration,
+        topPadding: Double = 0
     ) {
-        self.icon = icon
-        self.title = title
-        self.text = text
-        self.confettiEmojis = confettiEmojis
-        self.appInfo = appInfo
-        self.storeService = storeService
+        self.config = config
+        self.topPadding = topPadding
     }
     
-    private let icon: Image
-    private let title: LocalizedStringKey
-    private let text: LocalizedStringKey
-    private let confettiEmojis: String
-    private let appInfo: AppInfo
-    private let storeService: StoreService
+    private let config: SubscriptionView.Configuration
+    private let topPadding: Double
+    
+    private let iconSize = 100.0
     
     @State
     private var confettiTrigger = 0
     
     public var body: some View {
         ScrollView {
-            SubscriptionStoreView(groupID: appInfo.subscriptionGroupId) {
+            SubscriptionStoreView(
+                groupID: config.appInfo.subscriptionGroupId
+            ) {
                 VStack(spacing: 15) {
                     iconView
-                    Text(title)
-                        .font(.title2)
-                        .bold()
-                    Text(text)
+                    Text(config.title)
+                        .font(.title)
+                    Text(config.text)
                 }
-                .padding()
+                .padding(.horizontal)
+                .padding(.top, topPadding)
+                .multilineTextAlignment(.center)
                 .withPurchaseConfetti(
                     $confettiTrigger,
-                    emojis: confettiEmojis
+                    emojis: config.confettiEmojis
                 )
             }
             .background(Color.clear)
         }
-        .navigationTitle(title)
         .onInAppPurchaseCompletion(perform: handleSubscription)
         .storeButton(.hidden, for: .cancellation)
         #if os(iOS)
         .storeButton(.visible, for: .redeemCode)
         #endif
         .storeButton(.visible, for: .restorePurchases)
-        .subscriptionStorePolicyDestination(url: appInfo.urls.privacyPolicy!, for: .privacyPolicy)
-        .subscriptionStorePolicyDestination(url: appInfo.urls.termsAndConditions!, for: .termsOfService)
+        .subscriptionStorePolicyDestination(url: config.appInfo.urls.privacyPolicy!, for: .privacyPolicy)
+        .subscriptionStorePolicyDestination(url: config.appInfo.urls.termsAndConditions!, for: .termsOfService)
+    }
+}
+
+public extension SubscriptionView {
+    
+    /// This scruct can configure the ``SubscriptionView``.
+    struct Configuration {
+        
+        public init(
+            appInfo: AppInfo,
+            icon: Image,
+            title: LocalizedStringKey,
+            text: LocalizedStringKey,
+            modalBarTitle: LocalizedStringKey,
+            modalCloseTitle: LocalizedStringKey,
+            confettiEmojis: String = "👑",
+            storeContext: StoreContext,
+            storeService: any StoreService
+        ) {
+            self.appInfo = appInfo
+            self.icon = icon
+            self.title = title
+            self.text = text
+            self.modalBarTitle = modalBarTitle
+            self.modalCloseTitle = modalCloseTitle
+            self.confettiEmojis = confettiEmojis
+            self.storeContext = storeContext
+            self.storeService = storeService
+        }
+        
+        public let appInfo: AppInfo
+        public let icon: Image
+        public let title: LocalizedStringKey
+        public let text: LocalizedStringKey
+        public let modalBarTitle: LocalizedStringKey
+        public let modalCloseTitle: LocalizedStringKey
+        public let confettiEmojis: String
+        public let storeContext: StoreContext
+        public let storeService: any StoreService
     }
 }
 
 private extension SubscriptionView {
     
     var iconView: some View {
-        icon.resizable()
+        config.icon.resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(maxWidth: iconMaxWidth)
-    }
-    
-    var iconMaxWidth: Double {
-        #if os(macOS)
-        150
-        #else
-        250
-        #endif
+            .frame(width: iconSize, height: iconSize)
+            .clipShape(.rect(cornerRadius: iconSize * (10/57)))
     }
     
     func handleSubscription(
@@ -93,7 +122,7 @@ private extension SubscriptionView {
         confettiTrigger += 1
         Task {
             do {
-                try await storeService.syncStoreData()
+                try await config.storeService.syncStoreData()
             } catch {
                 print(error)
             }
@@ -105,9 +134,40 @@ private extension Product.PurchaseResult {
 
     var isSuccess: Bool {
         switch self {
-        case .success: return true
-        default: return false
+        case .success: true
+        default: false
         }
     }
+}
+
+class PreviewService: StoreService {
+    
+    func getProducts() async throws -> [Product] {
+        []
+    }
+    
+    func purchase(
+        _ product: Product
+    ) async throws -> Product.PurchaseResult {
+        .pending
+    }
+    
+    func restorePurchases() async throws {}
+    func syncStoreData() async throws {}
+}
+
+#Preview {
+    SubscriptionView(
+        config: .init(
+            appInfo: .preview,
+            icon: .appStore,
+            title: "SubscriptionView.Title",
+            text: "SubscriptionView.Text",
+            modalBarTitle: "SubscriptionView.BarTitle",
+            modalCloseTitle: "SubscriptionView.CloseTitle",
+            storeContext: .init(),
+            storeService: PreviewService()
+        )
+    )
 }
 #endif

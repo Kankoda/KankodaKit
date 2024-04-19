@@ -13,20 +13,22 @@ import SwiftUI
 
 public extension View {
     
-    /// Apply this modifier to your root view to perform the
-    /// standard Kankoda launch onboarding.
+    /// This modifier makes the view performs a standard app
+    /// onboarding when it launches.
     ///
     /// This will show an initial welcome tutorial, then ask
     /// for a review, then show a premium upsell screen when
     /// the user has interacted with the app "enough".
     @MainActor
-    func appLaunchOnboarding(
+    func appOnboarding(
+        reset: Bool = false,
         userIsReadyToReview: Bool,
         presentWelcomeScreen: @escaping () -> Void,
         presentPremiumScreen: @escaping () -> Void
     ) -> some View {
         self.modifier(
-            LaunchOnboardingModifier(
+            AppOnboardingModifier(
+                reset: reset,
                 userIsReadyToReview: userIsReadyToReview,
                 tryPresentWelcomeScreen: {
                     tryPresentOnboarding(.welcome, presentation: presentWelcomeScreen)
@@ -42,9 +44,12 @@ public extension View {
     }
 }
 
-private struct LaunchOnboardingModifier: ViewModifier {
+/// This modifier can be used to show a series of onboarding
+/// steps when the app launches.
+public struct AppOnboardingModifier: ViewModifier {
     
-    init(
+    public init(
+        reset: Bool = false,
         userIsReadyToReview: Bool,
         tryPresentWelcomeScreen: @escaping () -> Void,
         tryPresentReviewPrompt: @escaping (RequestReviewAction) -> Void,
@@ -54,6 +59,7 @@ private struct LaunchOnboardingModifier: ViewModifier {
         self.tryPresentWelcomeScreen = tryPresentWelcomeScreen
         self.tryPresentReviewPrompt = tryPresentReviewPrompt
         self.tryPresentPremiumScreen = tryPresentPremiumScreen
+        if reset { resetAppOnboarding() }
     }
         
     private let userIsReadyToReview: Bool
@@ -64,36 +70,24 @@ private struct LaunchOnboardingModifier: ViewModifier {
     @Environment(\.requestReview)
     private var requestReview
     
-    func body(content: Content) -> some View {
-        content.onAppear(perform: tryPerformOnboarding)
+    public func body(content: Content) -> some View {
+        content.task {
+            tryPresentWelcomeScreen()
+            guard userIsReadyToReview else { return }
+            tryPresentReviewPrompt(requestReview)
+            tryPresentPremiumScreen()
+        }
     }
     
-    func tryPerformOnboarding() {
-        tryPresentWelcomeScreen()
-        guard userIsReadyToReview else { return }
-        tryPresentReviewPrompt(requestReview)
-        tryPresentPremiumScreen()
+    private func resetAppOnboarding() {
+        let onboardings = [
+            AppOnboarding.welcome,
+            AppOnboarding.requestReview,
+            AppOnboarding.premium
+        ]
+        onboardings.forEach {
+            $0.onboarding.reset()
+        }
     }
-}
-
-private extension AppOnboarding {
- 
-    static let premium = Self(
-        DelayedOnboarding(
-            id: "premium",
-            requiredPresentationAttempts: 3
-        )
-    )
-
-    static let requestReview = Self(
-        DelayedOnboarding(
-            id: "requestReview",
-            requiredPresentationAttempts: 2
-        )
-    )
-
-    static let welcome = Self(
-        Onboarding(id: "welcome")
-    )
 }
 #endif

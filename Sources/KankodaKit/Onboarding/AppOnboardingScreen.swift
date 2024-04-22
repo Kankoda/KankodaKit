@@ -48,12 +48,14 @@ public struct AppOnboardingScreen<Page: OnboardingPage>: View {
                 page.image
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: 320)
+                    .frame(width: 280)
                     .scaleEffect(info.isCurrentPage ? 1 : 0.9)
                 VStack(spacing: 20) {
                     Text(page.title)
                         .font(.title)
+                        .forceMultiline()
                     Text(page.text)
+                        .forceMultiline()
                 }
                 Spacer()
                 button.padding(.bottom, 40)

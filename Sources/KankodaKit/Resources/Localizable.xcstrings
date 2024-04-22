@@ -47,10 +47,19 @@
         }
       }
     },
+    "Go Premium" : {
+
+    },
     "HEJ" : {
 
     },
     "Label" : {
+
+    },
+    "Later" : {
+
+    },
+    "Like this?" : {
 
     },
     "Preview.Semantic" : {
@@ -144,6 +153,9 @@
           }
         }
       }
+    },
+    "Subscribe to unlock all features" : {
+
     },
     "SubscriptionView.BarTitle" : {
 

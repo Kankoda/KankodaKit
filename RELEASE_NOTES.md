@@ -3,7 +3,10 @@
 
 ## 0.7
 
+- This version updates `OnboardingKit` to 7.0.2.
+
 - This version removes old subscription types.
+- This version removes the custom onboarding type.
 - This version adds new controls, list items and label styles.
 
 - `.appLaunchOnboarding` has been renamed to `.appOnboarding`.

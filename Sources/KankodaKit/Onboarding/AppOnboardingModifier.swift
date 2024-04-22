@@ -13,25 +13,29 @@ import SwiftUI
 
 public extension View {
     
-    /// This modifier makes the view performs a standard app
-    /// onboarding when it launches.
+    /// This view modifier performs the standard Kankoda app
+    /// launch onboarding flow, whenever needed.
     ///
-    /// This will show an initial welcome tutorial, then ask
-    /// for a review, then show a premium upsell screen when
-    /// the user has interacted with the app "enough".
+    /// Using this modifier ensures that all apps behave the
+    /// same way, so that tweaking the flow affects all apps.
+    ///
+    /// This will present an initial welcome onboarding when
+    /// the app is launched for the first time, then ask the
+    /// user for a review and show a premium screen when the
+    /// user has interacted with the app "enough".
     @MainActor
     func appOnboarding(
         reset: Bool = false,
         userIsReadyToReview: Bool,
-        presentWelcomeScreen: @escaping () -> Void,
+        presentWelcomeOnboarding: @escaping () -> Void,
         presentPremiumScreen: @escaping () -> Void
     ) -> some View {
         self.modifier(
             AppOnboardingModifier(
                 reset: reset,
                 userIsReadyToReview: userIsReadyToReview,
-                tryPresentWelcomeScreen: {
-                    tryPresentOnboarding(.welcome, presentation: presentWelcomeScreen)
+                tryPresentWelcomeOnboarding: {
+                    tryPresentOnboarding(.welcome, presentation: presentWelcomeOnboarding)
                 },
                 tryPresentReviewPrompt: { action in
                     tryPresentOnboarding(.requestReview) { action() }
@@ -51,19 +55,19 @@ public struct AppOnboardingModifier: ViewModifier {
     public init(
         reset: Bool = false,
         userIsReadyToReview: Bool,
-        tryPresentWelcomeScreen: @escaping () -> Void,
+        tryPresentWelcomeOnboarding: @escaping () -> Void,
         tryPresentReviewPrompt: @escaping (RequestReviewAction) -> Void,
         tryPresentPremiumScreen: @escaping () -> Void
     ) {
         self.userIsReadyToReview = userIsReadyToReview
-        self.tryPresentWelcomeScreen = tryPresentWelcomeScreen
+        self.tryPresentWelcomeOnboarding = tryPresentWelcomeOnboarding
         self.tryPresentReviewPrompt = tryPresentReviewPrompt
         self.tryPresentPremiumScreen = tryPresentPremiumScreen
         if reset { resetAppOnboarding() }
     }
         
     private let userIsReadyToReview: Bool
-    private let tryPresentWelcomeScreen: () -> Void
+    private let tryPresentWelcomeOnboarding: () -> Void
     private let tryPresentReviewPrompt: (RequestReviewAction) -> Void
     private let tryPresentPremiumScreen: () -> Void
     
@@ -72,7 +76,7 @@ public struct AppOnboardingModifier: ViewModifier {
     
     public func body(content: Content) -> some View {
         content.task {
-            tryPresentWelcomeScreen()
+            tryPresentWelcomeOnboarding()
             guard userIsReadyToReview else { return }
             tryPresentReviewPrompt(requestReview)
             tryPresentPremiumScreen()
@@ -81,12 +85,12 @@ public struct AppOnboardingModifier: ViewModifier {
     
     private func resetAppOnboarding() {
         let onboardings = [
-            AppOnboarding.welcome,
-            AppOnboarding.requestReview,
-            AppOnboarding.premium
+            Onboarding.welcome,
+            Onboarding.requestReview,
+            Onboarding.premium
         ]
         onboardings.forEach {
-            $0.onboarding.reset()
+            $0.reset()
         }
     }
 }

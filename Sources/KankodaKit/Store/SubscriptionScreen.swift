@@ -61,17 +61,17 @@ public struct SubscriptionScreen: View {
 public struct SubscriptionScreenModal: View {
     
     public init(
-        info: SubscriptionView.Configuration
+        config: SubscriptionView.Configuration
     ) {
-        self.info = info
+        self.config = config
     }
     
-    private let info: SubscriptionView.Configuration
+    private let config: SubscriptionView.Configuration
     
     public var body: some View {
         NavigationStack {
             SubscriptionScreen(
-                config: info,
+                config: config,
                 navigationTitle: true,
                 closeButton: true,
                 topPadding: 30
@@ -103,7 +103,7 @@ private extension Product.PurchaseResult {
 #Preview {
     
     SubscriptionScreenModal(
-        info: .init(
+        config: .init(
             appInfo: .preview,
             icon: .bookmark,
             title: "Go Premium",

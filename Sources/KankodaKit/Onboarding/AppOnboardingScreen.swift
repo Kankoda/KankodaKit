@@ -1,5 +1,5 @@
 //
-//  AppOnboarding.swift
+//  AppOnboardingScreen.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-08-25.
@@ -12,7 +12,7 @@ import SwiftUI
 
 /// This protocol can be implemented by any type that can be
 /// used in an app onboarding.
-public protocol AppOnboardingPage {
+public protocol OnboardingPage {
     
     var title: String { get }
     var text: String { get }
@@ -20,7 +20,7 @@ public protocol AppOnboardingPage {
 }
 
 /// This view render an Kankoda onboarding.
-public struct AppOnboarding<Page: AppOnboardingPage>: View {
+public struct AppOnboardingScreen<Page: OnboardingPage>: View {
     
     public init(
         _ pages: [Page],
@@ -43,37 +43,46 @@ public struct AppOnboarding<Page: AppOnboardingPage>: View {
             pages: pages,
             pageIndex: $pageIndex
         ) { page, info in
-            VStack(spacing: 25) {
+            VStack(spacing: 50) {
+                Spacer()
                 page.image
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: 320)
                     .scaleEffect(info.isCurrentPage ? 1 : 0.9)
-                Text(page.title)
-                    .font(.title)
-                Text(page.text)
-                
-                if !isLastPage {
-                    nextButton
-                } else {
-                    doneButton
+                VStack(spacing: 20) {
+                    Text(page.title)
+                        .font(.title)
+                    Text(page.text)
                 }
+                Spacer()
+                button.padding(.bottom, 40)
             }
             .padding()
             .multilineTextAlignment(.center)
             .frame(maxWidth: 500)
+            .frame(maxHeight: .infinity, alignment: .center)
         }
     }
 }
 
-private extension AppOnboarding {
+private extension AppOnboardingScreen {
     
     var isLastPage: Bool {
         pageIndex == pages.count - 1
     }
 }
 
-private extension AppOnboarding {
+private extension AppOnboardingScreen {
+    
+    @ViewBuilder
+    var button: some View {
+        if !isLastPage {
+            nextButton
+        } else {
+            doneButton
+        }
+    }
     
     var doneButton: some View {
         Button {
@@ -106,7 +115,7 @@ private extension View {
 }
 
 
-private enum TestType: Int, CaseIterable, AppOnboardingPage {
+private enum TestType: Int, CaseIterable, OnboardingPage {
     
     case page1 = 1, page2 = 2
     
@@ -122,7 +131,10 @@ private enum TestType: Int, CaseIterable, AppOnboardingPage {
         @State private var index = 0
         
         var body: some View {
-            AppOnboarding(TestType.allCases, pageIndex: $index)
+            AppOnboardingScreen(
+                TestType.allCases,
+                pageIndex: $index
+            )
         }
     }
     

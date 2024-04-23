@@ -18,12 +18,11 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/danielsaidi/BadgeIcon.git", .upToNextMajor(from: "0.3.0")),
+        .package(url: "https://github.com/danielsaidi/BadgeIcon.git", .upToNextMajor(from: "0.4.0")),
         .package(url: "https://github.com/simibac/ConfettiSwiftUI", .upToNextMajor(from: "1.1.0")),
         .package(url: "https://github.com/danielsaidi/OnboardingKit.git", .upToNextMajor(from: "7.0.2")),
         .package(url: "https://github.com/danielsaidi/StoreKitPlus.git", .upToNextMajor(from: "0.2.0")),
-        .package(url: "https://github.com/danielsaidi/SwiftUIKit.git", .upToNextMajor(from: "4.2.1")),
-        .package(url: "https://github.com/danielsaidi/SystemNotification", .upToNextMajor(from: "0.7.2")),
+        .package(url: "https://github.com/danielsaidi/SwiftUIKit.git", .upToNextMajor(from: "4.2.1"))
     ],
     targets: [
         .target(
@@ -33,8 +32,7 @@ let package = Package(
                 "ConfettiSwiftUI",
                 "OnboardingKit",
                 "SwiftUIKit",
-                "StoreKitPlus",
-                "SystemNotification"
+                "StoreKitPlus"
             ],
             resources: [.process("Resources")]
         ),

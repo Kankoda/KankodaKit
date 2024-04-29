@@ -24,6 +24,16 @@
         }
       }
     },
+    "Button.Delete" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
+      }
+    },
     "Button.Done" : {
       "localizations" : {
         "en" : {
@@ -45,6 +55,7 @@
       }
     },
     "Button.OK" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

@@ -12,7 +12,7 @@ import SwiftUI
 
 /// This protocol can be implemented by any type that can be
 /// used as an app onboarding page.
-public protocol AppOnboardingPage {
+public protocol AppOnboardingScreenPage {
     
     var title: String { get }
     var text: String { get }
@@ -20,7 +20,7 @@ public protocol AppOnboardingPage {
 }
 
 /// This screen can render a Kankoda onboarding.
-public struct AppOnboardingScreen<Page: AppOnboardingPage>: View {
+public struct AppOnboardingScreen<Page: AppOnboardingScreenPage>: View {
     
     public init(_ pages: [Page]) {
         self.pages = pages
@@ -66,9 +66,8 @@ public struct AppOnboardingScreen<Page: AppOnboardingPage>: View {
             }
         }
         .toolbar {
-            Button(action: dismiss.callAsFunction) {
-                Text("Button.Done", bundle: .module)
-            }
+            Button(.done, action: dismiss.callAsFunction)
+                .labelStyle(.titleOnly)
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
@@ -76,7 +75,7 @@ public struct AppOnboardingScreen<Page: AppOnboardingPage>: View {
 }
 
 /// This modal screen can render a Kankoda onboarding.
-public struct AppOnboardingScreenModal<Page: AppOnboardingPage>: View {
+public struct AppOnboardingScreenModal<Page: AppOnboardingScreenPage>: View {
     
     public init(_ pages: [Page]) {
         self.pages = pages
@@ -140,7 +139,7 @@ private extension View {
 }
 
 
-private enum TestType: Int, AppOnboardingPage, CaseIterable {
+private enum TestType: Int, AppOnboardingScreenPage, CaseIterable {
     
     case page1 = 1, page2 = 2
     
@@ -156,7 +155,7 @@ private enum TestType: Int, AppOnboardingPage, CaseIterable {
         @State private var index = 0
         
         var body: some View {
-            AppOnboardingScreen(
+            AppOnboardingScreenModal(
                 TestType.allCases
             )
         }

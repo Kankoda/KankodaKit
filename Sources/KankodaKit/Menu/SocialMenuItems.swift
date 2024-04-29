@@ -94,13 +94,8 @@ private extension SocialMenuItems {
 }
 
 #Preview {
-    
     List {
         Section {
-            Label(
-                title: { Text("Button.Add") },
-                icon: { BadgeIcon.email }
-            )
             SocialMenuItems(
                 appInfo: .preview,
                 icon: { $0 }

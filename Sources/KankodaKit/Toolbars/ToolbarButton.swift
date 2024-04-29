@@ -84,7 +84,7 @@ public extension ToolbarButton {
         ToolbarButton(
             icon: icon,
             title: title,
-            moduleTitle: "General.Add",
+            moduleTitle: "Button.Add",
             keyboardShortcut: .add,
             action: action
         )
@@ -99,7 +99,7 @@ public extension ToolbarButton {
         ToolbarButton(
             icon: icon,
             title: title,
-            moduleTitle: "General.Cancel",
+            moduleTitle: "Button.Cancel",
             keyboardShortcut: .cancel,
             action: action
         )
@@ -114,7 +114,7 @@ public extension ToolbarButton {
         ToolbarButton(
             icon: icon,
             title: title,
-            moduleTitle: "General.Done",
+            moduleTitle: "Button.Done",
             keyboardShortcut: .done,
             action: action
         )
@@ -129,7 +129,7 @@ public extension ToolbarButton {
         ToolbarButton(
             icon: icon,
             title: title,
-            moduleTitle: "General.Edit",
+            moduleTitle: "Button.Edit",
             keyboardShortcut: .edit,
             action: action
         )
@@ -141,19 +141,19 @@ public extension ToolbarButton {
     VStack(spacing: 5) {
         ToolbarButton.add {}
         ToolbarButton.add(icon: .bug) {}
-        ToolbarButton.add(icon: nil, title: "HEJ") {}
+        ToolbarButton.add(icon: nil, title: "Button.OK") {}
         Divider()
         ToolbarButton.cancel {}
         ToolbarButton.cancel(icon: .bug) {}
-        ToolbarButton.cancel(icon: nil, title: "HEJ") {}
+        ToolbarButton.cancel(icon: nil, title: "Button.OK") {}
         Divider()
         ToolbarButton.done {}
         ToolbarButton.done(icon: .bug) {}
-        ToolbarButton.done(icon: nil, title: "HEJ") {}
+        ToolbarButton.done(icon: nil, title: "Button.OK") {}
         Divider()
         ToolbarButton.edit {}
         ToolbarButton.edit(icon: .bug) {}
-        ToolbarButton.edit(icon: nil, title: "HEJ") {}
+        ToolbarButton.edit(icon: nil, title: "Button.OK") {}
     }
 }
 #endif

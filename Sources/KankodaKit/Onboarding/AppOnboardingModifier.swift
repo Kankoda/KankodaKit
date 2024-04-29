@@ -27,7 +27,7 @@ public extension View {
     func appOnboarding(
         reset: Bool = false,
         userIsReadyToReview: Bool,
-        presentWelcomeOnboarding: @escaping () -> Void,
+        presentOnboarding: @escaping () -> Void,
         presentPremiumScreen: @escaping () -> Void
     ) -> some View {
         self.modifier(
@@ -35,7 +35,7 @@ public extension View {
                 reset: reset,
                 userIsReadyToReview: userIsReadyToReview,
                 tryPresentWelcomeOnboarding: {
-                    tryPresentOnboarding(.welcome, presentation: presentWelcomeOnboarding)
+                    tryPresentOnboarding(.welcome, presentation: presentOnboarding)
                 },
                 tryPresentReviewPrompt: { action in
                     tryPresentOnboarding(.requestReview) { action() }

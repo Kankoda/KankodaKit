@@ -4,10 +4,7 @@
     "" : {
 
     },
-    "Add item" : {
-
-    },
-    "General.Add" : {
+    "Button.Add" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -17,7 +14,7 @@
         }
       }
     },
-    "General.Cancel" : {
+    "Button.Cancel" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -27,7 +24,7 @@
         }
       }
     },
-    "General.Done" : {
+    "Button.Done" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -37,7 +34,7 @@
         }
       }
     },
-    "General.Edit" : {
+    "Button.Edit" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -47,22 +44,29 @@
         }
       }
     },
-    "Go Premium" : {
-
-    },
-    "HEJ" : {
-
-    },
-    "Label" : {
-
-    },
-    "Later" : {
-
-    },
-    "Like this?" : {
-
+    "Button.OK" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
     },
     "Preview.Semantic" : {
+
+    },
+    "Preview.SubscriptionLater" : {
+
+    },
+    "Preview.SubscriptionModalTitle" : {
+
+    },
+    "Preview.SubscriptionText" : {
+
+    },
+    "Preview.SubscriptionTitle" : {
 
     },
     "Preview.Symbolic" : {
@@ -153,21 +157,6 @@
           }
         }
       }
-    },
-    "Subscribe to unlock all features" : {
-
-    },
-    "SubscriptionView.BarTitle" : {
-
-    },
-    "SubscriptionView.CloseTitle" : {
-
-    },
-    "SubscriptionView.Text" : {
-
-    },
-    "SubscriptionView.Title" : {
-
     },
     "Tutorial.Done" : {
       "localizations" : {

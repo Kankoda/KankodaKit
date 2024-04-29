@@ -161,10 +161,10 @@ class PreviewService: StoreService {
         config: .init(
             appInfo: .preview,
             icon: .appStore,
-            title: "SubscriptionView.Title",
-            text: "SubscriptionView.Text",
-            modalBarTitle: "SubscriptionView.BarTitle",
-            modalCloseTitle: "SubscriptionView.CloseTitle",
+            title: "Preview.SubscriptionTitle",
+            text: "Preview.SubscriptionText",
+            modalBarTitle: "Preview.SubscriptionModalTitle",
+            modalCloseTitle: "Preview.SubscriptionLater",
             storeContext: .init(),
             storeService: PreviewService()
         )

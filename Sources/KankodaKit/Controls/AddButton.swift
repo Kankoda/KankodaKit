@@ -9,31 +9,33 @@
 import SwiftUI
 import SwiftUIKit
 
-/// This is a standard add button with a custom text.
+/// This is a standard add button with a customizable text.
 public struct AddButton: View {
     
     public init(
-        _ title: LocalizedStringResource,
+        _ title: LocalizedStringKey? = nil,
+        bundle: Bundle? = nil,
         action: @escaping () -> Void
     ) {
         self.title = title
+        self.bundle = bundle
         self.action = action
     }
     
-    private let title: LocalizedStringResource
+    private let title: LocalizedStringKey?
+    private let bundle: Bundle?
     private let action: () -> Void
     
     public var body: some View {
         Button(action: action) {
-            AddLabel(title)
+            AddLabel(title, bundle: bundle)
         }
     }
 }
 
 #Preview {
     List {
-        AddButton("Add item") {
-            print("Tapped!")
-        }
+        AddButton() {}
+        AddButton("Button.OK", bundle: .module) {}
     }
 }

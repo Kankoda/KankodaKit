@@ -13,18 +13,21 @@ import SwiftUIKit
 public struct ListAddButton: View {
     
     public init(
-        _ title: LocalizedStringResource,
+        _ title: LocalizedStringKey? = nil,
+        bundle: Bundle? = nil,
         action: @escaping () -> Void
     ) {
         self.title = title
+        self.bundle = bundle
         self.action = action
     }
     
-    private let title: LocalizedStringResource
+    private let title: LocalizedStringKey?
+    private let bundle: Bundle?
     private let action: () -> Void
     
     public var body: some View {
-        AddButton(title, action: action)
+        AddButton(title, bundle: bundle, action: action)
             .symbolVariant(.circle.fill)
             .labelStyle(.iconTint(.accentColor))
     }
@@ -32,8 +35,7 @@ public struct ListAddButton: View {
 
 #Preview {
     List {
-        ListAddButton("Add item") {
-            print("Tapped!")
-        }
+        ListAddButton() {}
+        ListAddButton("Button.OK") {}
     }
 }

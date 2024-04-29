@@ -29,7 +29,7 @@ open class AppItemContextStore<
     ) {
         self.baseStore = baseStore
         self.context = context
-        Task(operation: initializeContext)
+        Task { try? await initializeContext() }
     }
 
     private let baseStore: BaseStore
@@ -66,7 +66,6 @@ open class AppItemContextStore<
 
 private extension AppItemContextStore {
 
-    @Sendable
     func initializeContext() async throws {
         let items = try await baseStore.getItems()
         await initializeContext(with: items)

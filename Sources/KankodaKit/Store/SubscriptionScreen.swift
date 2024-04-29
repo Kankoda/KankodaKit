@@ -106,10 +106,10 @@ private extension Product.PurchaseResult {
         config: .init(
             appInfo: .preview,
             icon: .bookmark,
-            title: "Go Premium",
-            text: "Subscribe to unlock all features",
-            modalBarTitle: "Like this?",
-            modalCloseTitle: "Later",
+            title: "Preview.SubscriptionTitle",
+            text: "Preview.SubscriptionText",
+            modalBarTitle: "Preview.SubscriptionModalTitle",
+            modalCloseTitle: "Preview.SubscriptionLater",
             storeContext: .init(),
             storeService: PreviewService()
         )

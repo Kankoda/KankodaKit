@@ -9,20 +9,23 @@
 import SwiftUI
 import SwiftUIKit
 
-/// This is a standard add label with a custom text.
+/// This is a standard add label with a customizable text.
 public struct AddLabel: View {
     
     public init(
-        _ title: LocalizedStringResource
+        _ title: LocalizedStringKey? = nil,
+        bundle: Bundle? = nil
     ) {
-        self.title = title
+        self.title = title ?? "Button.Add"
+        self.bundle = bundle ?? .module
     }
     
-    private let title: LocalizedStringResource
+    private let title: LocalizedStringKey
+    private let bundle: Bundle?
     
     public var body: some View {
         Label(
-            title: { Text(title) },
+            title: { Text(title, bundle: bundle) },
             icon: { Image.plus }
         )
     }
@@ -30,6 +33,7 @@ public struct AddLabel: View {
 
 #Preview {
     List {
-        AddLabel("Add item")
+        AddLabel()
+        AddLabel("Button.OK", bundle: .module)
     }
 }

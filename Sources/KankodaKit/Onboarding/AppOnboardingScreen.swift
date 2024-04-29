@@ -11,59 +11,82 @@ import OnboardingKit
 import SwiftUI
 
 /// This protocol can be implemented by any type that can be
-/// used in an app onboarding.
-public protocol OnboardingPage {
+/// used as an app onboarding page.
+public protocol AppOnboardingPage {
     
     var title: String { get }
     var text: String { get }
     var image: Image { get }
 }
 
-/// This view render an Kankoda onboarding.
-public struct AppOnboardingScreen<Page: OnboardingPage>: View {
+/// This screen can render a Kankoda onboarding.
+public struct AppOnboardingScreen<Page: AppOnboardingPage>: View {
     
-    public init(
-        _ pages: [Page],
-        pageIndex: Binding<Int>
-    ) {
+    public init(_ pages: [Page]) {
         self.pages = pages
-        self._pageIndex = pageIndex
     }
     
     private let pages: [Page]
     
-    @Binding
-    private var pageIndex: Int
+    @State
+    private var pageIndex = 0
     
     @Environment(\.dismiss)
     private var dismiss
     
     public var body: some View {
-        OnboardingPageView(
-            pages: pages,
-            pageIndex: $pageIndex
-        ) { page, info in
-            VStack(spacing: 50) {
-                Spacer()
-                page.image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 280)
-                    .scaleEffect(info.isCurrentPage ? 1 : 0.9)
-                VStack(spacing: 20) {
-                    Text(page.title)
-                        .font(.title)
-                        .forceMultiline()
-                    Text(page.text)
-                        .forceMultiline()
+        DiagonalContent(diagonalOffset: 225) {
+            OnboardingPageView(
+                pages: pages,
+                pageIndex: $pageIndex
+            ) { page, info in
+                VStack(spacing: 50) {
+                    Spacer()
+                    page.image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 280)
+                        .scaleEffect(pageIndex == info.pageIndex ? 1 : 0.8)
+                        .animation(.bouncy, value: pageIndex)
+                        
+                    VStack(spacing: 20) {
+                        Text(page.title)
+                            .font(.title)
+                            .forceMultiline()
+                        Text(page.text)
+                            .forceMultiline()
+                    }
+                    Spacer()
+                    button.padding(.bottom, 40)
                 }
-                Spacer()
-                button.padding(.bottom, 40)
+                .padding()
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: 500)
+                .frame(maxHeight: .infinity, alignment: .center)
             }
-            .padding()
-            .multilineTextAlignment(.center)
-            .frame(maxWidth: 500)
-            .frame(maxHeight: .infinity, alignment: .center)
+        }
+        .toolbar {
+            Button(action: dismiss.callAsFunction) {
+                Text("Button.Done", bundle: .module)
+            }
+        }
+        .navigationTitle("")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+/// This modal screen can render a Kankoda onboarding.
+public struct AppOnboardingScreenModal<Page: AppOnboardingPage>: View {
+    
+    public init(_ pages: [Page]) {
+        self.pages = pages
+    }
+    
+    private let pages: [Page]
+    
+    public var body: some View {
+        NavigationStack {
+            AppOnboardingScreen(pages)
         }
     }
 }
@@ -117,7 +140,7 @@ private extension View {
 }
 
 
-private enum TestType: Int, CaseIterable, OnboardingPage {
+private enum TestType: Int, AppOnboardingPage, CaseIterable {
     
     case page1 = 1, page2 = 2
     
@@ -134,8 +157,7 @@ private enum TestType: Int, CaseIterable, OnboardingPage {
         
         var body: some View {
             AppOnboardingScreen(
-                TestType.allCases,
-                pageIndex: $index
+                TestType.allCases
             )
         }
     }

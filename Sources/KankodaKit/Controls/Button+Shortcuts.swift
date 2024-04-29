@@ -9,13 +9,14 @@
 import SwiftUI
 
 public func Button(
-    _ text: LocalizedStringResource,
+    _ text: LocalizedStringKey,
     _ icon: Image,
+    _ bundle: Bundle? = nil,
     action: @escaping () -> Void
 ) -> some View {
     Button(action: action) {
         Label(
-            title: { Text(text) },
+            title: { Text(text, bundle: bundle ?? .module) },
             icon: { icon }
         )
     }
@@ -23,7 +24,7 @@ public func Button(
 
 #Preview {
     List {
-        Button("Add item", .symbol("plus")) {
+        Button("Button.Add", .symbol("plus")) {
             print("Tapped!")
         }
     }

@@ -98,7 +98,7 @@ private extension SocialMenuItems {
     List {
         Section {
             Label(
-                title: { Text("Label") },
+                title: { Text("Button.Add") },
                 icon: { BadgeIcon.email }
             )
             SocialMenuItems(

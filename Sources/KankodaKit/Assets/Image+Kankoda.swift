@@ -23,6 +23,8 @@ public extension Image {
     static let edit = symbol("square.and.pencil")
     static let email = symbol("envelope")
     static let exclamation = symbol("exclamationmark")
+    static let favoriteOn = symbol("star.circle")
+    static let favoriteOff = symbol("star.circle.fill")
     static let featureRequest = symbol("gift")
     static let feedback = symbol("lightbulb")
     static let globe = symbol("globe")

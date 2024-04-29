@@ -25,11 +25,18 @@ public func Button(
 }
 
 /// This enum defines standard button types.
-public enum StandardButtonType {
-    case add, cancel, edit, delete, done
+public enum StandardButtonType: String, CaseIterable, Identifiable {
+    case add, addFavorite, addToFavorites, 
+         cancel, call, copy,
+         delete, deselect, done, edit, email,
+         ok, paste, 
+         removeFavorite, removeFromFavorites, select,
+         share
 }
 
 public extension StandardButtonType {
+    
+    var id: String{ rawValue }
     
     var image: Image? {
         guard let imageName else { return nil }
@@ -39,30 +46,52 @@ public extension StandardButtonType {
     var imageName: String? {
         switch self {
         case .add: "plus"
+        case .addFavorite: "star.circle"
+        case .addToFavorites: "star.circle"
         case .cancel: "xmark"
-        case .edit: "pencil"
+        case .call: "phone"
+        case .copy: "doc.on.doc"
         case .delete: "trash"
+        case .deselect: "checkmark.circle.fill"
         case .done: "checkmark"
+        case .edit: "pencil"
+        case .email: "envelope"
+        case .ok: "checkmark"
+        case .paste: "clipboard"
+        case .removeFavorite: "star.circle.fill"
+        case .removeFromFavorites: "star.circle.fill"
+        case .select: "checkmark.circle"
+        case .share: "square.and.arrow.up"
         }
     }
     
     var role: ButtonRole? {
         switch self {
-        case .add: nil
         case .cancel: .cancel
-        case .edit: nil
         case .delete: .destructive
-        case .done: nil
+        default: nil
         }
     }
     
     var title: LocalizedStringKey {
         switch self {
         case .add: "Button.Add"
+        case .addFavorite: "Button.AddFavorite"
+        case .addToFavorites: "Button.AddToFavorites"
+        case .call: "Button.Call"
         case .cancel: "Button.Cancel"
+        case .copy: "Button.Copy"
+        case .deselect: "Button.Deselect"
         case .edit: "Button.Edit"
+        case .email: "Button.Email"
         case .delete: "Button.Delete"
         case .done: "Button.Done"
+        case .ok: "Button.OK"
+        case .paste: "Button.Paste"
+        case .removeFavorite: "Button.RemoveFavorite"
+        case .removeFromFavorites: "Button.RemoveFromFavorites"
+        case .select: "Button.Select"
+        case .share: "Button.Share"
         }
     }
 }
@@ -91,11 +120,9 @@ public extension Button {
     @ViewBuilder
     func buttons() -> some View {
         Section {
-            Button(.add) {}
-            Button(.cancel) {}
-            Button(.edit) {}
-            Button(.delete) {}
-            Button(.done) {}
+            ForEach(StandardButtonType.allCases) {
+                Button($0) {}
+            }
         }
     }
     

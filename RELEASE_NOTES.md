@@ -5,6 +5,7 @@
 
 - This version updates `BadgeIcon` to 0.4.
 - This version updates `OnboardingKit` to 7.0.2.
+- This version updates `SwiftUIKit` to 4.3.
 - This version removes `SystemNotification`.
 
 - This version removes old notification types.

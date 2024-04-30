@@ -38,6 +38,6 @@ public extension LabelStyle where Self == IconTintLabelStyle {
 }
 
 #Preview {
-    Label("Foo", image: .plus)
+    Label("Foo", .plus)
         .labelStyle(.iconTint(.red))
 }

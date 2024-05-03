@@ -16,21 +16,24 @@ import SwiftUI
 public struct SubscriptionScreen: View {
     
     public init(
-        config: SubscriptionView.Configuration,
+        info: SubscriptionView.Info,
         navigationTitle: Bool = false,
         closeButton: Bool = true,
         topPadding: Double = 0
     ) {
-        self.config = config
+        self.info = info
         self.navigationTitle = navigationTitle
         self.closeButton = closeButton
         self.topPadding = topPadding
     }
     
-    private let config: SubscriptionView.Configuration
+    private let info: SubscriptionView.Info
     private let navigationTitle: Bool
     private let closeButton: Bool
     private let topPadding: Double
+    
+    /// This scruct can configure a subscripton screen.
+    public typealias Info = SubscriptionView.Info
     
     @Environment(\.dismiss)
     private var dismiss
@@ -38,18 +41,18 @@ public struct SubscriptionScreen: View {
     public var body: some View {
         DiagonalContent(diagonalOffset: 110 + topPadding) {
             SubscriptionView(
-                config: config,
+                info: info,
                 topPadding: topPadding
             )
             .toolbar {
                 if closeButton {
-                    Button(config.modalCloseTitle) {
+                    Button(info.modalCloseTitle) {
                         dismiss()
                     }
                 }
             }
             .navigationBarTitle(
-                navigationTitle ? config.modalBarTitle : "",
+                navigationTitle ? info.modalBarTitle : "",
                 displayMode: .inline
             )
         }
@@ -61,17 +64,17 @@ public struct SubscriptionScreen: View {
 public struct SubscriptionScreenModal: View {
     
     public init(
-        config: SubscriptionView.Configuration
+        info: SubscriptionView.Info
     ) {
-        self.config = config
+        self.info = info
     }
     
-    private let config: SubscriptionView.Configuration
+    private let info: SubscriptionView.Info
     
     public var body: some View {
         NavigationStack {
             SubscriptionScreen(
-                config: config,
+                info: info,
                 navigationTitle: true,
                 closeButton: true,
                 topPadding: 30
@@ -83,9 +86,9 @@ public struct SubscriptionScreenModal: View {
 private extension SubscriptionScreen {
 
     func tryPurchase(_ product: AppProduct) async throws -> Bool {
-        let prod = config.storeContext.product(product)
+        let prod = info.storeContext.product(product)
         guard let product = prod else { return false }
-        let result = try await config.storeService.purchase(product)
+        let result = try await info.storeService.purchase(product)
         return result.isSuccess
     }
 }
@@ -103,7 +106,7 @@ private extension Product.PurchaseResult {
 #Preview {
     
     SubscriptionScreenModal(
-        config: .init(
+        info: .init(
             appInfo: .preview,
             icon: .bookmark,
             title: "Preview.SubscriptionTitle",

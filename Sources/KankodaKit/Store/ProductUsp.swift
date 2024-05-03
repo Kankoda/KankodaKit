@@ -6,15 +6,15 @@
 //  Copyright © 2023-2024 Kankoda. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 /// This struct describes a product USP, which is the way to
 /// market why a user should purchase a product.
-public struct ProductUsp {
+public struct ProductUsp: Identifiable {
     
     public init(
-        title: String,
-        text: String,
+        title: LocalizedStringKey,
+        text: LocalizedStringKey,
         iconName: String
     ) {
         self.title = title
@@ -22,7 +22,9 @@ public struct ProductUsp {
         self.iconName = iconName
     }
     
-    public let title: String
-    public let text: String
+    public let title: LocalizedStringKey
+    public let text: LocalizedStringKey
     public let iconName: String
+    
+    public var id: String { iconName }
 }

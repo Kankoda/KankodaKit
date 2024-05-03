@@ -39,8 +39,7 @@ private extension ProductUspLabel {
     
     func icon(_ name: String) -> some View {
         Image(systemName: name)
-            .font(.title3)
-            .foregroundColor(.accentColor)
+            .font(.headline)
     }
 }
 
@@ -66,13 +65,13 @@ public struct ProductUspLabelStack: View {
 #Preview {
     
     let usp1 = ProductUsp(
-        title: "Pretty long title to see how it handles line breaks",
+        title: "Short title",
         text: "Pretty long text to see how it handles line breaks.",
         iconName: "person"
     )
     
     let usp2 = ProductUsp(
-        title: "Short title",
+        title: "A little longer title",
         text: "A short text.",
         iconName: "house"
     )

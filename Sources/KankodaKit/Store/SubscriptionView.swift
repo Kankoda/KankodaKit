@@ -20,14 +20,14 @@ import SwiftUI
 public struct SubscriptionView: View {
     
     public init(
-        config: SubscriptionView.Configuration,
+        info: SubscriptionView.Info,
         topPadding: Double = 0
     ) {
-        self.config = config
+        self.info = info
         self.topPadding = topPadding
     }
     
-    private let config: SubscriptionView.Configuration
+    private let info: SubscriptionView.Info
     private let topPadding: Double
     
     private let iconSize = 100.0
@@ -38,45 +38,52 @@ public struct SubscriptionView: View {
     public var body: some View {
         ScrollView {
             SubscriptionStoreView(
-                groupID: config.appInfo.subscriptionGroupId
+                groupID: info.appInfo.subscriptionGroupId
             ) {
                 VStack(spacing: 15) {
                     iconView
-                    Text(config.title)
+                    Text(info.title)
                         .font(.title)
-                    Text(config.text)
+                    Text(info.text)
+                        .forceMultiline()
+                    VStack(alignment: .leading, spacing: 20) {
+                        ForEach(info.usps) {
+                            ProductUspLabel($0)
+                        }
+                    }
+                    .padding()
                 }
-                .padding(.horizontal)
-                .padding(.top, topPadding)
-                .multilineTextAlignment(.center)
-                .withPurchaseConfetti(
-                    $confettiTrigger,
-                    emojis: config.confettiEmojis
-                )
             }
-            .background(Color.clear)
+            .padding(.top, topPadding)
+            .multilineTextAlignment(.center)
+            .withPurchaseConfetti(
+                $confettiTrigger,
+                emojis: info.confettiEmojis
+            )
         }
         .onInAppPurchaseCompletion(perform: handleSubscription)
         .storeButton(.hidden, for: .cancellation)
         #if os(iOS)
         .storeButton(.visible, for: .redeemCode)
+        .storeButton(.visible, for: .policies)
         #endif
         .storeButton(.visible, for: .restorePurchases)
-        .subscriptionStorePolicyDestination(url: config.appInfo.urls.privacyPolicy!, for: .privacyPolicy)
-        .subscriptionStorePolicyDestination(url: config.appInfo.urls.termsAndConditions!, for: .termsOfService)
+        .subscriptionStorePolicyDestination(url: info.appInfo.urls.privacyPolicy!, for: .privacyPolicy)
+        .subscriptionStorePolicyDestination(url: info.appInfo.urls.termsAndConditions!, for: .termsOfService)
     }
 }
 
 public extension SubscriptionView {
     
-    /// This scruct can configure the ``SubscriptionView``.
-    struct Configuration {
+    /// This scruct can configure a subscripton view.
+    struct Info {
         
         public init(
             appInfo: AppInfo,
             icon: Image,
             title: LocalizedStringKey,
             text: LocalizedStringKey,
+            usps: [ProductUsp] = [],
             modalBarTitle: LocalizedStringKey,
             modalCloseTitle: LocalizedStringKey,
             confettiEmojis: String = "👑",
@@ -87,6 +94,7 @@ public extension SubscriptionView {
             self.icon = icon
             self.title = title
             self.text = text
+            self.usps = usps
             self.modalBarTitle = modalBarTitle
             self.modalCloseTitle = modalCloseTitle
             self.confettiEmojis = confettiEmojis
@@ -98,6 +106,7 @@ public extension SubscriptionView {
         public let icon: Image
         public let title: LocalizedStringKey
         public let text: LocalizedStringKey
+        public let usps: [ProductUsp]
         public let modalBarTitle: LocalizedStringKey
         public let modalCloseTitle: LocalizedStringKey
         public let confettiEmojis: String
@@ -109,23 +118,28 @@ public extension SubscriptionView {
 private extension SubscriptionView {
     
     var iconView: some View {
-        config.icon.resizable()
+        info.icon.resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: iconSize, height: iconSize)
             .clipShape(.rect(cornerRadius: iconSize * (10/57)))
+            .padding(.vertical)
     }
     
     func handleSubscription(
-        with product: Product,
-        result: Result<Product.PurchaseResult, Error>
+        of product: Product,
+        with result: Result<Product.PurchaseResult, Error>
     ) {
-        confettiTrigger += 1
-        Task {
-            do {
-                try await config.storeService.syncStoreData()
-            } catch {
-                print(error)
+        switch result {
+        case .success(let success):
+            confettiTrigger += 1
+            Task {
+                do {
+                    try await info.storeService.syncStoreData()
+                } catch {
+                    print(error)
+                }
             }
+        case .failure(let failure): return
         }
     }
 }
@@ -157,12 +171,16 @@ class PreviewService: StoreService {
 }
 
 #Preview {
-    SubscriptionView(
-        config: .init(
+    KankodaKit.SubscriptionView(
+        info: .init(
             appInfo: .preview,
             icon: .appStore,
             title: "Preview.SubscriptionTitle",
             text: "Preview.SubscriptionText",
+            usps: [
+                .init(title: "Foo", text: "Bar", iconName: "checkmark"),
+                .init(title: "Bar", text: "Baz", iconName: "bug")
+            ],
             modalBarTitle: "Preview.SubscriptionModalTitle",
             modalCloseTitle: "Preview.SubscriptionLater",
             storeContext: .init(),

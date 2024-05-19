@@ -27,7 +27,7 @@ public extension AppDataExporter {
     
     func generateQrCode<DataType: AppData>(
         for data: DataType,
-        scale: CGFloat = 1
+        scale: CGFloat = 5
     ) async throws -> ImageRepresentable? {
         guard
             let str = try? await generateQrCodeDataString(for: data),

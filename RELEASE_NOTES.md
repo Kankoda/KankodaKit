@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.8
+
+- This version moves alternate app icon logic to a separate SDK. 
+
+
 ## 0.7
 
 - This version updates `BadgeIcon` to 0.5.

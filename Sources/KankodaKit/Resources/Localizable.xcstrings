@@ -4,6 +4,39 @@
     "" : {
 
     },
+    "Preview.PurchasedText" : {
+
+    },
+    "Preview.Subscription.Close" : {
+
+    },
+    "Preview.Subscription.MaybeLater" : {
+
+    },
+    "Preview.SubscriptionText" : {
+
+    },
+    "Preview.SubscriptionTitle" : {
+
+    },
+    "Preview.SubscriptionUsp.1.Text" : {
+
+    },
+    "Preview.SubscriptionUsp.1.Title" : {
+
+    },
+    "Preview.SubscriptionUsp.2.Text" : {
+
+    },
+    "Preview.SubscriptionUsp.2.Title" : {
+
+    },
+    "Preview.SubscriptionUsp.3.Text" : {
+
+    },
+    "Preview.SubscriptionUsp.3.Title" : {
+
+    },
     "SocialLinks.AppStore" : {
       "localizations" : {
         "en" : {

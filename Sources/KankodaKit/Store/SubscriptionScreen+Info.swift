@@ -21,6 +21,9 @@ public extension SubscriptionScreen {
             icon: Image,
             title: LocalizedStringKey,
             text: LocalizedStringKey,
+            purchasedText: LocalizedStringKey,
+            closeTitle: LocalizedStringKey,
+            maybeLaterTitle: LocalizedStringKey,
             usps: [ProductUsp] = [],
             confettiEmojis: String = "👑",
             storeContext: StoreContext,
@@ -30,6 +33,9 @@ public extension SubscriptionScreen {
             self.icon = icon
             self.title = title
             self.text = text
+            self.purchasedText = purchasedText
+            self.closeTitle = closeTitle
+            self.maybeLaterTitle = maybeLaterTitle
             self.usps = usps
             self.confettiEmojis = confettiEmojis
             self.storeContext = storeContext
@@ -40,10 +46,35 @@ public extension SubscriptionScreen {
         public let icon: Image
         public let title: LocalizedStringKey
         public let text: LocalizedStringKey
+        public let purchasedText: LocalizedStringKey
+        public let closeTitle: LocalizedStringKey
+        public let maybeLaterTitle: LocalizedStringKey
         public let usps: [ProductUsp]
         public let confettiEmojis: String
         public let storeContext: StoreContext
         public let storeService: any StoreService
+    }
+}
+
+extension SubscriptionScreen.Info {
+
+    static var preview: Self {
+        .init(
+            appInfo: .preview,
+            icon: .bookmark,
+            title: "Preview.SubscriptionTitle",
+            text: "Preview.SubscriptionText",
+            purchasedText: "Preview.PurchasedText",
+            closeTitle: "Preview.Subscription.Close",
+            maybeLaterTitle: "Preview.Subscription.MaybeLater",
+            usps: [
+                .init(title: "Preview.SubscriptionUsp.1.Title", text: "Preview.SubscriptionUsp.1.Text", iconName: "checkmark"),
+                .init(title: "Preview.SubscriptionUsp.2.Title", text: "Preview.SubscriptionUsp.2.Text", iconName: "checkmark"),
+                .init(title: "Preview.SubscriptionUsp.3.Title", text: "Preview.SubscriptionUsp.3.Text", iconName: "checkmark")
+            ],
+            storeContext: .init(),
+            storeService: PreviewService()
+        )
     }
 }
 #endif

@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.9.2
+
+- This version adds purchased stuff to the subscription screen.
+
+
 ## 0.9.1
 
 - This version cleans up unused stuff from the subscription screen.

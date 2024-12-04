@@ -18,14 +18,17 @@ public struct SubscriptionScreen: View {
     
     public init(
         info: Info,
-        closeButtonTitle: LocalizedStringKey? = nil
+        isModal: Bool,
+        isPurchased: Bool
     ) {
         self.info = info
-        self.closeButtonTitle = closeButtonTitle
+        self.isModal = isModal
+        self.isPurchased = isPurchased
     }
     
     private let info: Info
-    private let closeButtonTitle: LocalizedStringKey?
+    private let isModal: Bool
+    private let isPurchased: Bool
 
     @Environment(\.dismiss)
     private var dismiss
@@ -42,7 +45,10 @@ public struct SubscriptionScreen: View {
                 SubscriptionStoreView(
                     groupID: info.appInfo.subscriptionGroupId
                 ) {
-                    StoreViewContent(info: info)
+                    StoreViewContent(
+                        info: info,
+                        isPurchased: isPurchased
+                    )
                 }
                 .padding(.top, style.topPadding)
                 .multilineTextAlignment(.center)
@@ -74,30 +80,13 @@ public struct SubscriptionScreen: View {
     }
 }
 
-/// This screen can be used as a modal, e.g. when presenting
-/// the screen from as part of an onboarding flow
-@available(*, deprecated, message: "This is no longer used.")
-public struct SubscriptionScreenModal: View {
-    
-    public init(info: SubscriptionScreen.Info) {
-        self.info = info
-    }
-    
-    private let info: SubscriptionScreen.Info
-
-    @Environment(\.subscriptionScreenStyle)
-    private var style
-
-    public var body: some View {
-        NavigationStack {
-            SubscriptionScreen(
-                info: info
-            )
-        }
-    }
-}
-
 private extension SubscriptionScreen {
+
+    var closeButtonTitle: LocalizedStringKey? {
+        if isPurchased && isModal { return info.closeTitle }
+        if !isPurchased { return info.maybeLaterTitle }
+        return nil
+    }
 
     var totalDiagonalOffset: Double {
         style.diagonalOffset + style.topPadding
@@ -140,19 +129,9 @@ private extension Product.PurchaseResult {
 #Preview {
     
     SubscriptionScreen(
-        info: .init(
-            appInfo: .preview,
-            icon: .bookmark,
-            title: "Preview.SubscriptionTitle",
-            text: "Preview.SubscriptionText",
-            usps: [
-                .init(title: "Preview.SubscriptionUsp.1.Title", text: "Preview.SubscriptionUsp.1.Text", iconName: "checkmark"),
-                .init(title: "Preview.SubscriptionUsp.2.Title", text: "Preview.SubscriptionUsp.2.Text", iconName: "checkmark"),
-                .init(title: "Preview.SubscriptionUsp.3.Title", text: "Preview.SubscriptionUsp.3.Text", iconName: "checkmark")
-            ],
-            storeContext: .init(),
-            storeService: PreviewService()
-        )
+        info: .preview,
+        isModal: false,
+        isPurchased: true
     )
 }
 #endif

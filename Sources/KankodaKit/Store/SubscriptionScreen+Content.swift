@@ -21,12 +21,15 @@ public extension SubscriptionScreen {
     struct StoreViewContent: View {
 
         public init(
-            info: SubscriptionScreen.Info
+            info: SubscriptionScreen.Info,
+            isPurchased: Bool
         ) {
             self.info = info
+            self.isPurchased = isPurchased
         }
 
         private let info: SubscriptionScreen.Info
+        private let isPurchased: Bool
 
         @Environment(\.subscriptionScreenStyle)
         private var style
@@ -42,7 +45,7 @@ public extension SubscriptionScreen {
                 Text(info.title)
                     .font(.title)
 
-                Text(info.text)
+                Text(descriptionText)
                     .forceMultiline()
 
                 VStack(alignment: .leading, spacing: 20) {
@@ -54,6 +57,13 @@ public extension SubscriptionScreen {
             }
             .frame(maxWidth: style.contentMaxWidth)
         }
+    }
+}
+
+private extension SubscriptionScreen.StoreViewContent {
+
+    var descriptionText: LocalizedStringKey {
+        isPurchased ? info.purchasedText : info.text
     }
 }
 
@@ -83,22 +93,11 @@ class PreviewService: StoreService {
 #Preview {
     VStack {
         SubscriptionScreen.StoreViewContent(
-            info: .init(
-                appInfo: .preview,
-                icon: .appStore,
-                title: "Preview.SubscriptionTitle",
-                text: "Preview.SubscriptionText",
-                usps: [
-                    .init(title: "Foo", text: "Bar", iconName: "checkmark"),
-                    .init(title: "Bar", text: "Baz", iconName: "checkmark"),
-                    .init(title: "Baz", text: "A longer text to test the multiline configuration. A longer text to test the multiline configuration.", iconName: "heart")
-                ],
-                storeContext: .init(),
-                storeService: PreviewService()
-            )
+            info: .preview,
+            isPurchased: false
         )
         Color.red
     }
-    .subscriptionScreenStyle(.init(iconSize: 200))
+    .subscriptionScreenStyle(.init(iconSize: 120))
 }
 #endif

@@ -6,6 +6,7 @@
 //  Copyright © 2024 Kankoda. All rights reserved.
 //
 
+#if os(iOS) || os(macOS)
 import StoreKitPlus
 import SwiftUI
 
@@ -86,3 +87,4 @@ public extension EnvironmentValues {
     /// Apply a ``SubscriptionScreen/Style``.
     @Entry var subscriptionScreenStyle = SubscriptionScreen.Style()
 }
+#endif

@@ -6,6 +6,7 @@
 //  Copyright © 2024 Kankoda. All rights reserved.
 //
 
+#if os(iOS) || os(macOS)
 import StoreKitPlus
 import SwiftUI
 
@@ -51,3 +52,4 @@ public extension SubscriptionScreen {
         public let storeService: any StoreService
     }
 }
+#endif

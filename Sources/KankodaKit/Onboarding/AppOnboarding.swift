@@ -3,6 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2024-12-04.
+//  Copyright © 2024 Kankoda. All rights reserved.
 //
 
 import Foundation
@@ -34,34 +35,6 @@ public extension AppOnboarding {
     }
 }
 
-public extension AppOnboarding {
-
-    /// This view defines standard onboarding page buttons.
-    struct StandardPageButtons: View {
-
-        public init(
-            isLastPage: Bool,
-            nextOrDismiss: @escaping () -> Void
-        ) {
-            self.isLastPage = isLastPage
-            self.nextOrDismiss = nextOrDismiss
-        }
-
-        private let isLastPage: Bool
-        private let nextOrDismiss: () -> Void
-
-        public var body: some View {
-            Button(action: nextOrDismiss) {
-                LocalizedText(
-                    isLastPage ? "Onboarding.Done" : "Onboarding.Next"
-                )
-                .onboardingButtonText()
-            }
-            .onboardingButton(.primary)
-        }
-    }
-}
-
 public extension View {
 
     @ViewBuilder
@@ -70,12 +43,20 @@ public extension View {
     ) -> some View {
         switch type {
         case .primary:
-            self.controlSize(.large)
+            self.onboardingButtonSize()
                 .buttonStyle(.borderedProminent)
         case .secondary:
-            self.controlSize(.large)
+            self.onboardingButtonSize()
                 .buttonStyle(.bordered)
         }
+    }
+
+    func onboardingButtonSize() -> some View {
+        #if os(tvOS)
+        self
+        #else
+        self.controlSize(.large)
+        #endif
     }
 
     func onboardingButtonText() -> some View {

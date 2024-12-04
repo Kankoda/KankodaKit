@@ -21,8 +21,6 @@ public protocol AppOnboardingScreenPage {
     var pageType: AppOnboarding.PageType { get }
 }
 
-
-
 /// This screen can render a Kankoda onboarding.
 public struct AppOnboardingScreen<Page: AppOnboardingScreenPage, Buttons: View>: View {
 
@@ -37,8 +35,13 @@ public struct AppOnboardingScreen<Page: AppOnboardingScreenPage, Buttons: View>:
     private let pages: [Page]
     private let buttons: (ButtonParams) -> Buttons
 
-    public typealias ButtonParams = (page: Page, buttons: StandardButtons)
-    public typealias StandardButtons = AppOnboarding.StandardPageButtons
+    public typealias ButtonParams = (
+        page: Page,
+        pageType: AppOnboarding.PageType,
+        isLastPage: Bool,
+        nextOrDismiss: () -> Void,
+        buttons: AppOnboarding.NextButton
+    )
 
     @State var pageIndex = 0
     @State var subscriptionScreenInfo: SubscriptionScreenInfo?
@@ -106,12 +109,16 @@ private extension AppOnboardingScreen {
 private extension AppOnboardingScreen {
 
     var buttonsView: some View {
-        HStack {
-            buttons((
-                page: currentPage,
-                buttons: StandardButtons(isLastPage: isLastPage, nextOrDismiss: nextPageOrDismiss)
-            ))
-        }
+        buttons((
+            page: currentPage,
+            pageType: currentPage.pageType,
+            isLastPage: isLastPage,
+            nextOrDismiss: nextPageOrDismiss,
+            buttons: .init(
+                isLastPage: isLastPage,
+                nextOrDismiss: nextPageOrDismiss
+            )
+        ))
         .padding(.horizontal)
         .animation(.default, value: pageIndex)
     }
@@ -160,7 +167,7 @@ private enum TestType: Int, AppOnboardingScreenPage, CaseIterable {
                 AppOnboardingScreen(
                     TestType.allCases
                 ) { params in
-                    switch params.page.pageType {
+                    switch params.pageType {
                     case .regular: params.buttons
                     case .subscriptionUpsell:
                         params.buttons

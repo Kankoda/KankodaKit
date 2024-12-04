@@ -22,5 +22,13 @@ public extension Onboarding {
         requiredPresentationAttempts: 2
     )
 
-    static let welcome = Onboarding(id: "welcome")
+    static let welcome = Onboarding(
+        id: "welcome"
+    )
+
+    static func welcome(
+        version: Int
+    ) -> Onboarding {
+        Onboarding(id: "welcome-\(version)")
+    }
 }

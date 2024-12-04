@@ -6,10 +6,11 @@
 //  Copyright © 2023-2024 Kankoda. All rights reserved.
 //
 
-#if os(iOS) || os(macOS)
-import ConfettiSwiftUI
 import StoreKit
 import StoreKitPlus
+
+#if os(iOS) || os(macOS)
+import ConfettiSwiftUI
 import SwiftUI
 
 public extension SubscriptionScreen {
@@ -67,6 +68,18 @@ private extension SubscriptionScreen.StoreViewContent {
     }
 }
 
+#Preview {
+    VStack {
+        SubscriptionScreen.StoreViewContent(
+            info: .preview,
+            isPurchased: false
+        )
+        Color.red
+    }
+    .subscriptionScreenStyle(.init(iconSize: 120))
+}
+#endif
+
 class PreviewService: StoreService {
 
     /// Get all available products.
@@ -89,15 +102,3 @@ class PreviewService: StoreService {
         to context: StoreContext
     ) async throws {}
 }
-
-#Preview {
-    VStack {
-        SubscriptionScreen.StoreViewContent(
-            info: .preview,
-            isPurchased: false
-        )
-        Color.red
-    }
-    .subscriptionScreenStyle(.init(iconSize: 120))
-}
-#endif

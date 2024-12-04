@@ -30,7 +30,7 @@ public struct SubscriptionView: View {
     private let info: SubscriptionView.Info
     private let topPadding: Double
     
-    private let iconSize = 100.0
+    private let iconSize = 125.0
     
     @State
     private var confettiTrigger = 0
@@ -40,19 +40,7 @@ public struct SubscriptionView: View {
             SubscriptionStoreView(
                 groupID: info.appInfo.subscriptionGroupId
             ) {
-                VStack(spacing: 15) {
-                    iconView
-                    Text(info.title)
-                        .font(.title)
-                    Text(info.text)
-                        .forceMultiline()
-                    VStack(alignment: .leading, spacing: 20) {
-                        ForEach(info.usps) {
-                            ProductUspLabel($0)
-                        }
-                    }
-                    .padding()
-                }
+                InfoView(info: info)
             }
             .padding(.top, topPadding)
             .multilineTextAlignment(.center)
@@ -62,14 +50,54 @@ public struct SubscriptionView: View {
             )
         }
         .onInAppPurchaseCompletion(perform: handleSubscription)
-        .storeButton(.hidden, for: .cancellation)
         #if os(iOS)
         .storeButton(.visible, for: .redeemCode)
         .storeButton(.visible, for: .policies)
         #endif
+        .storeButton(.hidden, for: .cancellation)
         .storeButton(.visible, for: .restorePurchases)
         .subscriptionStorePolicyDestination(url: info.appInfo.urls.privacyPolicy!, for: .privacyPolicy)
         .subscriptionStorePolicyDestination(url: info.appInfo.urls.termsAndConditions!, for: .termsOfService)
+    }
+}
+
+public extension SubscriptionView {
+
+    struct InfoView: View {
+
+        public init(
+            info: SubscriptionView.Info
+        ) {
+            self.info = info
+        }
+
+        private let info: SubscriptionView.Info
+
+        private let iconSize = 100.0
+
+        public var body: some View {
+            VStack(spacing: 15) {
+                info.icon.resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: iconSize, height: iconSize)
+                    .clipShape(.rect(cornerRadius: iconSize * (10/57)))
+                    .padding(.vertical)
+
+                Text(info.title)
+                    .font(.title)
+
+                Text(info.text)
+                    .forceMultiline()
+
+                VStack(alignment: .leading, spacing: 20) {
+                    ForEach(Array(info.usps.enumerated()), id: \.offset) {
+                        ProductUsp.Label($0.element)
+                    }
+                }
+                .padding()
+            }
+            .frame(maxWidth: 450)
+        }
     }
 }
 
@@ -117,29 +145,23 @@ public extension SubscriptionView {
 
 private extension SubscriptionView {
     
-    var iconView: some View {
-        info.icon.resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: iconSize, height: iconSize)
-            .clipShape(.rect(cornerRadius: iconSize * (10/57)))
-            .padding(.vertical)
-    }
-    
     func handleSubscription(
         of product: Product,
         with result: Result<Product.PurchaseResult, Error>
     ) {
         switch result {
-        case .success(let success):
+        case .success:
             confettiTrigger += 1
             Task {
                 do {
-                    try await info.storeService.syncStoreData()
+                    try await info.storeService.syncStoreData(
+                        to: info.storeContext
+                    )
                 } catch {
                     print(error)
                 }
             }
-        case .failure(let failure): return
+        case .failure: return
         }
     }
 }
@@ -155,37 +177,48 @@ private extension Product.PurchaseResult {
 }
 
 class PreviewService: StoreService {
-    
-    func getProducts() async throws -> [Product] {
-        []
-    }
-    
+
+    /// Get all available products.
+    func getProducts() async throws -> [Product] { [] }
+
+    /// Purchase a certain product.
+    @discardableResult
     func purchase(
         _ product: Product
-    ) async throws -> Product.PurchaseResult {
-        .pending
+    ) async throws -> (Product.PurchaseResult, StoreKit.Transaction?) {
+        (.pending, nil)
     }
-    
-    func restorePurchases() async throws {}
-    func syncStoreData() async throws {}
+
+    /// Restore previous purchases.
+    @discardableResult
+    func restorePurchases() async throws -> [StoreKit.Transaction] { [] }
+
+    /// Sync StoreKit products and purchases to a context.
+    func syncStoreData(
+        to context: StoreContext
+    ) async throws {}
 }
 
 #Preview {
-    KankodaKit.SubscriptionView(
-        info: .init(
-            appInfo: .preview,
-            icon: .appStore,
-            title: "Preview.SubscriptionTitle",
-            text: "Preview.SubscriptionText",
-            usps: [
-                .init(title: "Foo", text: "Bar", iconName: "checkmark"),
-                .init(title: "Bar", text: "Baz", iconName: "bug")
-            ],
-            modalBarTitle: "Preview.SubscriptionModalTitle",
-            modalCloseTitle: "Preview.SubscriptionLater",
-            storeContext: .init(),
-            storeService: PreviewService()
+    VStack {
+        KankodaKit.SubscriptionView.InfoView(
+            info: .init(
+                appInfo: .preview,
+                icon: .appStore,
+                title: "Preview.SubscriptionTitle",
+                text: "Preview.SubscriptionText",
+                usps: [
+                    .init(title: "Foo", text: "Bar", iconName: "checkmark"),
+                    .init(title: "Bar", text: "Baz", iconName: "checkmark"),
+                    .init(title: "Baz", text: "A longer text to test the multiline configuration. A longer text to test the multiline configuration.", iconName: "heart")
+                ],
+                modalBarTitle: "Preview.SubscriptionModalTitle",
+                modalCloseTitle: "Preview.SubscriptionLater",
+                storeContext: .init(),
+                storeService: PreviewService()
+            )
         )
-    )
+        Color.red
+    }
 }
 #endif

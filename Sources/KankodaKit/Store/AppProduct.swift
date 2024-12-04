@@ -25,33 +25,4 @@ import StoreKitPlus
 ///     )
 /// }
 /// ```
-public struct AppProduct: Identifiable, ProductRepresentable {
-    
-    /// Create a new product.
-    ///
-    /// - Parameters:
-    ///   - id: The App Store string ID of the product.
-    ///   - name: The product display name.
-    public init(id: String, name: String) {
-        self.id = id
-        self.name = name
-    }
-    
-    /// The App Store string ID of the product.
-    public let id: String
-    
-    /// The product display name.
-    public let name: String
-}
-
-public extension AppProduct {
-    
-    static let preview = preview("Preview")
-    
-    static func preview(_ name: String) -> Self {
-        .init(
-            id: "com.myapp.iap.preview",
-            name: name
-        )
-    }
-}
+public typealias AppProduct = BasicProduct

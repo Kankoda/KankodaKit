@@ -19,19 +19,22 @@ public struct SubscriptionScreen: View {
         info: SubscriptionView.Info,
         navigationTitle: Bool = false,
         closeButton: Bool = true,
-        topPadding: Double = 0
+        topPadding: Double = 0,
+        diagonalOffset: Double = 110
     ) {
         self.info = info
         self.navigationTitle = navigationTitle
         self.closeButton = closeButton
         self.topPadding = topPadding
+        self.diagonalOffset = diagonalOffset
     }
     
     private let info: SubscriptionView.Info
     private let navigationTitle: Bool
     private let closeButton: Bool
     private let topPadding: Double
-    
+    private let diagonalOffset: Double
+
     /// This scruct can configure a subscripton screen.
     public typealias Info = SubscriptionView.Info
     
@@ -39,7 +42,7 @@ public struct SubscriptionScreen: View {
     private var dismiss
 
     public var body: some View {
-        DiagonalContent(diagonalOffset: 110 + topPadding) {
+        DiagonalContent(diagonalOffset: diagonalOffset + topPadding) {
             SubscriptionView(
                 info: info,
                 topPadding: topPadding
@@ -89,7 +92,7 @@ private extension SubscriptionScreen {
         let prod = info.storeContext.product(product)
         guard let product = prod else { return false }
         let result = try await info.storeService.purchase(product)
-        return result.isSuccess
+        return result.0.isSuccess
     }
 }
 
@@ -111,6 +114,11 @@ private extension Product.PurchaseResult {
             icon: .bookmark,
             title: "Preview.SubscriptionTitle",
             text: "Preview.SubscriptionText",
+            usps: [
+                .init(title: "Preview.SubscriptionUsp.1.Title", text: "Preview.SubscriptionUsp.1.Text", iconName: "checkmark"),
+                .init(title: "Preview.SubscriptionUsp.2.Title", text: "Preview.SubscriptionUsp.2.Text", iconName: "checkmark"),
+                .init(title: "Preview.SubscriptionUsp.3.Title", text: "Preview.SubscriptionUsp.3.Text", iconName: "checkmark")
+            ],
             modalBarTitle: "Preview.SubscriptionModalTitle",
             modalCloseTitle: "Preview.SubscriptionLater",
             storeContext: .init(),

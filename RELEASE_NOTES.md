@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.8.1
+
+- This version moves StoreKit logic to StoreKitPlus. 
+
+
 ## 0.8
 
 - This version moves alternate app icon logic to a separate SDK. 

@@ -22,8 +22,6 @@ public extension SubscriptionScreen {
             title: LocalizedStringKey,
             text: LocalizedStringKey,
             usps: [ProductUsp] = [],
-            modalBarTitle: LocalizedStringKey,
-            modalCloseTitle: LocalizedStringKey,
             confettiEmojis: String = "👑",
             storeContext: StoreContext,
             storeService: any StoreService
@@ -33,8 +31,6 @@ public extension SubscriptionScreen {
             self.title = title
             self.text = text
             self.usps = usps
-            self.modalBarTitle = modalBarTitle
-            self.modalCloseTitle = modalCloseTitle
             self.confettiEmojis = confettiEmojis
             self.storeContext = storeContext
             self.storeService = storeService
@@ -45,8 +41,6 @@ public extension SubscriptionScreen {
         public let title: LocalizedStringKey
         public let text: LocalizedStringKey
         public let usps: [ProductUsp]
-        public let modalBarTitle: LocalizedStringKey
-        public let modalCloseTitle: LocalizedStringKey
         public let confettiEmojis: String
         public let storeContext: StoreContext
         public let storeService: any StoreService

@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.9.1
+
+- This version cleans up unused stuff from the subscription screen.
+
+
 ## 0.9
 
 - This version moves StoreKit logic to StoreKitPlus. 

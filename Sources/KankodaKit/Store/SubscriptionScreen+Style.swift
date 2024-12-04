@@ -23,22 +23,16 @@ public extension SubscriptionScreen {
         ///  - diagonalOffset: The diagonal line offset, by default `110`.
         ///  - iconSize: The top icon size, by default `125`.
         ///  - contentMaxWidth: The custom content max width, by default `450`.
-        ///  - showNavigationTitle: Whether to show the navigation title, by default `false`.
-        ///  - showNavigationCloseButton: Whether to show the navigation close button, by default `true`.
         public init(
             topPadding: Double = 0,
             diagonalOffset: Double = 110,
             iconSize: Double = 125.0,
-            contentMaxWidth: Double = 450.0,
-            showNavigationTitle: Bool = false,
-            showNavigationCloseButton: Bool = true
+            contentMaxWidth: Double = 450.0
         ) {
             self.topPadding = topPadding
             self.diagonalOffset = diagonalOffset
             self.iconSize = iconSize
             self.contentMaxWidth = contentMaxWidth
-            self.showNavigationTitle = showNavigationTitle
-            self.showNavigationCloseButton = showNavigationCloseButton
         }
 
         /// The content top padding.
@@ -52,23 +46,6 @@ public extension SubscriptionScreen {
 
         /// The custom content max width.
         public var contentMaxWidth: Double
-
-        /// Whether to show the navigation title.
-        public var showNavigationTitle: Bool
-
-        /// Whether to show the navigation close button.
-        public var showNavigationCloseButton: Bool
-    }
-}
-
-public extension SubscriptionScreen.Style {
-
-    func toModalStyle() -> Self {
-        var value = self
-        value.showNavigationTitle = true
-        value.showNavigationCloseButton = true
-        value.topPadding = max(topPadding, 30)
-        return value
     }
 }
 

@@ -93,8 +93,6 @@ class PreviewService: StoreService {
                     .init(title: "Bar", text: "Baz", iconName: "checkmark"),
                     .init(title: "Baz", text: "A longer text to test the multiline configuration. A longer text to test the multiline configuration.", iconName: "heart")
                 ],
-                modalBarTitle: "Preview.SubscriptionModalTitle",
-                modalCloseTitle: "Preview.SubscriptionLater",
                 storeContext: .init(),
                 storeService: PreviewService()
             )

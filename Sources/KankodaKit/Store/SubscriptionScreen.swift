@@ -7,6 +7,7 @@
 //
 
 #if os(iOS) || os(macOS)
+import ConfettiSwiftUI
 import StoreKit
 import StoreKitPlus
 import SwiftUI
@@ -15,30 +16,58 @@ import SwiftUI
 /// diagonal line, and a scrolling ``SubscriptionView``.
 public struct SubscriptionScreen: View {
     
-    public init(info: Info) {
+    public init(
+        info: Info,
+        closeButtonTitle: LocalizedStringKey? = nil
+    ) {
         self.info = info
+        self.closeButtonTitle = closeButtonTitle
     }
     
     private let info: Info
-    
+    private let closeButtonTitle: LocalizedStringKey?
+
     @Environment(\.dismiss)
     private var dismiss
 
     @Environment(\.subscriptionScreenStyle)
     private var style
 
+    @State
+    private var confettiTrigger = 0
+
     public var body: some View {
         DiagonalContent(diagonalOffset: totalDiagonalOffset) {
-            StoreView(info: info)
-                .toolbar {
-                    if style.showNavigationCloseButton {
-                        Button(info.modalCloseTitle) {
-                            dismiss()
-                        }
+            ScrollView {
+                SubscriptionStoreView(
+                    groupID: info.appInfo.subscriptionGroupId
+                ) {
+                    StoreViewContent(info: info)
+                }
+                .padding(.top, style.topPadding)
+                .multilineTextAlignment(.center)
+                .withPurchaseConfetti(
+                    $confettiTrigger,
+                    emojis: info.confettiEmojis
+                )
+            }
+            .onInAppPurchaseCompletion(perform: handleSubscription)
+            #if os(iOS)
+            .storeButton(.visible, for: .redeemCode)
+            .storeButton(.visible, for: .policies)
+            #endif
+            .storeButton(.hidden, for: .cancellation)
+            .storeButton(.visible, for: .restorePurchases)
+            .subscriptionStorePolicyDestination(url: info.appInfo.urls.privacyPolicy!, for: .privacyPolicy)
+            .subscriptionStorePolicyDestination(url: info.appInfo.urls.termsAndConditions!, for: .termsOfService)
+            .toolbar {
+                if let closeButtonTitle {
+                    Button(closeButtonTitle) {
+                        dismiss()
                     }
                 }
+            }
         }
-        .navigationTitle(style.showNavigationTitle ? info.modalBarTitle : "")
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
@@ -47,6 +76,7 @@ public struct SubscriptionScreen: View {
 
 /// This screen can be used as a modal, e.g. when presenting
 /// the screen from as part of an onboarding flow
+@available(*, deprecated, message: "This is no longer used.")
 public struct SubscriptionScreenModal: View {
     
     public init(info: SubscriptionScreen.Info) {
@@ -63,7 +93,6 @@ public struct SubscriptionScreenModal: View {
             SubscriptionScreen(
                 info: info
             )
-            .subscriptionScreenStyle(style.toModalStyle())
         }
     }
 }
@@ -72,6 +101,29 @@ private extension SubscriptionScreen {
 
     var totalDiagonalOffset: Double {
         style.diagonalOffset + style.topPadding
+    }
+}
+
+private extension SubscriptionScreen {
+
+    func handleSubscription(
+        of product: Product,
+        with result: Result<Product.PurchaseResult, Error>
+    ) {
+        switch result {
+        case .success:
+            confettiTrigger += 1
+            Task {
+                do {
+                    try await info.storeService.syncStoreData(
+                        to: info.storeContext
+                    )
+                } catch {
+                    print(error)
+                }
+            }
+        case .failure: return
+        }
     }
 }
 
@@ -87,7 +139,7 @@ private extension Product.PurchaseResult {
 
 #Preview {
     
-    SubscriptionScreenModal(
+    SubscriptionScreen(
         info: .init(
             appInfo: .preview,
             icon: .bookmark,
@@ -98,8 +150,6 @@ private extension Product.PurchaseResult {
                 .init(title: "Preview.SubscriptionUsp.2.Title", text: "Preview.SubscriptionUsp.2.Text", iconName: "checkmark"),
                 .init(title: "Preview.SubscriptionUsp.3.Title", text: "Preview.SubscriptionUsp.3.Text", iconName: "checkmark")
             ],
-            modalBarTitle: "Preview.SubscriptionModalTitle",
-            modalCloseTitle: "Preview.SubscriptionLater",
             storeContext: .init(),
             storeService: PreviewService()
         )

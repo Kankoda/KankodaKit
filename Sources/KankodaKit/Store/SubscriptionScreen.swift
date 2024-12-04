@@ -37,11 +37,11 @@ public struct SubscriptionScreen: View {
                         }
                     }
                 }
-                .navigationBarTitle(
-                    style.showNavigationTitle ? info.modalBarTitle : "",
-                    displayMode: .inline
-                )
         }
+        .navigationTitle(style.showNavigationTitle ? info.modalBarTitle : "")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 

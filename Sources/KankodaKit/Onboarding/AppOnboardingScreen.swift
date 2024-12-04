@@ -70,7 +70,9 @@ public struct AppOnboardingScreen<Page: AppOnboardingScreenPage>: View {
                 .labelStyle(.titleOnly)
         }
         .navigationTitle("")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 

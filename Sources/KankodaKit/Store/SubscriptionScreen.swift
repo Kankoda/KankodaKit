@@ -68,8 +68,8 @@ public struct SubscriptionScreen: View {
             .subscriptionStorePolicyDestination(url: info.appInfo.urls.termsAndConditions!, for: .termsOfService)
             .toolbar {
                 if let closeButtonTitle {
-                    Button(closeButtonTitle) {
-                        dismiss()
+                    Button(action: { dismiss() }) {
+                        LocalizedText(closeButtonTitle)
                     }
                 }
             }
@@ -83,8 +83,8 @@ public struct SubscriptionScreen: View {
 private extension SubscriptionScreen {
 
     var closeButtonTitle: LocalizedStringKey? {
-        if isPurchased && isModal { return info.closeTitle }
-        if !isPurchased { return info.maybeLaterTitle }
+        if isPurchased && isModal { return "SubscriptionScreen.Close" }
+        if !isPurchased { return "SubscriptionScreen.MaybeLater" }
         return nil
     }
 

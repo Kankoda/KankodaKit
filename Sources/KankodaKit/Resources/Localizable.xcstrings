@@ -7,12 +7,6 @@
     "Preview.PurchasedText" : {
 
     },
-    "Preview.Subscription.Close" : {
-
-    },
-    "Preview.Subscription.MaybeLater" : {
-
-    },
     "Preview.SubscriptionText" : {
 
     },
@@ -113,6 +107,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Website"
+          }
+        }
+      }
+    },
+    "SubscriptionScreen.Close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        }
+      }
+    },
+    "SubscriptionScreen.MaybeLater" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maybe Later"
           }
         }
       }

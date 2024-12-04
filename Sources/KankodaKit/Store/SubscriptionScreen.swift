@@ -49,6 +49,7 @@ public struct SubscriptionScreen: View {
                         info: info,
                         isPurchased: isPurchased
                     )
+                    .padding(.horizontal)
                 }
                 .padding(.top, style.topPadding)
                 .multilineTextAlignment(.center)

@@ -17,54 +17,59 @@ public protocol AppOnboardingScreenPage {
     var title: String { get }
     var text: String { get }
     var image: Image { get }
+
+    var pageType: AppOnboarding.PageType { get }
 }
 
+
+
 /// This screen can render a Kankoda onboarding.
-public struct AppOnboardingScreen<Page: AppOnboardingScreenPage>: View {
-    
-    public init(_ pages: [Page]) {
+public struct AppOnboardingScreen<Page: AppOnboardingScreenPage, Buttons: View>: View {
+
+    public init(
+        _ pages: [Page],
+        @ViewBuilder buttons: @escaping (ButtonParams) -> Buttons
+    ) {
         self.pages = pages
+        self.buttons = buttons
     }
     
     private let pages: [Page]
-    
-    @State
-    private var pageIndex = 0
-    
+    private let buttons: (ButtonParams) -> Buttons
+
+    public typealias ButtonParams = (page: Page, buttons: StandardButtons)
+    public typealias StandardButtons = AppOnboarding.StandardPageButtons
+
+    @State var pageIndex = 0
+    @State var subscriptionScreenInfo: SubscriptionScreenInfo?
+
     @Environment(\.dismiss)
     private var dismiss
     
     public var body: some View {
-        DiagonalContent(diagonalOffset: 225) {
-            OnboardingPageView(
-                pages: pages,
-                pageIndex: $pageIndex
-            ) { page, info in
-                VStack(spacing: 50) {
-                    Spacer()
-                    page.image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 280)
-                        .scaleEffect(pageIndex == info.pageIndex ? 1 : 0.8)
-                        .animation(.bouncy, value: pageIndex)
-                        
-                    VStack(spacing: 20) {
-                        Text(page.title)
-                            .font(.title)
-                            .forceMultiline()
-                        Text(page.text)
-                            .forceMultiline()
-                    }
-                    Spacer()
-                    button.padding(.bottom, 40)
+        OnboardingPageView(
+            pages: pages,
+            pageIndex: $pageIndex
+        ) { page, info in
+            VStack(spacing: 50) {
+                Spacer()
+                image(for: page, info: info)
+                VStack(spacing: 20) {
+                    Text(page.title)
+                        .font(.title)
+                        .forceMultiline()
+                    Text(page.text)
+                        .forceMultiline()
                 }
-                .padding()
-                .multilineTextAlignment(.center)
-                .frame(maxWidth: 500)
-                .frame(maxHeight: .infinity, alignment: .center)
+                Spacer()
             }
+            .padding()
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: 500)
+            .frame(maxHeight: .infinity, alignment: .center)
         }
+        .background(Color.diagonalForeground)
+        .safeAreaInset(edge: .bottom) { buttonsView }
         .toolbar {
             Button(.done, action: dismiss.callAsFunction)
                 .labelStyle(.titleOnly)
@@ -76,78 +81,72 @@ public struct AppOnboardingScreen<Page: AppOnboardingScreenPage>: View {
     }
 }
 
-/// This modal screen can render a Kankoda onboarding.
-public struct AppOnboardingScreenModal<Page: AppOnboardingScreenPage>: View {
-    
-    public init(_ pages: [Page]) {
-        self.pages = pages
-    }
-    
-    private let pages: [Page]
-    
-    public var body: some View {
-        NavigationStack {
-            AppOnboardingScreen(pages)
-        }
-    }
-}
-
 private extension AppOnboardingScreen {
     
+    var currentPage: Page {
+        pages[pageIndex]
+    }
+
     var isLastPage: Bool {
         pageIndex == pages.count - 1
     }
+
+    func nextPage() {
+        withAnimation {
+            pageIndex += 1
+        }
+    }
+
+    func nextPageOrDismiss() {
+        if isLastPage { return dismiss() }
+        nextPage()
+    }
 }
 
 private extension AppOnboardingScreen {
-    
-    @ViewBuilder
-    var button: some View {
-        if !isLastPage {
-            nextButton
-        } else {
-            doneButton
+
+    var buttonsView: some View {
+        HStack {
+            buttons((
+                page: currentPage,
+                buttons: StandardButtons(isLastPage: isLastPage, nextOrDismiss: nextPageOrDismiss)
+            ))
         }
+        .padding(.horizontal)
+        .animation(.default, value: pageIndex)
     }
-    
-    var doneButton: some View {
-        Button {
-            dismiss()
-        } label: {
-            LocalizedText("Tutorial.Done")
-        }
-        .tutorialButton()
-    }
-    
-    var nextButton: some View {
-        Button {
-            withAnimation {
-                pageIndex += 1
-            }
-        } label: {
-            LocalizedText("Tutorial.Next")
-        }
-        .tutorialButton()
+
+    func image(
+        for page: Page,
+        info: OnboardingPageInfo
+    ) -> some View {
+        page.image
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 280)
+            .scaleEffect(pageIndex == info.pageIndex ? 1 : 0.8)
+            .animation(.bouncy, value: pageIndex)
     }
 }
-
-private extension View {
-    
-    func tutorialButton() -> some View {
-        self.buttonStyle(.borderedProminent)
-            .controlSize(.regular)
-            .padding()
-    }
-}
-
 
 private enum TestType: Int, AppOnboardingScreenPage, CaseIterable {
-    
-    case page1 = 1, page2 = 2
-    
-    var title: String { "Page \(rawValue)" }
-    var text: String { "Text \(rawValue)" }
-    var image: Image { .symbol("\(rawValue).circle") }
+
+    case page1, page2, page3, page4
+
+    var title: String { "Page \(number)" }
+    var text: String { "Text \(number)" }
+    var image: Image { .symbol("\(number).circle") }
+
+    var number: Int { rawValue + 1 }
+
+    var pageType: AppOnboarding.PageType {
+        switch self {
+        case .page1: .regular
+        case .page2: .regular
+        case .page3: .subscriptionUpsell
+        case .page4: .regular
+        }
+    }
 }
 
 #Preview {
@@ -157,9 +156,18 @@ private enum TestType: Int, AppOnboardingScreenPage, CaseIterable {
         @State private var index = 0
         
         var body: some View {
-            AppOnboardingScreenModal(
-                TestType.allCases
-            )
+            NavigationStack {
+                AppOnboardingScreen(
+                    TestType.allCases
+                ) { params in
+                    switch params.page.pageType {
+                    case .regular: params.buttons
+                    case .subscriptionUpsell:
+                        params.buttons
+                        params.buttons
+                    }
+                }
+            }
         }
     }
     

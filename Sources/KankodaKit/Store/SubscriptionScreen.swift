@@ -25,7 +25,9 @@ public struct SubscriptionScreen: View {
         self.isModal = isModal
         self.isPurchased = isPurchased
     }
-    
+
+    public typealias Info = SubscriptionScreenInfo
+
     private let info: Info
     private let isModal: Bool
     private let isPurchased: Bool

@@ -4,31 +4,62 @@
     "" : {
 
     },
-    "Preview.PurchasedText" : {
+    "Onboarding.Done" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "Onboarding.MaybeLater" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maybe Later"
+          }
+        }
+      }
+    },
+    "Onboarding.Next" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        }
+      }
+    },
+    "Preview.Subscription.PurchasedText" : {
 
     },
-    "Preview.SubscriptionText" : {
+    "Preview.Subscription.Text" : {
 
     },
-    "Preview.SubscriptionTitle" : {
+    "Preview.Subscription.Title" : {
 
     },
-    "Preview.SubscriptionUsp.1.Text" : {
+    "Preview.Subscription.Usp1.Text" : {
 
     },
-    "Preview.SubscriptionUsp.1.Title" : {
+    "Preview.Subscription.Usp1.Title" : {
 
     },
-    "Preview.SubscriptionUsp.2.Text" : {
+    "Preview.Subscription.Usp2.Text" : {
 
     },
-    "Preview.SubscriptionUsp.2.Title" : {
+    "Preview.Subscription.Usp2.Title" : {
 
     },
-    "Preview.SubscriptionUsp.3.Text" : {
+    "Preview.Subscription.Usp3.Text" : {
 
     },
-    "Preview.SubscriptionUsp.3.Title" : {
+    "Preview.Subscription.Usp3.Title" : {
 
     },
     "SocialLinks.AppStore" : {
@@ -127,26 +158,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Maybe Later"
-          }
-        }
-      }
-    },
-    "Tutorial.Done" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Done"
-          }
-        }
-      }
-    },
-    "Tutorial.Next" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Next"
           }
         }
       }

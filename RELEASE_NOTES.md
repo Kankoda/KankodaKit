@@ -1,21 +1,14 @@
 # Release Notes
 
 
-## 0.9.2
-
-- This version adds purchased stuff to the subscription screen.
-
-
-## 0.9.1
-
-- This version cleans up unused stuff from the subscription screen.
-
 
 ## 0.9
 
 - This version moves StoreKit logic to StoreKitPlus. 
+- This version adds a new subscription screen style. 
+- This version adds purchased logic to the subscription screen.
 - This version wraps subscription screen types within the screen.
-- This version adds a subscription screen style for easy styling. 
+- This version lets you add alternate primary onboarding buttons.
 
 
 ## 0.8

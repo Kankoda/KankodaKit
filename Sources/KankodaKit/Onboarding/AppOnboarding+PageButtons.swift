@@ -45,14 +45,14 @@ public extension AppOnboarding {
             HStack {
                 if let secondaryTitle, let secondaryAction {
                     Button(action: secondaryAction) {
-                        LocalizedText(secondaryTitle)
+                        Text(secondaryTitle)
                             .onboardingButtonText()
                     }
                     .onboardingButton(.secondary)
                 }
 
                 Button(action: primaryAction) {
-                    LocalizedText(primaryTitle)
+                    Text(primaryTitle)
                         .onboardingButtonText()
                 }
                 .onboardingButton(.primary)

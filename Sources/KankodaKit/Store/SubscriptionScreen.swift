@@ -15,49 +15,32 @@ import SwiftUI
 /// diagonal line, and a scrolling ``SubscriptionView``.
 public struct SubscriptionScreen: View {
     
-    public init(
-        info: SubscriptionView.Info,
-        navigationTitle: Bool = false,
-        closeButton: Bool = true,
-        topPadding: Double = 0,
-        diagonalOffset: Double = 110
-    ) {
+    public init(info: Info) {
         self.info = info
-        self.navigationTitle = navigationTitle
-        self.closeButton = closeButton
-        self.topPadding = topPadding
-        self.diagonalOffset = diagonalOffset
     }
     
-    private let info: SubscriptionView.Info
-    private let navigationTitle: Bool
-    private let closeButton: Bool
-    private let topPadding: Double
-    private let diagonalOffset: Double
-
-    /// This scruct can configure a subscripton screen.
-    public typealias Info = SubscriptionView.Info
+    private let info: Info
     
     @Environment(\.dismiss)
     private var dismiss
 
+    @Environment(\.subscriptionScreenStyle)
+    private var style
+
     public var body: some View {
-        DiagonalContent(diagonalOffset: diagonalOffset + topPadding) {
-            SubscriptionView(
-                info: info,
-                topPadding: topPadding
-            )
-            .toolbar {
-                if closeButton {
-                    Button(info.modalCloseTitle) {
-                        dismiss()
+        DiagonalContent(diagonalOffset: totalDiagonalOffset) {
+            StoreView(info: info)
+                .toolbar {
+                    if style.showNavigationCloseButton {
+                        Button(info.modalCloseTitle) {
+                            dismiss()
+                        }
                     }
                 }
-            }
-            .navigationBarTitle(
-                navigationTitle ? info.modalBarTitle : "",
-                displayMode: .inline
-            )
+                .navigationBarTitle(
+                    style.showNavigationTitle ? info.modalBarTitle : "",
+                    displayMode: .inline
+                )
         }
     }
 }
@@ -66,33 +49,29 @@ public struct SubscriptionScreen: View {
 /// the screen from as part of an onboarding flow
 public struct SubscriptionScreenModal: View {
     
-    public init(
-        info: SubscriptionView.Info
-    ) {
+    public init(info: SubscriptionScreen.Info) {
         self.info = info
     }
     
-    private let info: SubscriptionView.Info
-    
+    private let info: SubscriptionScreen.Info
+
+    @Environment(\.subscriptionScreenStyle)
+    private var style
+
     public var body: some View {
         NavigationStack {
             SubscriptionScreen(
-                info: info,
-                navigationTitle: true,
-                closeButton: true,
-                topPadding: 30
+                info: info
             )
+            .subscriptionScreenStyle(style.toModalStyle())
         }
     }
 }
 
 private extension SubscriptionScreen {
 
-    func tryPurchase(_ product: AppProduct) async throws -> Bool {
-        let prod = info.storeContext.product(product)
-        guard let product = prod else { return false }
-        let result = try await info.storeService.purchase(product)
-        return result.0.isSuccess
+    var totalDiagonalOffset: Double {
+        style.diagonalOffset + style.topPadding
     }
 }
 

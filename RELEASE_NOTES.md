@@ -1,9 +1,11 @@
 # Release Notes
 
 
-## 0.8.1
+## 0.9
 
 - This version moves StoreKit logic to StoreKitPlus. 
+- This version wraps subscription screen types within the screen.
+- This version adds a subscription screen style for easy styling. 
 
 
 ## 0.8

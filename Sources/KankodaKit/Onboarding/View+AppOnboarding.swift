@@ -34,18 +34,24 @@ public extension View {
         onboardingPresentation: @escaping () -> Void,
         premiumPresentation: @escaping () -> Void
     ) -> some View {
-        self.modifier(
+        let review = Onboarding.requestReview
+        let premium = Onboarding.premium
+        if reset {
+            let onboardings = [onboarding, review, premium]
+            onboardings.forEach { $0.reset() }
+        }
+
+        return self.modifier(
             AppOnboardingModifier(
-                reset: reset,
                 userIsReadyToReview: userIsReadyToReview,
                 onboardingPresentation: {
                     tryPresentOnboarding(onboarding, presentation: onboardingPresentation)
                 },
                 reviewPresentation: { action in
-                    tryPresentOnboarding(.requestReview, presentation: { action() })
+                    tryPresentOnboarding(review, presentation: { action() })
                 },
                 premiumPresentation: {
-                    tryPresentOnboarding(.premium, presentation: premiumPresentation)
+                    tryPresentOnboarding(premium, presentation: premiumPresentation)
                 }
             )
         )
@@ -57,7 +63,6 @@ public extension View {
 struct AppOnboardingModifier: ViewModifier {
     
     init(
-        reset: Bool = false,
         userIsReadyToReview: Bool,
         onboardingPresentation: @escaping () -> Void,
         reviewPresentation: @escaping (RequestReviewAction) -> Void,
@@ -67,7 +72,6 @@ struct AppOnboardingModifier: ViewModifier {
         self.onboardingPresentation = onboardingPresentation
         self.reviewPresentation = reviewPresentation
         self.premiumPresentation = premiumPresentation
-        if reset { resetAppOnboarding() }
     }
         
     private let userIsReadyToReview: Bool
@@ -84,17 +88,6 @@ struct AppOnboardingModifier: ViewModifier {
             guard userIsReadyToReview else { return }
             reviewPresentation(requestReview)
             premiumPresentation()
-        }
-    }
-    
-    private func resetAppOnboarding() {
-        let onboardings = [
-            Onboarding.welcome,
-            Onboarding.requestReview,
-            Onboarding.premium
-        ]
-        onboardings.forEach {
-            $0.reset()
         }
     }
 }

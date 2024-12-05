@@ -9,6 +9,7 @@
 - This version adds purchased logic to the subscription screen.
 - This version wraps subscription screen types within the screen.
 - This version lets you add alternate primary onboarding buttons.
+- This version lets you specify which welcome onboarding to present.
 
 
 ## 0.8

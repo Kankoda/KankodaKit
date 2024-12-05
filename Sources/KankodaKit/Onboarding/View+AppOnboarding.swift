@@ -1,5 +1,5 @@
 //
-//  AppLaunchOnboarding.swift
+//  View+AppOnboarding.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-08-25.
@@ -23,25 +23,29 @@ public extension View {
     /// the app is launched for the first time, then ask the
     /// user for a review and show a premium screen when the
     /// user has interacted with the app "enough".
+    ///
+    /// > Important: Remember to ignore premium presentation
+    /// if the user is already subscribed.
     @MainActor
     func appOnboarding(
         reset: Bool = false,
         userIsReadyToReview: Bool,
-        presentOnboarding: @escaping () -> Void,
-        presentPremiumScreen: @escaping () -> Void
+        onboarding: Onboarding = .welcome(version: 1),
+        onboardingPresentation: @escaping () -> Void,
+        premiumPresentation: @escaping () -> Void
     ) -> some View {
         self.modifier(
             AppOnboardingModifier(
                 reset: reset,
                 userIsReadyToReview: userIsReadyToReview,
-                tryPresentWelcomeOnboarding: {
-                    tryPresentOnboarding(.welcome, presentation: presentOnboarding)
+                onboardingPresentation: {
+                    tryPresentOnboarding(onboarding, presentation: onboardingPresentation)
                 },
-                tryPresentReviewPrompt: { action in
-                    tryPresentOnboarding(.requestReview) { action() }
+                reviewPresentation: { action in
+                    tryPresentOnboarding(.requestReview, presentation: { action() })
                 },
-                tryPresentPremiumScreen: {
-                    tryPresentOnboarding(.premium, presentation: presentPremiumScreen)
+                premiumPresentation: {
+                    tryPresentOnboarding(.premium, presentation: premiumPresentation)
                 }
             )
         )
@@ -50,36 +54,36 @@ public extension View {
 
 /// This modifier can be used to show a series of onboarding
 /// steps when the app launches.
-public struct AppOnboardingModifier: ViewModifier {
+struct AppOnboardingModifier: ViewModifier {
     
-    public init(
+    init(
         reset: Bool = false,
         userIsReadyToReview: Bool,
-        tryPresentWelcomeOnboarding: @escaping () -> Void,
-        tryPresentReviewPrompt: @escaping (RequestReviewAction) -> Void,
-        tryPresentPremiumScreen: @escaping () -> Void
+        onboardingPresentation: @escaping () -> Void,
+        reviewPresentation: @escaping (RequestReviewAction) -> Void,
+        premiumPresentation: @escaping () -> Void
     ) {
         self.userIsReadyToReview = userIsReadyToReview
-        self.tryPresentWelcomeOnboarding = tryPresentWelcomeOnboarding
-        self.tryPresentReviewPrompt = tryPresentReviewPrompt
-        self.tryPresentPremiumScreen = tryPresentPremiumScreen
+        self.onboardingPresentation = onboardingPresentation
+        self.reviewPresentation = reviewPresentation
+        self.premiumPresentation = premiumPresentation
         if reset { resetAppOnboarding() }
     }
         
     private let userIsReadyToReview: Bool
-    private let tryPresentWelcomeOnboarding: () -> Void
-    private let tryPresentReviewPrompt: (RequestReviewAction) -> Void
-    private let tryPresentPremiumScreen: () -> Void
+    private let onboardingPresentation: () -> Void
+    private let reviewPresentation: (RequestReviewAction) -> Void
+    private let premiumPresentation: () -> Void
     
     @Environment(\.requestReview)
     private var requestReview
     
-    public func body(content: Content) -> some View {
+    func body(content: Content) -> some View {
         content.task {
-            tryPresentWelcomeOnboarding()
+            onboardingPresentation()
             guard userIsReadyToReview else { return }
-            tryPresentReviewPrompt(requestReview)
-            tryPresentPremiumScreen()
+            reviewPresentation(requestReview)
+            premiumPresentation()
         }
     }
     

@@ -87,7 +87,8 @@ public struct AppOnboardingScreen<Page: AppOnboardingScreenPage, Buttons: View>:
 private extension AppOnboardingScreen {
     
     var currentPage: Page {
-        pages[pageIndex]
+        guard pageIndex < pages.count else { return pages[pages.count - 1] }
+        return pages[pageIndex]
     }
 
     var isLastPage: Bool {

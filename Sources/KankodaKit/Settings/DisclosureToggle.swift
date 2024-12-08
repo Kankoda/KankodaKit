@@ -10,7 +10,7 @@ import SwiftUI
 
 /// This toggle can be used to toggle between a plain toggle
 /// and a disclosure disclosure group when the value is true.
-struct DisclosureToggle<Content: View>: View {
+public struct DisclosureToggle<Content: View>: View {
 
     /// Create a custom disclosure toggle.
     public init(

@@ -10,7 +10,7 @@ import SwiftUI
 
 /// This toggle can be used to show a disabled toggle if the
 /// app doesn't have a premium subscription.
-struct PremiumToggle<Content: View>: View {
+public struct PremiumToggle<Content: View>: View {
 
     /// Create a custom disclosure toggle.
     public init(

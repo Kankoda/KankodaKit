@@ -1,8 +1,9 @@
 //
-//  SwiftUIView.swift
+//  PremiumFeatureToggle.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2024-12-08.
+//  Copyright © 2024 Kankoda. All rights reserved.
 //
 
 import BadgeIcon
@@ -10,25 +11,25 @@ import SwiftUI
 
 /// This toggle can be used to show a disabled toggle if the
 /// app doesn't have a premium subscription.
-public struct PremiumToggle<Content: View>: View {
+public struct PremiumFeatureToggle<Content: View>: View {
 
     /// Create a custom disclosure toggle.
     public init(
         _ title: LocalizedStringKey,
-        _ binding: Binding<Bool>,
+        isOn: Binding<Bool>,
         isPremiumActive: Bool,
         premiumPresentation: @escaping () -> Void,
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.title = title
-        self.binding = binding
+        self.isOn = isOn
         self.isPremiumActive = isPremiumActive
         self.premiumPresentation = premiumPresentation
         self.content = content
     }
 
     private let title: LocalizedStringKey
-    private let binding: Binding<Bool>
+    private let isOn: Binding<Bool>
     private let isPremiumActive: Bool
     private let premiumPresentation: () -> Void
     private let content: () -> Content
@@ -37,7 +38,7 @@ public struct PremiumToggle<Content: View>: View {
         if isPremiumActive {
             content()
         } else {
-            Toggle(isOn: binding) {
+            Toggle(isOn: isOn) {
                 Label {
                     Text(title)
                 } icon: {
@@ -45,7 +46,7 @@ public struct PremiumToggle<Content: View>: View {
                 }
             }
             .task { disableBindingIfNeeded() }
-            .onChange(of: binding.wrappedValue) { _, value in
+            .onChange(of: isOn.wrappedValue) { _, value in
                 guard value else { return }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     disableBindingIfNeeded()
@@ -56,12 +57,12 @@ public struct PremiumToggle<Content: View>: View {
     }
 }
 
-private extension PremiumToggle {
+private extension PremiumFeatureToggle {
 
     func disableBindingIfNeeded() {
         if isPremiumActive { return }
         withAnimation {
-            binding.wrappedValue = false
+            isOn.wrappedValue = false
         }
     }
 }
@@ -70,20 +71,21 @@ private extension PremiumToggle {
 
     struct Preview: View {
 
+        @State var isPremiumActive = false
         @State var isEnabled = false
         @State var isExpanded = false
 
         var body: some View {
-            PremiumToggle(
+            PremiumFeatureToggle(
                 "Preview.Toggle",
-                $isEnabled,
-                isPremiumActive: false,
+                isOn: $isPremiumActive.animation(),
+                isPremiumActive: isPremiumActive,
                 premiumPresentation: { print("HEJ") }
             ) {
                 #if os(iOS) || os(macOS)
                 DisclosureToggle(
                     "Preview.Toggle",
-                    $isEnabled,
+                    isOn: $isEnabled,
                     isExpanded: $isExpanded
                 ) {
                     Color.red
@@ -91,6 +93,9 @@ private extension PremiumToggle {
                 #else
                 Color.red
                 #endif
+            }
+            .onChange(of: isPremiumActive) { _, value in
+                isEnabled = value
             }
         }
     }

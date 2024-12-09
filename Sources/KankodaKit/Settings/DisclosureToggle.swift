@@ -3,6 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2024-12-08.
+//  Copyright © 2024 Kankoda. All rights reserved.
 //
 
 #if os(iOS) || os(macOS)
@@ -10,30 +11,33 @@ import SwiftUI
 
 /// This toggle can be used to toggle between a plain toggle
 /// and a disclosure disclosure group when the value is true.
+///
+/// The disclosure group's expanded state will automatically
+/// match any changes to `isOn`.
 public struct DisclosureToggle<Content: View>: View {
 
     /// Create a custom disclosure toggle.
     public init(
         _ title: LocalizedStringKey,
-        _ binding: Binding<Bool>,
+        isOn: Binding<Bool>,
         isExpanded: Binding<Bool>,
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.title = title
-        self.binding = binding
+        self.isOn = isOn
         self.isExpanded = isExpanded
         self.content = content
     }
 
     private let title: LocalizedStringKey
-    private let binding: Binding<Bool>
+    private let isOn: Binding<Bool>
     private let isExpanded: Binding<Bool>
     private let content: () -> Content
 
     public var body: some View {
         bodyContent
-            .animation(.default, value: binding.wrappedValue)
-            .onChange(of: binding.wrappedValue) { _, value in
+            .animation(.default, value: isOn.wrappedValue)
+            .onChange(of: isOn.wrappedValue) { _, value in
                 withAnimation(.default) {
                     isExpanded.wrappedValue = value
                 }
@@ -42,15 +46,15 @@ public struct DisclosureToggle<Content: View>: View {
 
     @ViewBuilder
     var bodyContent: some View {
-        let isEnabled = binding.wrappedValue
+        let isEnabled = isOn.wrappedValue
         if isEnabled {
             DisclosureGroup(isExpanded: isExpanded) {
                 content()
             } label: {
-                Toggle(title, isOn: binding)
+                Toggle(title, isOn: isOn)
             }
         } else {
-            Toggle(title, isOn: binding)
+            Toggle(title, isOn: isOn)
         }
     }
 }
@@ -65,7 +69,7 @@ public struct DisclosureToggle<Content: View>: View {
         var body: some View {
             DisclosureToggle(
                 "Preview.Toggle",
-                $isEnabled,
+                isOn: $isEnabled,
                 isExpanded: $isExpanded
             ) {
                 Color.red

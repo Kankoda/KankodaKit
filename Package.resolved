@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/BadgeIcon.git",
       "state" : {
-        "revision" : "26938cb61dfdc83cfd989cd44a31a20ca13abb96",
-        "version" : "0.5.0"
+        "revision" : "214395745a72928cdba990301675a07753b314a9",
+        "version" : "0.6.0"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/SwiftUIKit.git",
       "state" : {
-        "revision" : "1a4417ca4ad871f10f058327ace53eebddc600e6",
-        "version" : "4.3.0"
+        "revision" : "95d154cf7ca479184c6878786b4c1f3d78a36104",
+        "version" : "4.4.0"
       }
     }
   ],

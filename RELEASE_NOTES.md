@@ -4,13 +4,14 @@
 
 ## 0.9
 
-- This version moves StoreKit logic to StoreKitPlus.  
-- This version adds a new subscription screen style.
-- This version adds a new app screen and app tab protocols. 
-- This version adds purchased logic to the subscription screen.
+- This version adds a new `AppRootView` type.
+- This version adds a new `AppEnvironment` type.
+- This version moves StoreKit logic to StoreKitPlus.
+- This version lets you customize `SubscriptionScreen`.
+- This version lets you customize `AppOnboardingScreen`.
+- This version adds a new `SubscriptionScreen.Style` style.
+- This version adds new `AppScreenType` and  `AppTabType` types.
 - This version adds a new `PremiumToggle` and `DisclosureToggle`.
-- This version wraps subscription screen types within the screen.
-- This version lets you add alternate primary onboarding buttons.
 - This version lets you specify which welcome onboarding to present.
 
 

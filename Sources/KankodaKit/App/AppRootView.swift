@@ -1,0 +1,61 @@
+//
+//  AppRootView.swift
+//  KankodaKit
+//
+//  Created by Daniel Saidi on 2024-12-09.
+//
+
+import StoreKitPlus
+import SwiftUI
+import SwiftUIKit
+import SystemNotification
+
+/// This view can be used as the root view of an app.
+///
+/// To ensure that everything has been correctly set up, the
+/// view assumes that it has been set up by first applying a
+/// ``SwiftUICore/View/withAppEnvironment(appSpecific:)`` to
+/// it. It will sync in-app purchases and subscriptions if a
+/// store service is provided.
+public struct AppRootView<Content: View>: View, ErrorAlerter {
+
+    public init(
+        storeService: (any StoreService)?,
+        @ViewBuilder content: @escaping () -> Content
+    ) {
+        self.storeService = storeService
+        self.content = content
+    }
+
+    private let storeService: (any StoreService)?
+    private let content: () -> Content
+
+    @EnvironmentObject public var alert: AlertContext
+    @EnvironmentObject public var sheet: SheetContext
+    @EnvironmentObject public var storeContext: StoreContext
+    @EnvironmentObject public var systemNotification: SystemNotificationContext
+
+    public var body: some View {
+        content()
+            .alert(alert)
+            .sheet(sheet)
+            .systemNotification(systemNotification)
+            .task { tryRefreshPurchases() }
+    }
+}
+
+private extension AppRootView {
+
+    func tryRefreshPurchases() {
+        guard let service = storeService else { return }
+        tryWithErrorAlert {
+            try await service.syncStoreData(to: storeContext)
+        }
+    }
+}
+
+#Preview {
+    AppRootView(storeService: nil) {
+        Color.green
+    }
+}

@@ -4,8 +4,9 @@
 
 ## 0.9
 
-- This version moves StoreKit logic to StoreKitPlus. 
-- This version adds a new subscription screen style.  
+- This version moves StoreKit logic to StoreKitPlus.  
+- This version adds a new subscription screen style.
+- This version adds a new app screen and app tab protocols. 
 - This version adds purchased logic to the subscription screen.
 - This version adds a new `PremiumToggle` and `DisclosureToggle`.
 - This version wraps subscription screen types within the screen.

@@ -26,7 +26,7 @@ public extension AppTabType {
     /// Generate a navigation link to the app screen.
     var tabItem: some View {
         NavigationStack {
-            content
+            screenContent
         }
         .tag(self)
         .tabItem {

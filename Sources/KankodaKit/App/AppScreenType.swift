@@ -44,10 +44,19 @@ public extension AppScreenType {
 
 public extension View {
 
-    /// Generate a navigation link to a certain app screen.
+    /// Generate a navigation link to a certain screen.
     func navigationLink<Screen: AppScreenType>(
         to screen: Screen
     ) -> some View {
         screen.navigationLink
+    }
+
+    /// Define a standard app screen navigation destination.
+    func standardNavigationDestination<Screen: AppScreenType>(
+        for screen: Screen.Type
+    ) -> some View {
+        self.navigationDestination(for: Screen.self) {
+            $0.screenContent
+        }
     }
 }

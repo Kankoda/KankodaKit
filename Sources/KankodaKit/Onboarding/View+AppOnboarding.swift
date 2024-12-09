@@ -27,6 +27,7 @@ public extension View {
     /// > Important: Remember to ignore premium presentation
     /// if the user is already subscribed.
     @MainActor
+    @ViewBuilder
     func appOnboarding(
         reset: Bool = false,
         userIsReadyToReview: Bool,
@@ -36,25 +37,25 @@ public extension View {
     ) -> some View {
         let review = Onboarding.requestReview
         let premium = Onboarding.premium
+        let onboardings = [onboarding, review, premium]
         if reset {
-            let onboardings = [onboarding, review, premium]
-            onboardings.forEach { $0.reset() }
-        }
-
-        return self.modifier(
-            AppOnboardingModifier(
-                userIsReadyToReview: userIsReadyToReview,
-                onboardingPresentation: {
-                    tryPresentOnboarding(onboarding, presentation: onboardingPresentation)
-                },
-                reviewPresentation: { action in
-                    tryPresentOnboarding(review, presentation: { action() })
-                },
-                premiumPresentation: {
-                    tryPresentOnboarding(premium, presentation: premiumPresentation)
-                }
+            self.task { onboardings.forEach{ $0.reset() } }
+        } else {
+            self.modifier(
+                AppOnboardingModifier(
+                    userIsReadyToReview: userIsReadyToReview,
+                    onboardingPresentation: {
+                        tryPresentOnboarding(onboarding, presentation: onboardingPresentation)
+                    },
+                    reviewPresentation: { action in
+                        tryPresentOnboarding(review, presentation: { action() })
+                    },
+                    premiumPresentation: {
+                        tryPresentOnboarding(premium, presentation: premiumPresentation)
+                    }
+                )
             )
-        )
+        }
     }
 }
 

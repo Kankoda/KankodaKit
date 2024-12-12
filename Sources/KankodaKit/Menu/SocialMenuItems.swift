@@ -11,57 +11,100 @@ import BadgeIcon
 import SwiftUI
 import SwiftUIKit
 
+private enum SocialMenuItemLink {
+
+    case appStore
+    case bug
+    case email
+    case featureRequest
+    case lightbulb
+    case privacy
+    case safari
+
+    var badgeIcon: BadgeIcon<Image> {
+        switch self {
+        case .appStore: .appStore
+        case .bug: .bug
+        case .email: .email
+        case .featureRequest: .featureRequest
+        case .lightbulb: .lightbulb
+        case .privacy: .privacy
+        case .safari: .safari
+        }
+    }
+
+    var systemImageName: String {
+        switch self {
+        case .appStore: "apple.logo"
+        case .bug: "ladybug"
+        case .email: "envelope"
+        case .featureRequest: "gift"
+        case .lightbulb: "lightbulb"
+        case .privacy: "hand.raised"
+        case .safari: "safari"
+        }
+    }
+}
+
+/// This enum can be used to style social menu item icons.
+public enum SocialMenuItemsIconStyle: Equatable {
+
+    case badge, plain
+}
+
 /// This view can be used to add standard social items to an
 /// app made by Kankoda.
-public struct SocialMenuItems<Icon: View>: View {
+public struct SocialMenuItems: View {
     
     public init(
         appInfo: AppInfo,
-        icon: @escaping (Image) -> Icon
+        iconStyle: SocialMenuItemsIconStyle = .badge,
+        inAdaptiveSidebar: Bool = false
     ) {
         self.info = appInfo
         self.urls = .init(appInfo: appInfo)
-        self.icon = icon
-    }
-    
-    public init(
-        appInfo: AppInfo
-    ) where Icon == Image {
-        self.info = appInfo
-        self.urls = .init(appInfo: appInfo)
-        self.icon = { $0 }
+        self.iconStyle = iconStyle
+        self.inAdaptiveSidebar = inAdaptiveSidebar
     }
     
     private let info: AppInfo
     private let urls: AppUrls
-    private let icon: (Image) -> Icon
-    
+    private let iconStyle: SocialMenuItemsIconStyle
+    private let inAdaptiveSidebar: Bool
+
     public var body: some View {
         Group {
-            DisclosureGroup {
-                Link(destination: urls.contactEmail!) {
-                    LocalizedLabel("SocialLinks.Email", BadgeIcon.email)
+            if inAdaptiveSidebar {
+                if let url = urls.contactEmail {
+                    link(url, "SocialLinks.Contact", .email)
                 }
-                Link(destination: urls.contactEmailFeedback!) {
-                    LocalizedLabel("SocialLinks.SendFeedback", BadgeIcon.lightbulb)
+            } else {
+                DisclosureGroup {
+                    if let url = urls.contactEmail {
+                        link(url, "SocialLinks.Email", .email)
+                    }
+                    if let url = urls.contactEmailFeedback {
+                        link(url, "SocialLinks.SendFeedback", .lightbulb)
+                    }
+                    if let url = urls.contactEmailFeatureRequest {
+                        link(url, "SocialLinks.RequestFeature", .featureRequest)
+                    }
+                    if let url = urls.contactEmailBugReport {
+                        link(url, "SocialLinks.ReportBug", .bug)
+                    }
+                } label: {
+                    label("SocialLinks.Contact", .email)
                 }
-                Link(destination: urls.contactEmailFeatureRequest!) {
-                    LocalizedLabel("SocialLinks.RequestFeature", BadgeIcon.featureRequest)
-                }
-                Link(destination: urls.contactEmailBugReport!) {
-                    LocalizedLabel("SocialLinks.ReportBug", BadgeIcon.bug)
-                }
-            } label: {
-                LocalizedLabel("SocialLinks.Contact", BadgeIcon.email)
             }
-            Link(destination: urls.website!) {
-                LocalizedLabel("SocialLinks.Website", BadgeIcon.safari)
+
+            if let url = urls.website {
+                link(url, "SocialLinks.Website", .safari)
             }
-            Link(destination: urls.privacyPolicy!) {
-                LocalizedLabel("SocialLinks.PrivacyPolicy", BadgeIcon.privacy)
+            if let url = urls.privacyPolicy {
+                link(url, "SocialLinks.PrivacyPolicy", .privacy)
             }
-            Link(destination: urls.appStore!) {
-                LocalizedLabel("SocialLinks.AppStore", BadgeIcon.appStore)
+            if let url = urls.appStore {
+                link(url, "SocialLinks.AppStore", .appStore)
             }
         }
         .buttonStyle(.list)
@@ -69,26 +112,26 @@ public struct SocialMenuItems<Icon: View>: View {
 }
 
 private extension SocialMenuItems {
-    
-    func text(_ title: LocalizedStringKey) -> some View {
-        Text(title, bundle: .module)
-    }
-    
+
     @ViewBuilder
-    func link(_ title: LocalizedStringKey, _ icon: Image, _ url: URL?) -> some View {
-        if let url {
-            Link(destination: url) {
-                LocalizedLabel(title, icon)
-            }
+    private func label(
+        _ title: LocalizedStringKey,
+        _ link: SocialMenuItemLink
+    ) -> some View {
+        if iconStyle == .plain || inAdaptiveSidebar {
+            LocalizedLabel(title, Image(systemName: link.systemImageName))
+        } else {
+            LocalizedLabel(title, link.badgeIcon)
         }
     }
-    
-    @ViewBuilder
-    func shareLink(_ title: LocalizedStringKey, _ icon: Image, _ url: URL?) -> some View {
-        if let url {
-            ShareLink(item: url) {
-                LocalizedLabel(title, icon)
-            }
+
+    func link(
+        _ url: URL,
+        _ title: LocalizedStringKey,
+        _ link: SocialMenuItemLink
+    ) -> some View {
+        Link(destination: url) {
+            label(title, link)
         }
     }
 }
@@ -98,7 +141,8 @@ private extension SocialMenuItems {
         Section {
             SocialMenuItems(
                 appInfo: .preview,
-                icon: { $0 }
+                iconStyle: .plain,
+                inAdaptiveSidebar: true
             )
         }
     }

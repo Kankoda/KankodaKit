@@ -12,7 +12,7 @@ import SwiftUI
 /// used as an app screens.
 public protocol AppScreenType: Hashable {
 
-    associatedtype LinkIcon: View
+    associatedtype LabelIcon: View
     associatedtype ScreenContent: View
 
     /// The app screen title.
@@ -21,23 +21,28 @@ public protocol AppScreenType: Hashable {
     /// The app screen content.
     var screenContent: ScreenContent { get }
 
-    /// The app screen's link title.
-    var linkTitle: LocalizedStringKey { get }
+    /// The app screen's label title.
+    var labelTitle: LocalizedStringKey { get }
 
-    /// The app screen's link icon.
-    var linkIcon: LinkIcon { get }
+    /// The app screen's label icon.
+    var labelIcon: LabelIcon { get }
 }
 
 public extension AppScreenType {
 
+    /// Generate a label for the screen.
+    var label: some View {
+        Label {
+            Text(labelTitle)
+        } icon: {
+            labelIcon
+        }
+    }
+
     /// Generate a navigation link to the app screen.
     var navigationLink: some View {
         NavigationLink(value: self) {
-            Label {
-                Text(linkTitle)
-            } icon: {
-                linkIcon
-            }
+            label
         }
     }
 }

@@ -66,7 +66,7 @@ public extension AppItemStore where Item: Searchable {
     /// Get all items that matches a certain query.
     func getItems(matching query: String) async throws -> [Item] {
         try await getItems().filter {
-            $0.matches(searchQuery: query)
+            $0.matches(query: query)
         }
     }
 }

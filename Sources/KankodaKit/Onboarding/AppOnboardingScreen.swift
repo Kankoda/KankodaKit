@@ -26,13 +26,16 @@ public struct AppOnboardingScreen<Page: AppOnboardingScreenPage, Buttons: View>:
 
     public init(
         _ pages: [Page],
+        addDoneButton: Bool = true,
         @ViewBuilder buttons: @escaping (ButtonParams) -> Buttons
     ) {
         self.pages = pages
+        self.addDoneButton = addDoneButton
         self.buttons = buttons
     }
     
     private let pages: [Page]
+    private let addDoneButton: Bool
     private let buttons: (ButtonParams) -> Buttons
 
     public typealias ButtonParams = (
@@ -74,8 +77,10 @@ public struct AppOnboardingScreen<Page: AppOnboardingScreenPage, Buttons: View>:
         .background(Color.diagonalForeground)
         .safeAreaInset(edge: .bottom) { buttonsView }
         .toolbar {
-            Button(.done, action: dismiss.callAsFunction)
-                .labelStyle(.titleOnly)
+            if addDoneButton {
+                Button(.done, action: dismiss.callAsFunction)
+                    .labelStyle(.titleOnly)
+            }
         }
         .navigationTitle("")
         #if os(iOS)

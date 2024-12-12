@@ -120,7 +120,7 @@ private extension AppOnboardingScreen {
                 nextOrDismiss: nextPageOrDismiss
             )
         ))
-        .padding(.horizontal)
+        .padding([.horizontal, .bottom])
         .animation(.default, value: pageIndex)
     }
 

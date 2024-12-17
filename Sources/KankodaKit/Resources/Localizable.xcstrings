@@ -14,17 +14,6 @@
         }
       }
     },
-    "Onboarding.MaybeLater" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Maybe Later"
-          }
-        }
-      }
-    },
     "Onboarding.Next" : {
       "localizations" : {
         "en" : {

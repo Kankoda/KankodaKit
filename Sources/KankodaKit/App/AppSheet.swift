@@ -55,6 +55,7 @@ public struct AppSheetContent<Content: View>: View {
     }
 }
 
+@MainActor
 public extension SheetContext {
 
     /// Present an app sheet content view.

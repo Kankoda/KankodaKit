@@ -12,9 +12,10 @@ import SwiftUIKit
 /// This protocol represents a physical item with image data.
 public protocol ImageItem {}
 
+@MainActor
 public extension ImageItem {
-
-    /// The image cache to use for caching images.
+    
+    /// Use a shared image cache.
     var imageCache: ImageCache { .shared }
 
     /// Get an image either from the cache or the raw `data`.
@@ -24,5 +25,30 @@ public extension ImageItem {
         guard let image = ImageRepresentable(data: data) else { return nil }
         imageCache.cache(image: image, for: key)
         return image
+    }
+}
+
+/// This type can be used to cache images.
+public class ImageCache {
+    
+    /// A shared cache.
+    public static let shared = ImageCache()
+
+    /// The cache dictionary that is used to store images.
+    public var cache = [String: ImageRepresentable]()
+
+    /// Store an image into the cache.
+    public func cache(image: ImageRepresentable, for key: String) {
+        cache[key] = image
+    }
+    
+    /// Try to get an image from the cache.
+    public func cachedImage(for key: String) -> ImageRepresentable? {
+        cache[key]
+    }
+
+    /// Remove the cached image for a certain key.
+    public func clearCache(for key: String) {
+        cache[key] = nil
     }
 }

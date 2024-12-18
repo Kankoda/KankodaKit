@@ -19,6 +19,7 @@ public protocol TwoFacedItem: Identifiable, ImageItem where ID == UUID {
     var backImageData: Data { get set }
 }
 
+@MainActor
 public extension TwoFacedItem {
     
     /// Get the item front & back images from cache or data.
@@ -56,6 +57,7 @@ public extension TwoFacedItem {
     }
 }
 
+@MainActor
 private extension TwoFacedItem {
 
     /// Clear the image cache for a certain item face.

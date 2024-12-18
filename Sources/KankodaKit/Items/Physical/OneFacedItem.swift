@@ -16,6 +16,7 @@ public protocol OneFacedItem: Identifiable, ImageItem where ID == UUID {
     var imageData: Data { get set }
 }
 
+@MainActor
 public extension OneFacedItem {
 
     /// Whether or not the item has an image.

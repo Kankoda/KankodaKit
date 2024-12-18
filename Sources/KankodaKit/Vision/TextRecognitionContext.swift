@@ -27,17 +27,14 @@ public extension TextRecognitionContext {
     /// Perform text recognition in a collection of images.
     func performTextRecognition(in images: [ImageRepresentable]) {
         reset()
-        let queue = DispatchQueue(label: "imageTextRecognition", qos: .userInitiated)
-        queue.async {
-            let images = images.compactMap { $0.cgImage }
-            for image in images {
-                let requestHandler = VNImageRequestHandler(cgImage: image, options: [:])
-                let request = self.textRecognitionRequest()
-                do {
-                    try requestHandler.perform([request])
-                } catch {
-                    print(error.localizedDescription)
-                }
+        let images = images.compactMap { $0.cgImage }
+        for image in images {
+            let requestHandler = VNImageRequestHandler(cgImage: image, options: [:])
+            let request = self.textRecognitionRequest()
+            do {
+                try requestHandler.perform([request])
+            } catch {
+                print(error.localizedDescription)
             }
         }
     }

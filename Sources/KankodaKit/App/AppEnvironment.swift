@@ -31,12 +31,9 @@ public extension AppEnvironment {
 
 public extension View {
 
-    /// Apply the app environment objects.
-    func withAppEnvironment(
-        appSpecific: (Self) -> some View
-    ) -> some View {
-        appSpecific(self)
-            .environmentObject(AppEnvironment.alertContext)
+    /// Apply all standard ``AppEnvironment`` objects.
+    func withKankodaAppEnvironment() -> some View {
+        self.environmentObject(AppEnvironment.alertContext)
             .environmentObject(AppEnvironment.sheetContext)
             .environmentObject(AppEnvironment.storeContext)
             .environmentObject(AppEnvironment.systemNotificationContext)
@@ -49,9 +46,7 @@ public extension View {
 
         var body: some View {
             PreviewContent()
-                .withAppEnvironment { content in
-                    content.background(Color.yellow)
-                }
+                .withKankodaAppEnvironment()
         }
     }
 

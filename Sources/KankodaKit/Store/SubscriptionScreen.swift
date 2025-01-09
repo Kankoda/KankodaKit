@@ -103,28 +103,25 @@ private extension SubscriptionScreen {
         with result: Result<Product.PurchaseResult, Error>
     ) {
         switch result {
-        case .success:
-            confettiTrigger += 1
-            Task {
-                do {
-                    try await info.storeService.syncStoreData(
-                        to: info.storeContext
-                    )
-                } catch {
-                    print(error)
-                }
-            }
+        case .success: synccState(for: product)
         case .failure: return
         }
     }
-}
-
-private extension Product.PurchaseResult {
-
-    var isSuccess: Bool {
-        switch self {
-        case .success: true
-        default: false
+    
+    func synccState(
+        for product: Product
+    ) {
+        let service = info.storeService
+        let context = info.storeContext
+        Task {
+            do {
+                try await service.syncStoreData(to: context)
+                if context.isProductPurchased(product) {
+                    confettiTrigger += 1
+                }
+            } catch {
+                print(error)
+            }
         }
     }
 }

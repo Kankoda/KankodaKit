@@ -81,21 +81,19 @@ private extension SubscriptionScreen.StoreViewContent {
 #endif
 
 class PreviewService: StoreService {
+    
+    typealias Transaction = StoreKit.Transaction
 
-    /// Get all available products.
     func getProducts() async throws -> [Product] { [] }
+    
+    func getValidProductTransations() async throws -> [Transaction] { [] }
 
-    /// Purchase a certain product.
     @discardableResult
     func purchase(
         _ product: Product
-    ) async throws -> (Product.PurchaseResult, StoreKit.Transaction?) {
+    ) async throws -> (Product.PurchaseResult, Transaction?) {
         (.pending, nil)
     }
-
-    /// Restore previous purchases.
-    @discardableResult
-    func restorePurchases() async throws -> [StoreKit.Transaction] { [] }
 
     /// Sync StoreKit products and purchases to a context.
     func syncStoreData(

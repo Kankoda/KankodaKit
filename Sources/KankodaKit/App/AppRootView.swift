@@ -29,6 +29,8 @@ public struct AppRootView<Content: View>: View, ErrorAlerter {
 
     private let storeService: (any StoreService)?
     private let content: () -> Content
+    
+    @Environment(\.scenePhase) var scenePhase
 
     @EnvironmentObject public var alert: AlertContext
     @EnvironmentObject public var sheet: SheetContext
@@ -40,13 +42,14 @@ public struct AppRootView<Content: View>: View, ErrorAlerter {
             .alert(alert)
             .sheet(sheet)
             .systemNotification(systemNotification)
-            .task { tryRefreshPurchases() }
+            .onChange(of: scenePhase) { _, phase in syncStoreData(for: phase) }
     }
 }
 
 private extension AppRootView {
-
-    func tryRefreshPurchases() {
+    
+    func syncStoreData(for phase: ScenePhase) {
+        guard phase == .active else { return }
         guard let service = storeService else { return }
         tryWithErrorAlert {
             try await service.syncStoreData(to: storeContext)

@@ -2,7 +2,7 @@
 
 
 
-## 0.9
+## 0.9 - 1.0
 
 - This version adds a new `AppRootView` type.
 - This version adds a new `AppEnvironment` type.

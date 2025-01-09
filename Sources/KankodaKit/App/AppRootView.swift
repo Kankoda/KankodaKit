@@ -12,6 +12,10 @@ import SystemNotification
 
 /// This view can be used as the root view of an app.
 ///
+/// The view will apply alert, sheet and system notification
+/// contexts to the view, and sync store data with the store
+/// service every time the app becomes active.
+///
 /// To ensure that everything has been correctly set up, the
 /// view assumes that it has been set up by first applying a
 /// ``SwiftUICore/View/withAppEnvironment(appSpecific:)`` to
@@ -50,9 +54,9 @@ private extension AppRootView {
     
     func syncStoreData(for phase: ScenePhase) {
         guard phase == .active else { return }
-        guard let service = storeService else { return }
+        guard let storeService else { return }
         tryWithErrorAlert {
-            try await service.syncStoreData(to: storeContext)
+            try await storeService.syncStoreData(to: storeContext)
         }
     }
 }

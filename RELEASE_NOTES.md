@@ -1,7 +1,6 @@
 # Release Notes
 
 
-
 ## 0.9 - 1.0
 
 - This version adds a new `AppRootView` type.

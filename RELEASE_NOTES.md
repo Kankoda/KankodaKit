@@ -1,6 +1,13 @@
 # Release Notes
 
 
+## 1.1
+
+- This version adds a new `AppScreenNavigationContext`.
+- This version adds a new `AppScreenNavigationStack`.
+- The `AppItemAddContext` type is now `@MainActor`.
+
+
 ## 0.9 - 1.0
 
 - This version adds a new `AppRootView` type.

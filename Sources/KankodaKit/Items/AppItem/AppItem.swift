@@ -15,26 +15,8 @@ public protocol AppItem: Codable, Equatable, Identifiable, Named, Transferable {
     /// The unique item id.
     var id: UUID { get }
     
-    /// The type name, e.g. "Card".
-    static var typeName: String { get }
-    
-    /// The type's plural name, e.g. "Cards".
-    static var typePluralName: String { get }
-    
     /// Create an empty placeholder item.
     static func placeholderItem() -> Self
-}
-
-public extension AppItem {
-    
-    /// The display name, resolves to ``nameWithTypeFallback``.
-    var displayName: String {
-        nameWithTypeFallback
-    }
-    /// Get the name of the item, with the type name if none.
-    var nameWithTypeFallback: String {
-        name(fallback: Self.typeName)
-    }
 }
 
 public extension Array where Element: AppItem {

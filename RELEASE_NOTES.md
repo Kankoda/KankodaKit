@@ -6,7 +6,7 @@
 - This version adds a new `AppScreenNavigationContext`.
 - This version adds a new `AppScreenNavigationStack`.
 - The `AppItem` type has less type-specific info.
-- The `AppItemAddContext` type is now `@MainActor`.
+- The `AppItemAddContext` type now uses `@MainActor`.
 
 
 ## 0.9 - 1.0

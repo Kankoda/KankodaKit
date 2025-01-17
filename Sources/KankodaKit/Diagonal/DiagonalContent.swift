@@ -15,18 +15,17 @@ import SwiftUI
 public struct DiagonalContent<Content: View>: View {
     
     public init(
-        style: DiagonalStyle = .standard,
         diagonalOffset: CGFloat = 200,
         content: @escaping () -> Content
     ) {
-        self.style = style
         self.diagonalOffset = diagonalOffset
         self.content = content
     }
     
-    private let style: DiagonalStyle
     private let diagonalOffset: CGFloat
     private let content: () -> Content
+    
+    @Environment(\.diagonalStyle) var style
     
     public var body: some View {
         GeometryReader { geo in
@@ -44,7 +43,8 @@ private extension DiagonalContent {
         VStack(spacing: 0) {
             style.background
             diagonalBackground
-        }.ignoresSafeArea()
+        }
+        .ignoresSafeArea()
     }
     
     var diagonalBackground: some View {
@@ -106,12 +106,7 @@ private extension GeometryProxy {
     }
     
     return NavigationStack {
-        DiagonalContent(
-            style: .init(
-                background: .red,
-                diagonal: .yellow.opacity(0.5)
-            )
-        ) {
+        DiagonalContent {
             VStack(spacing: 20) {
                 RoundedRectangle(cornerRadius: 20).fill(.green).frame(square: 300)
                 square()
@@ -128,6 +123,10 @@ private extension GeometryProxy {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+        .diagonalStyle(.init(
+            background: .red,
+            diagonal: .yellow.opacity(0.5)
+        ))
     }
     // .previewInterfaceOrientation(.landscapeLeft)
 }

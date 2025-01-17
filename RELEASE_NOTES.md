@@ -7,6 +7,7 @@
 - This version adds a new `AppScreenNavigationStack`.
 - The `AppItem` type has less type-specific info.
 - The `AppItemAddContext` type now uses `@MainActor`.
+- The `SubscriptionScreen` no longer uses a diagonal content.
 
 
 ## 0.9 - 1.0

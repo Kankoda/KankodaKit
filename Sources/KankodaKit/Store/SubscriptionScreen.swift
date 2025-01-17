@@ -42,38 +42,36 @@ public struct SubscriptionScreen: View {
     private var confettiTrigger = 0
 
     public var body: some View {
-        DiagonalContent(diagonalOffset: totalDiagonalOffset) {
-            ScrollView {
-                SubscriptionStoreView(
-                    groupID: info.appInfo.subscriptionGroupId
-                ) {
-                    StoreViewContent(
-                        info: info,
-                        isPurchased: isPurchased
-                    )
-                    .padding(.horizontal)
-                }
-                .padding(.top, style.topPadding)
-                .multilineTextAlignment(.center)
-                .withPurchaseConfetti(
-                    $confettiTrigger,
-                    emojis: info.confettiEmojis
+        ScrollView {
+            SubscriptionStoreView(
+                groupID: info.appInfo.subscriptionGroupId
+            ) {
+                StoreViewContent(
+                    info: info,
+                    isPurchased: isPurchased
                 )
+                .padding(.horizontal)
             }
-            .onInAppPurchaseCompletion(perform: handleSubscription)
-            #if os(iOS)
-            .storeButton(.visible, for: .redeemCode)
-            .storeButton(.visible, for: .policies)
-            #endif
-            .storeButton(.hidden, for: .cancellation)
-            .storeButton(.visible, for: .restorePurchases)
-            .subscriptionStorePolicyDestination(url: info.appInfo.urls.privacyPolicy!, for: .privacyPolicy)
-            .subscriptionStorePolicyDestination(url: info.appInfo.urls.termsAndConditions!, for: .termsOfService)
-            .toolbar {
-                if let closeButtonTitle {
-                    Button(action: { dismiss() }) {
-                        LocalizedText(closeButtonTitle)
-                    }
+            .padding(.top, style.topPadding)
+            .multilineTextAlignment(.center)
+            .withPurchaseConfetti(
+                $confettiTrigger,
+                emojis: info.confettiEmojis
+            )
+        }
+        .onInAppPurchaseCompletion(perform: handleSubscription)
+        #if os(iOS)
+        .storeButton(.visible, for: .redeemCode)
+        .storeButton(.visible, for: .policies)
+        #endif
+        .storeButton(.hidden, for: .cancellation)
+        .storeButton(.visible, for: .restorePurchases)
+        .subscriptionStorePolicyDestination(url: info.appInfo.urls.privacyPolicy!, for: .privacyPolicy)
+        .subscriptionStorePolicyDestination(url: info.appInfo.urls.termsAndConditions!, for: .termsOfService)
+        .toolbar {
+            if let closeButtonTitle {
+                Button(action: { dismiss() }) {
+                    LocalizedText(closeButtonTitle)
                 }
             }
         }
@@ -89,10 +87,6 @@ private extension SubscriptionScreen {
         if isPurchased && isModal { return "SubscriptionScreen.Close" }
         if !isPurchased { return "SubscriptionScreen.MaybeLater" }
         return nil
-    }
-
-    var totalDiagonalOffset: Double {
-        style.diagonalOffset + style.topPadding
     }
 }
 

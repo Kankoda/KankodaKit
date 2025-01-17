@@ -24,22 +24,17 @@ public extension SubscriptionScreen {
         ///  - iconSize: The top icon size, by default `125`.
         ///  - contentMaxWidth: The custom content max width, by default `450`.
         public init(
-            topPadding: Double = 0,
-            diagonalOffset: Double = 110,
+            topPadding: Double = 25,
             iconSize: Double = 125.0,
             contentMaxWidth: Double = 450.0
         ) {
             self.topPadding = topPadding
-            self.diagonalOffset = diagonalOffset
             self.iconSize = iconSize
             self.contentMaxWidth = contentMaxWidth
         }
 
         /// The content top padding.
         public var topPadding: Double
-
-        /// The diagonal line offset.
-        public var diagonalOffset: Double
 
         /// The top icon size.
         public var iconSize: Double

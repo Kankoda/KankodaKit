@@ -33,3 +33,17 @@ public extension DiagonalStyle {
         diagonal: .diagonalForeground
     )
 }
+
+public extension EnvironmentValues {
+
+    @Entry var diagonalStyle = DiagonalStyle.standard
+}
+
+public extension View {
+
+    func diagonalStyle(
+        _ style: DiagonalStyle
+    ) -> some View {
+        environment(\.diagonalStyle, style)
+    }
+}

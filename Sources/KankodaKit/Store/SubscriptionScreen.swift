@@ -58,6 +58,7 @@ public struct SubscriptionScreen: View {
                 $confettiTrigger,
                 emojis: info.confettiEmojis
             )
+            .backgroundStyle(.clear)
         }
         .onInAppPurchaseCompletion(perform: handleSubscription)
         #if os(iOS)
@@ -127,5 +128,6 @@ private extension SubscriptionScreen {
         isModal: false,
         isPurchased: true
     )
+    .background(Color.red)
 }
 #endif

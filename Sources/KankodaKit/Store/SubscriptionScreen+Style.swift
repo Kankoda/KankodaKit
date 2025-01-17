@@ -9,6 +9,7 @@
 #if os(iOS) || os(macOS)
 import StoreKitPlus
 import SwiftUI
+import SwiftUIKit
 
 public extension SubscriptionScreen {
 
@@ -20,26 +21,24 @@ public extension SubscriptionScreen {
         ///
         /// - Parameters:
         ///  - topPadding: The content top padding, by default `20`.
-        ///  - diagonalOffset: The diagonal line offset, by default `110`.
         ///  - iconSize: The top icon size, by default `125`.
+        ///  - iconShadow: The icon shadow style, if any`.
         ///  - contentMaxWidth: The custom content max width, by default `450`.
         public init(
             topPadding: Double = 25,
             iconSize: Double = 125.0,
+            iconShadow: ViewShadowStyle = .none,
             contentMaxWidth: Double = 450.0
         ) {
             self.topPadding = topPadding
             self.iconSize = iconSize
+            self.iconShadow = iconShadow
             self.contentMaxWidth = contentMaxWidth
         }
 
-        /// The content top padding.
         public var topPadding: Double
-
-        /// The top icon size.
         public var iconSize: Double
-
-        /// The custom content max width.
+        public var iconShadow: ViewShadowStyle
         public var contentMaxWidth: Double
     }
 }

@@ -42,6 +42,7 @@ public extension SubscriptionScreen {
                     .frame(width: style.iconSize, height: style.iconSize)
                     .clipShape(.rect(cornerRadius: style.iconSize * (10/57)))
                     .padding(.vertical)
+                    .shadow(style.iconShadow)
 
                 Text(info.title)
                     .font(.title)
@@ -74,9 +75,13 @@ private extension SubscriptionScreen.StoreViewContent {
             info: .preview,
             isPurchased: false
         )
-        Color.red
     }
-    .subscriptionScreenStyle(.init(iconSize: 120))
+    .symbolVariant(.fill)
+    .foregroundStyle(.green)
+    .background(Color.red)
+    .subscriptionScreenStyle(
+        .init(iconSize: 120, iconShadow: .elevated)
+    )
 }
 #endif
 

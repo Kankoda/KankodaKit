@@ -7,8 +7,9 @@
 - This version adds a new `AppScreenNavigationStack`.
 - This version adds a new `PremiumFeatureTip`.
 - This version adds a new `PremiumTipView`.
-- The `AppItem` type has less type-specific info.
-- The `AppItemAddContext` type now uses `@MainActor`.
+
+- The `AppItem` now has less type-specific info.
+- The `AppItemAuthContext` now uses `@MainActor`.
 - The `SubscriptionScreen` no longer uses a diagonal content.
 
 

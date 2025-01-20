@@ -27,9 +27,9 @@ public struct SettingsPanelContent<TabViewContent: View>: View {
     public var body: some View {
         TabView {
             content()
-                .padding(20)
+                .frame(width: 450)
+                .frame(minHeight: 350)
         }
-        .withResizeBehavior()
     }
 }
 

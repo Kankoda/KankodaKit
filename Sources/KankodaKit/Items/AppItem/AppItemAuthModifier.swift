@@ -71,7 +71,7 @@ public extension View {
 private extension AppItemAuthModifier {
 
     func authenticateUser() {
-        guard authContext.isAuthenticationEnabled else { return }
+        guard authContext.isAuthenticationActive else { return }
         resetAuthentication()
         authContext.authenticateUser(reason: authReason)
     }

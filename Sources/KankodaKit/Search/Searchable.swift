@@ -23,7 +23,8 @@ public extension Searchable {
 
     /// Check if the item matches the provided search query.
     func matches(query: String) -> Bool {
-        searchComponents.contains {
+        guard query.hasTrimmedContent else { return true }
+        return searchComponents.contains {
             $0.localizedCaseInsensitiveContains(query)
         }
     }

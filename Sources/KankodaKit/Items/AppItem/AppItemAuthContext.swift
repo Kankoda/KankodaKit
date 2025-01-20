@@ -20,26 +20,33 @@ import SwiftUIKit
 public class AppItemAuthContext {
     
     public init(
+        isEnabled: Bool = true,
         policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics,
         stores: [any AppItemStore]
     ) {
         self.authPolicy = policy
         self.stores = stores
-        self.isAuthenticationNeeded = true
+        self.isAuthenticationEnabled = isEnabled
+        self.isAuthenticationNeeded = isEnabled
         resetAuthentication()
     }
     
     private let authPolicy: LAPolicy
     private let stores: [any AppItemStore]
+    private let defaults = UserDefaults.standard
     
     /// Whether or not authentication is needed.
     public var isAuthenticationNeeded: Bool
+    
+    /// Whether or not authentication is enabled by user.
+    public var isAuthenticationEnabled: Bool
 }
 
 public extension AppItemAuthContext {
     
-    /// Whether or not authentication is enabled for the app.
-    var isAuthenticationEnabled: Bool {
+    /// Whether or not authentication is active for the app.
+    var isAuthenticationActive: Bool {
+        guard isAuthenticationEnabled else { return false }
         if ProcessInfo.isSwiftUIPreview { return false }
         return LAContext().canEvaluatePolicy(authPolicy, error: nil)
     }
@@ -55,7 +62,7 @@ public extension AppItemAuthContext {
     
     /// Reset authentication for the app.
     func resetAuthentication() {
-        isAuthenticationNeeded = isAuthenticationEnabled && hasItems
+        isAuthenticationNeeded = isAuthenticationActive && hasItems
     }
 }
 

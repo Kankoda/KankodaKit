@@ -9,6 +9,7 @@
 #if os(macOS) || os(iOS)
 import LocalAuthentication
 import SwiftUI
+import SwiftUIKit
 
 /// This class manages authentication for an app that stores
 /// sensitive ``AppItem`` data.
@@ -39,7 +40,8 @@ public extension AppItemAuthContext {
     
     /// Whether or not authentication is enabled for the app.
     var isAuthenticationEnabled: Bool {
-        LAContext().canEvaluatePolicy(authPolicy, error: nil)
+        if ProcessInfo.isSwiftUIPreview { return false }
+        return LAContext().canEvaluatePolicy(authPolicy, error: nil)
     }
     
     /// Try to authenticate the user, provided that it's needed.

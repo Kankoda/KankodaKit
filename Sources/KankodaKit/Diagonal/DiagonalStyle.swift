@@ -12,7 +12,7 @@ import SwiftUI
 ///
 /// You can use the ``standard`` style for apps that use the
 /// same color palette.
-public struct DiagonalStyle {
+public struct DiagonalStyle: Sendable {
     
     public init(
         background: Color,

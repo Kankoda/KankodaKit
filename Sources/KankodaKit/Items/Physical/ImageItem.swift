@@ -32,7 +32,7 @@ public extension ImageItem {
 public class ImageCache {
     
     /// A shared cache.
-    public static let shared = ImageCache()
+    @MainActor public static let shared = ImageCache()
 
     /// The cache dictionary that is used to store images.
     public var cache = [String: ImageRepresentable]()

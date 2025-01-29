@@ -19,6 +19,19 @@ import SwiftUIKit
 @Observable
 public class AppItemAuthContext {
     
+    /// Create an app item authentication context.
+    ///
+    /// The `isEnabled` parameter can be used as a main kill
+    /// switch for the entire authentication, e.g. if an app
+    /// provides authentication as a setting. Authentication
+    /// can still be unavailable even if `isEnabled` it true,
+    /// for instance in SwiftUI previews and on devices that
+    /// lack support for biometric authentication.
+    ///
+    /// - Parameters:
+    ///  - isEnabled: Whether authentication is enabled.
+    ///  - policy: The local authentication policy to use.
+    ///  - stores: The stores to check before enforcint auth.
     public init(
         isEnabled: Bool = true,
         policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics,
@@ -28,17 +41,17 @@ public class AppItemAuthContext {
         self.stores = stores
         self.isAuthenticationEnabled = isEnabled
         self.isAuthenticationNeeded = isEnabled
-        resetAuthentication()
+        self.isAuthenticationNeeded = isAuthenticationActive && hasItems
     }
     
     private let authPolicy: LAPolicy
     private let stores: [any AppItemStore]
     private let defaults = UserDefaults.standard
     
-    /// Whether or not authentication is needed.
+    /// Whether authentication is needed.
     public var isAuthenticationNeeded: Bool
     
-    /// Whether or not authentication is enabled by user.
+    /// Whether authentication is enabled by the user.
     public var isAuthenticationEnabled: Bool
 }
 
@@ -56,12 +69,16 @@ public extension AppItemAuthContext {
         guard isAuthenticationNeeded else { return }
         Task {
             let result = try await LAContext().evaluatePolicy(authPolicy, localizedReason: reason)
-            await updateState(isAuthenticationNeeded: !result)
+            await update(isNeeded: !result)
         }
     }
+}
+
+@MainActor
+public extension AppItemAuthContext {
     
-    /// Reset authentication for the app.
-    func resetAuthentication() {
+    /// Reset authentication state for the app.
+    func reset() {
         isAuthenticationNeeded = isAuthenticationActive && hasItems
     }
 }
@@ -69,10 +86,10 @@ public extension AppItemAuthContext {
 @MainActor
 private extension AppItemAuthContext {
     
-    func updateState(
-        isAuthenticationNeeded: Bool
-    ) {
-        self.isAuthenticationNeeded = isAuthenticationNeeded
+    func update(isNeeded: Bool) {
+        withAnimation {
+            isAuthenticationNeeded = isNeeded
+        }
     }
 }
 

@@ -78,7 +78,7 @@ private extension AppItemAuthModifier {
 
     func resetAuthentication() {
         sheet.dismiss()
-        authContext.resetAuthentication()
+        authContext.reset()
     }
 }
 

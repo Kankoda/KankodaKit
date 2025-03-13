@@ -10,6 +10,7 @@
 
 - The `AppItem` now has less type-specific info.
 - The `AppItemAuthContext` now uses `@MainActor`.
+- The `AppOnboardingScreen` no longer applies a background.
 - The `SubscriptionScreen` no longer uses a diagonal content.
 
 

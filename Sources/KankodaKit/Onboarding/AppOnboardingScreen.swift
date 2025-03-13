@@ -74,7 +74,6 @@ public struct AppOnboardingScreen<Page: AppOnboardingScreenPage, Buttons: View>:
             .frame(maxWidth: 500)
             .frame(maxHeight: .infinity, alignment: .center)
         }
-        .background(Color.diagonalForeground)
         .safeAreaInset(edge: .bottom) { buttonsView }
         .toolbar {
             if addDoneButton {
@@ -176,6 +175,7 @@ private enum TestType: Int, AppOnboardingScreenPage, CaseIterable {
                         params.buttons
                     }
                 }
+                .background(Color.red)
             }
         }
     }

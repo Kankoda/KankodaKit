@@ -6,6 +6,7 @@
 - This version adds a new `AppScreenNavigationContext`.
 - This version adds a new `AppScreenNavigationStack`.
 - This version adds a new `PremiumTip` and `PremiumTipView`.
+- This version adds a new `ShareScreen` view protocol.
 
 - The `AppItem` now has less type-specific info.
 - The `AppItemAuthContext` now uses `@MainActor`.

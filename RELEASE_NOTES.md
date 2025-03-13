@@ -13,6 +13,8 @@
 - The `AppOnboardingScreen` no longer applies a background.
 - The `SubscriptionScreen` no longer uses a diagonal content.
 
+- The `AppItemAddContext` has been removed.
+
 
 ## 0.9 - 1.0
 

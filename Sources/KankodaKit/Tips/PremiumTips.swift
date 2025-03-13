@@ -9,22 +9,25 @@
 import TipKit
 import SwiftUI
 
-/// This view can be used to highlight premium-related tips.
+/// This view can be used to show premium tips.
 @available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, *)
 public struct PremiumTipView<PremiumScreen: AppScreenType>: View {
     
     public init(
-        _ tip: PremiumFeatureTip<PremiumScreen>,
+        tip: PremiumTip,
+        premiumScreen: PremiumScreen,
         imageSize: Double = 30
     ) {
         self.tip = tip
+        self.premiumScreen = premiumScreen
         self.imageSize = .init(width: imageSize, height: imageSize)
     }
-
+    
+    private let premiumScreen: PremiumScreen
     private let imageSize: CGSize
     
     @State private var isSheetPresented = false
-    @State private var tip: PremiumFeatureTip<PremiumScreen>
+    @State private var tip: PremiumTip
     
     public var body: some View {
         TipView(tip)
@@ -43,7 +46,7 @@ private extension PremiumTipView {
     
     func sheetContent() -> some View {
         NavigationStack {
-            tip.premiumScreen.screenContent
+            premiumScreen.screenContent
         }
     }
     
@@ -56,17 +59,13 @@ private extension PremiumTipView {
     }
 }
 
-/// This is a view model for premium tips.
-final class PremiumTipViewViewState: ObservableObject {
-    
-    @Published var isSheetPresented = false
-}
-
 /// This is a tip for premium features.
 ///
-/// In order to be able keep this within the package, and to
-/// localize it properly, each new premium feature type must
-/// be added to this tip.
+/// You can provide a `feature` to present an individual tip
+/// for specific features. Omit this to present a single tip.
+///
+/// You can set the ``isPremiumActive`` parameter to control
+/// if the tips should be presented or not.
 ///
 /// > Note: The various text values have quite strange types,
 /// which due to how Apple has defines their APIs. This type
@@ -74,19 +73,16 @@ final class PremiumTipViewViewState: ObservableObject {
 /// must convert those values to `Text` due to the `Sendable`
 /// constraint of `Tip`. The `message` must be `Text?`, else
 /// it doesn't show. The `actionTitle` must be `String`.
-public struct PremiumFeatureTip<PremiumScreen: AppScreenType>: Tip {
+public struct PremiumTip: Tip {
     
     public init(
-        feature: Feature,
+        feature: String? = nil,
         title: LocalizedStringKey,
         message: LocalizedStringKey,
         actionTitle: String,
-        action: ActionButtonAction? = nil,
-        premiumScreen: PremiumScreen
+        action: ActionButtonAction? = nil
     ) {
-        self.feature = feature
-        self.premiumScreen = premiumScreen
-        self.id = "com.kankoda.tip.premiumfeature.\(feature.id)"
+        self.id = "com.kankoda.tip.premium.\(feature ?? "general")"
         self.title = Text(title)
         self.message = Text(message)
         self.actionTitle = actionTitle
@@ -94,13 +90,7 @@ public struct PremiumFeatureTip<PremiumScreen: AppScreenType>: Tip {
     
     public typealias ActionButtonAction = @Sendable () -> Void
     
-    public enum Feature: String, Identifiable, Sendable {
-        case icons, skins
-        public var id: String { rawValue }
-    }
-    
-    public let feature: Feature
-    public let premiumScreen: PremiumScreen
+    @Parameter public static var isPremiumActive: Bool = false
     
     public let id: String
     public let title: Text
@@ -114,6 +104,10 @@ public struct PremiumFeatureTip<PremiumScreen: AppScreenType>: Tip {
         [
             .init(title: actionTitle, perform: action)
         ]
+    }
+    
+    public var rules: [Rule] {
+        #Rule(PremiumTip.$isPremiumActive) { $0 == false }
     }
 }
 
@@ -137,15 +131,19 @@ private struct EmptyPremiumScreen: AppScreenType {
                 Color.random()
             }
         }
+        .task {
+            try? Tips.configure()
+            // PremiumTip.isPremiumActive = false
+        }
         .withBottomTipView(
             PremiumTipView(
-                PremiumFeatureTip(
-                    feature: .icons,
+                tip: PremiumTip(
+                    feature: "icons",
                     title: "Preview.TipTitle",
                     message: "Preview.TipMessage",
-                    actionTitle: "Preview.TipAction",
-                    premiumScreen: EmptyPremiumScreen()
-                )
+                    actionTitle: "Preview.TipAction"
+                ),
+                premiumScreen: EmptyPremiumScreen()
             )
         )
     } else {

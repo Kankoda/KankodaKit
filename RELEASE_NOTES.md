@@ -3,6 +3,7 @@
 
 ## 1.1
 
+- This version adds a new `AppAboutScreen`.
 - This version adds a new `AppScreenNavigationContext`.
 - This version adds a new `AppScreenNavigationStack`.
 - This version adds a new `PremiumTip` and `PremiumTipView`.

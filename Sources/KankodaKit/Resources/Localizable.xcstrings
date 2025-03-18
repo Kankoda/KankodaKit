@@ -4,6 +4,49 @@
     "" : {
 
     },
+    "·" : {
+
+    },
+    "About.CopyrightRights" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All rights reserved."
+          }
+        }
+      }
+    },
+    "About.Email" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        }
+      }
+    },
+    "About.PrivacyPolicy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        }
+      }
+    },
+    "About.Website" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Website"
+          }
+        }
+      }
+    },
     "Onboarding.Done" : {
       "localizations" : {
         "en" : {
@@ -23,6 +66,9 @@
           }
         }
       }
+    },
+    "Preview.Copyright" : {
+
     },
     "Preview.EmptyScreen" : {
 
@@ -159,6 +205,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Maybe Later"
+          }
+        }
+      }
+    },
+    "Version %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
           }
         }
       }

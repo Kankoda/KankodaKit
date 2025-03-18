@@ -57,14 +57,27 @@ struct LocalizedLink<Icon: View>: View {
         self.url = url
     }
     
+    init(
+        _ title: LocalizedStringKey,
+        _ url: URL?
+    ) where Icon == EmptyView {
+        self.title = title
+        self.icon = nil
+        self.url = url
+    }
+    
     private var title: LocalizedStringKey
-    private var icon: Icon
+    private var icon: Icon?
     private var url: URL?
     
     var body: some View {
         if let url {
             Link(destination: url) {
-                LocalizedLabel(title, icon)
+                if let icon {
+                    LocalizedLabel(title, icon)
+                } else {
+                    LocalizedText(title)
+                }
             }
         }
     }

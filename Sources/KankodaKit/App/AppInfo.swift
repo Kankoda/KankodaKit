@@ -6,7 +6,7 @@
 //  Copyright © 2023-2025 Kankoda. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 /// This struct defines app-specific information.
 public struct AppInfo {
@@ -22,6 +22,7 @@ public struct AppInfo {
         subscriptionGroupId: String = "",
         websiteUrl: String,
         privacyUrl: String,
+        copyright: LocalizedStringKey,
         termsUrl: String = "https://apple.com/legal/internet-services/itunes/dev/stdeula/"
     ) {
         self.appName = appName
@@ -32,6 +33,7 @@ public struct AppInfo {
         self.appUrlScheme = appUrlScheme
         self.contactEmail = contactEmail
         self.subscriptionGroupId = subscriptionGroupId
+        self.copyright = copyright
         
         self.websiteUrl = URL(string: websiteUrl)
         self.privacyUrl = URL(string: privacyUrl)
@@ -48,6 +50,7 @@ public struct AppInfo {
     public let appStoragePrefix: String
     public let appUrlScheme: String
     public let contactEmail: String
+    public let copyright: LocalizedStringKey
     public let subscriptionGroupId: String
     
     let websiteUrl: URL?
@@ -65,6 +68,7 @@ public extension AppInfo {
         appStoreId: 123456,
         contactEmail: "info@kankoda.com",
         websiteUrl: "https://kankoda.com",
-        privacyUrl: "https://kankoda.com/privacy"
+        privacyUrl: "https://kankoda.com/privacy",
+        copyright: "Preview.Copyright"
     )
 }

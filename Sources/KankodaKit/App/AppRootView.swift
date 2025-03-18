@@ -9,7 +9,6 @@
 import StoreKitPlus
 import SwiftUI
 import SwiftUIKit
-import SystemNotification
 
 /// This view can be used as the root view of an app.
 ///
@@ -40,13 +39,11 @@ public struct AppRootView<Content: View>: View, ErrorAlerter {
     @EnvironmentObject public var alert: AlertContext
     @EnvironmentObject public var sheet: SheetContext
     @EnvironmentObject public var storeContext: StoreContext
-    @EnvironmentObject public var systemNotification: SystemNotificationContext
 
     public var body: some View {
         content()
             .alert(alert)
             .sheet(sheet)
-            .systemNotification(systemNotification)
             .onChange(of: scenePhase) { _, phase in syncStoreData(for: phase) }
     }
 }

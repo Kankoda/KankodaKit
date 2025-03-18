@@ -9,7 +9,6 @@
 import StoreKitPlus
 import SwiftUI
 import SwiftUIKit
-import SystemNotification
 
 /// This class can be used to manage static app dependencies.
 ///
@@ -26,7 +25,6 @@ public extension AppEnvironment {
     static let alertContext = AlertContext()
     static let sheetContext = SheetContext()
     static let storeContext = StoreContext()
-    static let systemNotificationContext = SystemNotificationContext()
 }
 
 public extension View {
@@ -36,7 +34,6 @@ public extension View {
         self.environmentObject(AppEnvironment.alertContext)
             .environmentObject(AppEnvironment.sheetContext)
             .environmentObject(AppEnvironment.storeContext)
-            .environmentObject(AppEnvironment.systemNotificationContext)
     }
 }
 
@@ -55,7 +52,6 @@ public extension View {
         @EnvironmentObject var alertContext: AlertContext
         @EnvironmentObject var sheetContext: SheetContext
         @EnvironmentObject var storeContext: StoreContext
-        @EnvironmentObject var systemNotificationContext: SystemNotificationContext
 
         var body: some View {
             Button("Show Sheet") {

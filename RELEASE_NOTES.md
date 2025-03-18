@@ -14,7 +14,8 @@
 - The `AppOnboardingScreen` no longer applies a background.
 - The `SubscriptionScreen` no longer uses a diagonal content.
 
-- The `AppItemAddContext` has been removed.
+- This version removes `AppItemAddContext`.
+- This version removes `SystemNotification`.
 
 
 ## 0.9 - 1.0
@@ -41,7 +42,6 @@
 - This version updates `OnboardingKit` to 7.0.2.
 - This version updates `StoreKitPlus` to 0.3.1.
 - This version updates `SwiftUIKit` to 4.3.
-- This version removes `SystemNotification`.
 
 - This version removes old notification types.
 - This version removes old subscription types.

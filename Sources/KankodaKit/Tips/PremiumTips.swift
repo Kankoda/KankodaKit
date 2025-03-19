@@ -10,7 +10,7 @@ import TipKit
 import SwiftUI
 
 /// This view can be used to show premium tips.
-@available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, *)
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
 public struct PremiumTipView<PremiumScreen: AppScreenType>: View {
     
     public init(
@@ -41,7 +41,7 @@ public struct PremiumTipView<PremiumScreen: AppScreenType>: View {
     }
 }
 
-@available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, *)
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
 private extension PremiumTipView {
     
     func sheetContent() -> some View {
@@ -125,7 +125,7 @@ private struct EmptyPremiumScreen: AppScreenType {
 
 #Preview {
     
-    if #available(iOS 18.0, macOS 15.0, *) {
+    if #available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *) {
         List {
             ForEach(0...40, id: \.self) { _ in
                 Color.random()

@@ -80,20 +80,21 @@ private extension PremiumFeatureToggle {
                 "Preview.Toggle",
                 isOn: $isPremiumActive.animation(),
                 isPremiumActive: isPremiumActive,
-                premiumPresentation: { print("HEJ") }
-            ) {
-                #if os(iOS) || os(macOS)
-                DisclosureToggle(
-                    "Preview.Toggle",
-                    isOn: $isEnabled,
-                    isExpanded: $isExpanded
-                ) {
+                premiumPresentation: { print("HEJ") },
+                content: {
+                    #if os(iOS) || os(macOS)
+                    DisclosureToggle(
+                        "Preview.Toggle",
+                        isOn: $isEnabled,
+                        isExpanded: $isExpanded
+                    ) {
+                        Color.red
+                    }
+                    #else
                     Color.red
+                    #endif
                 }
-                #else
-                Color.red
-                #endif
-            }
+            )
             .onChange(of: isPremiumActive) { _, value in
                 isEnabled = value
             }

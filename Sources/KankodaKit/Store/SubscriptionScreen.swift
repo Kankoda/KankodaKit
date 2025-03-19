@@ -32,14 +32,10 @@ public struct SubscriptionScreen: View {
     private let isModal: Bool
     private let isPurchased: Bool
 
-    @Environment(\.dismiss)
-    private var dismiss
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.subscriptionScreenStyle) private var style
 
-    @Environment(\.subscriptionScreenStyle)
-    private var style
-
-    @State
-    private var confettiTrigger = 0
+    @State private var confettiTrigger = 0
 
     public var body: some View {
         ScrollView {
@@ -70,7 +66,7 @@ public struct SubscriptionScreen: View {
         .subscriptionStorePolicyDestination(url: info.appInfo.urls.termsAndConditions!, for: .termsOfService)
         .toolbar {
             if let closeButtonTitle {
-                Button(action: { dismiss() }) {
+                Button(action: dismiss.callAsFunction) {
                     LocalizedText(closeButtonTitle)
                 }
             }

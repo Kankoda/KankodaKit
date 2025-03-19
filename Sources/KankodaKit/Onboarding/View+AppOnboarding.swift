@@ -39,7 +39,7 @@ public extension View {
         let premium = Onboarding.premium
         let onboardings = [onboarding, review, premium]
         if reset {
-            self.task { onboardings.forEach{ $0.reset() } }
+            self.task { onboardings.forEach { $0.reset() } }
         } else {
             self.modifier(
                 AppOnboardingModifier(

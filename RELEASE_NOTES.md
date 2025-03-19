@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 1.1.1
+
+- This version makes beta dependencies use up to next minor.
+
+
 ## 1.1
 
 - This version adds a new `AppAboutScreen`.

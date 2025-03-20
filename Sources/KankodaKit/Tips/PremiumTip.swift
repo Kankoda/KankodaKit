@@ -1,5 +1,5 @@
 //
-//  PremiumTips.swift
+//  PremiumTip.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2025-01-17.

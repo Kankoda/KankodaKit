@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 1.1.2
+
+- This version adds an `OnboardingTip`.
+
+
 ## 1.1.1
 
 - This version makes beta dependencies use up to next minor.

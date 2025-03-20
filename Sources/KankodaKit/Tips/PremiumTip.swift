@@ -15,29 +15,34 @@ public struct PremiumTipView<PremiumScreen: AppScreenType>: View {
     
     public init(
         tip: PremiumTip,
+        isPremiumActive: Bool,
         premiumScreen: PremiumScreen,
         imageSize: Double = 30
     ) {
         self.tip = tip
+        self.isPremiumActive = isPremiumActive
         self.premiumScreen = premiumScreen
         self.imageSize = .init(width: imageSize, height: imageSize)
     }
     
     private let premiumScreen: PremiumScreen
+    private let isPremiumActive: Bool
     private let imageSize: CGSize
     
     @State private var isSheetPresented = false
     @State private var tip: PremiumTip
     
     public var body: some View {
-        TipView(tip)
-            .padding()
-            .sheet(isPresented: $isSheetPresented, content: sheetContent)
-            .symbolVariant(.fill)
-            .task { setupTipAction() }
-            .tipBackground(.ultraThinMaterial)
-            .tipImageSize(imageSize)
-            .tipImageStyle(.orange)
+        if !isPremiumActive {
+            TipView(tip)
+                .padding()
+                .sheet(isPresented: $isSheetPresented, content: sheetContent)
+                .symbolVariant(.fill)
+                .task { setupTipAction() }
+                .tipBackground(.ultraThinMaterial)
+                .tipImageSize(imageSize)
+                .tipImageStyle(.orange)
+        }
     }
 }
 
@@ -143,6 +148,7 @@ private struct EmptyPremiumScreen: AppScreenType {
                     message: "Preview.TipMessage",
                     actionTitle: "Preview.TipAction"
                 ),
+                isPremiumActive: true,
                 premiumScreen: EmptyPremiumScreen()
             )
         )

@@ -4,6 +4,7 @@
 ## 1.1.2
 
 - This version adds an `OnboardingTip`.
+- This version adds an `isPremiumActive` boolean to `PremiumTipView`.
 
 
 ## 1.1.1

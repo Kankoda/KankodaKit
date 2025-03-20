@@ -29,7 +29,7 @@ public struct OnboardingTipView: View {
         TipView(tip)
             .padding()
             .symbolVariant(.fill)
-            .tipBackground(.thinMaterial)
+            .tipBackground(.ultraThinMaterial)
             .tipImageSize(imageSize)
             .tipImageStyle(.yellow, .gray)
     }

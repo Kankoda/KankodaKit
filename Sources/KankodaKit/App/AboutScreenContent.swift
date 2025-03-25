@@ -1,5 +1,5 @@
 //
-//  AppAboutScreen.swift
+//  AboutScreenContent.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2025-03-18.
@@ -8,8 +8,11 @@
 
 import SwiftUI
 
+@available(*, deprecated, renamed: "AboutScreenContent")
+public typealias AppAboutScreen = AboutScreenContent
+
 /// This screen can be used to show information about an app.
-public struct AppAboutScreen: View {
+public struct AboutScreenContent: View {
     
     public init(
         _ app: AppInfo,
@@ -36,7 +39,6 @@ public struct AppAboutScreen: View {
                 description
             }
             .frame(maxWidth: 350)
-            .padding(.horizontal)
         }
         .safeAreaInset(edge: .bottom) {
             VStack(alignment: .center, spacing: 20) {
@@ -65,13 +67,15 @@ public struct AppAboutScreen: View {
             .padding()
         }
         .multilineTextAlignment(.center)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
 #Preview {
-    AppAboutScreen(
+    AboutScreenContent(
         .preview,
         icon: .lightbulb,
         description: Text("Preview.AboutDescription")
     )
+    .background(Color.red)
 }

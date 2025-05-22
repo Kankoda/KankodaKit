@@ -57,10 +57,7 @@ public struct AboutScreenContent: View {
                 }
                 Group {
                     Text("Version \(Bundle.main.versionNumber)")
-                    HStack {
-                        Text(app.copyright)
-                        LocalizedText("About.CopyrightRights")
-                    }
+                    Text(app.copyright)
                 }
                 .font(.footnote)
             }
@@ -75,7 +72,7 @@ public struct AboutScreenContent: View {
     AboutScreenContent(
         .preview,
         icon: .lightbulb,
-        description: Text("Preview.AboutDescription")
+        description: Text(String(stringLiteral: "Preview.AboutDescription"))
     )
     .background(Color.red)
 }

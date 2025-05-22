@@ -7,16 +7,6 @@
     "·" : {
 
     },
-    "About.CopyrightRights" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "All rights reserved."
-          }
-        }
-      }
-    },
     "About.Email" : {
       "localizations" : {
         "en" : {
@@ -68,46 +58,44 @@
       }
     },
     "Preview.Copyright" : {
-
-    },
-    "Preview.EmptyScreen" : {
-
-    },
-    "Preview.Panel1" : {
-
-    },
-    "Preview.Panel2" : {
-
-    },
-    "Preview.Panel3" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright Information"
+          }
+        }
+      }
     },
     "Preview.Subscription.PurchasedText" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchased!"
+          }
+        }
+      }
     },
     "Preview.Subscription.Text" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text"
+          }
+        }
+      }
     },
     "Preview.Subscription.Title" : {
-
-    },
-    "Preview.Subscription.Usp1.Text" : {
-
-    },
-    "Preview.Subscription.Usp1.Title" : {
-
-    },
-    "Preview.Subscription.Usp2.Text" : {
-
-    },
-    "Preview.Subscription.Usp2.Title" : {
-
-    },
-    "Preview.Subscription.Usp3.Text" : {
-
-    },
-    "Preview.Subscription.Usp3.Title" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Title"
+          }
+        }
+      }
     },
     "SocialLinks.AppStore" : {
       "localizations" : {

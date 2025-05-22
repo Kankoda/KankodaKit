@@ -47,18 +47,22 @@ private extension View {
 
 @available(macOS 15.0, *)
 #Preview {
-    SettingsPanelContent {
+    func label(_ title: String, _ image: String) -> some View {
+        Label(title, systemImage: "gear")
+    }
+
+    return SettingsPanelContent {
         Color.red
             .tabItem {
-                Label("Preview.Panel1", systemImage: "gear")
+                label("Preview.Panel1", "gear")
             }
         Color.green
             .tabItem {
-                Label("Preview.Panel2", systemImage: "gear")
+                label("Preview.Panel2", "gear")
             }
         Color.blue
             .tabItem {
-                Label("Preview.Panel3", systemImage: "gear")
+                label("Preview.Panel3", "gear")
             }
     }
 }

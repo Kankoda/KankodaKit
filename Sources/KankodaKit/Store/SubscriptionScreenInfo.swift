@@ -48,6 +48,18 @@ public struct SubscriptionScreenInfo {
 
 extension SubscriptionScreenInfo {
 
+    static func usp(
+        title: String,
+        text: String,
+        icon: String
+    ) -> ProductUsp {
+        .init(
+            title: .init(stringLiteral: title),
+            text: .init(stringLiteral: text),
+            iconName: icon
+        )
+    }
+
     static var preview: Self {
         .init(
             appInfo: .preview,
@@ -56,9 +68,9 @@ extension SubscriptionScreenInfo {
             text: "Preview.Subscription.Text",
             purchasedText: "Preview.Subscription.PurchasedText",
             usps: [
-                .init(title: "Preview.Subscription.Usp1.Title", text: "Preview.Subscription.Usp1.Text", iconName: "checkmark"),
-                .init(title: "Preview.Subscription.Usp2.Title", text: "Preview.Subscription.Usp2.Text", iconName: "checkmark"),
-                .init(title: "Preview.Subscription.Usp3.Title", text: "Preview.Subscription.Usp3.Text", iconName: "checkmark")
+                usp(title: "USP 1", text: "Nice feature", icon: "plus"),
+                usp(title: "USP 2", text: "Even better feature", icon: "checkmark"),
+                usp(title: "USP 3", text: "Best feature", icon: "crown")
             ],
             storeContext: .init(),
             storeService: PreviewService()

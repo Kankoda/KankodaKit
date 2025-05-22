@@ -16,23 +16,21 @@ public extension AppOnboarding {
 
         public init(
             isLastPage: Bool,
-            nextOrDismiss: @escaping () -> Void
+            nextPageOrDismiss: @escaping () -> Void
         ) {
             self.isLastPage = isLastPage
-            self.nextOrDismiss = nextOrDismiss
+            self.nextPageOrDismiss = nextPageOrDismiss
         }
 
         private let isLastPage: Bool
-        private let nextOrDismiss: () -> Void
+        private let nextPageOrDismiss: () -> Void
 
         public var body: some View {
-            Button(action: nextOrDismiss) {
-                LocalizedText(
-                    isLastPage ? "Onboarding.Done" : "Onboarding.Next"
-                )
-                .onboardingButtonText()
-            }
-            .onboardingButton(.primary)
+            AppOnboarding.PrimaryButton(
+                title: isLastPage ? "Onboarding.Done" : "Onboarding.Next",
+                bundle: .module,
+                action: nextPageOrDismiss
+            )
         }
     }
 }
@@ -42,11 +40,11 @@ public extension AppOnboarding {
     VStack {
         AppOnboarding.NextButton(
             isLastPage: false,
-            nextOrDismiss: {}
+            nextPageOrDismiss: {}
         )
         AppOnboarding.NextButton(
             isLastPage: true,
-            nextOrDismiss: {}
+            nextPageOrDismiss: {}
         )
     }
     .padding()

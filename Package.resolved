@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/StandardButtons.git",
       "state" : {
-        "revision" : "8149184ed30c38b1b0c2bda8ee32eaed01ef77db",
-        "version" : "0.1.0"
+        "revision" : "674e937f2a1c7f834a1efd0db2283b4629dbd1d1",
+        "version" : "0.3.0"
       }
     },
     {
@@ -50,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/SwiftUIKit.git",
       "state" : {
-        "revision" : "546c0efd1c6f589eb2ecbae8514868ab8ad8e6b2",
-        "version" : "5.1.1"
+        "revision" : "0a735f65c7f03755ce5b83c25c14f83d434f6b72",
+        "version" : "5.3.0"
       }
     }
   ],

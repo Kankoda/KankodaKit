@@ -1,6 +1,13 @@
 # Release Notes
 
 
+## 1.2
+
+- This version updates all package dependencies.
+- This version adds a `StandardButtons` package dependency.
+- This version moves onboarding utilities to `OnboardingKit`.
+
+
 ## 1.1.2
 
 - This version adds an `OnboardingTip`.

@@ -38,6 +38,7 @@
       }
     },
     "Onboarding.Done" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -48,6 +49,7 @@
       }
     },
     "Onboarding.Next" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

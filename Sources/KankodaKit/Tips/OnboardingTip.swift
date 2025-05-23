@@ -9,33 +9,7 @@
 import TipKit
 import SwiftUI
 
-/// This view can be used to show onboarding tips.
-@available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
-public struct OnboardingTipView: View {
-    
-    public init(
-        tip: OnboardingTip,
-        imageSize: Double = 30
-    ) {
-        self.tip = tip
-        self.imageSize = .init(width: imageSize, height: imageSize)
-    }
-    
-    private let imageSize: CGSize
-    
-    @State private var tip: OnboardingTip
-    
-    public var body: some View {
-        TipView(tip)
-            .padding()
-            .symbolVariant(.fill)
-            .tipBackground(.ultraThinMaterial)
-            .tipImageSize(imageSize)
-            .tipImageStyle(.yellow, .gray)
-    }
-}
-
-/// This is a tip for onboarding hints.
+/// This is a tip for presenting quick onboarding hints.
 ///
 /// You can provide a `feature` to present an individual tip
 /// for specific features. Omit this to present a single tip.
@@ -60,6 +34,32 @@ public struct OnboardingTip: Tip {
     
     public var rules: [Rule] {
         #Rule(OnboardingTip.$isPremiumActive) { $0 == false }
+    }
+}
+
+/// This view can be used to show onboarding tips.
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
+public struct OnboardingTipView: View {
+
+    public init(
+        tip: OnboardingTip,
+        imageSize: Double = 30
+    ) {
+        self.tip = tip
+        self.imageSize = .init(width: imageSize, height: imageSize)
+    }
+
+    private let imageSize: CGSize
+
+    @State private var tip: OnboardingTip
+
+    public var body: some View {
+        TipView(tip)
+            .padding()
+            .symbolVariant(.fill)
+            .tipBackground(.ultraThinMaterial)
+            .tipImageSize(imageSize)
+            .tipImageStyle(.yellow, .gray)
     }
 }
 

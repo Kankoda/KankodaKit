@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/OnboardingKit.git",
       "state" : {
-        "revision" : "6d4e60a12803ccf2835a5c005514e5789faff592",
-        "version" : "7.0.2"
+        "revision" : "d0a6762d00e2d07bfbc785f643148730fecb1324",
+        "version" : "8.3.0"
       }
     },
     {

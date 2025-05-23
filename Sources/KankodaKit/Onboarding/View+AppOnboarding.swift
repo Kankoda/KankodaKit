@@ -16,24 +16,18 @@ public extension View {
     /// This view modifier performs the standard Kankoda app
     /// launch onboarding flow, whenever needed.
     ///
-    /// Using this modifier ensures that all apps behave the
-    /// same way, so that tweaking the flow affects all apps.
-    ///
-    /// This will present an initial welcome onboarding when
-    /// the app is launched for the first time, then ask the
-    /// user for a review and show a premium screen when the
-    /// user has interacted with the app "enough".
-    ///
-    /// > Important: Remember to ignore premium presentation
-    /// if the user is already subscribed.
+    /// This flow will present an initial welcome onboarding,
+    /// then ask for review, then show a premium screen when
+    /// the user has interacted with the app "enough".
     @MainActor
     @ViewBuilder
     func appOnboarding(
         reset: Bool = false,
         userIsReadyToReview: Bool,
+        userIsSubscribedOrAppIsFree: Bool,
         onboarding: Onboarding = .welcome(version: 1),
         onboardingPresentation: @escaping () -> Void,
-        premiumPresentation: @escaping () -> Void
+        upsellPresentation: @escaping () -> Void
     ) -> some View {
         let review = Onboarding.requestReview
         let premium = Onboarding.premium
@@ -44,51 +38,35 @@ public extension View {
             self.modifier(
                 AppOnboardingModifier(
                     userIsReadyToReview: userIsReadyToReview,
-                    onboardingPresentation: {
-                        tryPresentOnboarding(onboarding, presentation: onboardingPresentation)
-                    },
-                    reviewPresentation: { action in
-                        tryPresentOnboarding(review, presentation: { action() })
-                    },
-                    premiumPresentation: {
-                        tryPresentOnboarding(premium, presentation: premiumPresentation)
-                    }
+                    userIsSubscribedOrAppIsFree: userIsSubscribedOrAppIsFree,
+                    onboarding: { tryPresentOnboarding(onboarding, presentation: onboardingPresentation) },
+                    review: { action in tryPresentOnboarding(review, presentation: { action() }) },
+                    upsell: { tryPresentOnboarding(premium, presentation: upsellPresentation) }
                 )
             )
         }
     }
 }
 
-/// This modifier can be used to show a series of onboarding
-/// steps when the app launches.
+/// This modifier is needed to read reviews from environment.
 struct AppOnboardingModifier: ViewModifier {
     
-    init(
-        userIsReadyToReview: Bool,
-        onboardingPresentation: @escaping () -> Void,
-        reviewPresentation: @escaping (RequestReviewAction) -> Void,
-        premiumPresentation: @escaping () -> Void
-    ) {
-        self.userIsReadyToReview = userIsReadyToReview
-        self.onboardingPresentation = onboardingPresentation
-        self.reviewPresentation = reviewPresentation
-        self.premiumPresentation = premiumPresentation
-    }
-        
-    private let userIsReadyToReview: Bool
-    private let onboardingPresentation: () -> Void
-    private let reviewPresentation: (RequestReviewAction) -> Void
-    private let premiumPresentation: () -> Void
-    
+    let userIsReadyToReview: Bool
+    let userIsSubscribedOrAppIsFree: Bool
+    let onboarding: () -> Void
+    let review: (RequestReviewAction) -> Void
+    let upsell: () -> Void
+
     @Environment(\.requestReview)
     private var requestReview
     
     func body(content: Content) -> some View {
         content.task {
-            onboardingPresentation()
+            onboarding()
             guard userIsReadyToReview else { return }
-            reviewPresentation(requestReview)
-            premiumPresentation()
+            review(requestReview)
+            if userIsSubscribedOrAppIsFree { return }
+            upsell()
         }
     }
 }

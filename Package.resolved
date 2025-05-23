@@ -28,12 +28,21 @@
       }
     },
     {
+      "identity" : "standardbuttons",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/StandardButtons.git",
+      "state" : {
+        "revision" : "8149184ed30c38b1b0c2bda8ee32eaed01ef77db",
+        "version" : "0.1.0"
+      }
+    },
+    {
       "identity" : "storekitplus",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/StoreKitPlus.git",
       "state" : {
-        "revision" : "d8761c82b204ea9fc1d63464f8fc14ba4f106672",
-        "version" : "0.6.0"
+        "revision" : "d2e4d25403082a14babec698905520bf30432f51",
+        "version" : "0.7.0"
       }
     },
     {

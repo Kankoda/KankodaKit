@@ -86,7 +86,7 @@ private extension SubscriptionScreen.StoreViewContent {
 #endif
 
 class PreviewService: StoreService {
-    
+
     typealias Transaction = StoreKit.Transaction
 
     func getProducts() async throws -> [Product] { [] }
@@ -96,6 +96,13 @@ class PreviewService: StoreService {
     @discardableResult
     func purchase(
         _ product: Product
+    ) async throws -> (Product.PurchaseResult, Transaction?) {
+        (.pending, nil)
+    }
+
+    func purchase(
+        _ product: Product,
+        options: Set<Product.PurchaseOption>
     ) async throws -> (Product.PurchaseResult, Transaction?) {
         (.pending, nil)
     }

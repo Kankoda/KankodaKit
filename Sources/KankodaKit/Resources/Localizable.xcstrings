@@ -37,6 +37,46 @@
         }
       }
     },
+    "Button.Onboarding.Done" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "Button.Onboarding.Next" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        }
+      }
+    },
+    "Button.Onboarding.Try" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try For Free"
+          }
+        }
+      }
+    },
+    "Button.Onboarding.TryLater" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try Later"
+          }
+        }
+      }
+    },
     "Preview.Copyright" : {
       "localizations" : {
         "en" : {

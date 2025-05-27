@@ -49,7 +49,7 @@ public struct KankodaOnboardingPage<Page, ImageView: View>: View {
             .padding()
             .onChange(of: info.currentPageIndex) { _, newValue in
                 withAnimation(.bouncy) {
-                    var isCurrent = newValue == info.pageIndex
+                    let isCurrent = newValue == info.pageIndex
                     guard isCurrent != self.isCurrent else { return }
                     self.isCurrent = isCurrent
                 }
@@ -75,7 +75,12 @@ public struct KankodaOnboardingPage<Page, ImageView: View>: View {
                         info: $0,
                         title: "Preview.Title",
                         text: "Preview.Text",
-                        image: Image(systemName: "checkmark").font(.largeTitle)
+                        image: Image(systemName: "checkmark")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.red, .green)
                     )
                 }
             )

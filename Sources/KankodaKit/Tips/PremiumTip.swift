@@ -124,6 +124,7 @@ private struct EmptyPremiumScreen: AppScreenType {
     
     var screenTitle: LocalizedStringKey { "" }
     var screenContent: Color { Color.red }
+    var isAppSettingsScreen: Bool { false }
     var labelTitle: LocalizedStringKey { "" }
     var labelIcon: Image { .bug }
 }

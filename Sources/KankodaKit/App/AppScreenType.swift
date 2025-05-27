@@ -21,6 +21,9 @@ public protocol AppScreenType: Hashable, Sendable {
     /// The app screen content.
     var screenContent: ScreenContent { get }
 
+    /// Whether the screen is the main app settings screen.
+    var isAppSettingsScreen: Bool { get }
+
     /// The app screen's label title.
     var labelTitle: LocalizedStringKey { get }
 
@@ -29,6 +32,15 @@ public protocol AppScreenType: Hashable, Sendable {
 }
 
 public extension AppScreenType {
+
+    /// Generate a button with the screen's label.
+    func button(
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            label
+        }
+    }
 
     /// Generate a label for the screen.
     var label: some View {
@@ -40,21 +52,27 @@ public extension AppScreenType {
     }
 
     /// Generate a navigation link to the app screen.
+    @ViewBuilder
     var navigationLink: some View {
+        #if os(macOS)
+        if isAppSettingsScreen {
+            SettingsLink {
+                label
+            }.buttonStyle(.plain)
+        } else {
+            NavigationLink(value: self) {
+                label
+            }
+        }
+        #else
         NavigationLink(value: self) {
             label
         }
+        #endif
     }
 }
 
 public extension View {
-
-    /// Generate a navigation link to a certain screen.
-    func navigationLink<Screen: AppScreenType>(
-        to screen: Screen
-    ) -> some View {
-        screen.navigationLink
-    }
 
     /// Define a standard app screen navigation destination.
     func standardNavigationDestination<Screen: AppScreenType>(

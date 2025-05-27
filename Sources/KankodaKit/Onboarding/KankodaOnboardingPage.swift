@@ -10,44 +10,78 @@ import OnboardingKit
 import SwiftUI
 
 /// This is a standard onboarding page view.
-public struct KankodaOnboardingPage<ImageView: View>: View {
+public struct KankodaOnboardingPage<Page, ImageView: View>: View {
 
     public init(
+        info: OnboardingPageInfo<Page>,
         title: LocalizedStringKey,
         text: LocalizedStringKey,
         image: ImageView
     ) {
+        self.info = info
         self.title = title
         self.text = text
         self.image = image
     }
 
+    private let info: OnboardingPageInfo<Page>
     private let title: LocalizedStringKey
     private let text: LocalizedStringKey
     private let image: ImageView
 
+    @State var isCurrent = true
+
     public var body: some View {
-        VStack(spacing: 50) {
-            Spacer()
-            image
-            VStack(spacing: 20) {
-                Text(title)
-                    .font(.title)
-                    .forceMultiline()
-                Text(text)
-                    .forceMultiline()
+        OnboardingScreenCenteredContent {
+            VStack(spacing: 50) {
+                Spacer()
+                image
+                VStack(spacing: 20) {
+                    Text(title)
+                        .font(.title)
+                        .forceMultiline()
+                    Text(text)
+                        .forceMultiline()
+                }
+                Spacer()
             }
-            Spacer()
+            .scaleEffect(isCurrent ? 1 : 0.5)
+            .padding()
+            .onChange(of: info.currentPageIndex) { _, newValue in
+                withAnimation(.bouncy) {
+                    var isCurrent = newValue == info.pageIndex
+                    guard isCurrent != self.isCurrent else { return }
+                    self.isCurrent = isCurrent
+                }
+            }
         }
-        .padding()
     }
 }
 
 #Preview {
 
-    KankodaOnboardingPage(
-        title: "Preview.Title",
-        text: "Preview.Text",
-        image: Image(systemName: "checkmark").font(.largeTitle)
+    @Previewable @StateObject
+    var state = OnboardingPageState(pages: Array(0...5))
+
+    OnboardingScreen(
+        pages: state.pages,
+        pageIndex: $state.currentPageIndex,
+        content: {
+            OnboardingPageView(
+                pages: state.pages,
+                pageIndex: $state.currentPageIndex,
+                content: {
+                    KankodaOnboardingPage(
+                        info: $0,
+                        title: "Preview.Title",
+                        text: "Preview.Text",
+                        image: Image(systemName: "checkmark").font(.largeTitle)
+                    )
+                }
+            )
+        },
+        buttons: { _ in
+            Color.red.frame(height: 44)
+        }
     )
 }

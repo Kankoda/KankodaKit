@@ -12,12 +12,12 @@ import SwiftUI
 public struct OnboardingNextPageOrDismissButton<Page>: View {
 
     public init(_ state: OnboardingPageState<Page>) {
-        self.state = state
+        self._state = .init(wrappedValue: state)
     }
 
     @Environment(\.dismiss) var dismiss
 
-    private let state: OnboardingPageState<Page>
+    @ObservedObject var state: OnboardingPageState<Page>
 
     public var body: some View {
         OnboardingPrimaryButton(

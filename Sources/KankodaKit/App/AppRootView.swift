@@ -6,6 +6,7 @@
 //  Copyright © 2023-2025 Kankoda. All rights reserved.
 //
 
+import PresentationKit
 import StoreKitPlus
 import SwiftUI
 import SwiftUIKit
@@ -21,7 +22,7 @@ import SwiftUIKit
 /// ``SwiftUICore/View/withAppEnvironment(appSpecific:)`` to
 /// it. It will sync in-app purchases and subscriptions if a
 /// store service is provided.
-public struct AppRootView<Content: View>: View, ErrorAlerter {
+public struct AppRootView<Content: View>: View, AnyErrorAlerter {
 
     public init(
         storeService: (any StoreService)?,
@@ -36,8 +37,8 @@ public struct AppRootView<Content: View>: View, ErrorAlerter {
     
     @Environment(\.scenePhase) var scenePhase
 
-    @EnvironmentObject public var alert: AlertContext
-    @EnvironmentObject public var sheet: SheetContext
+    @EnvironmentObject public var alert: AnyAlertContext
+    @EnvironmentObject public var sheet: AnySheetContext
     @EnvironmentObject public var storeContext: StoreContext
 
     public var body: some View {

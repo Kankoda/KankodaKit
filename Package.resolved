@@ -37,6 +37,15 @@
       }
     },
     {
+      "identity" : "presentationkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/PresentationKit.git",
+      "state" : {
+        "revision" : "4c1970558a2c826c0c8cbcfa8ed3e2b859ad020e",
+        "version" : "0.4.0"
+      }
+    },
+    {
       "identity" : "scancodes",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/ScanCodes.git",
@@ -68,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/SwiftUIKit.git",
       "state" : {
-        "revision" : "35964d0de465162d172d2d2d6bb941d97d501a16",
-        "version" : "5.8.3"
+        "revision" : "acd2d165010f1147d9f9a02157faaa222e3315d4",
+        "version" : "5.8.4"
       }
     }
   ],

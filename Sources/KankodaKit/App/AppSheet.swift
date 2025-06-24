@@ -6,8 +6,8 @@
 //  Copyright © 2024-2025 Kankoda. All rights reserved.
 //
 
+import PresentationKit
 import SwiftUI
-import SwiftUIKit
 
 /// This sheet container wraps another view content within a
 /// navigation stack, applies a new sheet to it, and applies
@@ -48,7 +48,7 @@ public struct AppSheetContent<Content: View>: View {
 
     private let content: () -> Content
 
-    @StateObject var sheet = SheetContext()
+    @StateObject var sheet = AnySheetContext()
 
     public var body: some View {
         content().sheet(sheet)
@@ -56,7 +56,7 @@ public struct AppSheetContent<Content: View>: View {
 }
 
 @MainActor
-public extension SheetContext {
+public extension AnySheetContext {
 
     /// Present an app sheet content view.
     ///
@@ -81,7 +81,7 @@ public extension SheetContext {
 
     struct Preview: View {
 
-        @EnvironmentObject var sheet: SheetContext
+        @EnvironmentObject var sheet: AnySheetContext
 
         var body: some View {
             Button("Open Sheet") {

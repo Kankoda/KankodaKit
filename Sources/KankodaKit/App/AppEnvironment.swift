@@ -6,9 +6,9 @@
 //  Copyright © 2024-2025 Kankoda. All rights reserved.
 //
 
+import PresentationKit
 import StoreKitPlus
 import SwiftUI
-import SwiftUIKit
 
 /// This class can be used to manage static app dependencies.
 ///
@@ -22,8 +22,8 @@ public final class AppEnvironment {}
 
 public extension AppEnvironment {
 
-    static let alertContext = AlertContext()
-    static let sheetContext = SheetContext()
+    static let alertContext = AnyAlertContext()
+    static let sheetContext = AnySheetContext()
     static let storeContext = StoreContext()
 }
 
@@ -49,8 +49,8 @@ public extension View {
 
     struct PreviewContent: View {
 
-        @EnvironmentObject var alertContext: AlertContext
-        @EnvironmentObject var sheetContext: SheetContext
+        @EnvironmentObject var alertContext: AnyAlertContext
+        @EnvironmentObject var sheetContext: AnySheetContext
         @EnvironmentObject var storeContext: StoreContext
 
         var body: some View {

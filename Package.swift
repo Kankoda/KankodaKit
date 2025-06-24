@@ -23,10 +23,11 @@ let package = Package(
         .package(url: "https://github.com/simibac/ConfettiSwiftUI.git", .upToNextMajor(from: "1.1.0")),
         .package(url: "https://github.com/danielsaidi/FlipKit.git", .upToNextMinor(from: "0.1.0")),
         .package(url: "https://github.com/danielsaidi/OnboardingKit.git", .upToNextMajor(from: "8.3.0")),
+        .package(url: "https://github.com/danielsaidi/PresentationKit.git", .upToNextMajor(from: "0.4.0")),
         .package(url: "https://github.com/danielsaidi/ScanCodes.git", .upToNextMajor(from: "0.1.0")),
         .package(url: "https://github.com/danielsaidi/StandardButtons.git", .upToNextMajor(from: "0.7.0")),
         .package(url: "https://github.com/danielsaidi/StoreKitPlus.git", .upToNextMinor(from: "0.7.0")),
-        .package(url: "https://github.com/danielsaidi/SwiftUIKit.git", .upToNextMajor(from: "5.8.3")),
+        .package(url: "https://github.com/danielsaidi/SwiftUIKit.git", .upToNextMajor(from: "5.8.4")),
     ],
     targets: [
         .target(
@@ -36,6 +37,7 @@ let package = Package(
                 "ConfettiSwiftUI",
                 "FlipKit",
                 "OnboardingKit",
+                "PresentationKit",
                 "ScanCodes",
                 "StandardButtons",
                 "StoreKitPlus",

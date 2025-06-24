@@ -30,12 +30,14 @@ public extension ShareItem {
         }
     }
 
+    #if os(iOS)
     var shareSheet: ShareSheet {
         switch self {
         case .url(let url): ShareSheet(activityItems: [url])
         case .image(let image): ShareSheet(activityItems: [image])
         }
     }
+    #endif
 }
 
 @MainActor

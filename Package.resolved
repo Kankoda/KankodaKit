@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "flipkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/FlipKit.git",
+      "state" : {
+        "revision" : "b6a53b15eab9d239d1bad7ca163786dce0422070",
+        "version" : "0.1.0"
+      }
+    },
+    {
       "identity" : "onboardingkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/OnboardingKit.git",
@@ -28,12 +37,21 @@
       }
     },
     {
+      "identity" : "scancodes",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/ScanCodes.git",
+      "state" : {
+        "revision" : "9542e442963963b07130c69fa26c1d0ee4765518",
+        "version" : "0.1.0"
+      }
+    },
+    {
       "identity" : "standardbuttons",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/StandardButtons.git",
       "state" : {
-        "revision" : "674e937f2a1c7f834a1efd0db2283b4629dbd1d1",
-        "version" : "0.3.0"
+        "revision" : "957d63e315cec0e50e882f681c3019ffe86faf5c",
+        "version" : "0.7.0"
       }
     },
     {
@@ -50,8 +68,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/SwiftUIKit.git",
       "state" : {
-        "revision" : "0a735f65c7f03755ce5b83c25c14f83d434f6b72",
-        "version" : "5.3.0"
+        "revision" : "35964d0de465162d172d2d2d6bb941d97d501a16",
+        "version" : "5.8.3"
       }
     }
   ],

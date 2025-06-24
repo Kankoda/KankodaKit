@@ -1,6 +1,14 @@
 # Release Notes
 
 
+## 1.3
+
+- This version updates dependencies.
+- This version refactors code to avoid using deprecated contexts.
+- This version refactors `ShareScreen` and adds a `ShareItem` enum.
+
+
+
 ## 1.2
 
 - This version updates all package dependencies.

@@ -36,9 +36,6 @@ struct AppItemAuthModifier: ViewModifier {
     @Environment(AppItemAuthContext.self)
     private var authContext
 
-    @EnvironmentObject
-    private var sheet: SheetContext
-
     func body(content: Content) -> some View {
         content.onAppear { authenticateUser() }
             .onReceive(center.backgroundPublisher) { _ in resetAuthentication() }
@@ -77,7 +74,6 @@ private extension AppItemAuthModifier {
     }
 
     func resetAuthentication() {
-        sheet.dismiss()
         authContext.reset()
     }
 }

@@ -11,23 +11,41 @@ import SwiftUIKit
 
 /// This protocol can be implemented by any view that can be
 /// used to share data by presenting a share sheet.
-public protocol ShareScreen: View {
+public protocol ShareScreen: View {}
 
-    var sheet: SheetContext { get }
+/// This enum can be used to share data, for instance within
+/// a ``ShareScreen``.
+public enum ShareItem: Identifiable {
+
+    case url(URL)
+    case image(ImageRepresentable)
+}
+
+public extension ShareItem {
+
+    var id: String {
+        switch self {
+        case .url(let url): url.absoluteString
+        case .image(let image): image.description
+        }
+    }
+
+    var shareSheet: ShareSheet {
+        switch self {
+        case .url(let url): ShareSheet(activityItems: [url])
+        case .image(let image): ShareSheet(activityItems: [image])
+        }
+    }
 }
 
 @MainActor
 public extension ShareScreen {
 
-    func share(_ url: URL) {
-        #if os(iOS)
-        sheet.present(ShareSheet(activityItems: [url]))
-        #endif
+    func share(_ url: URL, to binding: Binding<ShareItem?>) {
+        binding.wrappedValue = .url(url)
     }
     
-    func share(_ image: ImageRepresentable) {
-        #if os(iOS)
-        sheet.present(ShareSheet(activityItems: [image]))
-        #endif
+    func share(_ image: ImageRepresentable, to binding: Binding<ShareItem?>) {
+        binding.wrappedValue = .image(image)
     }
 }

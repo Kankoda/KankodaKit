@@ -6,8 +6,8 @@
 //  Copyright © 2023-2025 Kankoda. All rights reserved.
 //
 
+import ScanCodes
 import SwiftUI
-import SwiftUIKit
 
 /// This protocol can be implemented by any type that can be
 /// used to export a ``AppData`` types.
@@ -22,6 +22,12 @@ public protocol AppDataExporter {
     ) async throws -> String
 }
 
+#if canImport(UIKit)
+public typealias ImageRepresentable = UIImage
+#else
+public typealias ImageRepresentable = NSImage
+#endif
+
 #if os(macOS) || os(iOS) || os(tvOS)
 public extension AppDataExporter {
     
@@ -29,11 +35,12 @@ public extension AppDataExporter {
         for data: DataType,
         scale: CGFloat = 5
     ) async throws -> ImageRepresentable? {
-        guard
-            let str = try? await generateQrCodeDataString(for: data),
-            let image = ImageRepresentable(scanCode: str, type: .qr, scale: scale)
-        else { return nil }
-        return image
+        guard let str = try? await generateQrCodeDataString(for: data) else { return nil }
+        return ImageRepresentable(
+            scanCode: str,
+            type: ScanCodes.ScanCodeType.qr,
+            scale: scale
+        )
     }
 }
 #endif

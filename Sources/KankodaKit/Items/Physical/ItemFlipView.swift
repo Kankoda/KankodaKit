@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import SwiftUIKit
+import FlipKit
 import UniformTypeIdentifiers
 
 /// This view can be flipped to show the front and back side.
@@ -62,7 +62,7 @@ private extension ItemFlipView {
             back: itemView(item, .back),
             isFlipped: isFlipped,
             tapDirection: .right,
-            swipeDirections: [.right, .left]
+            flipDirections: [.right, .left]
         )
         #endif
     }

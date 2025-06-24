@@ -72,7 +72,7 @@ public struct AboutScreenContent: View {
     AboutScreenContent(
         .preview,
         icon: .lightbulb,
-        description: Text(String(stringLiteral: "Preview.AboutDescription"))
+        description: Text("Preview.AboutDescription")
     )
     .background(Color.red)
 }

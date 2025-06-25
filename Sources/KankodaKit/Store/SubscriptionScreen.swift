@@ -16,7 +16,7 @@ import SwiftUI
 public struct SubscriptionScreen: View {
     
     public init(
-        info: SubscriptionInfo,
+        info: SubscriptionScreenInfo,
         isModal: Bool,
         isPurchased: Bool
     ) {
@@ -25,7 +25,7 @@ public struct SubscriptionScreen: View {
         self.isPurchased = isPurchased
     }
 
-    private let info: SubscriptionInfo
+    private let info: SubscriptionScreenInfo
     private let isModal: Bool
     private let isPurchased: Bool
 

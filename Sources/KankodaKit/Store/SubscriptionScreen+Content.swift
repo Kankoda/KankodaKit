@@ -22,14 +22,14 @@ public extension SubscriptionScreen {
     struct StoreViewContent: View {
 
         public init(
-            info: SubscriptionInfo,
+            info: SubscriptionScreenInfo,
             isPurchased: Bool
         ) {
             self.info = info
             self.isPurchased = isPurchased
         }
 
-        private let info: SubscriptionInfo
+        private let info: SubscriptionScreenInfo
         private let isPurchased: Bool
 
         @Environment(\.subscriptionScreenStyle)
@@ -63,7 +63,6 @@ public extension SubscriptionScreen {
                 .padding()
             }
             .frame(maxWidth: style.contentMaxWidth)
-            .navigationTitle("")
         }
     }
 }

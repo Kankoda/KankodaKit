@@ -14,21 +14,21 @@ import SwiftUI
 /// This view will render the provided content view inside a
 /// navigation stack that observes a `NavigationContext` and
 /// inject it into the environment.
-public struct AppScreenNavigationStack<Content: View, ScreenType: AppScreenType>: View {
+public struct AppScreenNavigationStack<ScreenType: AppScreenType>: View {
 
     public init(
-        content: @escaping () -> Content
+        _ root: ScreenType
     ) {
-        self.content = content
+        self.root = root
     }
 
-    private let content: () -> Content
+    private let root: ScreenType
 
     @State var navigationContext = NavigationContext<ScreenType>()
 
     public var body: some View {
         NavigationStack(path: $navigationContext.path) {
-            content()
+            root.screenContent
                 .environment(navigationContext)
                 .navigationDestination(for: ScreenType.self) {
                     $0.screenContent

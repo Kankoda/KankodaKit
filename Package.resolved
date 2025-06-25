@@ -55,15 +55,6 @@
       }
     },
     {
-      "identity" : "standardbuttons",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/danielsaidi/StandardButtons.git",
-      "state" : {
-        "revision" : "431efe32926e4293ae560c7fcecf64921f0b1448",
-        "version" : "0.8.0"
-      }
-    },
-    {
       "identity" : "storekitplus",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/StoreKitPlus.git",

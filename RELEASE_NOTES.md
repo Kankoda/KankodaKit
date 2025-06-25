@@ -1,61 +1,47 @@
 # Release Notes
 
 
-## 1.3.3
-
-- This version updates the navigation stack to accept a root content view.
-
-
-## 1.3.2
-
-- This version updates the navigation stack to use PresentationKit.
-
-
-
-## 1.3.1
-
-- This version updates the subscription info and screen.
-
-
 
 ## 1.3
 
-- This version updates dependencies.
-- This version refactors code to avoid using deprecated contexts.
-- This version refactors `ShareScreen` and adds a `ShareItem` enum.
+These versions:
+
+- Updates and adds new dependencies.
+- Updates the subscription screen and its info.
+- Updates the nav stack to use PresentationKit.
+- Removes the `StandardButtons` package dependency.
+- Refactors code to avoid using deprecated contexts.
+- Refactors `ShareScreen` and adds a `ShareItem` enum.
 
 
 
 ## 1.2
 
-- This version updates all package dependencies.
-- This version adds a `StandardButtons` package dependency.
-- This version moves onboarding utilities to `OnboardingKit`.
+These versions:
 
+- Update all package dependencies.
+- Add a `StandardButtons` package dependency.
+- Move onboarding utilities to `OnboardingKit`.
 
-## 1.1.2
-
-- This version adds an `OnboardingTip`.
-- This version adds an `isPremiumActive` boolean to `PremiumTipView`.
-
-
-## 1.1.1
-
-- This version makes beta dependencies use up to next minor.
 
 
 ## 1.1
 
-- This version adds a new `AppAboutScreen`.
-- This version adds a new `AppScreenNavigationContext`.
-- This version adds a new `AppScreenNavigationStack`.
-- This version adds a new `PremiumTip` and `PremiumTipView`.
-- This version adds a new `ShareScreen` view protocol.
+These versions:
+
+- Add a new `OnboardingTip`.
+- Add a new `AppAboutScreen`.
+- Add a `PremiumTipView` boolean.
+- Add a new `AppScreenNavigationStack`.
+- Add a new `AppScreenNavigationContext`.
+- Add a new `PremiumTip` and `PremiumTipView`.
+- Add a new `ShareScreen` view protocol.
+- Make beta dependencies use up to next minor.
 
 - The `AppItem` now has less type-specific info.
 - The `AppItemAuthContext` now uses `@MainActor`.
-- The `AppOnboardingScreen` no longer applies a background.
-- The `SubscriptionScreen` no longer uses a diagonal content.
+- The `AppOnboardingScreen` no longer has a background.
+- The `SubscriptionScreen` no longer has a diagonal line.
 
 - This version removes `AppItemAddContext`.
 - This version removes `SystemNotification`.

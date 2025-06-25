@@ -1,5 +1,5 @@
 //
-//  SubscriptionInfo.swift
+//  SubscriptionScreenInfo.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2024-12-04.
@@ -9,20 +9,20 @@
 import StoreKitPlus
 import SwiftUI
 
-@available(*, deprecated, renamed: "SubscriptionInfo")
-public typealias SubscriptionScreenInfo = SubscriptionInfo
+@available(*, deprecated, renamed: "SubscriptionScreenInfo")
+public typealias SubscriptionInfo = SubscriptionScreenInfo
 
 #if os(iOS) || os(macOS)
 public extension SubscriptionScreen {
 
-    @available(*, deprecated, renamed: "SubscriptionInfo")
-    typealias Info = SubscriptionInfo
+    @available(*, deprecated, renamed: "SubscriptionScreenInfo")
+    typealias Info = SubscriptionScreenInfo
 }
 #endif
 
 /// This scruct can be used to define what to present within
 /// a ``SubscriptionScreen``.
-public struct SubscriptionInfo {
+public struct SubscriptionScreenInfo {
 
     public init(
         appInfo: AppInfo,
@@ -57,7 +57,7 @@ public struct SubscriptionInfo {
     public let storeService: any StoreService
 }
 
-extension SubscriptionInfo {
+extension SubscriptionScreenInfo {
 
     static func usp(
         title: String,

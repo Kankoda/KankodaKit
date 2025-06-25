@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 1.3.3
+
+- This version updates the navigation stack to accept a root content view.
+
+
 ## 1.3.2
 
 - This version updates the navigation stack to use PresentationKit.

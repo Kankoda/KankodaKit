@@ -9,22 +9,26 @@ import PresentationKit
 import SwiftUI
 
 /// This navigation stack view can manage the navigation for
-/// any type that implements ``AppScreenType``.
-public struct AppScreenNavigationStack<ScreenType: AppScreenType>: View {
+/// any ``AppScreenType``.
+///
+/// This view will render the provided content view inside a
+/// navigation stack that observes a `NavigationContext` and
+/// inject it into the environment.
+public struct AppScreenNavigationStack<Content: View, ScreenType: AppScreenType>: View {
 
     public init(
-        _ screenType: ScreenType
+        content: @escaping () -> Content
     ) {
-        self.screenType = screenType
+        self.content = content
     }
 
-    private let screenType: ScreenType
+    private let content: () -> Content
 
     @State var navigationContext = NavigationContext<ScreenType>()
 
     public var body: some View {
         NavigationStack(path: $navigationContext.path) {
-            screenType.screenContent
+            content()
                 .environment(navigationContext)
                 .navigationDestination(for: ScreenType.self) {
                     $0.screenContent

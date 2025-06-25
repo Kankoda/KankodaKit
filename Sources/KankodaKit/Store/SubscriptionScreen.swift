@@ -12,12 +12,11 @@ import StoreKit
 import StoreKitPlus
 import SwiftUI
 
-/// This is a standard Kankoda subscription screen, with the
-/// diagonal line, and a scrolling ``SubscriptionView``.
+/// This is a standard Kankoda subscription screen.
 public struct SubscriptionScreen: View {
     
     public init(
-        info: Info,
+        info: SubscriptionInfo,
         isModal: Bool,
         isPurchased: Bool
     ) {
@@ -26,9 +25,7 @@ public struct SubscriptionScreen: View {
         self.isPurchased = isPurchased
     }
 
-    public typealias Info = SubscriptionScreenInfo
-
-    private let info: Info
+    private let info: SubscriptionInfo
     private let isModal: Bool
     private let isPurchased: Bool
 
@@ -38,23 +35,20 @@ public struct SubscriptionScreen: View {
     @State private var confettiTrigger = 0
 
     public var body: some View {
-        ScrollView {
-            SubscriptionStoreView(
-                groupID: info.appInfo.subscriptionGroupId
-            ) {
-                StoreViewContent(
-                    info: info,
-                    isPurchased: isPurchased
-                )
-                .padding(.horizontal)
-            }
-            .padding(.top, style.topPadding)
-            .multilineTextAlignment(.center)
-            .withPurchaseConfetti(
-                $confettiTrigger,
-                emojis: info.confettiEmojis
+        SubscriptionStoreView(
+            groupID: info.appInfo.subscriptionGroupId
+        ) {
+            StoreViewContent(
+                info: info,
+                isPurchased: isPurchased
             )
+            .padding(.horizontal)
         }
+        .multilineTextAlignment(.center)
+        .withPurchaseConfetti(
+            $confettiTrigger,
+            emojis: info.confettiEmojis
+        )
         .onInAppPurchaseCompletion(perform: handleSubscription)
         #if os(iOS)
         .storeButton(.visible, for: .redeemCode)

@@ -22,14 +22,14 @@ public extension SubscriptionScreen {
     struct StoreViewContent: View {
 
         public init(
-            info: SubscriptionScreen.Info,
+            info: SubscriptionInfo,
             isPurchased: Bool
         ) {
             self.info = info
             self.isPurchased = isPurchased
         }
 
-        private let info: SubscriptionScreen.Info
+        private let info: SubscriptionInfo
         private let isPurchased: Bool
 
         @Environment(\.subscriptionScreenStyle)
@@ -37,6 +37,12 @@ public extension SubscriptionScreen {
 
         public var body: some View {
             VStack(spacing: 15) {
+
+                if let title = info.title {
+                    Text(title)
+                        .font(.title)
+                }
+
                 info.icon.resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: style.iconSize, height: style.iconSize)
@@ -44,11 +50,10 @@ public extension SubscriptionScreen {
                     .padding(.vertical)
                     .shadow(style.iconShadow)
 
-                Text(info.title)
-                    .font(.title)
-
-                Text(descriptionText)
-                    .forceMultiline()
+                if let text = descriptionText {
+                    Text(text)
+                        .forceMultiline()
+                }
 
                 VStack(alignment: .leading, spacing: 20) {
                     ForEach(Array(info.usps.enumerated()), id: \.offset) {
@@ -58,30 +63,37 @@ public extension SubscriptionScreen {
                 .padding()
             }
             .frame(maxWidth: style.contentMaxWidth)
+            .navigationTitle("")
         }
     }
 }
 
 private extension SubscriptionScreen.StoreViewContent {
 
-    var descriptionText: LocalizedStringKey {
+    var descriptionText: LocalizedStringKey? {
         isPurchased ? info.purchasedText : info.text
     }
 }
 
 #Preview {
-    VStack {
-        SubscriptionScreen.StoreViewContent(
-            info: .preview,
-            isPurchased: false
+    NavigationStack {
+        VStack {
+            SubscriptionScreen.StoreViewContent(
+                info: .preview,
+                isPurchased: false
+            )
+        }
+        .symbolVariant(.fill)
+        .foregroundStyle(.green)
+        .background(Color.red)
+        .subscriptionScreenStyle(
+            .init(iconSize: 120, iconShadow: .elevated)
         )
+        .navigationTitle("Preview.Title")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
-    .symbolVariant(.fill)
-    .foregroundStyle(.green)
-    .background(Color.red)
-    .subscriptionScreenStyle(
-        .init(iconSize: 120, iconShadow: .elevated)
-    )
 }
 #endif
 

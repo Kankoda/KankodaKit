@@ -1,5 +1,5 @@
 //
-//  SubscriptionScreen+Info.swift
+//  SubscriptionInfo.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2024-12-04.
@@ -9,15 +9,26 @@
 import StoreKitPlus
 import SwiftUI
 
+@available(*, deprecated, renamed: "SubscriptionInfo")
+public typealias SubscriptionScreenInfo = SubscriptionInfo
+
+#if os(iOS) || os(macOS)
+public extension SubscriptionScreen {
+
+    @available(*, deprecated, renamed: "SubscriptionInfo")
+    typealias Info = SubscriptionInfo
+}
+#endif
+
 /// This scruct can be used to define what to present within
 /// a ``SubscriptionScreen``.
-public struct SubscriptionScreenInfo {
+public struct SubscriptionInfo {
 
     public init(
         appInfo: AppInfo,
         icon: Image,
-        title: LocalizedStringKey,
-        text: LocalizedStringKey,
+        title: LocalizedStringKey? = nil,
+        text: LocalizedStringKey? = nil,
         purchasedText: LocalizedStringKey,
         usps: [ProductUsp] = [],
         confettiEmojis: String = "👑",
@@ -37,8 +48,8 @@ public struct SubscriptionScreenInfo {
 
     public let appInfo: AppInfo
     public let icon: Image
-    public let title: LocalizedStringKey
-    public let text: LocalizedStringKey
+    public let title: LocalizedStringKey?
+    public let text: LocalizedStringKey?
     public let purchasedText: LocalizedStringKey
     public let usps: [ProductUsp]
     public let confettiEmojis: String
@@ -46,7 +57,7 @@ public struct SubscriptionScreenInfo {
     public let storeService: any StoreService
 }
 
-extension SubscriptionScreenInfo {
+extension SubscriptionInfo {
 
     static func usp(
         title: String,

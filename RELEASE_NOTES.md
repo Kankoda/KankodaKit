@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## 1.3.1
+
+- This version updates the subscription info and screen.
+
+
+
 ## 1.3
 
 - This version updates dependencies.

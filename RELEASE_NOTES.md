@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## 1.3.2
+
+- This version updates the navigation stack to use PresentationKit.
+
+
+
 ## 1.3.1
 
 - This version updates the subscription info and screen.

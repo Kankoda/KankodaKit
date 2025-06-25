@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/PresentationKit.git",
       "state" : {
-        "revision" : "4c1970558a2c826c0c8cbcfa8ed3e2b859ad020e",
-        "version" : "0.4.0"
+        "revision" : "538484748d73475d01a05491ade66322e83cb29c",
+        "version" : "0.4.2"
       }
     },
     {
@@ -59,8 +59,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/StandardButtons.git",
       "state" : {
-        "revision" : "957d63e315cec0e50e882f681c3019ffe86faf5c",
-        "version" : "0.7.0"
+        "revision" : "431efe32926e4293ae560c7fcecf64921f0b1448",
+        "version" : "0.8.0"
       }
     },
     {

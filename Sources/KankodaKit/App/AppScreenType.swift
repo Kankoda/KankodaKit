@@ -71,15 +71,3 @@ public extension AppScreenType {
         #endif
     }
 }
-
-public extension View {
-
-    /// Define a standard app screen navigation destination.
-    func standardNavigationDestination<Screen: AppScreenType>(
-        for screen: Screen.Type
-    ) -> some View {
-        self.navigationDestination(for: Screen.self) {
-            $0.screenContent
-        }
-    }
-}

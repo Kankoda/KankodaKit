@@ -32,6 +32,7 @@ public struct AppScreenNavigationStack<ScreenType: AppScreenType>: View {
                 .environment(navigationContext)
                 .navigationDestination(for: ScreenType.self) {
                     $0.screenContent
+                        .environment(navigationContext)
                 }
         }
     }

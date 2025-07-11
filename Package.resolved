@@ -55,12 +55,21 @@
       }
     },
     {
+      "identity" : "standardactions",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/StandardActions.git",
+      "state" : {
+        "revision" : "19bc3bce0ccadd7e26d9f1c4c725be3cd353c482",
+        "version" : "0.9.5"
+      }
+    },
+    {
       "identity" : "storekitplus",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/StoreKitPlus.git",
       "state" : {
-        "revision" : "d2e4d25403082a14babec698905520bf30432f51",
-        "version" : "0.7.0"
+        "revision" : "465b53ba9dbee01680b7f7b93337577dade3172c",
+        "version" : "0.7.1"
       }
     },
     {

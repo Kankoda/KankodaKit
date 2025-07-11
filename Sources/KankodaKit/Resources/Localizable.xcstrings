@@ -144,16 +144,6 @@
         }
       }
     },
-    "SubscriptionScreen.Close" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Close"
-          }
-        }
-      }
-    },
     "SubscriptionScreen.MaybeLater" : {
       "localizations" : {
         "en" : {

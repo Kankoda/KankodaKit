@@ -8,6 +8,7 @@
 
 #if os(iOS) || os(macOS)
 import ConfettiSwiftUI
+import StandardActions
 import StoreKit
 import StoreKitPlus
 import SwiftUI
@@ -58,13 +59,7 @@ public struct SubscriptionScreen: View {
         .storeButton(.visible, for: .restorePurchases)
         .subscriptionStorePolicyDestination(url: info.appInfo.urls.privacyPolicy!, for: .privacyPolicy)
         .subscriptionStorePolicyDestination(url: info.appInfo.urls.termsAndConditions!, for: .termsOfService)
-        .toolbar {
-            if let closeButtonTitle {
-                Button(action: dismiss.callAsFunction) {
-                    LocalizedText(closeButtonTitle)
-                }
-            }
-        }
+        .toolbar { closeButton }
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
@@ -73,10 +68,17 @@ public struct SubscriptionScreen: View {
 
 private extension SubscriptionScreen {
 
-    var closeButtonTitle: LocalizedStringKey? {
-        if isPurchased && isModal { return "SubscriptionScreen.Close" }
-        if !isPurchased { return "SubscriptionScreen.MaybeLater" }
-        return nil
+    @ViewBuilder
+    var closeButton: some View {
+        if !isPurchased {
+            Button(action: dismiss.callAsFunction) {
+                LocalizedText("SubscriptionScreen.MaybeLater")
+            }
+        } else {
+            Button(.close) {
+                dismiss()
+            }
+        }
     }
 }
 

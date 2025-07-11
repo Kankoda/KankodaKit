@@ -25,6 +25,7 @@ let package = Package(
         .package(url: "https://github.com/danielsaidi/OnboardingKit.git", .upToNextMajor(from: "8.3.1")),
         .package(url: "https://github.com/danielsaidi/PresentationKit.git", .upToNextMajor(from: "0.4.2")),
         .package(url: "https://github.com/danielsaidi/ScanCodes.git", .upToNextMajor(from: "0.1.0")),
+        .package(url: "https://github.com/danielsaidi/StandardActions.git", .upToNextMinor(from: "0.9.5")),
         .package(url: "https://github.com/danielsaidi/StoreKitPlus.git", .upToNextMinor(from: "0.7.0")),
         .package(url: "https://github.com/danielsaidi/SwiftUIKit.git", .upToNextMajor(from: "5.8.4")),
     ],
@@ -38,6 +39,7 @@ let package = Package(
                 "OnboardingKit",
                 "PresentationKit",
                 "ScanCodes",
+                "StandardActions",
                 "StoreKitPlus",
                 "SwiftUIKit"
             ],

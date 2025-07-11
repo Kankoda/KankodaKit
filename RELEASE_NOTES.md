@@ -2,6 +2,15 @@
 
 
 
+## 1.4
+
+This version:
+
+- Redesigns the about screen content.
+- Replaces social menu items with app info menu items.
+
+
+
 ## 1.3
 
 These versions:

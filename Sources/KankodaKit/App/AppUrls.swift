@@ -43,19 +43,19 @@ public struct AppUrls {
 
 public extension AppUrls {
     
-    var contactEmailBugReport: URL? {
-        contactEmail(subject: "\(appName) Bug Report")
+    var emailBug: URL? {
+        email(subject: "\(appName) Bug Report")
     }
     
-    var contactEmailFeatureRequest: URL? {
-        contactEmail(subject: "\(appName) Feature Request")
+    var emailFeedback: URL? {
+        email(subject: "\(appName) Feedback")
     }
-    
-    var contactEmailFeedback: URL? {
-        contactEmail(subject: "\(appName) Feedback")
+
+    var emailRequest: URL? {
+        email(subject: "\(appName) Feature Request")
     }
-    
-    func contactEmail(subject: String) -> URL? {
+
+    func email(subject: String) -> URL? {
         contactEmail?.appending(
             queryItems: [.init(name: "subject", value: subject)]
         )

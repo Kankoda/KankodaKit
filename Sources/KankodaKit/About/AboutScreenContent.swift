@@ -6,6 +6,7 @@
 //  Copyright © 2024-2025 Kankoda. All rights reserved.
 //
 
+import Foundation
 import SwiftUI
 import SwiftUIKit
 
@@ -51,7 +52,7 @@ public struct AboutScreenContent: View {
                 menuItem(for: .privacy)
             } footer: {
                 VStack(alignment: .center, spacing: 10) {
-                    Text("Version \(Bundle.main.versionNumber)")
+                    // Text("Version \(Bundle.main.versionNumber)")
                     Text(app.copyright)
                 }
                 .padding(10)

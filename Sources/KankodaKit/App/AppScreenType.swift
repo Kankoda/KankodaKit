@@ -31,6 +31,7 @@ public protocol AppScreenType: Hashable, Sendable {
     var labelIcon: LabelIcon { get }
 }
 
+@MainActor
 public extension AppScreenType {
 
     /// Generate a button with the screen's label.
@@ -58,7 +59,8 @@ public extension AppScreenType {
         if isAppSettingsScreen {
             SettingsLink {
                 label
-            }.buttonStyle(.plain)
+            }
+            .buttonStyle(.plain)
         } else {
             NavigationLink(value: self) {
                 label

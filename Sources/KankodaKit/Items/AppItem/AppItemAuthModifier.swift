@@ -6,7 +6,7 @@
 //  Copyright © 2022-2025 Kankoda. All rights reserved.
 //
 
-#if os(macOS) || os(iOS)
+#if os(iOS) || os(macOS) || os(watchOS) || os(visionOS)
 import SwiftUI
 import SwiftUIKit
 
@@ -78,29 +78,26 @@ private extension AppItemAuthModifier {
     }
 }
 
-#if os(iOS)
 private extension NotificationCenter {
 
     var backgroundPublisher: NotificationCenter.Publisher {
+        #if os(iOS) || os(visionOS) || os(tvOS)
         publisher(for: UIApplication.didEnterBackgroundNotification)
-    }
-
-    var foregroundPublisher: NotificationCenter.Publisher {
-        publisher(for: UIApplication.willEnterForegroundNotification)
-    }
-}
-#endif
-
-#if os(macOS)
-private extension NotificationCenter {
-
-    var backgroundPublisher: NotificationCenter.Publisher {
+        #elseif os(macOS)
         publisher(for: NSApplication.didHideNotification)
+        #elseif os(watchOS)
+        publisher(for: WKExtension.applicationDidEnterBackgroundNotification)
+        #endif
     }
 
     var foregroundPublisher: NotificationCenter.Publisher {
+        #if os(iOS) || os(visionOS) || os(tvOS)
+        publisher(for: UIApplication.willEnterForegroundNotification)
+        #elseif os(macOS)
         publisher(for: NSApplication.didUnhideNotification)
+        #elseif os(watchOS)
+        publisher(for: WKExtension.applicationWillEnterForegroundNotification)
+        #endif
     }
 }
-#endif
 #endif

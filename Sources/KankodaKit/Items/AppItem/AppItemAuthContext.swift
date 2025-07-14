@@ -6,7 +6,7 @@
 //  Copyright © 2022-2025 Kankoda. All rights reserved.
 //
 
-#if os(macOS) || os(iOS)
+#if os(macOS) || os(iOS) || os(watchOS) || os(visionOS)
 import LocalAuthentication
 import SwiftUI
 import SwiftUIKit
@@ -34,16 +34,24 @@ public class AppItemAuthContext {
     ///  - stores: The stores to check before enforcint auth.
     public init(
         isEnabled: Bool = true,
-        policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics,
+        policy: LAPolicy? = nil,
         stores: [any AppItemStore]
     ) {
-        self.authPolicy = policy
+        self.authPolicy = policy ?? Self.defaultPolicy
         self.stores = stores
         self.isAuthenticationEnabled = isEnabled
         self.isAuthenticationNeeded = isEnabled
         self.isAuthenticationNeeded = isAuthenticationActive && hasItems
     }
-    
+
+    private static var defaultPolicy: LAPolicy {
+        #if os(iOS) || os(macOS) || os(visionOS)
+        LAPolicy.deviceOwnerAuthenticationWithBiometrics
+        #else
+        LAPolicy.deviceOwnerAuthenticationWithWristDetection
+        #endif
+    }
+
     private let authPolicy: LAPolicy
     private let stores: [any AppItemStore]
     private let defaults = UserDefaults.standard

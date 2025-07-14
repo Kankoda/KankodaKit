@@ -12,23 +12,29 @@ import SwiftUI
 
 public extension Onboarding {
  
-    static let premium = DelayedOnboarding(
-        id: "premium",
-        requiredPresentationAttempts: 3
-    )
+    static var premium: DelayedOnboarding {
+        .init(
+            id: "premium",
+            requiredPresentationAttempts: 3
+        )
+    }
 
-    static let requestReview = DelayedOnboarding(
-        id: "requestReview",
-        requiredPresentationAttempts: 2
-    )
+    static var requestReview: DelayedOnboarding {
+        .init(
+            id: "requestReview",
+            requiredPresentationAttempts: 2
+        )
+    }
 
-    static let welcome = Onboarding(
-        id: "welcome"
-    )
+    static var welcome: Onboarding {
+        .init(
+            id: "welcome"
+        )
+    }
 
     static func welcome(
         version: Int
     ) -> Onboarding {
-        Onboarding(id: "welcome-\(version)")
+        .init(id: "welcome-\(version)")
     }
 }

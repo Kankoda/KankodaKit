@@ -10,7 +10,7 @@ import CoreTransferable
 import Foundation
 
 /// This protocol defines named items that can be persisted.
-public protocol AppItem: Codable, Equatable, Identifiable, Named, Transferable {
+public protocol AppItem: Codable, Equatable, Identifiable, Named, Sendable, Transferable {
     
     /// The unique item id.
     var id: UUID { get }

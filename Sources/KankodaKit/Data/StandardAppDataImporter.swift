@@ -12,8 +12,8 @@ import Foundation
 ///
 /// The `qrCodeUrlPrefix` is optional, and will only be used
 /// by QR codes to import & export small amounts of data.
-open class StandardAppDataImporter<DataType: AppData>: AppDataImporter {
-    
+open class StandardAppDataImporter<DataType: AppData & Sendable>: AppDataImporter {
+
     public init(
         qrCodeUrlPrefix: String = "qr:",
         importer: @escaping (DataType) async throws -> Void
@@ -38,25 +38,17 @@ public extension StandardAppDataImporter {
     
     func importFileData(_ data: Data) async throws {
         let data = try DataType(compressedData: data)
-        try await importData(data)
+        try await importer(data)
     }
     
     func importFileData(from url: URL) async throws {
         _ = url.startAccessingSecurityScopedResource()
         let data = try DataType(compressedDataAt: url)
-        try await importData(data)
+        try await importer(data)
     }
 
     func importQrCodeData(from url: URL) async throws {
         let data = try DataType(qrCodeDataUrl: url, urlPrefix: qrCodeUrlPrefix)
-        try await importData(data)
-    }
-}
-
-@MainActor
-private extension StandardAppDataImporter {
-
-    func importData(_ data: DataType) async throws {
         try await importer(data)
     }
 }

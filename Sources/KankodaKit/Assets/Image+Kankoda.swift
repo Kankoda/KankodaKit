@@ -48,6 +48,9 @@ public extension Image {
     static let tutorial = lightbulb
 
     static let favorite = star
+}
+
+@MainActor public extension Image {
 
     static var checkmarkSticker: some View {
         Image.checkmark

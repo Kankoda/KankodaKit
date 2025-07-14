@@ -12,5 +12,5 @@ import Foundation
 public class PackageInfo {
     
     /// The prefix to apply before app storage keys.
-    public static var appStoragePrefix = "com.kankoda."
+    public static let appStoragePrefix = "com.kankoda."
 }

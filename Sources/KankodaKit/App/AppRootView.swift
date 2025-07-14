@@ -22,7 +22,7 @@ import SwiftUIKit
 /// ``SwiftUICore/View/withAppEnvironment(appSpecific:)`` to
 /// it. It will sync in-app purchases and subscriptions if a
 /// store service is provided.
-public struct AppRootView<Content: View>: View, AnyErrorAlerter {
+public struct AppRootView<Content: View>: View {
 
     public init(
         storeService: (any StoreService)?,
@@ -54,7 +54,7 @@ private extension AppRootView {
     func syncStoreData(for phase: ScenePhase) {
         guard phase == .active else { return }
         guard let storeService else { return }
-        tryWithErrorAlert {
+        Task {
             try await storeService.syncStoreData(to: storeContext)
         }
     }

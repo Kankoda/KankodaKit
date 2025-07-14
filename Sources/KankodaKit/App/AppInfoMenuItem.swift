@@ -18,17 +18,9 @@ public enum AppInfoMenuItemType {
     case feedback
     case privacy
     case website
+}
 
-    var badgeIcon: BadgeIcon<Image> {
-        switch self {
-        case .appStore: .appStore
-        case .bugReport: .bug
-        case .featureRequest: .featureRequest
-        case .feedback: .email
-        case .privacy: .privacy
-        case .website: .safari
-        }
-    }
+public extension AppInfoMenuItemType {
 
     var systemImageName: String {
         switch self {
@@ -38,6 +30,20 @@ public enum AppInfoMenuItemType {
         case .feedback: "lightbulb"
         case .privacy: "hand.raised"
         case .website: "safari"
+        }
+    }
+}
+
+@MainActor public extension AppInfoMenuItemType {
+
+    var badgeIcon: BadgeIcon<Image> {
+        switch self {
+        case .appStore: .appStore
+        case .bugReport: .bug
+        case .featureRequest: .featureRequest
+        case .feedback: .email
+        case .privacy: .privacy
+        case .website: .safari
         }
     }
 }

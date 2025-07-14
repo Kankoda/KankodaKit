@@ -63,20 +63,20 @@ public extension AppItemAuthContext {
         if ProcessInfo.isSwiftUIPreview { return false }
         return LAContext().canEvaluatePolicy(authPolicy, error: nil)
     }
-    
+}
+
+@MainActor
+public extension AppItemAuthContext {
+
     /// Try to authenticate the user, provided that it's needed.
     func authenticateUser(reason: String) {
         guard isAuthenticationNeeded else { return }
         Task {
             let result = try await LAContext().evaluatePolicy(authPolicy, localizedReason: reason)
-            await update(isNeeded: !result)
+            update(isNeeded: !result)
         }
     }
-}
 
-@MainActor
-public extension AppItemAuthContext {
-    
     /// Reset authentication state for the app.
     func reset() {
         isAuthenticationNeeded = isAuthenticationActive && hasItems

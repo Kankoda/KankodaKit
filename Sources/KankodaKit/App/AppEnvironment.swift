@@ -20,6 +20,7 @@ import SwiftUI
 /// to ensure that a new sheet is presented.
 public final class AppEnvironment {}
 
+@MainActor
 public extension AppEnvironment {
 
     static let alertContext = AnyAlertContext()

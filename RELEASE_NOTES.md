@@ -6,8 +6,10 @@
 
 This version:
 
+- Updates package to Swift 6.0.
+- Performs many concurrency changes!
 - Localizes the SDK in more locales.
-- Redesigns the about screen content.U
+- Redesigns the about screen content.
 - Replaces social menu items with app info menu items.
 - Removes the `FlipKit` dependency and the `ItemFlipView`.
 

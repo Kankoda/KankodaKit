@@ -9,8 +9,8 @@
 import SwiftUI
 
 /// This struct defines app-specific information.
-public struct AppInfo {
- 
+public struct AppInfo: Sendable {
+
     public init(
         appName: String,
         appBundleIdentifier: String,
@@ -22,7 +22,7 @@ public struct AppInfo {
         subscriptionGroupId: String = "",
         websiteUrl: String,
         privacyUrl: String,
-        copyright: LocalizedStringKey,
+        copyright: String,
         termsUrl: String = "https://apple.com/legal/internet-services/itunes/dev/stdeula/"
     ) {
         self.appName = appName
@@ -50,7 +50,7 @@ public struct AppInfo {
     public let appStoragePrefix: String
     public let appUrlScheme: String
     public let contactEmail: String
-    public let copyright: LocalizedStringKey
+    public let copyright: String
     public let subscriptionGroupId: String
     
     let websiteUrl: URL?
@@ -62,7 +62,7 @@ public struct AppInfo {
 
 public extension AppInfo {
     
-    static var preview = Self.init(
+    static let preview = Self.init(
         appName: "Preview",
         appBundleIdentifier: "com.kankoda.app",
         appStoreId: 123456,

@@ -31,6 +31,7 @@ public extension ShareItem {
     }
 
     #if os(iOS)
+    @MainActor
     var shareSheet: ShareSheet {
         switch self {
         case .url(let url): ShareSheet(activityItems: [url])

@@ -26,11 +26,10 @@ public protocol AppTabType: AppScreenType {
     var tabIcon: TabIcon { get }
 }
 
+@MainActor
 public extension AppTabType {
 
     /// Generate a navigation link to the app screen.
-    ///
-    /// TODO: The stack should be configured with value-based navigation.
     var tabItem: some View {
         NavigationStack {
             screenContent

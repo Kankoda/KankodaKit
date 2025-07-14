@@ -12,6 +12,7 @@ import SwiftUI
 ///
 /// This view uses hacks to make the diagonal behave well in
 /// a scroll view. Make sure to use a solid color.
+@MainActor
 public struct DiagonalContent<Content: View>: View {
     
     public init(
@@ -86,6 +87,7 @@ private extension DiagonalContent {
     }
 }
 
+@MainActor
 private extension GeometryProxy {
     
     var isLandscape: Bool { size.height < size.width }

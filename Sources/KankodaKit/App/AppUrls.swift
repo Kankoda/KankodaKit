@@ -9,7 +9,7 @@
 import Foundation
 
 /// This struct defines app-specific URLs.
-public struct AppUrls {
+public struct AppUrls: Sendable {
     
     init() {
         self.app = nil

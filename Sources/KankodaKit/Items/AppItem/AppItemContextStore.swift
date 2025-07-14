@@ -16,7 +16,7 @@ import Foundation
 open class AppItemContextStore<
     Item: AppItem,
     BaseStore: AppItemStore,
-    Context: AppItemContext>: AppItemStore where BaseStore.Item == Item, Context.Item == Item {
+    Context: AppItemContext>: @unchecked Sendable, AppItemStore where BaseStore.Item == Item, Context.Item == Item {
 
     /// Create a contextual store instance.
     ///

@@ -9,6 +9,7 @@ This version:
 - Localizes the SDK in more locales.
 - Redesigns the about screen content.
 - Replaces social menu items with app info menu items.
+- Removes the `FlipKit` dependency and the `ItemFlipView`.
 
 
 

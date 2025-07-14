@@ -19,15 +19,6 @@
       }
     },
     {
-      "identity" : "flipkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/danielsaidi/FlipKit.git",
-      "state" : {
-        "revision" : "b6a53b15eab9d239d1bad7ca163786dce0422070",
-        "version" : "0.1.0"
-      }
-    },
-    {
       "identity" : "onboardingkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/OnboardingKit.git",

@@ -74,10 +74,11 @@ private extension SubscriptionScreen {
             Button(action: dismiss.callAsFunction) {
                 LocalizedText("SubscriptionScreen.MaybeLater")
             }
-        } else {
+        } else if isModal {
             Button(.close) {
                 dismiss()
             }
+            .labelStyle(.titleOnly)
         }
     }
 }
@@ -89,12 +90,12 @@ private extension SubscriptionScreen {
         with result: Result<Product.PurchaseResult, Error>
     ) {
         switch result {
-        case .success: synccState(for: product)
+        case .success: syncState(for: product)
         case .failure: return
         }
     }
     
-    func synccState(
+    func syncState(
         for product: Product
     ) {
         let service = info.storeService

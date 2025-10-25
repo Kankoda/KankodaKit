@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.1
 
 import PackageDescription
 
@@ -19,13 +19,13 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/danielsaidi/BadgeIcon.git", .upToNextMajor(from: "1.1.0")),
+        .package(url: "https://github.com/danielsaidi/BadgeIcon.git", .upToNextMajor(from: "2.1.0")),
         .package(url: "https://github.com/simibac/ConfettiSwiftUI.git", .upToNextMajor(from: "1.1.0")),
-        .package(url: "https://github.com/danielsaidi/OnboardingKit.git", .upToNextMajor(from: "8.3.1")),
-        .package(url: "https://github.com/danielsaidi/PresentationKit.git", .upToNextMajor(from: "0.4.2")),
-        .package(url: "https://github.com/danielsaidi/ScanCodes.git", .upToNextMajor(from: "0.1.0")),
-        .package(url: "https://github.com/danielsaidi/StandardActions.git", .upToNextMinor(from: "0.9.5")),
-        .package(url: "https://github.com/danielsaidi/StoreKitPlus.git", .upToNextMinor(from: "0.7.0")),
+        .package(url: "https://github.com/danielsaidi/OnboardingKit.git", .upToNextMajor(from: "8.4.0")),
+        .package(url: "https://github.com/danielsaidi/PresentationKit.git", .upToNextMajor(from: "0.5.0")),
+        .package(url: "https://github.com/danielsaidi/ScanCodes.git", .upToNextMajor(from: "0.2.0")),
+        .package(url: "https://github.com/danielsaidi/StandardActions.git", .upToNextMinor(from: "1.0.0")),
+        .package(url: "https://github.com/danielsaidi/StoreKitPlus.git", .upToNextMinor(from: "0.8.0")),
         .package(url: "https://github.com/danielsaidi/SwiftUIKit.git", .upToNextMajor(from: "5.8.4")),
     ],
     targets: [

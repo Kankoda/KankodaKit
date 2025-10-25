@@ -6,6 +6,8 @@
 
 These versions:
 
+- Updates package dependencies.
+- Updates package to Swift 6.1.
 - Simplifies the app sheet model.
 
 

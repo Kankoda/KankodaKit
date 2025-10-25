@@ -1,13 +1,13 @@
 {
-  "originHash" : "30e6f7d80adadbc363bcda4215cd25cb3aebc714a82d7a31d3d40e38d5e51aa9",
+  "originHash" : "3b28809fc9d769936bbdeac9d6dc374441813e4d25d3e4414e39d03c587efb73",
   "pins" : [
     {
       "identity" : "badgeicon",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/BadgeIcon.git",
       "state" : {
-        "revision" : "a9c289c20e2cb972acf10d42b7664df7917760bd",
-        "version" : "1.1.0"
+        "revision" : "ccda39607cfa438c79606b143caa20c9528bc506",
+        "version" : "2.1.0"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/OnboardingKit.git",
       "state" : {
-        "revision" : "5627c50bad27de97b1f70e3e2f4d8c96fe4c6391",
-        "version" : "8.3.1"
+        "revision" : "8816bbd71ce2b5a242809709940b03be0f29a236",
+        "version" : "8.4.0"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/PresentationKit.git",
       "state" : {
-        "revision" : "538484748d73475d01a05491ade66322e83cb29c",
-        "version" : "0.4.2"
+        "revision" : "7da4aa5495feff5e7cb341c60165c53a6e571a06",
+        "version" : "0.5.0"
       }
     },
     {
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/ScanCodes.git",
       "state" : {
-        "revision" : "9542e442963963b07130c69fa26c1d0ee4765518",
-        "version" : "0.1.0"
+        "revision" : "e87a3bbd390824e9644d6ee7208042022ed9eb0c",
+        "version" : "0.2.0"
       }
     },
     {
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/StandardActions.git",
       "state" : {
-        "revision" : "19bc3bce0ccadd7e26d9f1c4c725be3cd353c482",
-        "version" : "0.9.5"
+        "revision" : "75fab04caaf596a53fe05b284544e03e2bea975c",
+        "version" : "1.0.0"
       }
     },
     {
@@ -60,8 +60,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/StoreKitPlus.git",
       "state" : {
-        "revision" : "465b53ba9dbee01680b7f7b93337577dade3172c",
-        "version" : "0.7.1"
+        "revision" : "f694b920e6f9bb69661d884f25e5ee9f9835df47",
+        "version" : "0.8.0"
       }
     },
     {

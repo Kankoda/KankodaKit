@@ -9,39 +9,12 @@
 import PresentationKit
 import SwiftUI
 
-/// This sheet container wraps another view content within a
-/// navigation stack, applies a new sheet to it, and applies
-/// a view environment to the wrapped content.
-public struct AppSheet<Content: View, Output: View>: View {
+/// This view wraps any view within a navigation stack, then
+/// applies a new sheet context to the new hierarchy.
+public struct AppSheet<Content: View>: View {
 
     public init(
-        @ViewBuilder content: @escaping () -> Content,
-        appEnvironment: @escaping (SheetContent) -> Output
-    ) {
-        self.content = content
-        self.appEnvironment = appEnvironment
-    }
-
-    public typealias SheetContent = AppSheetContent<Content>
-
-    private let content: () -> Content
-    private let appEnvironment: (SheetContent) -> Output
-
-    public var body: some View {
-        NavigationStack {
-            appEnvironment(
-                AppSheetContent(content)
-            )
-        }
-    }
-}
-
-/// This is an internally used content wrapper, that applies
-/// a new sheet context to the wrapped content.
-public struct AppSheetContent<Content: View>: View {
-
-    public init(
-        @ViewBuilder _ content: @escaping () -> Content
+        @ViewBuilder content: @escaping () -> Content
     ) {
         self.content = content
     }
@@ -51,26 +24,30 @@ public struct AppSheetContent<Content: View>: View {
     @StateObject var sheet = AnySheetContext()
 
     public var body: some View {
-        content().sheet(sheet)
+        NavigationStack {
+            content()
+                .sheet(sheet)
+        }
     }
 }
 
 @MainActor
 public extension AnySheetContext {
 
-    /// Present an app sheet content view.
+    /// Present an app sheet content view, which can be used
+    /// in different ways by different apps.
     ///
-    /// This can be specialized in each app, by using an app
-    /// specific app screen type.
-    func presentAppScreen<Content: View, Output: View>(
+    /// This wrap the content view in an ``AppSheet``, which
+    /// wraps the content in a navigation stack then sets up
+    /// and injects a new sheet context to the new hierarchy.
+    func presentAppScreen<Content: View, Sheet: View>(
         @ViewBuilder content: @escaping () -> Content,
-        appEnvironment: @escaping (AppSheetContent<Content>) -> Output,
+        @ViewBuilder sheet: @escaping (AppSheet<Content>) -> Sheet,
         onDismiss: @escaping () -> Void = {}
     ) {
         present(
-            AppSheet(
-                content: content,
-                appEnvironment: appEnvironment
+            sheet(
+                AppSheet(content: content)
             )
             .onDisappear(perform: onDismiss)
         )
@@ -89,12 +66,6 @@ public extension AnySheetContext {
                     AppSheet {
                         Text("Sheeeeeet")
                             .navigationTitle("Yeah")
-                    } appEnvironment: { view in
-                        view
-                            .background(Color.red)
-                            #if os(iOS)
-                            .navigationBarTitleDisplayMode(.inline)
-                            #endif
                     }
                 )
             }
@@ -103,7 +74,5 @@ public extension AnySheetContext {
 
     return AppSheet {
         Preview()
-    } appEnvironment: { view in
-        view.background(Color.yellow)
     }
 }

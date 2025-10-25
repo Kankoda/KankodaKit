@@ -2,6 +2,14 @@
 
 
 
+## 1.5
+
+These versions:
+
+- Simplifies the app sheet model.
+
+
+
 ## 1.4
 
 These versions:

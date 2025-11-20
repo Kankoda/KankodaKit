@@ -30,12 +30,11 @@ public struct AboutScreenContent: View {
     public var body: some View {
         List {
             ListHeader {
-                VStack {
+                VStack(spacing: 45) {
                     icon
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: 150, maxHeight: 150)
-                        .padding(.vertical, 30)
                     description
                 }
             }
@@ -81,6 +80,10 @@ private extension AboutScreenContent {
             icon: .lightbulb,
             description: Text("This app is developed by Kankoda in Stockholm, Sweden.\n\nDon't hesitate to reach out if you find bugs, or have ideas on how to improve the app.")
         )
+        .navigationTitle("Test")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
         .appInfoMenuItemStyle(.plain)
     }
 }

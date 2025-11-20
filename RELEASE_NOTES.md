@@ -6,6 +6,8 @@
 These versions:
 
 - Updates package dependencies.
+- Migrates `AdminContext` to @Observable.
+- Adds multiple `AdminModeToggleGesture`s.
 
 
 

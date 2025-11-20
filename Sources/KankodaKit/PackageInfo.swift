@@ -12,5 +12,10 @@ import Foundation
 public class PackageInfo {
     
     /// The prefix to apply before app storage keys.
-    public static let appStoragePrefix = "com.kankoda."
+    public static let appStoragePrefix = Bundle.main.bundleIdentifier ?? "com.kankoda."
+
+    /// An app storage key with the app storage prefix applied.
+    public static func appStorageKey(_ key: String) -> String {
+        "\(appStoragePrefix)\(key)"
+    }
 }

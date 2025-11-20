@@ -1,5 +1,5 @@
 {
-  "originHash" : "fff83f8ffa6cd8cf1add0fe2781d7a84f0d659d1e56db4f0907939adf1fba130",
+  "originHash" : "240dc7187be00c851ea2338b5a805754a3eae0a11c5bbf538a1258920bd0702e",
   "pins" : [
     {
       "identity" : "badgeicon",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "79666d42b882bf7921b1941fa7c636d681d77980",
         "version" : "2.0.3"
+      }
+    },
+    {
+      "identity" : "observablepersistency",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/ObservablePersistency.git",
+      "state" : {
+        "revision" : "18f24501b59e015d01a5cf69bca1ce9b5583186d",
+        "version" : "0.1.0"
       }
     },
     {

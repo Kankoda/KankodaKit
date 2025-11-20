@@ -8,10 +8,7 @@
 
 import SwiftUI
 
-/// This style can be used to style ``DiagonalContent``.
-///
-/// You can use the ``standard`` style for apps that use the
-/// same color palette.
+@available(*, deprecated, message: "This is no longer used.")
 public struct DiagonalStyle: Sendable {
     
     public init(
@@ -24,21 +21,20 @@ public struct DiagonalStyle: Sendable {
 
     public var background: Color
     public var diagonal: Color
-}
 
-public extension DiagonalStyle {
-    
-    static let standard = Self(
+    public static let standard = Self(
         background: .diagonalBackground,
         diagonal: .diagonalForeground
     )
 }
 
+@available(*, deprecated, message: "This is no longer used.")
 public extension EnvironmentValues {
 
     @Entry var diagonalStyle = DiagonalStyle.standard
 }
 
+@available(*, deprecated, message: "This is no longer used.")
 public extension View {
 
     func diagonalStyle(

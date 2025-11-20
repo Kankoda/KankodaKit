@@ -10,9 +10,8 @@
 import SwiftUI
 import SwiftUIKit
 
-/// This modifier makes the view request authentication when
-/// it appears and the app starts, then reset authentication
-/// state when the app moves into the background.
+/// This view modifier makes a view request authentication when it appears and
+/// the app starts, then resets its state when the app moves into the background.
 ///
 /// Note that only a single view in the app should use this.
 struct AppItemAuthModifier: ViewModifier {
@@ -45,9 +44,8 @@ struct AppItemAuthModifier: ViewModifier {
 
 public extension View {
 
-    /// This modifier makes a view request authentication as
-    /// the app launches, then reset authentication when the
-    /// app moves to the background.
+    /// This modifier makes a view request authentication as the app launches,
+    /// then reset authentication when the app moves to the background.
     ///
     /// - Parameters:
     ///   - reason: The authentication reason to show the user, by default the app unlock message.

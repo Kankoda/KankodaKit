@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// This shape draws a diagonal with a transparent header.
+@available(*, deprecated, message: "This is no longer used.")
 public struct DiagonalShape: Shape {
     
     public init(

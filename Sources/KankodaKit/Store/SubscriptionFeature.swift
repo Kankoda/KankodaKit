@@ -8,8 +8,7 @@
 
 import Foundation
 
-/// This protocol can be implemented by any type that can be
-/// used as a subscription feature.
+/// This protocol can be implemented by any subscription feature type.
 public protocol SubscriptionFeature {
     
     /// Whether or not this type is a premium feature.

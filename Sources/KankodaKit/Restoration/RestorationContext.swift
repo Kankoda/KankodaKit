@@ -8,13 +8,7 @@
 
 import SwiftUI
 
-/// This class can be used to restore something, like an app
-/// screen or something like that.
-///
-/// To use the class, just pass in a list of restorable item
-/// values, then call ``tryUpdateItem(_:)``. If that item is
-/// in the original list, it will be saved for later and can
-/// be restored with ``tryRestoreItem()``.
+/// This class can be used to restore app screens or any kind of data.
 public class RestorationContext<Item: Identifiable & Equatable>: ObservableObject where Item.ID == String {
     
     public init(restorableItems items: [Item]) {
@@ -28,11 +22,13 @@ public class RestorationContext<Item: Identifiable & Equatable>: ObservableObjec
 }
 
 public extension RestorationContext {
-    
+
+    /// Try to restore the last state.
     func tryRestoreItem() -> Item? {
         items.first { $0.id == lastId }
     }
- 
+
+    /// Try to update the current state.
     func tryUpdateItem(_ item: Item?) {
         guard let item, items.contains(item) else { return }
         lastId = item.id

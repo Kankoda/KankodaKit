@@ -8,11 +8,10 @@
 
 import SwiftUI
 
-/// This will render a macOS settings panel, with a tab view
-/// that renders the provided content.
+/// This view will render a macOS settings panel, with a tab view that renders the
+/// provided content.
 ///
-/// Make sure to add a `.tabItem` modifier to each view that
-/// the content builder returns.
+/// > Important: Add a `.tabItem` to each view that the content builder returns.
 @available(macOS 15.0, *)
 public struct SettingsPanelContent<TabViewContent: View>: View {
     

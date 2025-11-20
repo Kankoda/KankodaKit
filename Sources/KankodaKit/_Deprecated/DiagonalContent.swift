@@ -8,11 +8,8 @@
 
 import SwiftUI
 
-/// This view can be used to create diagonal styled content.
-///
-/// This view uses hacks to make the diagonal behave well in
-/// a scroll view. Make sure to use a solid color.
 @MainActor
+@available(*, deprecated, message: "This is no longer used.")
 public struct DiagonalContent<Content: View>: View {
     
     public init(
@@ -38,6 +35,7 @@ public struct DiagonalContent<Content: View>: View {
     }
 }
 
+@available(*, deprecated, message: "This is no longer used.")
 private extension DiagonalContent {
 
     var backgroundView: some View {
@@ -99,36 +97,4 @@ private extension GeometryProxy {
         return false
         #endif
     }
-}
-
-#Preview {
-    
-    func square() -> some View {
-        Color.purple.frame(width: 100, height: 100)
-    }
-    
-    return NavigationStack {
-        DiagonalContent {
-            VStack(spacing: 20) {
-                RoundedRectangle(cornerRadius: 20).fill(.green).frame(square: 300)
-                square()
-                square()
-                square()
-                square()
-                square()
-                square()
-                square()
-                square()
-            }
-        }
-        .navigationTitle("Preview.Testing")
-        #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-        #endif
-        .diagonalStyle(.init(
-            background: .red,
-            diagonal: .yellow.opacity(0.5)
-        ))
-    }
-    // .previewInterfaceOrientation(.landscapeLeft)
 }

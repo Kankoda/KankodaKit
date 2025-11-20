@@ -9,8 +9,7 @@
 import ScanCodes
 import SwiftUI
 
-/// This protocol can be implemented by any type that can be
-/// used to export a ``AppData`` types.
+/// This protocol can be implemented by any type that can export ``AppData``.
 public protocol AppDataExporter {
     
     func generateExportFile<DataType: AppData>(

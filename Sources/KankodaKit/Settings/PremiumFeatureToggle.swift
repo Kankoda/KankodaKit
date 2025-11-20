@@ -9,8 +9,7 @@
 import BadgeIcon
 import SwiftUI
 
-/// This toggle can be used to show a disabled toggle if the
-/// app doesn't have a premium subscription.
+/// This toggle can be used to show a disabled toggle if Premium is not active.
 public struct PremiumFeatureToggle<Content: View>: View {
 
     /// Create a custom disclosure toggle.

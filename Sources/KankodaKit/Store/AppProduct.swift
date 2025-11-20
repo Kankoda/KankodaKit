@@ -9,8 +9,8 @@
 import StoreKit
 import StoreKitPlus
 
-/// This type can be used to specify an app-specific product,
-/// e.g. a premium subscription or a consumables.
+/// This type can be used to specify an app-specific product, e.g. a premium app
+/// subscription or a consumables.
 ///
 /// You can create an app-specific product like this:
 ///

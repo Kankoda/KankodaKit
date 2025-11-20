@@ -8,8 +8,7 @@
 
 import SwiftUI
 
-/// This protocol can be implemented by any type that can be
-/// used as an app screens.
+/// This protocol can be implemented by any type that can be used as app screen.
 public protocol AppScreenType: Hashable, Sendable {
 
     associatedtype LabelIcon: View

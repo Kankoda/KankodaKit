@@ -11,8 +11,7 @@ import SwiftUI
 
 /// This is a tip for presenting quick onboarding hints.
 ///
-/// You can provide a `feature` to present an individual tip
-/// for specific features. Omit this to present a single tip.
+/// You can provide a `feature` to present an individual tip for that feature.
 public struct OnboardingTip: Tip {
     
     public init(

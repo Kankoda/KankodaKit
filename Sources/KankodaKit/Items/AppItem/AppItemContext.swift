@@ -8,11 +8,10 @@
 
 import SwiftUI
 
-/// This protocol describes an ``AppItem`` context, that can
-/// be used to store items.
+/// This protocol describes an ``AppItem`` context that can store items.
 ///
-/// Only use this approach for small amounts of data. If the
-/// app needs a LOT of data, consider using databases.
+/// Only use this approach for small amounts of data. If an app needs a lot of data,
+/// consider using a proper database.
 public protocol AppItemContext: ObservableObject {
 
     associatedtype Item: AppItem

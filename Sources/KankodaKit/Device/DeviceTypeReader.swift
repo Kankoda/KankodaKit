@@ -10,8 +10,7 @@
 import LocalAuthentication
 import SwiftUI
 
-/// This protocol can be implemented by any type that should
-/// be able to see which device type is currently being used.
+/// This protocol can be implemented by any type that needs certain device info.
 public protocol DeviceTypeReader {}
 
 public extension DeviceTypeReader {

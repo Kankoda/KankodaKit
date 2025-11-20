@@ -12,12 +12,10 @@ import SwiftUI
 
 /// This class can be used to manage static app dependencies.
 ///
-/// The class defines a standard set of values, which can be
-/// extended by an app as needed.
+/// The class defines a standard set of values, which can be extended by an app.
 ///
-/// > Important: Don't use the same sheet context within new
-/// sheets. Instead, make sure to inject a new sheet context
-/// to ensure that a new sheet is presented.
+/// > Important: Make sure to create a new sheet context when presenting a new
+/// sheet, otherwise new sheet presentations will affect the already active sheet.
 public final class AppEnvironment {}
 
 @MainActor
@@ -56,7 +54,7 @@ public extension View {
 
         var body: some View {
             Button("Show Sheet") {
-                sheetContext.present(Color.red)
+                sheetContext.present(Color.red.ignoresSafeArea())
             }
             .sheet(sheetContext)
         }

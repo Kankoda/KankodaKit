@@ -9,8 +9,8 @@
 import PresentationKit
 import SwiftUI
 
-/// This view wraps any view within a navigation stack, then
-/// applies a new sheet context to the new hierarchy.
+/// This view wraps any view within a navigation stack, then applies a new sheet
+/// context to the new hierarchy.
 public struct AppSheet<Content: View>: View {
 
     public init(
@@ -34,12 +34,10 @@ public struct AppSheet<Content: View>: View {
 @MainActor
 public extension AnySheetContext {
 
-    /// Present an app sheet content view, which can be used
-    /// in different ways by different apps.
+    /// Present an app sheet content view.
     ///
-    /// This wrap the content view in an ``AppSheet``, which
-    /// wraps the content in a navigation stack then sets up
-    /// and injects a new sheet context to the new hierarchy.
+    /// This wrap the content view in an ``AppSheet``, which wraps the view
+    /// in a navigation stack then sets up and injects a new sheet context.
     func presentAppScreen<Content: View, Sheet: View>(
         @ViewBuilder content: @escaping () -> Content,
         @ViewBuilder sheet: @escaping (AppSheet<Content>) -> Sheet,

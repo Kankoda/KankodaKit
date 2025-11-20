@@ -13,8 +13,7 @@ import SwiftUIKit
 
 public extension SubscriptionScreen {
 
-    /// This scruct can be used to define what to present in
-    /// a ``SubscriptionScreen``.
+    /// This struct can be used to define a ``SubscriptionScreen`` style.
     struct Style {
 
         /// Create a custom subscription screen style.

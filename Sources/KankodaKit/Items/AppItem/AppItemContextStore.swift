@@ -10,9 +10,8 @@ import Foundation
 
 /// This store will keep a context in sync with a base store.
 ///
-/// Note that the store reads the entire store at start then
-/// syncs it with the context. Although it is done async, it
-/// is not recommended for a large amount of data.
+/// Note that the store reads the entire store at start then syncs it with the context.
+/// Although it is done async, it's not recommended for a large amount of data.
 open class AppItemContextStore<
     Item: AppItem,
     BaseStore: AppItemStore,

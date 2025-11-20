@@ -9,8 +9,7 @@
 import SwiftUI
 import SwiftUIKit
 
-/// This protocol can be implemented by any view that can be
-/// used to share data by presenting a share sheet.
+/// This protocol can be implemented by views that can present a share sheet.
 public protocol ShareScreen: View {}
 
 /// This enum can be used to share data, for instance within

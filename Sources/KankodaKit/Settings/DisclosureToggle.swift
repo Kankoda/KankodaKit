@@ -9,11 +9,8 @@
 #if os(iOS) || os(macOS)
 import SwiftUI
 
-/// This toggle can be used to toggle between a plain toggle
-/// and a disclosure disclosure group when the value is true.
-///
-/// The disclosure group's expanded state will automatically
-/// match any changes to `isOn`.
+/// This toggle can be used to toggle between a toggle and a disclosure group if
+/// the value is true.
 public struct DisclosureToggle<Content: View>: View {
 
     /// Create a custom disclosure toggle.

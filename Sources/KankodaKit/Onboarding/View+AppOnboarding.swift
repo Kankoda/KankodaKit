@@ -13,12 +13,11 @@ import SwiftUI
 
 public extension View {
     
-    /// This view modifier performs the standard Kankoda app
-    /// launch onboarding flow, whenever needed.
+    /// This modifier performs a standard Kankoda app launch onboarding flow.
     ///
-    /// This flow will present an initial welcome onboarding,
-    /// then ask for review, then show a premium screen when
-    /// the user has interacted with the app "enough".
+    /// This flow will present an initial welcome onboarding, then ask for review,
+    /// then show a premium screen when the user has interacted with the app
+    /// long enough.
     @MainActor
     @ViewBuilder
     func appOnboarding(

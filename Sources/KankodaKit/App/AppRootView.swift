@@ -13,15 +13,12 @@ import SwiftUIKit
 
 /// This view can be used as the root view of an app.
 ///
-/// The view will apply alert, sheet and system notification
-/// contexts to the view, and sync store data with the store
-/// service every time the app becomes active.
+/// The view applies alert, sheet and system notification contexts to the view, and
+/// syncs store data with the store service every time the app becomes active.
 ///
-/// To ensure that everything has been correctly set up, the
-/// view assumes that it has been set up by first applying a
-/// ``SwiftUICore/View/withAppEnvironment(appSpecific:)`` to
-/// it. It will sync in-app purchases and subscriptions if a
-/// store service is provided.
+/// To ensure that everything is correctly set up, the view assumes that it's set up
+/// with ``SwiftUICore/View/withAppEnvironment(appSpecific:)``.
+/// It will sync in-app purchases and subscriptions if a store service is provided.
 public struct AppRootView<Content: View>: View {
 
     public init(
@@ -64,4 +61,5 @@ private extension AppRootView {
     AppRootView(storeService: nil) {
         Color.green
     }
+    .withKankodaAppEnvironment()
 }

@@ -10,8 +10,8 @@ import Foundation
 
 /// This importer imports compressed data.
 ///
-/// The `qrCodeUrlPrefix` is optional, and will only be used
-/// by QR codes to import & export small amounts of data.
+/// The `qrCodeUrlPrefix` is optional, and will only be used by QR codes to
+/// import and export small amounts of data.
 open class StandardAppDataImporter<DataType: AppData & Sendable>: AppDataImporter {
 
     public init(

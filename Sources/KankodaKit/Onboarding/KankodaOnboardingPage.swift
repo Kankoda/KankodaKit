@@ -13,7 +13,7 @@ import SwiftUI
 public struct KankodaOnboardingPage<Page, ImageView: View>: View {
 
     public init(
-        info: OnboardingPageInfo<Page>,
+        info: OnboardingFlowPage<Page>,
         title: LocalizedStringKey,
         text: LocalizedStringKey,
         image: ImageView
@@ -24,7 +24,7 @@ public struct KankodaOnboardingPage<Page, ImageView: View>: View {
         self.image = image
     }
 
-    private let info: OnboardingPageInfo<Page>
+    private let info: OnboardingFlowPage<Page>
     private let title: LocalizedStringKey
     private let text: LocalizedStringKey
     private let image: ImageView
@@ -32,7 +32,7 @@ public struct KankodaOnboardingPage<Page, ImageView: View>: View {
     @State var isCurrent = true
 
     public var body: some View {
-        OnboardingScreenCenteredContent {
+        OnboardingFlowContainerCenteredContent {
             VStack(spacing: 50) {
                 Spacer()
                 image
@@ -60,10 +60,10 @@ public struct KankodaOnboardingPage<Page, ImageView: View>: View {
 
 #Preview {
 
-    @Previewable @StateObject
-    var state = OnboardingPageState(pages: Array(0...5))
+    @Previewable @State
+    var state = OnboardingFlowState(pages: Array(0...5))
 
-    OnboardingScreen(
+    OnboardingFlowContainer(
         pages: state.pages,
         pageIndex: $state.currentPageIndex,
         content: {

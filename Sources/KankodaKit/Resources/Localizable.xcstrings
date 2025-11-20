@@ -528,6 +528,7 @@
       }
     },
     "Button.Onboarding.Done" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ca" : {
           "stringUnit" : {
@@ -604,6 +605,7 @@
       }
     },
     "Button.Onboarding.Next" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ca" : {
           "stringUnit" : {
@@ -680,6 +682,7 @@
       }
     },
     "Button.Onboarding.Try" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ca" : {
           "stringUnit" : {
@@ -756,6 +759,7 @@
       }
     },
     "Button.Onboarding.TryLater" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ca" : {
           "stringUnit" : {

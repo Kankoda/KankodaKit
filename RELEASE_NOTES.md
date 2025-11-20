@@ -1,6 +1,13 @@
 # Release Notes
 
 
+## 1.6
+
+These versions:
+
+- Updates package dependencies.
+
+
 
 ## 1.5
 

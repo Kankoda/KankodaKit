@@ -12,14 +12,14 @@ import SwiftUI
 
 public extension Onboarding {
  
-    static var premium: DelayedOnboarding {
+    static var premium: Onboarding.Delayed {
         .init(
             id: "premium",
             requiredPresentationAttempts: 3
         )
     }
 
-    static var requestReview: DelayedOnboarding {
+    static var requestReview: Onboarding.Delayed {
         .init(
             id: "requestReview",
             requiredPresentationAttempts: 2

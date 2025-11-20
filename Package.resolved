@@ -1,13 +1,13 @@
 {
-  "originHash" : "3b28809fc9d769936bbdeac9d6dc374441813e4d25d3e4414e39d03c587efb73",
+  "originHash" : "6c3567fcf1b768e59a26a773dda0845c7c789268157eef91af2220d823f5baa2",
   "pins" : [
     {
       "identity" : "badgeicon",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/BadgeIcon.git",
       "state" : {
-        "revision" : "ccda39607cfa438c79606b143caa20c9528bc506",
-        "version" : "2.1.0"
+        "revision" : "10df1b06c89f41d2b0160fe9d7bed93cddf2331a",
+        "version" : "2.1.4"
       }
     },
     {
@@ -24,8 +24,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/OnboardingKit.git",
       "state" : {
-        "revision" : "8816bbd71ce2b5a242809709940b03be0f29a236",
-        "version" : "8.4.0"
+        "revision" : "51a0fe14496f6976972e9eab7e110ef901bebc30",
+        "version" : "9.0.0"
+      }
+    },
+    {
+      "identity" : "pageview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/PageView.git",
+      "state" : {
+        "revision" : "b60c9ced36242eae0eb81ab0a8e7273386fdbb9b",
+        "version" : "0.2.0"
       }
     },
     {

@@ -29,7 +29,7 @@ open class AppItemContextStore<
     ) {
         self.baseStore = baseStore
         self.context = context
-        Task { try? await initializeContext() }
+        Task { @MainActor in try? await initializeContext() }
     }
 
     private let baseStore: BaseStore

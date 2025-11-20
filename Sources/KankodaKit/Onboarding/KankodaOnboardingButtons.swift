@@ -10,15 +10,17 @@ import OnboardingKit
 import SwiftUI
 
 /// This is a next page or dismiss button.
-///
-/// It requires an `OnboardingFlowState` injected into the environment.
 public struct OnboardingNextPageOrDismissButton<Page>: View {
 
-    public init() {}
+    public init(
+        state: OnboardingFlowState<Page>
+    ) {
+        self.state = state
+    }
+
+    @Bindable var state: OnboardingFlowState<Page>
 
     @Environment(\.dismiss) var dismiss
-
-    @Environment(OnboardingFlowState<Page>.self) var state
 
     public var body: some View {
         OnboardingPrimaryButton(
@@ -35,7 +37,7 @@ public struct OnboardingNextPageOrDismissButton<Page>: View {
     }
 }
 
-/// This is a try later button.
+/// This is a try button.
 public struct OnboardingTryButton: View {
 
     public init(_ action: @escaping () -> Void) {
@@ -54,15 +56,17 @@ public struct OnboardingTryButton: View {
 }
 
 /// This is a try later button.
-///
-/// It requires an `OnboardingFlowState` injected into the environment.
 public struct OnboardingTryLaterButton<Page>: View {
 
-    public init() {}
+    public init(
+        state: OnboardingFlowState<Page>
+    ) {
+        self.state = state
+    }
+
+    @Bindable var state: OnboardingFlowState<Page>
 
     @Environment(\.dismiss) var dismiss
-
-    @Environment(OnboardingFlowState<Page>.self) var state
 
     public var body: some View {
         OnboardingPrimaryButton(
@@ -108,8 +112,7 @@ public struct OnboardingTryLaterButton<Page>: View {
             )
         },
         buttons: { _ in
-            OnboardingNextPageOrDismissButton<Int>()
+            OnboardingNextPageOrDismissButton(state: state)
         }
     )
-    .environment(state)
 }

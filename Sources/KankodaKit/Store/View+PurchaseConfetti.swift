@@ -17,7 +17,7 @@ public extension View {
         emojis: String = "👑"
     ) -> some View {
         self.confettiCannon(
-            counter: trigger,
+            trigger: trigger,
             num: 50,
             confettis: emojis.map { .text(String($0)) },
             confettiSize: 45,

@@ -26,7 +26,7 @@ let package = Package(
         .package(url: "https://github.com/danielsaidi/ScanCodes.git", .upToNextMajor(from: "0.2.0")),
         .package(url: "https://github.com/danielsaidi/StandardActions.git", .upToNextMinor(from: "1.0.0")),
         .package(url: "https://github.com/danielsaidi/StoreKitPlus.git", .upToNextMinor(from: "0.8.0")),
-        .package(url: "https://github.com/danielsaidi/SwiftUIKit.git", .upToNextMajor(from: "5.8.4")),
+        .package(url: "https://github.com/danielsaidi/SwiftUIKit.git", .upToNextMajor(from: "6.1.0"))
     ],
     targets: [
         .target(

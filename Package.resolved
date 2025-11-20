@@ -1,5 +1,5 @@
 {
-  "originHash" : "288ee9d1c617347eb9b002e20689a79cdf345287d793db8c0bd42c8987e5f7a4",
+  "originHash" : "fff83f8ffa6cd8cf1add0fe2781d7a84f0d659d1e56db4f0907939adf1fba130",
   "pins" : [
     {
       "identity" : "badgeicon",
@@ -78,8 +78,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/SwiftUIKit.git",
       "state" : {
-        "revision" : "32a2cc364b22fd87e1c3fc440de47147d42fa06d",
-        "version" : "5.9.2"
+        "revision" : "20732e7a835e05a9aa3b437549b58b4ba79ac38e",
+        "version" : "6.1.0"
       }
     }
   ],

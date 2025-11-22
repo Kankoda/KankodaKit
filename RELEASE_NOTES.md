@@ -1,9 +1,17 @@
 # Release Notes
 
 
+## 1.7
+
+This version:
+
+- Updates package dependencies.
+
+
+
 ## 1.6
 
-These versions:
+This version:
 
 - Updates package dependencies.
 - Migrates `AdminContext` to @Observable.
@@ -13,7 +21,7 @@ These versions:
 
 ## 1.5
 
-These versions:
+This version:
 
 - Updates package dependencies.
 - Updates package to Swift 6.1.

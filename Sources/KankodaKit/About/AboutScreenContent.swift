@@ -84,6 +84,6 @@ private extension AboutScreenContent {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
-        .appInfoMenuItemStyle(.plain)
+        // .appInfoMenuItemStyle(.plain)
     }
 }

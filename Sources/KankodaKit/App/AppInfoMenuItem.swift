@@ -90,7 +90,7 @@ private extension AppInfoMenuItem {
                 if style == .plain {
                     LocalizedLabel(title, Image(systemName: type.systemImageName))
                 } else {
-                    LocalizedLabel(title, type.badgeIcon)
+                    LocalizedLabel(title, type.badgeIcon.scaledForListLabel())
                 }
             }
         }

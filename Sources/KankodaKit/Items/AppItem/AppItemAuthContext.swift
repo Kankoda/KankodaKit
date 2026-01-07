@@ -9,7 +9,6 @@
 #if os(macOS) || os(iOS) || os(watchOS) || os(visionOS)
 import LocalAuthentication
 import SwiftUI
-import SwiftUIKit
 
 /// This class manages authentication for an app that stores sensitive data.
 ///

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftUIKit
 
 /// This protocol represents an item with a single face.
 public protocol OneFacedItem: Identifiable, ImageItem where ID == UUID {

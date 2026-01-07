@@ -8,7 +8,6 @@
 
 #if os(macOS) || os(iOS) || os(tvOS)
 import SwiftUI
-import SwiftUIKit
 import Vision
 
 /// This class can be used to perform image text recognition.

@@ -8,7 +8,6 @@
 
 import BadgeIcon
 import SwiftUI
-import SwiftUIKit
 
 public enum AppInfoMenuItemType {
 

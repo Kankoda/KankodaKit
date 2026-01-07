@@ -8,7 +8,6 @@
 
 #if os(iOS) || os(macOS) || os(watchOS) || os(visionOS)
 import SwiftUI
-import SwiftUIKit
 
 /// This view modifier makes a view request authentication when it appears and
 /// the app starts, then resets its state when the app moves into the background.

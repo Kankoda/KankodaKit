@@ -9,7 +9,6 @@
 import PresentationKit
 import StoreKitPlus
 import SwiftUI
-import SwiftUIKit
 
 /// This view can be used as the root view of an app.
 ///

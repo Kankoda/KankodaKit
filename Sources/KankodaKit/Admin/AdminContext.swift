@@ -13,7 +13,8 @@ import ObservablePersistency
 @Observable
 public class AdminContext: ObservablePersisted {
 
-    private static let adminKey = key(PackageInfo.appStorageKey("admin.isAdminModeEnabled"), default: false)
+    private static let adminKeyId = PackageInfo.appStorageKey("admin.isAdminModeEnabled")
+    private static let adminKey = key(adminKeyId, default: false)
 
     /// Whether or not admin mode is enabled.
     public var isAdminModeEnabled = getValue(for: adminKey) {

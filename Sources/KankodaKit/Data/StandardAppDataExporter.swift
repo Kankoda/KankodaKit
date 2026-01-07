@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftUIKit
 import UniformTypeIdentifiers
 
 /// This exporter exports compressed data.

@@ -23,11 +23,9 @@ public struct OnboardingNextPageOrDismissButton<Page>: View {
     @Environment(\.dismiss) var dismiss
 
     public var body: some View {
-        OnboardingPrimaryButton(
-            state.isCurrentPageLast ? "Button.Onboarding.Done" : "Button.Onboarding.Next",
-            bundle: .module,
-            action: nextPageOrDismiss
-        )
+        OnboardingPrimaryButton(action: nextPageOrDismiss) {
+            Text(state.isCurrentPageLast ? .onboardingButtonDone : .onboardingButtonNext)
+        }
     }
 
     private func nextPageOrDismiss() {
@@ -47,11 +45,9 @@ public struct OnboardingTryButton: View {
     private let action: () -> Void
 
     public var body: some View {
-        OnboardingPrimaryButton(
-            "Button.Onboarding.Try",
-            bundle: .module,
-            action: action
-        )
+        OnboardingPrimaryButton(action: action) {
+            Text(.onboardingButtonTryFree)
+        }
     }
 }
 
@@ -69,12 +65,9 @@ public struct OnboardingTryLaterButton<Page>: View {
     @Environment(\.dismiss) var dismiss
 
     public var body: some View {
-        OnboardingPrimaryButton(
-            "Button.Onboarding.TryLater",
-            bundle: .module,
-            type: .secondary,
-            action: nextPageOrDismiss
-        )
+        OnboardingPrimaryButton(.secondary, action: nextPageOrDismiss) {
+            Text(.onboardingButtonTryFree)
+        }
     }
 
     private func nextPageOrDismiss() {

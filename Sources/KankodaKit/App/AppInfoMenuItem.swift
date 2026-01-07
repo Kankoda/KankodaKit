@@ -67,12 +67,12 @@ public struct AppInfoMenuItem: View {
     public var body: some View {
         #if os(macOS) || os(iOS)
         switch type {
-        case .appStore: link("About.AppStore", urls.appStore)
-        case .feedback: link("About.Feedback", urls.appStore)
-        case .bugReport: link("About.ReportBug", urls.emailBug)
-        case .featureRequest: link("About.RequestFeature", urls.emailRequest)
-        case .privacy: link("About.PrivacyPolicy", urls.privacyPolicy)
-        case .website: link("About.Website", urls.website)
+        case .appStore: link(.aboutAppStore, urls.appStore)
+        case .feedback: link(.aboutSendFeedback, urls.emailFeedback)
+        case .bugReport: link(.aboutReportBug, urls.emailBug)
+        case .featureRequest: link(.aboutRequestFeature, urls.emailRequest)
+        case .privacy: link(.aboutPrivacyPolicy, urls.privacyPolicy)
+        case .website: link(.aboutWebsite, urls.website)
         }
         #endif
     }
@@ -82,15 +82,19 @@ private extension AppInfoMenuItem {
 
     @ViewBuilder
     func link(
-        _ title: LocalizedStringKey,
+        _ title: LocalizedStringResource,
         _ url: URL?
     ) -> some View {
         if let url {
             Link(destination: url) {
-                if style == .plain {
-                    LocalizedLabel(title, Image(systemName: type.systemImageName))
-                } else {
-                    LocalizedLabel(title, type.badgeIcon.scaledForListLabel())
+                Label {
+                    Text(title)
+                } icon: {
+                    if style == .plain {
+                        Image(systemName: type.systemImageName)
+                    } else {
+                        type.badgeIcon.scaledForListLabel()
+                    }
                 }
             }
         }

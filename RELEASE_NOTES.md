@@ -3,15 +3,16 @@
 
 ## 1.7
 
-This version:
+These versions:
 
 - Updates package dependencies.
+- Replaces view-based localization keys to manual ones.
 
 
 
 ## 1.6
 
-This version:
+These versions:
 
 - Updates package dependencies.
 - Migrates `AdminContext` to @Observable.

@@ -69,29 +69,34 @@ public struct OnboardingSettingsButton: View {
 public struct OnboardingTryButtons<Page>: View {
 
     public init(
+        glassEffect: Bool = false,
         state: OnboardingFlowState<Page>,
         tryAction: @escaping () -> Void
     ) {
+        self.glassEffect = glassEffect
         self.state = state
         self.tryAction = tryAction
     }
 
-    @Bindable var state: OnboardingFlowState<Page>
-
+    private let glassEffect: Bool
     private let tryAction: () -> Void
+
+    @Bindable var state: OnboardingFlowState<Page>
 
     @Environment(\.dismiss) var dismiss
 
     public var body: some View {
         HStack {
             OnboardingNextPageOrDismissButton(
-                .secondary,
+                glassEffect ? .secondaryGlass : .secondary,
                 title: .onboardingButtonTryLater,
                 state: state
             )
-            OnboardingPrimaryButton(action: tryAction) {
-                Text(.onboardingButtonTryFree)
-            }
+            OnboardingPrimaryButton(
+                glassEffect ? .primaryGlass : .primary,
+                action: tryAction,
+                label: { Text(.onboardingButtonTryFree) }
+            )
         }
     }
 }
@@ -135,9 +140,8 @@ private extension OnboardingTryButtons {
         buttons: { _ in
             VStack {
                 OnboardingSettingsButton(.secondary)
-                OnboardingTryButtons(state: state) {
-                    print("Try")
-                }
+                OnboardingTryButtons(state: state) { print("Try") }
+                OnboardingTryButtons(glassEffect: true, state: state) { print("Try") }
                 OnboardingNextPageOrDismissButton(state: state)
             }
 

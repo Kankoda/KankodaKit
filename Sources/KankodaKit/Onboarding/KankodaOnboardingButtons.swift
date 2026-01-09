@@ -9,66 +9,94 @@
 import OnboardingKit
 import SwiftUI
 
-/// This is a next page or dismiss button.
 public struct OnboardingNextPageOrDismissButton<Page>: View {
 
     public init(
+        _ type: OnboardingPrimaryButtonType = .primary,
+        title: LocalizedStringResource? = nil,
         state: OnboardingFlowState<Page>
     ) {
+        self.type = type
+        self.title = title
         self.state = state
     }
+
+    private let type: OnboardingPrimaryButtonType
+    private let title: LocalizedStringResource?
 
     @Bindable var state: OnboardingFlowState<Page>
 
     @Environment(\.dismiss) var dismiss
 
-    public var body: some View {
-        OnboardingPrimaryButton(action: nextPageOrDismiss) {
-            Text(state.isCurrentPageLast ? .onboardingButtonDone : .onboardingButtonNext)
-        }
+    var fallbackTitle: LocalizedStringResource {
+        state.isCurrentPageLast ? .onboardingButtonDone : .onboardingButtonNext
     }
 
-    private func nextPageOrDismiss() {
-        withAnimation {
-            state.showNextPage(orDismiss: dismiss)
+    public var body: some View {
+        OnboardingPrimaryButton(type) {
+            withAnimation {
+                state.showNextPage(orDismiss: dismiss)
+            }
+        } label: {
+            Text(title ?? fallbackTitle)
         }
     }
 }
 
-/// This is a try button.
-public struct OnboardingTryButton: View {
-
-    public init(_ action: @escaping () -> Void) {
-        self.action = action
-    }
-
-    private let action: () -> Void
-
-    public var body: some View {
-        OnboardingPrimaryButton(action: action) {
-            Text(.onboardingButtonTryFree)
-        }
-    }
-}
-
-/// This is a try later button.
-public struct OnboardingTryLaterButton<Page>: View {
+public struct OnboardingSettingsButton: View {
 
     public init(
-        state: OnboardingFlowState<Page>
+        _ type: OnboardingPrimaryButtonType = .primary,
+    ) {
+        self.type = type
+    }
+
+    private let type: OnboardingPrimaryButtonType
+
+    @Environment(\.openURL) var openURL
+
+    public var body: some View {
+        if let url = URL.systemSettings {
+            OnboardingPrimaryButton(type) {
+                openURL(url)
+            } label: {
+                Text(.onboardingButtonOpenSettings)
+            }
+        }
+    }
+}
+
+public struct OnboardingTryButtons<Page>: View {
+
+    public init(
+        state: OnboardingFlowState<Page>,
+        tryAction: @escaping () -> Void
     ) {
         self.state = state
+        self.tryAction = tryAction
     }
 
     @Bindable var state: OnboardingFlowState<Page>
 
+    private let tryAction: () -> Void
+
     @Environment(\.dismiss) var dismiss
 
     public var body: some View {
-        OnboardingPrimaryButton(.secondary, action: nextPageOrDismiss) {
-            Text(.onboardingButtonTryFree)
+        HStack {
+            OnboardingNextPageOrDismissButton(
+                .secondary,
+                title: .onboardingButtonTryLater,
+                state: state
+            )
+            OnboardingPrimaryButton(action: tryAction) {
+                Text(.onboardingButtonTryFree)
+            }
         }
     }
+}
+
+private extension OnboardingTryButtons {
 
     private func nextPageOrDismiss() {
         withAnimation {
@@ -105,7 +133,44 @@ public struct OnboardingTryLaterButton<Page>: View {
             )
         },
         buttons: { _ in
-            OnboardingNextPageOrDismissButton(state: state)
+            VStack {
+                OnboardingSettingsButton(.secondary)
+                OnboardingTryButtons(state: state) {
+                    print("Try")
+                }
+                OnboardingNextPageOrDismissButton(state: state)
+            }
+
         }
     )
+}
+
+#if os(iOS) || os(tvOS) || os(visionOS)
+import UIKit
+#endif
+
+private extension URL {
+
+    /// This URL will deep link to the app's custom settings
+    /// in System Settings.
+    ///
+    /// The URL's behavior is inconsistent. It should always
+    /// link to the app's custom settings in System Settings,
+    /// but can sometimes just link to the root instead. The
+    /// reason for this behavior is currently unknown.
+    ///
+    /// To improve this link behavior, add an empty Settings
+    /// Bundle to your app. This will causes the app to more
+    /// consistently open the correct System Settings screen.
+    ///
+    /// Maybe `appSettings` would be a better name, but this
+    /// name was used to reduce the risk of naming conflicts
+    /// with other URL extensions.
+    static var systemSettings: URL? {
+        #if os(iOS) || os(tvOS) || os(visionOS)
+        URL(string: UIApplication.openSettingsURLString)
+        #else
+        nil
+        #endif
+    }
 }

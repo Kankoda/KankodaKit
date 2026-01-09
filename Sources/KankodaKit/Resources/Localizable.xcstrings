@@ -159,6 +159,17 @@
         }
       }
     },
+    "Onboarding.Button.OpenSettings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Settings"
+          }
+        }
+      }
+    },
     "Onboarding.Button.TryFree" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -186,7 +197,7 @@
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Informació de Copyright"
+            "value" : "Copyright"
           }
         },
         "da" : {
@@ -210,7 +221,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Información de Copyright"
+            "value" : "Copyright"
           }
         },
         "fi" : {
@@ -228,7 +239,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Informazioni sul copyright"
+            "value" : "Copyright"
           }
         },
         "nb" : {
@@ -252,7 +263,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copyrightinformation"
+            "value" : "Copyright"
           }
         }
       }

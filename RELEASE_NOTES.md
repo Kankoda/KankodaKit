@@ -5,8 +5,10 @@
 
 These versions:
 
+- Add more onboarding buttons.
+- Switch to using l10n symbols.
 - Updates package dependencies.
-- Replaces view-based localization keys to manual ones.
+- Replace view-based localization keys to manual ones.
 
 
 

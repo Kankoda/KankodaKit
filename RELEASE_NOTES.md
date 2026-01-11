@@ -8,6 +8,7 @@ These versions:
 - Add more onboarding buttons.
 - Switch to using l10n symbols.
 - Updates package dependencies.
+- Add document-based text recognition.
 - Replace view-based localization keys to manual ones.
 
 

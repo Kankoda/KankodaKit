@@ -11,14 +11,12 @@ import SwiftUI
 import Vision
 
 /// This class can be used to perform image text recognition.
-public class TextRecognitionContext: ObservableObject, @unchecked Sendable {
-    
+@Observable @MainActor public class TextRecognitionContext {
+
     public init() {}
 
-    @Published
     public var recognizedTexts: [String] = []
 
-    @Published
     public var lastError: Error?
 
     public func reset() {
@@ -32,19 +30,15 @@ extension TextRecognitionContext {
     func updateRecognizedTexts(
         _ texts: [String]
     ) async {
-        await MainActor.run {
-            lastError = nil
-            recognizedTexts = texts
-        }
+        lastError = nil
+        recognizedTexts = texts
     }
 
     func updateError(
         _ err: Error
     ) async {
-        await MainActor.run {
-            lastError = err
-            recognizedTexts = []
-        }
+        lastError = err
+        recognizedTexts = []
     }
 }
 

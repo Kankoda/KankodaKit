@@ -98,7 +98,7 @@ private extension SubscriptionScreen {
     func syncState(
         for product: Product
     ) {
-        let service = info.storeService
+        nonisolated(unsafe) let service = info.storeService
         let context = info.storeContext
         Task {
             do {

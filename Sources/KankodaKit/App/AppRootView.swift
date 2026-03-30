@@ -50,8 +50,10 @@ private extension AppRootView {
     func syncStoreData(for phase: ScenePhase) {
         guard phase == .active else { return }
         guard let storeService else { return }
+        nonisolated(unsafe) let service = storeService
+        let context = storeContext
         Task {
-            try await storeService.syncStoreData(to: storeContext)
+            try await service.syncStoreData(to: context)
         }
     }
 }

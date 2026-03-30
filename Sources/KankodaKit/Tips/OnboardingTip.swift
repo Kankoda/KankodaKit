@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2025-03-20.
-//  Copyright © 2025 Daniel Saidi. All rights reserved.
+//  Copyright © 2025-2026 Kankoda. All rights reserved.
 //
 
 import TipKit

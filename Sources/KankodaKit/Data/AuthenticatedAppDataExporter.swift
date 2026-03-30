@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-07-03.
-//  Copyright © 2022-2025 Kankoda. All rights reserved.
+//  Copyright © 2022-2026 Kankoda. All rights reserved.
 //
 
 #if os(macOS) || os(iOS)

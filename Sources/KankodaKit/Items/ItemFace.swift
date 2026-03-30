@@ -3,7 +3,7 @@
 //  WallyKit
 //
 //  Created by Daniel Saidi on 2022-06-27.
-//  Copyright © 2022-2025 Kankoda. All rights reserved.
+//  Copyright © 2022-2026 Kankoda. All rights reserved.
 //
 
 import Foundation

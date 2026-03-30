@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2024-12-08.
-//  Copyright © 2024-2025 Kankoda. All rights reserved.
+//  Copyright © 2024-2026 Kankoda. All rights reserved.
 //
 
 import BadgeIcon

@@ -3,7 +3,7 @@
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2023-08-28.
-//  Copyright © 2023-2025 Kankoda. All rights reserved.
+//  Copyright © 2023-2026 Kankoda. All rights reserved.
 //
 
 import SwiftUI

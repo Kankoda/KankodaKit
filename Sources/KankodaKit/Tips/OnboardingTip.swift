@@ -37,7 +37,6 @@ public struct OnboardingTip: Tip {
 }
 
 /// This view can be used to show onboarding tips.
-@available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
 public struct OnboardingTipView: View {
 
     public init(
@@ -64,26 +63,22 @@ public struct OnboardingTipView: View {
 
 #Preview {
     
-    if #available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *) {
-        List {
-            ForEach(0...40, id: \.self) { _ in
-                Color.random()
-            }
+    List {
+        ForEach(0...40, id: \.self) { _ in
+            Color.random()
         }
-        .task {
-            try? Tips.configure()
-            // OnboardingTip.isPremiumActive = false
-        }
-        .withBottomTipView(
-            OnboardingTipView(
-                tip: OnboardingTip(
-                    feature: "icons",
-                    title: "Preview.TipTitle",
-                    message: "Preview.TipMessage"
-                )
+    }
+    .task {
+        try? Tips.configure()
+        // OnboardingTip.isPremiumActive = false
+    }
+    .withBottomTipView(
+        OnboardingTipView(
+            tip: OnboardingTip(
+                feature: "icons",
+                title: "Preview.TipTitle",
+                message: "Preview.TipMessage"
             )
         )
-    } else {
-        // Fallback on earlier versions
-    }
+    )
 }

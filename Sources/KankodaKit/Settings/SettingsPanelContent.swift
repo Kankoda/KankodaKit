@@ -8,11 +8,11 @@
 
 import SwiftUI
 
-/// This view will render a macOS settings panel, with a tab view that renders the
-/// provided content.
+/// This view will render a macOS settings panel, with a tab
+/// view that renders the provided content.
 ///
-/// > Important: Add a `.tabItem` to each view that the content builder returns.
-@available(macOS 15.0, *)
+/// > Important: Add `.tabItem` to each view that's returned
+/// by the content builder.
 public struct SettingsPanelContent<TabViewContent: View>: View {
     
     public init(
@@ -33,8 +33,7 @@ public struct SettingsPanelContent<TabViewContent: View>: View {
 }
 
 private extension View {
-    
-    @available(macOS 15.0, *)
+
     func withResizeBehavior() -> some View {
         #if os(macOS)
         self.windowResizeBehavior(.enabled)
@@ -44,7 +43,6 @@ private extension View {
     }
 }
 
-@available(macOS 15.0, *)
 #Preview {
     func label(_ title: String, _ image: String) -> some View {
         Label(title, systemImage: "gear")

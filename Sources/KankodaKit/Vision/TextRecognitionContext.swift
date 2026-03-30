@@ -51,7 +51,6 @@ public extension TextRecognitionContext {
     
     /// Perform text recognition in a set of images, using a
     /// certain recognition method.
-    @available(iOS 26.0, macOS 26.0, tvOS 26.0, visionOS 26.0, *)
     func performTextRecognition(
         in images: [ImageRepresentable],
         with method: TextRecognitionMethod = .document
@@ -72,7 +71,6 @@ extension TextRecognitionContext {
     
     /// Perform text recognition in a set of images, using a
     /// certain recognition method.
-    @available(iOS 26.0, macOS 26.0, tvOS 26.0, visionOS 26.0, *)
     func performInternal(
         in images: [ImageRepresentable],
         with method: TextRecognitionMethod = .document
@@ -88,7 +86,6 @@ extension TextRecognitionContext {
     }
 }
 
-@available(iOS 26.0, macOS 26.0, tvOS 26.0, visionOS 26.0, *)
 extension RecognizeTextRequest {
 
     static var kankodaRequest: Self {
@@ -114,7 +111,6 @@ extension RecognizeTextRequest {
     }
 }
 
-@available(iOS 26.0, macOS 26.0, tvOS 26.0, visionOS 26.0, *)
 extension RecognizeDocumentsRequest {
 
     static var kankodaRequest: Self {

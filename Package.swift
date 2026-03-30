@@ -1,4 +1,4 @@
-// swift-tools-version: 6.1
+// swift-tools-version: 6.3
 
 import PackageDescription
 
@@ -6,11 +6,11 @@ let package = Package(
     name: "KankodaKit",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v17),
-        .macOS(.v14),
-        .tvOS(.v17),
-        .watchOS(.v10),
-        .visionOS(.v1)
+        .iOS(.v26),
+        .macOS(.v26),
+        .tvOS(.v26),
+        .watchOS(.v26),
+        .visionOS(.v26)
     ],
     products: [
         .library(

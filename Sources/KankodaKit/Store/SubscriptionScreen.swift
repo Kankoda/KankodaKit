@@ -52,17 +52,15 @@ public struct SubscriptionScreen: View {
         )
         .onInAppPurchaseCompletion(perform: handleSubscription)
         #if os(iOS)
-        .storeButton(.visible, for: .redeemCode)
+        .navigationBarTitleDisplayMode(.inline)
+        // .storeButton(.visible, for: .redeemCode)
         .storeButton(.visible, for: .policies)
         #endif
         .storeButton(.hidden, for: .cancellation)
-        .storeButton(.visible, for: .restorePurchases)
+        // .storeButton(.visible, for: .restorePurchases)
         .subscriptionStorePolicyDestination(url: info.appInfo.urls.privacyPolicy!, for: .privacyPolicy)
         .subscriptionStorePolicyDestination(url: info.appInfo.urls.termsAndConditions!, for: .termsOfService)
         .toolbar { closeButton }
-        #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-        #endif
     }
 }
 

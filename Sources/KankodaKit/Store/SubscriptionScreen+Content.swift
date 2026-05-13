@@ -42,7 +42,8 @@ public extension SubscriptionScreen {
                         .font(.title)
                 }
 
-                info.icon.resizable()
+                info.icon
+                    .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: style.iconSize, height: style.iconSize)
                     .clipShape(.rect(cornerRadius: style.iconSize * (10/57)))
@@ -56,7 +57,7 @@ public extension SubscriptionScreen {
 
                 VStack(alignment: .leading, spacing: 20) {
                     ForEach(Array(info.usps.enumerated()), id: \.offset) {
-                        ProductUsp.Label($0.element)
+                        ProductUspLabel($0.element)
                     }
                 }
                 .padding()

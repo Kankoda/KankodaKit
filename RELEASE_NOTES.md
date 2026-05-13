@@ -1,6 +1,14 @@
 # Release Notes
 
 
+## 1.8
+
+These versions:
+
+- Remove deprecated types.
+- Remove subscription feature.
+
+
 ## 1.7
 
 These versions:
@@ -12,7 +20,6 @@ These versions:
 - Replace view-based localization keys to manual ones.
 
 
-
 ## 1.6
 
 These versions:
@@ -22,7 +29,6 @@ These versions:
 - Adds multiple `AdminModeToggleGesture`s.
 
 
-
 ## 1.5
 
 This version:
@@ -30,7 +36,6 @@ This version:
 - Updates package dependencies.
 - Updates package to Swift 6.1.
 - Simplifies the app sheet model.
-
 
 
 ## 1.4
@@ -46,7 +51,6 @@ These versions:
 - Removes the `FlipKit` dependency and the `ItemFlipView`.
 
 
-
 ## 1.3
 
 These versions:
@@ -59,7 +63,6 @@ These versions:
 - Refactors `ShareScreen` and adds a `ShareItem` enum.
 
 
-
 ## 1.2
 
 These versions:
@@ -67,7 +70,6 @@ These versions:
 - Update all package dependencies.
 - Add a `StandardButtons` package dependency.
 - Move onboarding utilities to `OnboardingKit`.
-
 
 
 ## 1.1

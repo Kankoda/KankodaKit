@@ -6,7 +6,6 @@
 //  Copyright © 2024-2026 Kankoda. All rights reserved.
 //
 
-import PresentationKit
 import StoreKitPlus
 import SwiftUI
 
@@ -33,14 +32,10 @@ public struct AppRootView<Content: View>: View {
     
     @Environment(\.scenePhase) var scenePhase
 
-    @EnvironmentObject public var alert: AnyAlertContext
-    @EnvironmentObject public var sheet: AnySheetContext
     @EnvironmentObject public var storeContext: StoreContext
 
     public var body: some View {
         content()
-            .alert(alert)
-            .sheet(sheet)
             .onChange(of: scenePhase) { _, phase in syncStoreData(for: phase) }
     }
 }

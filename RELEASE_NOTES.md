@@ -1,6 +1,13 @@
 # Release Notes
 
 
+## 2.0
+
+These versions:
+
+- Bump `PresentationKit` to 1.1. 
+
+
 ## 1.8
 
 These versions:

@@ -10,19 +10,22 @@
 import LocalAuthentication
 import SwiftUI
 
-/// This class manages authentication for an app that stores sensitive data.
+/// This class manages authentication for an app that stores
+/// sensitive data.
 ///
-/// Authentication is disabled when biometric authentication is not supported, or if
-/// it's disabled it in Settings.
+/// Authentication is disabled when biometric authentication
+/// is not supported, or if it's disabled it in Settings.
 @Observable
 public class AppItemAuthContext {
     
     /// Create an app item authentication context.
     ///
-    /// The `isEnabled` parameter can be used as a main kill switch for the
-    /// entire authentication, e.g. if an app provides authentication as a setting.
-    /// Authentication can still be unavailable even if `isEnabled` it true, for
-    /// instance in previews and on devices that lack biometric authentication.
+    /// The `isEnabled` parameter can be used as a main kill
+    /// switch for the entire authentication, e.g. if an app
+    /// provides authentication as a setting. Authentication
+    /// can still be unavailable even if `isEnabled` it true,
+    /// for instance in previews, and on devices that lack a
+    /// biometric authentication method.
     ///
     /// - Parameters:
     ///  - isEnabled: Whether authentication is enabled.

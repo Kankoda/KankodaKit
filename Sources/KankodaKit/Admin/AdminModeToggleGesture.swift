@@ -11,18 +11,18 @@ import SwiftUI
 /// This enum defines supported admin mode gestures.
 public enum AdminModeToggleGesture {
 
-    /// Long press a view for a certain duration to enable admin mode.
+    /// Long press a view for a time to enable admin mode.
     case longPress(seconds: Double)
 
-    /// Tap a view for a certain number of times to enable admin mode.
+    /// Tap a view a number of times to enable admin mode.
     case taps(count: Int)
 }
 
 public extension AdminModeToggleGesture {
 
-    /// This modifier can apply an admin toggle gesture to views.
+    /// This modifier applies admin toggle gestures to views.
     ///
-    /// The requires an ``AdminContext``  injected into the environment.
+    /// The requires an environment injected ``AdminContext``.
     struct Modifier: ViewModifier {
 
         public init(

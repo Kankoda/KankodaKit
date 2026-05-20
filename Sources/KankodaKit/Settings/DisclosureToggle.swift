@@ -9,8 +9,8 @@
 #if os(iOS) || os(macOS)
 import SwiftUI
 
-/// This toggle can be used to toggle between a toggle and a disclosure group if
-/// the value is true.
+/// This toggle can be used to toggle between a toggle and a
+/// disclosure group if the value is true.
 public struct DisclosureToggle<Content: View>: View {
 
     /// Create a custom disclosure toggle.

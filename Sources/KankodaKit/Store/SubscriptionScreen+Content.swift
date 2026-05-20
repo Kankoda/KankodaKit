@@ -17,7 +17,8 @@ public extension SubscriptionScreen {
 
     /// This is the top content within a subscription screen.
     ///
-    /// This view does't have StoreKit integrations and can thus be previewed.
+    /// This view does't have StoreKit integrations, and can
+    /// thus be previewed.
     struct StoreViewContent: View {
 
         public init(

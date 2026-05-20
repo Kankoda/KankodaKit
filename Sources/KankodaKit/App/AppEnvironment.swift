@@ -11,10 +11,8 @@ import SwiftUI
 
 /// This class can be used to manage static app dependencies.
 ///
-/// The class defines a standard set of values, which can be extended by an app.
-///
-/// > Important: Make sure to create a new sheet context when presenting a new
-/// sheet, otherwise new sheet presentations will affect the already active sheet.
+/// The class defines a standard set of values, which can be
+/// extended by an app to add singletons and resolvers to it.
 public final class AppEnvironment {}
 
 @MainActor

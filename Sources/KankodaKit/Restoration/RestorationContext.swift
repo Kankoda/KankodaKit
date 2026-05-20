@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// This class can be used to restore app screens or any kind of data.
+/// This class can be used to restore any kind of data.
 public class RestorationContext<Item: Identifiable & Equatable>: ObservableObject where Item.ID == String {
     
     public init(restorableItems items: [Item]) {

@@ -9,8 +9,8 @@
 #if os(iOS) || os(macOS) || os(watchOS) || os(visionOS)
 import SwiftUI
 
-/// This view modifier makes a view request authentication when it appears and
-/// the app starts, then resets its state when the app moves into the background.
+/// This view modifier sets up a view require authentication
+/// when it appears and when the app starts.
 ///
 /// Note that only a single view in the app should use this.
 struct AppItemAuthModifier: ViewModifier {
@@ -18,8 +18,8 @@ struct AppItemAuthModifier: ViewModifier {
     /// Create an authentication view modifier.
     ///
     /// - Parameters:
-    ///   - reason: The authentication reason to show the user, by default the app unlock message.
-    ///   - notificationCenter: The notification center to use, by default `.default`.
+    ///   - reason: The authentication reason to show the user.
+    ///   - notificationCenter: The notification center to use.
     init(
         authReason: String,
         notificationCenter: NotificationCenter = .default
@@ -43,12 +43,13 @@ struct AppItemAuthModifier: ViewModifier {
 
 public extension View {
 
-    /// This modifier makes a view request authentication as the app launches,
-    /// then reset authentication when the app moves to the background.
+    /// This modifier makes a view request authentication as
+    /// the app launches, then reset authentication when the
+    /// app moves to the background.
     ///
     /// - Parameters:
-    ///   - reason: The authentication reason to show the user, by default the app unlock message.
-    ///   - notificationCenter: The notification center to use, by default `.default`.
+    ///   - reason: The authentication reason to show the user.
+    ///   - notificationCenter: The notification center to use.
     func withAppItemAuthentication(
         authReason: String,
         notificationCenter: NotificationCenter = .default

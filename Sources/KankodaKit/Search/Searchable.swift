@@ -8,11 +8,11 @@
 
 import Foundation
 
-/// This protocol can be implemented by any type that can be searched for with a
-/// regular text query.
+/// This protocol can be implemented by any type that can be
+/// searched for with a regular text query.
 ///
-/// A type can define a list of ``searchComponents`` which are then included
-/// when using ``matches(_:)`` to see if a value matches a query.
+/// A type can define ``searchComponents`` that are included
+/// when using ``matches(_:)``.
 public protocol Searchable {
 
     /// A list of components to include in the search.

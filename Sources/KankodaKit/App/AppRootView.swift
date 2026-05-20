@@ -11,12 +11,8 @@ import SwiftUI
 
 /// This view can be used as the root view of an app.
 ///
-/// The view applies alert, sheet and system notification contexts to the view, and
-/// syncs store data with the store service every time the app becomes active.
-///
-/// To ensure that everything is correctly set up, the view assumes that it's set up
-/// with ``SwiftUICore/View/withAppEnvironment(appSpecific:)``.
-/// It will sync in-app purchases and subscriptions if a store service is provided.
+/// This view applies Kankoda-specific view modifiers to the
+/// app view, and syncs store data when it becomes active.
 public struct AppRootView<Content: View>: View {
 
     public init(

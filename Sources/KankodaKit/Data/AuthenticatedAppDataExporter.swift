@@ -10,7 +10,8 @@
 import Foundation
 import LocalAuthentication
 
-/// This exporter performs local authentication before performing an export.
+/// This exporter will perform a local authentication before
+/// exporting data.
 public class AuthenticatedAppDataExporter: AppDataExporter {
     
     /// Create an authenticated exporter.

@@ -33,8 +33,7 @@ public struct KankodaOnboardingPage<Page, ImageView: View>: View {
 
     public var body: some View {
         OnboardingFlowCenteredContent {
-            VStack(spacing: 50) {
-                Spacer()
+            VStack(spacing: 30) {
                 image
                 VStack(spacing: 20) {
                     Text(title)
@@ -43,10 +42,11 @@ public struct KankodaOnboardingPage<Page, ImageView: View>: View {
                     Text(text)
                         .forceMultiline()
                 }
-                Spacer()
             }
             .scaleEffect(isCurrent ? 1 : 0.5)
+            .frame(maxHeight: .infinity, alignment: .center)
             .padding()
+            .padding(.bottom, 40)
             .onChange(of: info.currentPageIndex) { _, newValue in
                 withAnimation(.bouncy) {
                     let isCurrent = newValue == info.pageIndex
@@ -60,33 +60,48 @@ public struct KankodaOnboardingPage<Page, ImageView: View>: View {
 
 #Preview {
 
-    @Previewable @State
-    var state = OnboardingFlowState(pages: Array(0...5))
+    struct Preview: View {
+        @State var isPresented = true
+        @State var state = OnboardingFlowState(pages: Array(0...5))
 
-    OnboardingFlowContainer(
-        pages: state.pages,
-        pageIndex: $state.currentPageIndex,
-        content: {
-            OnboardingPageView(
-                pages: state.pages,
-                pageIndex: $state.currentPageIndex,
-                content: {
-                    KankodaOnboardingPage(
-                        info: $0,
-                        title: "Preview.Title",
-                        text: "Preview.Text",
-                        image: Image(systemName: "checkmark")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .symbolVariant(.circle.fill)
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(.red, .green)
-                    )
-                }
-            )
-        },
-        buttons: { _ in
-            Color.red.frame(height: 44)
+        var body: some View {
+            Button("Show Onboarding") {
+                isPresented.toggle()
+            }
+            .sheet(isPresented: $isPresented) {
+                OnboardingFlowContainer(
+                    pages: state.pages,
+                    pageIndex: $state.currentPageIndex,
+                    content: {
+                        OnboardingPageView(
+                            pages: state.pages,
+                            pageIndex: $state.currentPageIndex,
+                            content: {
+                                KankodaOnboardingPage(
+                                    info: $0,
+                                    title: "That's it!",
+                                    text: """
+Thank you for giving KeyboardKit a try. We hope you’ll love using it.
+
+Don’t hesitate to [reach out](mailto:info@keyboardkit.com) if you have any questions or feedback.
+""",
+                                    image: Image(.Previews.onboardingHeader)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                )
+                            }
+                        )
+                    },
+                    buttons: { _ in
+                        Color.red.frame(height: 44)
+                    }
+                )
+            }
+            .onboardingIntroScreenStyle(.init(
+                iconSize: 150
+            ))
         }
-    )
+    }
+
+    return Preview()
 }

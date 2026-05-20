@@ -8,6 +8,7 @@ These versions:
 - Bump to OS26.
 - Remove deprecated types.
 - Remove subscription feature.
+- Redesign the KankodaOnboardingPage.
 
 
 ## 1.7

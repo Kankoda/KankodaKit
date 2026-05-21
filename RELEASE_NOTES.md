@@ -5,7 +5,7 @@
 
 These versions:
 
-- Bump `PresentationKit` to 1.2.
+- Bump `PresentationKit` to 1.3.
 - Add new premium protocols.
 - Remove `AppItemNavigation`.
 

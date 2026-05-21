@@ -5,7 +5,8 @@
 
 These versions:
 
-- Bump `PresentationKit` to 1.2. 
+- Bump `PresentationKit` to 1.2.
+- Add a new `PremiumPresenter` to store.
 
 
 ## 1.8

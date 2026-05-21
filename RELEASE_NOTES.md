@@ -6,7 +6,8 @@
 These versions:
 
 - Bump `PresentationKit` to 1.2.
-- Add a new `PremiumPresenter` to store.
+- Add new premium protocols.
+- Remove `AppItemNavigation`.
 
 
 ## 1.8

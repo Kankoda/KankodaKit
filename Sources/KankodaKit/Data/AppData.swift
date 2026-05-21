@@ -10,7 +10,7 @@ import Foundation
 import UniformTypeIdentifiers
 
 /// This protocol can be implemented by app data types.
-public protocol AppData: Codable {
+public protocol AppData: Codable, Equatable {
     
     /// The name to use when exporting the data.
     var name: String { get }
@@ -22,9 +22,13 @@ public protocol AppData: Codable {
 /**
  This error type can be thrown when handling ``AppData``.
  */
-public enum AppDataError: Error {
-    
+public enum AppDataError: String, LocalizedError {
+
     case base64DecodingFailed
+
+    public var errorDescription: String? {
+        rawValue
+    }
 }
 
 public extension AppData {

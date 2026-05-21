@@ -1,5 +1,5 @@
 {
-  "originHash" : "5999c25a6cd41ef1a7ea7952e33adf055e32bfe4a693f2310cbc5ec80c03201b",
+  "originHash" : "c1bd606dbb2b197207492a0106cf683315d3eb51d8cf3cbcf761021f114524c4",
   "pins" : [
     {
       "identity" : "badgeicon",
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/PresentationKit.git",
       "state" : {
-        "revision" : "3ce4b5d2604dd074a54c21a891a35c2609868b1a",
-        "version" : "1.1.0"
+        "revision" : "f91149322ca67be630d1fd74c4e348806faf623d",
+        "version" : "1.2.0"
       }
     },
     {

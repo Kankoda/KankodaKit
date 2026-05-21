@@ -5,7 +5,7 @@
 
 These versions:
 
-- Bump `PresentationKit` to 1.1. 
+- Bump `PresentationKit` to 1.2. 
 
 
 ## 1.8

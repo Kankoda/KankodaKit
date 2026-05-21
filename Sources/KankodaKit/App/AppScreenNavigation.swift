@@ -24,15 +24,15 @@ public struct AppScreenNavigationStack<ScreenType: AppScreenType>: View {
 
     private let root: ScreenType
 
-    @State var navigationContext = NavigationContext<ScreenType>()
+    @State var navigation = Navigation<ScreenType>()
 
     public var body: some View {
-        NavigationStack(path: $navigationContext.path) {
+        NavigationStack(path: $navigation.path) {
             root.screenContent
-                .environment(navigationContext)
+                .environment(navigation)
                 .navigationDestination(for: ScreenType.self) {
                     $0.screenContent
-                        .environment(navigationContext)
+                        .environment(navigation)
                 }
         }
     }

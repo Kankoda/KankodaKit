@@ -30,14 +30,10 @@ struct TestAppItem: AppItem, Named, Sortable {
     
     static let typePluralName: String = "TestItems"
     
-    static var preview: Self { .placeholderItem() }
-    
+    static var preview: Self { .init(id: UUID()) }
+
     static var transferRepresentation: some TransferRepresentation {
         CodableRepresentation<TestAppItem, JSONEncoder, JSONDecoder>(contentType: .testItem)
-    }
-    
-    static func placeholderItem() -> TestAppItem {
-        .init(id: UUID())
     }
 }
 

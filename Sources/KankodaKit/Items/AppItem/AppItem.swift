@@ -14,9 +14,6 @@ public protocol AppItem: Codable, Equatable, Identifiable, Named, Sendable, Tran
     
     /// The unique item id.
     var id: UUID { get }
-    
-    /// Create an empty placeholder item.
-    static func placeholderItem() -> Self
 }
 
 public extension Array where Element: AppItem {

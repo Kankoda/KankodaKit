@@ -14,9 +14,6 @@ public protocol AppScreenType: Hashable, Sendable {
 
     associatedtype LabelIcon: View
     associatedtype ScreenContent: View
-    
-    /// The app screen title.
-    var screenTitle: LocalizedStringKey { get }
 
     /// The app screen content.
     var screenContent: ScreenContent { get }
@@ -25,7 +22,7 @@ public protocol AppScreenType: Hashable, Sendable {
     var isAppSettingsScreen: Bool { get }
 
     /// The app screen's label title.
-    var labelTitle: LocalizedStringKey { get }
+    var labelTitle: LocalizedStringResource { get }
 
     /// The app screen's label icon.
     var labelIcon: LabelIcon { get }

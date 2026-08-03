@@ -114,16 +114,15 @@ public struct PremiumTip: Tip {
     }
 }
 
-private struct EmptyPremiumScreen: AppScreenType {
+private struct EmptyScreen: AppScreenType {
     
     init() {
         try? Tips.configure()
     }
     
-    var screenTitle: LocalizedStringKey { "" }
     var screenContent: Color { Color.red }
     var isAppSettingsScreen: Bool { false }
-    var labelTitle: LocalizedStringKey { "" }
+    var labelTitle: LocalizedStringResource { .init(stringLiteral: "") }
     var labelIcon: Image { .bug }
 }
 
@@ -147,7 +146,7 @@ private struct EmptyPremiumScreen: AppScreenType {
                 actionTitle: "Preview.TipAction"
             ),
             isPremiumActive: false,
-            premiumScreen: EmptyPremiumScreen()
+            premiumScreen: EmptyScreen()
         )
     )
 }

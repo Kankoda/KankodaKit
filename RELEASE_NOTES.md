@@ -7,6 +7,7 @@ These versions:
 
 - Bump `PresentationKit` to 1.3.
 - Add new premium protocols.
+- Change `AppScreen` label to use localized string resource.
 - Remove `AppDataExportable`.
 - Remove `AppItem.placeholderItem`.
 - Remove `AppItemNavigation`.

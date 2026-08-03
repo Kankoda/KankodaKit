@@ -6,13 +6,14 @@
 //  Copyright © 2024-2026 Kankoda. All rights reserved.
 //
 
+import PresentationKit
 import SwiftUI
+import SwiftUIKit
 
 /// This protocol can be implemented by any type that can be
 /// used as an app screen.
-public protocol AppScreenType: Hashable, Sendable {
+public protocol AppScreenType: Hashable, Sendable, Labelable, NavigationDestination {
 
-    associatedtype LabelIcon: View
     associatedtype ScreenContent: View
 
     /// The app screen content.
@@ -20,36 +21,19 @@ public protocol AppScreenType: Hashable, Sendable {
 
     /// Whether the screen is the main app settings screen.
     var isAppSettingsScreen: Bool { get }
+}
 
-    /// The app screen's label title.
-    var labelTitle: LocalizedStringResource { get }
+public extension AppScreenType {
 
-    /// The app screen's label icon.
-    var labelIcon: LabelIcon { get }
+    var destinationContent: some View {
+        screenContent
+    }
 }
 
 @MainActor
 public extension AppScreenType {
 
-    /// Generate a button with the screen's label.
-    func button(
-        action: @escaping () -> Void
-    ) -> some View {
-        Button(action: action) {
-            label
-        }
-    }
-
-    /// Generate a label for the screen.
-    var label: some View {
-        Label {
-            Text(labelTitle)
-        } icon: {
-            labelIcon
-        }
-    }
-
-    /// Generate a navigation link to the app screen.
+    @available(*, deprecated, message: "Use NavigationLink(value:) directly")
     @ViewBuilder
     var navigationLink: some View {
         #if os(macOS)
@@ -60,12 +44,12 @@ public extension AppScreenType {
             .buttonStyle(.plain)
         } else {
             NavigationLink(value: self) {
-                label
+                Label(self)
             }
         }
         #else
         NavigationLink(value: self) {
-            label
+            Label(self)
         }
         #endif
     }

@@ -6,6 +6,7 @@
 These versions:
 
 - Bump `PresentationKit` to 1.3.
+- Bump `StandardActions` to 1.1.1.
 - Bump `SwiftUIKit` to 6.3.
 - Add new premium protocols.
 - Change `AppScreen` label to use localized string resource.

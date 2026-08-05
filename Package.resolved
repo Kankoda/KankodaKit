@@ -1,5 +1,5 @@
 {
-  "originHash" : "43d3736a27a5846248d77e985d8559f00cf9b5430b294816dc987fe0d724c250",
+  "originHash" : "c64755f1fe0b5f65587d876af33ef468a4674928450b48c4970a5c66b2b080db",
   "pins" : [
     {
       "identity" : "badgeicon",
@@ -69,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/StandardActions.git",
       "state" : {
-        "revision" : "3de7b4ac39734814393783b5d7219c553a8fa8dc",
-        "version" : "1.1.1"
+        "revision" : "6980a5259b4fc226d4d3e25caee2b9356ce2861f",
+        "version" : "2.0.0"
       }
     },
     {

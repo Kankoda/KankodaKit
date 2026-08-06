@@ -14,8 +14,8 @@ public struct KankodaOnboardingPage<Page, ImageView: View>: View {
 
     public init(
         info: OnboardingPage<Page>,
-        title: LocalizedStringKey,
-        text: LocalizedStringKey,
+        title: LocalizedStringResource,
+        text: LocalizedStringResource,
         image: ImageView
     ) {
         self.info = info
@@ -25,8 +25,8 @@ public struct KankodaOnboardingPage<Page, ImageView: View>: View {
     }
 
     private let info: OnboardingPage<Page>
-    private let title: LocalizedStringKey
-    private let text: LocalizedStringKey
+    private let title: LocalizedStringResource
+    private let text: LocalizedStringResource
     private let image: ImageView
 
     @State var isCurrent = true

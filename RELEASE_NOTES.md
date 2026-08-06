@@ -10,8 +10,9 @@ These versions:
 - Bump `StandardActions` to 2.0.
 - Bump `SwiftUIKit` to 6.3.
 - Add new premium protocols.
-- Make `RestorationContext` allow updates.
 - Make `AppScreen` use localized string resource.
+- Make `RestorationContext` allow updates.
+- Make `KankodaOnboardingPage` use localized string resource.
 - Remove `AppDataExportable`.
 - Remove `AppItem.placeholderItem`.
 - Remove `AppItemNavigation`.

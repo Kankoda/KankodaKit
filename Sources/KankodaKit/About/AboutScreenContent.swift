@@ -8,7 +8,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIKit
 
 /// This screen can be used to show information about an app.
 public struct AboutScreenContent: View {
@@ -29,15 +28,15 @@ public struct AboutScreenContent: View {
     
     public var body: some View {
         List {
-            ListHeader {
-                VStack(spacing: 45) {
-                    icon
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 150, maxHeight: 150)
-                    description
-                }
+            VStack(spacing: 45) {
+                icon
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 150, maxHeight: 150)
+                description
             }
+            .frame(maxWidth: .infinity)
+            .listRowBackground(Color.clear)
             .listRowInsets(.init(horizontal: 0, vertical: 10))
 
             Section {
@@ -65,7 +64,7 @@ public struct AboutScreenContent: View {
 }
 
 private extension AboutScreenContent {
-
+    
     func menuItem(
         for type: AppInfoMenuItemType
     ) -> some View {

@@ -22,7 +22,7 @@ let package = Package(
         .package(url: "https://github.com/danielsaidi/BadgeIcon.git", .upToNextMajor(from: "2.1.5")),
         .package(url: "https://github.com/simibac/ConfettiSwiftUI.git", .upToNextMajor(from: "2.0.3")),
         .package(url: "https://github.com/danielsaidi/ObservablePersistency.git", .upToNextMajor(from: "0.1.0")),
-        .package(url: "https://github.com/danielsaidi/OnboardingKit.git", .upToNextMajor(from: "9.2.1")),
+        .package(url: "https://github.com/danielsaidi/OnboardingKit.git", .upToNextMajor(from: "10.0.0")),
         .package(url: "https://github.com/danielsaidi/PresentationKit.git", .upToNextMajor(from: "1.4.0")),
         .package(url: "https://github.com/danielsaidi/ScanCodes.git", .upToNextMajor(from: "0.2.0")),
         .package(url: "https://github.com/danielsaidi/StandardActions.git", .upToNextMajor(from: "2.0.0")),

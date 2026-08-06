@@ -5,6 +5,7 @@
 
 These versions:
 
+- Bump `OnboardingKit` to 10.0.
 - Bump `PresentationKit` to 1.3.
 - Bump `StandardActions` to 2.0.
 - Bump `SwiftUIKit` to 6.3.

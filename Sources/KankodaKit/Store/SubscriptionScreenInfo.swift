@@ -27,9 +27,9 @@ public struct SubscriptionScreenInfo {
     public init(
         appInfo: AppInfo,
         icon: Image,
-        title: LocalizedStringKey? = nil,
-        text: LocalizedStringKey? = nil,
-        purchasedText: LocalizedStringKey,
+        title: LocalizedStringResource? = nil,
+        text: LocalizedStringResource? = nil,
+        purchasedText: LocalizedStringResource,
         usps: [ProductUsp] = [],
         confettiEmojis: String = "👑",
         storeContext: StoreContext,
@@ -48,9 +48,9 @@ public struct SubscriptionScreenInfo {
 
     public let appInfo: AppInfo
     public let icon: Image
-    public let title: LocalizedStringKey?
-    public let text: LocalizedStringKey?
-    public let purchasedText: LocalizedStringKey
+    public let title: LocalizedStringResource?
+    public let text: LocalizedStringResource?
+    public let purchasedText: LocalizedStringResource
     public let usps: [ProductUsp]
     public let confettiEmojis: String
     public let storeContext: StoreContext
@@ -58,7 +58,7 @@ public struct SubscriptionScreenInfo {
 }
 
 extension SubscriptionScreenInfo {
-
+    
     static func usp(
         title: String,
         text: String,
@@ -70,14 +70,14 @@ extension SubscriptionScreenInfo {
             iconName: icon
         )
     }
-
+    
     static var preview: Self {
         .init(
             appInfo: .preview,
             icon: .bookmark,
-            title: "Preview.Subscription.Title",
-            text: "Preview.Subscription.Text",
-            purchasedText: "Preview.Subscription.PurchasedText",
+            title: .init(stringLiteral: previewTitle),
+            text: .init(stringLiteral: previewText),
+            purchasedText: .init(stringLiteral: previewPurchasedText),
             usps: [
                 usp(title: "USP 1", text: "Nice feature", icon: "plus"),
                 usp(title: "USP 2", text: "Even better feature", icon: "checkmark"),
@@ -87,4 +87,8 @@ extension SubscriptionScreenInfo {
             storeService: PreviewService()
         )
     }
+    
+    private static var previewTitle: String { "PreviewTitle" }
+    private static var previewText: String { "PreviewText" }
+    private static var previewPurchasedText: String { "PreviewPurchased" }
 }

@@ -80,8 +80,8 @@ public struct PremiumTip: Tip {
     
     public init(
         feature: String? = nil,
-        title: LocalizedStringKey,
-        message: LocalizedStringKey,
+        title: LocalizedStringResource,
+        message: LocalizedStringResource,
         actionTitle: String,
         action: ActionButtonAction? = nil
     ) {

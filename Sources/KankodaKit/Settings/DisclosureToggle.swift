@@ -15,7 +15,7 @@ public struct DisclosureToggle<Content: View>: View {
 
     /// Create a custom disclosure toggle.
     public init(
-        _ title: LocalizedStringKey,
+        _ title: LocalizedStringResource,
         isOn: Binding<Bool>,
         isExpanded: Binding<Bool>,
         @ViewBuilder content: @escaping () -> Content
@@ -26,7 +26,7 @@ public struct DisclosureToggle<Content: View>: View {
         self.content = content
     }
 
-    private let title: LocalizedStringKey
+    private let title: LocalizedStringResource
     private let isOn: Binding<Bool>
     private let isExpanded: Binding<Bool>
     private let content: () -> Content

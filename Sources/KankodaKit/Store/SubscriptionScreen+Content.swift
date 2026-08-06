@@ -70,7 +70,7 @@ public extension SubscriptionScreen {
 
 private extension SubscriptionScreen.StoreViewContent {
 
-    var descriptionText: LocalizedStringKey? {
+    var descriptionText: LocalizedStringResource? {
         isPurchased ? info.purchasedText : info.text
     }
 }

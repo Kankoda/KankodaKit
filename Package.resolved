@@ -1,5 +1,5 @@
 {
-  "originHash" : "cd96c2b440c0aa661cb5c63fffa6d1918a12fd81dbf4331ddb0f57a9bb1ad42a",
+  "originHash" : "b7b394097d68706b22a80afeac082765a00b7f3b8df9f6baf3bb3e86f7a67203",
   "pins" : [
     {
       "identity" : "badgeicon",
@@ -78,8 +78,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/StoreKitPlus.git",
       "state" : {
-        "revision" : "a763fd1e504b52b91873b03b8047f3d947fe8b08",
-        "version" : "0.9.0"
+        "revision" : "b7ee956deccffad4e9bee3dbb94a6321b1e7af8a",
+        "version" : "1.0.0"
       }
     },
     {

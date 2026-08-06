@@ -16,8 +16,8 @@ public struct OnboardingTip: Tip {
     
     public init(
         feature: String? = nil,
-        title: LocalizedStringKey,
-        message: LocalizedStringKey
+        title: LocalizedStringResource,
+        message: LocalizedStringResource
     ) {
         self.id = "com.kankoda.tip.onboarding.\(feature ?? "general")"
         self.title = Text(title)

@@ -15,7 +15,7 @@ public struct PremiumFeatureToggle<Content: View>: View {
 
     /// Create a custom disclosure toggle.
     public init(
-        _ title: LocalizedStringKey,
+        _ title: LocalizedStringResource,
         isOn: Binding<Bool>,
         isPremiumActive: Bool,
         premiumPresentation: @escaping () -> Void,
@@ -28,7 +28,7 @@ public struct PremiumFeatureToggle<Content: View>: View {
         self.content = content
     }
 
-    private let title: LocalizedStringKey
+    private let title: LocalizedStringResource
     private let isOn: Binding<Bool>
     private let isPremiumActive: Bool
     private let premiumPresentation: () -> Void

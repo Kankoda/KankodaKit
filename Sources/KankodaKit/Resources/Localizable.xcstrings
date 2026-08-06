@@ -1,1303 +1,1000 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "": {
-      "localizations": {
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": ""
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": ""
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": ""
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": ""
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": ""
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": ""
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": ""
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": ""
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": ""
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": ""
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": ""
-          }
-        }
-      }
-    },
-    "About.AppStore": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
-          }
-        },
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
-          }
-        },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
-          }
-        },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
-          }
-        },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
-          }
-        },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         }
       }
     },
-    "About.PrivacyPolicy": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Privacy Policy"
+    "About.AppStore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
           }
         },
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Política de Privadesa"
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
           }
         },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Privatlivspolitik"
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
           }
         },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Datenschutzrichtlinie"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Política de Privacidad"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
           }
         },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tietosuojakäytäntö"
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Politique de Confidentialité"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Informativa sulla Privacy"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
           }
         },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Personvernregler"
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
           }
         },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Privacybeleid"
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Polityka Prywatności"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
           }
         },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Integritetspolicy"
-          }
-        }
-      }
-    },
-    "About.ReportBug": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Report a Bug"
-          }
-        },
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Informar d'un Error"
-          }
-        },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rapporter en Fejl"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fehler Melden"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reportar un Error"
-          }
-        },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ilmoita Virheestä"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Signaler un Bug"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Segnala un Bug"
-          }
-        },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rapporter en Feil"
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Meld een Bug"
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zgłoś Błąd"
-          }
-        },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rapportera ett Fel"
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
           }
         }
       }
     },
-    "About.RequestFeature": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Request a Feature"
+    "About.PrivacyPolicy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de Privadesa"
           }
         },
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sol·licitar una Funcionalitat"
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privatlivspolitik"
           }
         },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anmod om en Funktion"
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenschutzrichtlinie"
           }
         },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Funktion Anfordern"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Solicitar una Función"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de Privacidad"
           }
         },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pyydä Toimintoa"
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tietosuojakäytäntö"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Demander une Fonctionnalité"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Politique de Confidentialité"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Richiedi una Funzionalità"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informativa sulla Privacy"
           }
         },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Be om en Funksjon"
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personvernregler"
           }
         },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vraag een Functie Aan"
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacybeleid"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Poproś o Funkcję"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Polityka Prywatności"
           }
         },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Begär en Funktion"
-          }
-        }
-      }
-    },
-    "About.SendFeedback": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Send Feedback"
-          }
-        },
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enviar Comentaris"
-          }
-        },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Send Feedback"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Feedback Senden"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enviar Comentarios"
-          }
-        },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lähetä Palautetta"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Envoyer des Commentaires"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Invia Feedback"
-          }
-        },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Send Tilbakemelding"
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stuur Feedback"
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wyślij Opinię"
-          }
-        },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Skicka Feedback"
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Integritetspolicy"
           }
         }
       }
     },
-    "About.Website": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Website"
+    "About.ReportBug" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informar d'un Error"
           }
         },
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lloc Web"
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rapporter en Fejl"
           }
         },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hjemmeside"
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehler Melden"
           }
         },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Webseite"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report a Bug"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sitio Web"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reportar un Error"
           }
         },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verkkosivusto"
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ilmoita Virheestä"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Site Web"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signaler un Bug"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sito Web"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segnala un Bug"
           }
         },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nettsted"
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rapporter en Feil"
           }
         },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Website"
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meld een Bug"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Strona Internetowa"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zgłoś Błąd"
           }
         },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Webbplats"
-          }
-        }
-      }
-    },
-    "Onboarding.Button.Done": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Done"
-          }
-        },
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fet"
-          }
-        },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Færdig"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fertig"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hecho"
-          }
-        },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Valmis"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Terminé"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fatto"
-          }
-        },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ferdig"
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Klaar"
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gotowe"
-          }
-        },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Klar"
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rapportera ett Fel"
           }
         }
       }
     },
-    "Onboarding.Button.Next": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Next"
+    "About.RequestFeature" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sol·licitar una Funcionalitat"
           }
         },
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Següent"
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anmod om en Funktion"
           }
         },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Næste"
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funktion Anfordern"
           }
         },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Weiter"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request a Feature"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Siguiente"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solicitar una Función"
           }
         },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seuraava"
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyydä Toimintoa"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Suivant"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demander une Fonctionnalité"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avanti"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richiedi una Funzionalità"
           }
         },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Neste"
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Be om en Funksjon"
           }
         },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Volgende"
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vraag een Functie Aan"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dalej"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poproś o Funkcję"
           }
         },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nästa"
-          }
-        }
-      }
-    },
-    "Onboarding.Button.OpenSettings": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open Settings"
-          }
-        },
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Obrir Configuració"
-          }
-        },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Åbn Indstillinger"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Einstellungen Öffnen"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abrir Configuración"
-          }
-        },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avaa Asetukset"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ouvrir les Paramètres"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apri Impostazioni"
-          }
-        },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Åpne Innstillinger"
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open Instellingen"
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Otwórz Ustawienia"
-          }
-        },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Öppna Inställningar"
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Begär en Funktion"
           }
         }
       }
     },
-    "Onboarding.Button.TryFree": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Try For Free"
+    "About.SendFeedback" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar Comentaris"
           }
         },
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prova Gratis"
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send Feedback"
           }
         },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prøv Gratis"
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback Senden"
           }
         },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kostenlos Testen"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send Feedback"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Probar Gratis"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar Comentarios"
           }
         },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kokeile Ilmaiseksi"
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lähetä Palautetta"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Essayer Gratuitement"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyer des Commentaires"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prova Gratis"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invia Feedback"
           }
         },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prøv Gratis"
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send Tilbakemelding"
           }
         },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Probeer Gratis"
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stuur Feedback"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wypróbuj Za Darmo"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyślij Opinię"
           }
         },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prova Gratis"
-          }
-        }
-      }
-    },
-    "Onboarding.Button.TryLater": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Try Later"
-          }
-        },
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Provar Més Tard"
-          }
-        },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prøv Senere"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Später Versuchen"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Probar Más Tarde"
-          }
-        },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kokeile Myöhemmin"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Essayer Plus Tard"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prova Più Tardi"
-          }
-        },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prøv Senere"
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Probeer Later"
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wypróbuj Później"
-          }
-        },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prova Senare"
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skicka Feedback"
           }
         }
       }
     },
-    "Preview.Copyright": {
-      "localizations": {
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copyright"
+    "About.Website" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lloc Web"
           }
         },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ophavsretsoplysninger"
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hjemmeside"
           }
         },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Urheberrechtsinformationen"
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Webseite"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copyright Information"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Website"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copyright"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sitio Web"
           }
         },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tekijänoikeustiedot"
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verkkosivusto"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Informations sur le droit d'auteur"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Site Web"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copyright"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sito Web"
           }
         },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opphavsrettsinformasjon"
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nettsted"
           }
         },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Auteursrechtinformatie"
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Website"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copyright"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strona Internetowa"
           }
         },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copyright"
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Webbplats"
           }
         }
       }
     },
-    "Preview.Subscription.PurchasedText": {
-      "localizations": {
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Comprat!"
+    "Onboarding.Button.Done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fet"
           }
         },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Købt!"
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Færdig"
           }
         },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gekauft!"
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Purchased!"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "¡Comprado!"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hecho"
           }
         },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ostettu!"
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valmis"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Acheté !"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminé"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Acquistato!"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fatto"
           }
         },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kjøpt!"
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ferdig"
           }
         },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gekocht!"
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klaar"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kupione!"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gotowe"
           }
         },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Köpt!"
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klar"
           }
         }
       }
     },
-    "Preview.Subscription.Text": {
-      "localizations": {
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Text"
+    "Onboarding.Button.Next" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Següent"
           }
         },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tekst"
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Næste"
           }
         },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Text"
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Text"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Texto"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente"
           }
         },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Teksti"
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seuraava"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Texte"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivant"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Testo"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avanti"
           }
         },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tekst"
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neste"
           }
         },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tekst"
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volgende"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tekst"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dalej"
           }
         },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Text"
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nästa"
           }
         }
       }
     },
-    "Preview.Subscription.Title": {
-      "localizations": {
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Títol"
+    "Onboarding.Button.OpenSettings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obrir Configuració"
           }
         },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Titel"
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Åbn Indstillinger"
           }
         },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Titel"
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen Öffnen"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Title"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Settings"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Título"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir Configuración"
           }
         },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Otsikko"
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avaa Asetukset"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Titre"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir les Paramètres"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Titolo"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri Impostazioni"
           }
         },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tittel"
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Åpne Innstillinger"
           }
         },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Titel"
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Instellingen"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tytuł"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz Ustawienia"
           }
         },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Titel"
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öppna Inställningar"
           }
         }
       }
     },
-    "SubscriptionScreen.MaybeLater": {
-      "localizations": {
-        "ca": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Més Tard"
+    "Onboarding.Button.TryFree" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prova Gratis"
           }
         },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Senere"
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prøv Gratis"
           }
         },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Später"
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kostenlos Testen"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Maybe Later"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try For Free"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Más Tarde"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Probar Gratis"
           }
         },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Myöhemmin"
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kokeile Ilmaiseksi"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Plus tard"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Essayer Gratuitement"
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Più tardi"
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prova Gratis"
           }
         },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Senere"
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prøv Gratis"
           }
         },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Later"
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Probeer Gratis"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Później"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wypróbuj Za Darmo"
           }
         },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Senare"
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prova Gratis"
+          }
+        }
+      }
+    },
+    "Onboarding.Button.TryLater" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provar Més Tard"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prøv Senere"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Später Versuchen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try Later"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Probar Más Tarde"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kokeile Myöhemmin"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Essayer Plus Tard"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prova Più Tardi"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prøv Senere"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Probeer Later"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wypróbuj Później"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prova Senare"
+          }
+        }
+      }
+    },
+    "SubscriptionScreen.MaybeLater" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Més Tard"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senere"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Später"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maybe Later"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Más Tarde"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Myöhemmin"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus tard"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Più tardi"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senere"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Later"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Później"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senare"
           }
         }
       }
     }
   },
-  "version": "1.1"
+  "version" : "1.1"
 }

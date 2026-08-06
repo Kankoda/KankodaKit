@@ -70,7 +70,7 @@ private extension SubscriptionScreen {
     var closeButton: some View {
         if !isPurchased {
             Button(action: dismiss.callAsFunction) {
-                LocalizedText("SubscriptionScreen.MaybeLater")
+                Text(.subscriptionScreenMaybeLater)
             }
         } else if isModal {
             Button(.close) {

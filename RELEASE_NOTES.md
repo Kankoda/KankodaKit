@@ -8,11 +8,11 @@ These versions:
 - Bump `OnboardingKit` to 10.0.
 - Bump `PresentationKit` to 1.3.
 - Bump `StandardActions` to 2.0.
+- Bump `StoreKit` to 1.0.
 - Bump `SwiftUIKit` to 7.0.
 - Add new premium protocols.
-- Make `AppScreen` use localized string resource.
+- Replace localized string keys with resources.
 - Make `RestorationContext` allow updates.
-- Make `KankodaOnboardingPage` use localized string resource.
 - Remove `AppDataExportable`.
 - Remove `AppItem.placeholderItem`.
 - Remove `AppItemNavigation`.

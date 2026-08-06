@@ -8,7 +8,7 @@ These versions:
 - Bump `OnboardingKit` to 10.0.
 - Bump `PresentationKit` to 1.3.
 - Bump `StandardActions` to 2.0.
-- Bump `SwiftUIKit` to 6.3.
+- Bump `SwiftUIKit` to 7.0.
 - Add new premium protocols.
 - Make `AppScreen` use localized string resource.
 - Make `RestorationContext` allow updates.

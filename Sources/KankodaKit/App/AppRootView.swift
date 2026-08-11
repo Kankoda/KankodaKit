@@ -44,7 +44,7 @@ private extension AppRootView {
         nonisolated(unsafe) let service = storeService
         let context = storeContext
         Task {
-            try await service.syncStoreData(to: context)
+            try? await service.syncStoreData(to: context)
         }
     }
 }

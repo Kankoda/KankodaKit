@@ -1,5 +1,5 @@
 //
-//  AppItemAuthModifier.swift
+//  BiometricAuthenticationModifier.swift
 //  KankodaKit
 //
 //  Created by Daniel Saidi on 2022-07-13.
@@ -13,7 +13,7 @@ import SwiftUI
 /// when it appears and when the app starts.
 ///
 /// Note that only a single view in the app should use this.
-struct AppItemAuthModifier: ViewModifier {
+struct BiometricAuthenticationModifier: ViewModifier {
 
     /// Create an authentication view modifier.
     ///
@@ -31,7 +31,7 @@ struct AppItemAuthModifier: ViewModifier {
     private let authReason: String
     private let center: NotificationCenter
 
-    @Environment(AppItemAuthContext.self)
+    @Environment(BiometricAuthenticationContext.self)
     private var authContext
 
     func body(content: Content) -> some View {
@@ -50,12 +50,12 @@ public extension View {
     /// - Parameters:
     ///   - reason: The authentication reason to show the user.
     ///   - notificationCenter: The notification center to use.
-    func withAppItemAuthentication(
+    func withBiometricAuthentication(
         authReason: String,
         notificationCenter: NotificationCenter = .default
     ) -> some View {
         self.modifier(
-            AppItemAuthModifier(
+            BiometricAuthenticationModifier(
                 authReason: authReason,
                 notificationCenter: notificationCenter
             )
@@ -63,12 +63,12 @@ public extension View {
     }
 }
 
-private extension AppItemAuthModifier {
+private extension BiometricAuthenticationModifier {
 
     func authenticateUser() {
         guard authContext.isAuthenticationActive else { return }
         resetAuthentication()
-        authContext.authenticateUser(reason: authReason)
+        authContext.tryAuthenticateUser(reason: authReason)
     }
 
     func resetAuthentication() {

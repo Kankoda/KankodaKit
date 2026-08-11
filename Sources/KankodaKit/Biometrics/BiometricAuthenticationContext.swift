@@ -1,23 +1,23 @@
 //
-//  AppItemAuthContext.swift
+//  BiometricAuthenticationContext.swift
 //  KankodaKit
 //
-//  Created by Daniel Saidi on 2022-06-30.
-//  Copyright © 2022-2026 Kankoda. All rights reserved.
+//  Created by Daniel Saidi on 2026-08-11.
+//  Copyright © 2026 Kankoda. All rights reserved.
 //
 
 #if os(macOS) || os(iOS) || os(watchOS) || os(visionOS)
 import LocalAuthentication
 import SwiftUI
 
-/// This class manages authentication for an app that stores
-/// sensitive data.
+/// This type can be used to manage biometric authentication
+/// for an app that should be .
 ///
 /// Authentication is disabled when biometric authentication
 /// is not supported, or if it's disabled it in Settings.
 @Observable
-public class AppItemAuthContext {
-    
+public class BiometricAuthenticationContext {
+
     /// Create an app item authentication context.
     ///
     /// The `isEnabled` parameter can be used as a main kill
@@ -30,17 +30,18 @@ public class AppItemAuthContext {
     /// - Parameters:
     ///  - isEnabled: Whether authentication is enabled.
     ///  - policy: The local authentication policy to use.
-    ///  - stores: The stores to check before enforcint auth.
+    ///  - isAuthenticationNeeded: A resolver that checks if authentication is needed.
+    @MainActor
     public init(
         isEnabled: Bool = true,
         policy: LAPolicy? = nil,
-        stores: [any AppItemStore]
+        isAuthenticationNeeded isNeeded: @escaping @MainActor () -> Bool
     ) {
         self.authPolicy = policy ?? Self.defaultPolicy
-        self.stores = stores
         self.isAuthenticationEnabled = isEnabled
         self.isAuthenticationNeeded = isEnabled
-        self.isAuthenticationNeeded = isAuthenticationActive && hasItems
+        self.isAuthenticationNeededResolver = isNeeded
+        self.reset()
     }
 
     private static var defaultPolicy: LAPolicy {
@@ -52,18 +53,18 @@ public class AppItemAuthContext {
     }
 
     private let authPolicy: LAPolicy
-    private let stores: [any AppItemStore]
     private let defaults = UserDefaults.standard
-    
+    private let isAuthenticationNeededResolver: @MainActor () -> Bool
+
     /// Whether authentication is needed.
     public var isAuthenticationNeeded: Bool
-    
+
     /// Whether authentication is enabled by the user.
     public var isAuthenticationEnabled: Bool
 }
 
-public extension AppItemAuthContext {
-    
+public extension BiometricAuthenticationContext {
+
     /// Whether or not authentication is active for the app.
     var isAuthenticationActive: Bool {
         guard isAuthenticationEnabled else { return false }
@@ -73,37 +74,37 @@ public extension AppItemAuthContext {
 }
 
 @MainActor
-public extension AppItemAuthContext {
-
-    /// Try to authenticate the user, provided that it's needed.
-    func authenticateUser(reason: String) {
-        guard isAuthenticationNeeded else { return }
-        Task {
-            let result = try await LAContext().evaluatePolicy(authPolicy, localizedReason: reason)
-            update(isNeeded: !result)
-        }
+public extension BiometricAuthenticationContext {
+    
+    /// Authenticate the user.
+    func authenticateUser(
+        reason: String
+    ) async throws -> Bool {
+        try await LAContext().evaluatePolicy(authPolicy, localizedReason: reason)
     }
 
     /// Reset authentication state for the app.
     func reset() {
-        isAuthenticationNeeded = isAuthenticationActive && hasItems
+        isAuthenticationNeeded = isAuthenticationActive && isAuthenticationNeededResolver()
     }
-}
-
-@MainActor
-private extension AppItemAuthContext {
     
-    func update(isNeeded: Bool) {
-        withAnimation {
-            isAuthenticationNeeded = isNeeded
+    /// Try to authenticate the user, provided that it's needed.
+    func tryAuthenticateUser(reason: String) {
+        guard isAuthenticationNeeded else { return }
+        Task {
+            let success = (try? await authenticateUser(reason: reason)) ?? true
+            update(isNeeded: !success)
         }
     }
 }
 
-private extension AppItemAuthContext {
+@MainActor
+private extension BiometricAuthenticationContext {
 
-    var hasItems: Bool {
-        stores.contains { $0.hasItems }
+    func update(isNeeded: Bool) {
+        withAnimation {
+            isAuthenticationNeeded = isNeeded
+        }
     }
 }
 #endif

@@ -9,17 +9,30 @@
 import KankodaKit
 import XCTest
 
+class SortableItem: Identifiable, Sortable {
+    
+    init(name: String, sortOrder: UInt) {
+        self.id = UUID()
+        self.name = name
+        self.sortOrder = sortOrder
+    }
+    
+    let id: UUID
+    let name: String
+    var sortOrder: UInt
+}
+
 final class SortableTests: XCTestCase {
 
-    let orderedItems: [TestAppItem] = {
-        var item1 = TestAppItem(name: "card1", sortOrder: 3)
-        var item2 = TestAppItem(name: "card2", sortOrder: 2)
-        var item3 = TestAppItem(name: "card3", sortOrder: 1)
+    let orderedItems: [SortableItem] = {
+        var item1 = SortableItem(name: "card1", sortOrder: 3)
+        var item2 = SortableItem(name: "card2", sortOrder: 2)
+        var item3 = SortableItem(name: "card3", sortOrder: 1)
         return [item1, item2, item3]
     }()
 
     func test_maxSortOrderReturnsZeroForEmptyCollection() {
-        let items = [TestAppItem]()
+        let items = [SortableItem]()
         XCTAssertEqual(items.maxSortOrder, 0)
     }
 
@@ -28,7 +41,7 @@ final class SortableTests: XCTestCase {
     }
 
     func test_minSortOrderReturnsZeroForEmptyCollection() {
-        let items = [TestAppItem]()
+        let items = [SortableItem]()
         XCTAssertEqual(items.minSortOrder, 0)
     }
 
@@ -39,14 +52,14 @@ final class SortableTests: XCTestCase {
     func test_needsRefreshedSortOrderIfAnyCardsHaveTheSameSortOrder() {
         XCTAssertFalse(orderedItems.needsRefreshedSortOrder)
         let items = orderedItems
-        var item = items[0]
+        let item = items[0]
         item.sortOrder = 1
         let sameOrder = [items[0], item, items[2]]
         XCTAssertTrue(sameOrder.needsRefreshedSortOrder)
     }
 
     func test_needsRefreshedSortOrderHandlesEmptyCollection() {
-        let empty = [TestAppItem]()
+        let empty = [SortableItem]()
         XCTAssertFalse(empty.needsRefreshedSortOrder)
     }
 

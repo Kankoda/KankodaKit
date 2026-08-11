@@ -12,7 +12,7 @@ import Foundation
 public protocol Named {
 
     /// The item name.
-    var name: String { get set }
+    var name: String { get }
 }
 
 public extension Named {

@@ -39,7 +39,7 @@ public extension AppScreenType {
         #if os(macOS)
         if isAppSettingsScreen {
             SettingsLink {
-                label
+                Label(self)
             }
             .buttonStyle(.plain)
         } else {

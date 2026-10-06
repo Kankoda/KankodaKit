@@ -1,5 +1,5 @@
 {
-  "originHash" : "b7b394097d68706b22a80afeac082765a00b7f3b8df9f6baf3bb3e86f7a67203",
+  "originHash" : "c6b2ee2fcfaefd9b105f81a8e99713fabfe63984bd2ec646cec1ae3eeb33a3af",
   "pins" : [
     {
       "identity" : "badgeicon",
@@ -53,15 +53,6 @@
       "state" : {
         "revision" : "2bd2df6f65e518caeb49644604c3cd44ca0d9032",
         "version" : "1.4.0"
-      }
-    },
-    {
-      "identity" : "scancodes",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/danielsaidi/ScanCodes.git",
-      "state" : {
-        "revision" : "9f743a7710264f53ac22be838ecd9783a534d1a7",
-        "version" : "0.3.1"
       }
     },
     {

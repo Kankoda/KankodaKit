@@ -1,6 +1,13 @@
 # Release Notes
 
 
+## 2.2
+
+These versions:
+
+- Remove `ScanCodes` dependency.
+
+
 ## 2.1
 
 These versions:

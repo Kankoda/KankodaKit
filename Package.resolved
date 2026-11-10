@@ -1,5 +1,5 @@
 {
-  "originHash" : "7d43ae935da6907b95971fa0fd4f27d386d5192797f9503729b5e7aae058242e",
+  "originHash" : "400c82a61de9223065b705f24b2e033c507d9e2715df3e9567fcb8f6c2074087",
   "pins" : [
     {
       "identity" : "badgeicon",
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Kankoda/OnboardingKit.git",
       "state" : {
-        "revision" : "fa1117e97f58462259799e1fec50042e21c67b29",
-        "version" : "0.3.3"
+        "revision" : "eec37d4fe28bf8712ea77077e8f1f44fdb019773",
+        "version" : "0.4.0"
       }
     },
     {

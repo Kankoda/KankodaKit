@@ -1,5 +1,5 @@
 {
-  "originHash" : "c6b2ee2fcfaefd9b105f81a8e99713fabfe63984bd2ec646cec1ae3eeb33a3af",
+  "originHash" : "7d43ae935da6907b95971fa0fd4f27d386d5192797f9503729b5e7aae058242e",
   "pins" : [
     {
       "identity" : "badgeicon",
@@ -20,6 +20,15 @@
       }
     },
     {
+      "identity" : "licensekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LicenseKit/LicenseKit.git",
+      "state" : {
+        "revision" : "349c84703dbd1ea3529aa56c77af0c9eb52e5b89",
+        "version" : "2.4.1"
+      }
+    },
+    {
       "identity" : "observablepersistency",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/ObservablePersistency.git",
@@ -31,19 +40,10 @@
     {
       "identity" : "onboardingkit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/danielsaidi/OnboardingKit.git",
+      "location" : "https://github.com/Kankoda/OnboardingKit.git",
       "state" : {
-        "revision" : "64c54277c289fa1f8ddf5b07f1401e08c7222711",
-        "version" : "10.0.0"
-      }
-    },
-    {
-      "identity" : "pageview",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/danielsaidi/PageView.git",
-      "state" : {
-        "revision" : "b60c9ced36242eae0eb81ab0a8e7273386fdbb9b",
-        "version" : "0.2.0"
+        "revision" : "fa1117e97f58462259799e1fec50042e21c67b29",
+        "version" : "0.3.3"
       }
     },
     {
@@ -78,8 +78,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielsaidi/SwiftUIKit.git",
       "state" : {
-        "revision" : "748518aa0421009c53b037204c63deab4d23579b",
-        "version" : "7.0.0"
+        "revision" : "6b81a3234a3ee0afc1cdccd347a806da6d69155e",
+        "version" : "7.0.2"
       }
     }
   ],

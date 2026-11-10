@@ -27,9 +27,7 @@ public extension Onboarding {
     }
 
     static var welcome: Onboarding {
-        .init(
-            id: "welcome"
-        )
+        .init(id: "welcome")
     }
 
     static func welcome(

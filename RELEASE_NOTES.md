@@ -1,6 +1,13 @@
 # Release Notes
 
 
+## 2.3
+
+These versions:
+
+- Update `OnboardingKit` to closed-source version.
+
+
 ## 2.2
 
 These versions:

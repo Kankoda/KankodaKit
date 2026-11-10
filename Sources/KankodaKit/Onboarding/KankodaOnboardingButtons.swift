@@ -12,28 +12,28 @@ import SwiftUI
 public struct OnboardingNextPageOrDismissButton<Page>: View {
 
     public init(
-        _ type: OnboardingPrimaryButtonType = .primary,
+        _ type: OnboardingButtonType = .primary,
         title: LocalizedStringResource? = nil,
-        state: OnboardingFlowState<Page>
+        state: OnboardingPageState<Page>
     ) {
         self.type = type
         self.title = title
         self.state = state
     }
 
-    private let type: OnboardingPrimaryButtonType
+    private let type: OnboardingButtonType
     private let title: LocalizedStringResource?
 
-    @Bindable var state: OnboardingFlowState<Page>
+    @Bindable var state: OnboardingPageState<Page>
 
     @Environment(\.dismiss) var dismiss
 
     var fallbackTitle: LocalizedStringResource {
-        state.isCurrentPageLast ? .onboardingButtonDone : .onboardingButtonNext
+        state.isLastPage ? .onboardingButtonDone : .onboardingButtonNext
     }
 
     public var body: some View {
-        OnboardingPrimaryButton(type) {
+        OnboardingButton(type) {
             withAnimation {
                 state.showNextPage(orDismiss: dismiss)
             }
@@ -46,18 +46,18 @@ public struct OnboardingNextPageOrDismissButton<Page>: View {
 public struct OnboardingSettingsButton: View {
 
     public init(
-        _ type: OnboardingPrimaryButtonType = .primary,
+        _ type: OnboardingButtonType = .primary,
     ) {
         self.type = type
     }
 
-    private let type: OnboardingPrimaryButtonType
+    private let type: OnboardingButtonType
 
     @Environment(\.openURL) var openURL
 
     public var body: some View {
         if let url = URL.systemSettings {
-            OnboardingPrimaryButton(type) {
+            OnboardingButton(type) {
                 openURL(url)
             } label: {
                 Text(.onboardingButtonOpenSettings)
@@ -70,7 +70,7 @@ public struct OnboardingTryButtons<Page>: View {
 
     public init(
         glassEffect: Bool = false,
-        state: OnboardingFlowState<Page>,
+        state: OnboardingPageState<Page>,
         tryAction: @escaping () -> Void
     ) {
         self.glassEffect = glassEffect
@@ -81,7 +81,7 @@ public struct OnboardingTryButtons<Page>: View {
     private let glassEffect: Bool
     private let tryAction: () -> Void
 
-    @Bindable var state: OnboardingFlowState<Page>
+    @Bindable var state: OnboardingPageState<Page>
 
     @Environment(\.dismiss) var dismiss
 
@@ -92,7 +92,7 @@ public struct OnboardingTryButtons<Page>: View {
                 title: .onboardingButtonTryLater,
                 state: state
             )
-            OnboardingPrimaryButton(
+            OnboardingButton(
                 glassEffect ? .primaryGlass : .primary,
                 action: tryAction,
                 label: { Text(.onboardingButtonTryFree) }
@@ -113,38 +113,30 @@ private extension OnboardingTryButtons {
 #Preview {
 
     @Previewable @State
-    var state = OnboardingFlowState(pages: Array(0...5))
-
-    OnboardingFlowContainer(
-        pages: state.pages,
-        pageIndex: $state.currentPageIndex,
+    var state = OnboardingPageState(pages: Array(0...5))
+    
+    OnboardingPageFlow(
+        state: state,
         content: {
-            OnboardingPageView(
-                pages: state.pages,
-                pageIndex: $state.currentPageIndex,
-                content: {
-                    KankodaOnboardingPage(
-                        info: $0,
-                        title: "Preview.Title",
-                        text: "Preview.Text",
-                        image: Image(systemName: "checkmark")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .symbolVariant(.circle.fill)
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(.red, .green)
-                    )
-                }
+            KankodaOnboardingPage(
+                info: $0,
+                title: "Preview.Title",
+                text: "Preview.Text",
+                image: Image(systemName: "checkmark")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .symbolVariant(.circle.fill)
+                    .symbolRenderingMode(.palette)
+                    .foregroundStyle(.red, .green)
             )
         },
-        buttons: { _ in
+        bottomButtons: { _ in
             VStack {
                 OnboardingSettingsButton(.secondary)
                 OnboardingTryButtons(state: state) { print("Try") }
                 OnboardingTryButtons(glassEffect: true, state: state) { print("Try") }
                 OnboardingNextPageOrDismissButton(state: state)
             }
-
         }
     )
 }

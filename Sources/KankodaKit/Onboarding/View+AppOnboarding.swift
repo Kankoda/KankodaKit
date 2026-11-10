@@ -13,10 +13,11 @@ import SwiftUI
 
 public extension View {
     
-    /// This modifier performs a standard Kankoda app launch onboarding flow.
+    /// This modifier performs a standard Kankoda app launch
+    /// onboarding flow.
     ///
-    /// This flow will present an initial welcome onboarding, then ask for review,
-    /// then show a premium screen when the user has interacted with the app
+    /// This flow will present an initial welcome onboarding,
+    /// then present a  ask for review, then show a premium screen when the user has interacted with the app
     /// long enough.
     @MainActor
     @ViewBuilder
@@ -24,12 +25,15 @@ public extension View {
         reset: Bool = false,
         userIsReadyToReview: Bool,
         userIsSubscribedOrAppIsFree: Bool,
+        whatsNewInfo: OnboardingWhatsNewInfo<Image> = .init(id: "", items: []),
         onboarding: Onboarding = .welcome(version: 1),
         onboardingPresentation: @escaping () -> Void,
-        upsellPresentation: @escaping () -> Void
+        upsellPresentation: @escaping () -> Void,
+        whatsNewPresentation: @escaping () -> Void = {}
     ) -> some View {
         let review = Onboarding.requestReview
         let premium = Onboarding.premium
+        let whatsNew = Onboarding.whatsNew(info: whatsNewInfo)
         let onboardings = [onboarding, review, premium]
         if reset {
             self.task { onboardings.forEach { $0.reset() } }
@@ -38,7 +42,10 @@ public extension View {
                 AppOnboardingModifier(
                     userIsReadyToReview: userIsReadyToReview,
                     userIsSubscribedOrAppIsFree: userIsSubscribedOrAppIsFree,
-                    onboarding: { tryPresentOnboarding(onboarding, presentation: onboardingPresentation) },
+                    onboarding: onboarding,
+                    onboardingPresentation: { tryPresentOnboarding(onboarding, presentation: onboardingPresentation) },
+                    whatsNewOnboarding: whatsNew,
+                    whatsNewPresentation: { tryPresentOnboarding(whatsNew, presentation: whatsNewPresentation) },
                     review: { action in tryPresentOnboarding(review, presentation: { action() }) },
                     upsell: { tryPresentOnboarding(premium, presentation: upsellPresentation) }
                 )
@@ -52,7 +59,10 @@ struct AppOnboardingModifier: ViewModifier {
     
     let userIsReadyToReview: Bool
     let userIsSubscribedOrAppIsFree: Bool
-    let onboarding: () -> Void
+    let onboarding: Onboarding
+    let onboardingPresentation: () -> Void
+    let whatsNewOnboarding: Onboarding
+    let whatsNewPresentation: () -> Void
     let review: (RequestReviewAction) -> Void
     let upsell: () -> Void
 
@@ -61,7 +71,12 @@ struct AppOnboardingModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content.task {
-            onboarding()
+            if onboarding.shouldBePresented {
+                return onboardingPresentation()
+            }
+            if whatsNewOnboarding.shouldBePresented {
+                return whatsNewPresentation()
+            }
             guard userIsReadyToReview else { return }
             review(requestReview)
             if userIsSubscribedOrAppIsFree { return }

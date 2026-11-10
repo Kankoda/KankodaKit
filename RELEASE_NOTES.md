@@ -5,7 +5,7 @@
 
 These versions:
 
-- Update `OnboardingKit` to closed-source version.
+- Update `OnboardingKit` to closed-source 0.4 version.
 - Deprecate no longer needed custom onboarding button views.
 
 

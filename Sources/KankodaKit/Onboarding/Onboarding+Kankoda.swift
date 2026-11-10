@@ -36,3 +36,43 @@ public extension Onboarding {
         .init(id: "welcome-\(version)")
     }
 }
+
+public extension OnboardingNextButton {
+ 
+    init(state: OnboardingPageState<Page>) {
+        self.init(
+            state.isLastPage ? .onboardingButtonDone : .onboardingButtonNext,
+            state: state
+        )
+    }
+}
+
+public extension OnboardingSettingsButton {
+ 
+    init() {
+        self.init(.onboardingButtonOpenSettings, .secondary)
+    }
+}
+
+public struct OnboardingTryButtonGroup<Page>: View {
+    
+    public init(
+        state: OnboardingPageState<Page>,
+        action: @escaping () -> Void
+    ) {
+        self.state = state
+        self.action = action
+    }
+    
+    private let state: OnboardingPageState<Page>
+    private let action: () -> Void
+    
+    public var body: some View {
+        OnboardingActionButtonGroup(
+            actionTitle: .onboardingButtonTryFree,
+            nextTitle: .onboardingButtonTryLater,
+            state: state,
+            action: action
+        )
+    }
+}

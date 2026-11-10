@@ -34,7 +34,7 @@ public extension View {
         let review = Onboarding.requestReview
         let premium = Onboarding.premium
         let whatsNew = Onboarding.whatsNew(info: whatsNewInfo)
-        let onboardings = [onboarding, review, premium]
+        let onboardings = [onboarding, review, premium, whatsNew]
         if reset {
             self.task { onboardings.forEach { $0.reset() } }
         } else {

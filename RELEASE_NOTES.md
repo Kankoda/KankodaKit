@@ -7,6 +7,7 @@ These versions:
 
 - Update `OnboardingKit` to closed-source version 0.4.1.
 - Deprecate no longer needed custom onboarding button views.
+- Fix `KankodaOnboardingPage` animating non-current pages on the first page change.
 
 
 ## 2.2

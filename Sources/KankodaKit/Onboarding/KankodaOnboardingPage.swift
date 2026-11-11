@@ -22,6 +22,7 @@ public struct KankodaOnboardingPage<Page, ImageView: View>: View {
         self.title = title
         self.text = text
         self.image = image
+        self._isCurrent = .init(initialValue: info.pageIndex == info.currentPageIndex)
     }
 
     private let info: OnboardingPage<Page>
@@ -29,7 +30,10 @@ public struct KankodaOnboardingPage<Page, ImageView: View>: View {
     private let text: LocalizedStringResource
     private let image: ImageView
 
-    @State var isCurrent = true
+    /// Whether this is the current page. This is set by the
+    /// initializer, to avoid animating non-current pages on
+    /// the first page change, since this can cause stutters.
+    @State var isCurrent: Bool
 
     public var body: some View {
         OnboardingPageContent {

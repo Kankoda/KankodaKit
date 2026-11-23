@@ -11,7 +11,9 @@ import SwiftUI
 import Vision
 
 /// This class can be used to perform image text recognition.
-@Observable @MainActor public class TextRecognitionContext {
+@Observable @MainActor
+@available(anyAppleOS 26.0, *)
+public class TextRecognitionContext {
 
     public init() {}
 
@@ -25,6 +27,7 @@ import Vision
     }
 }
 
+@available(anyAppleOS 26.0, *)
 extension TextRecognitionContext {
 
     func updateRecognizedTexts(
@@ -47,6 +50,7 @@ public enum TextRecognitionMethod: String, Equatable, Sendable {
     case text, document
 }
 
+@available(anyAppleOS 26.0, *)
 public extension TextRecognitionContext {
     
     /// Perform text recognition in a set of images, using a
@@ -67,6 +71,7 @@ public extension TextRecognitionContext {
     }
 }
 
+@available(anyAppleOS 26.0, *)
 extension TextRecognitionContext {
     
     /// Perform text recognition in a set of images, using a
@@ -111,6 +116,7 @@ extension RecognizeTextRequest {
     }
 }
 
+@available(anyAppleOS 26.0, *)
 extension RecognizeDocumentsRequest {
 
     static var kankodaRequest: Self {

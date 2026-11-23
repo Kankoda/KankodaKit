@@ -6,11 +6,11 @@ let package = Package(
     name: "KankodaKit",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v26),
-        .macOS(.v26),
-        .tvOS(.v26),
-        .watchOS(.v26),
-        .visionOS(.v26)
+        .iOS(.v18),
+        .macOS(.v15),
+        .tvOS(.v18),
+        .watchOS(.v10),
+        .visionOS(.v1)
     ],
     products: [
         .library(

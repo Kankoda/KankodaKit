@@ -19,16 +19,19 @@ public struct SubscriptionScreen: View {
     public init(
         info: SubscriptionScreenInfo,
         isModal: Bool = false,
-        isPurchased: Bool = false
+        isPurchased: Bool = false,
+        confettiOnPurchaseStateChange: Bool = false
     ) {
         self.info = info
         self.isModal = isModal
         self.isPurchased = isPurchased
+        self.confettiOnPurchaseStateChange = confettiOnPurchaseStateChange
     }
 
     private let info: SubscriptionScreenInfo
     private let isModal: Bool
     private let isPurchased: Bool
+    private let confettiOnPurchaseStateChange: Bool
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.subscriptionScreenStyle) private var style
@@ -58,6 +61,10 @@ public struct SubscriptionScreen: View {
         .subscriptionStorePolicyDestination(url: info.appInfo.urls.privacyPolicy!, for: .privacyPolicy)
         .subscriptionStorePolicyDestination(url: info.appInfo.urls.termsAndConditions!, for: .termsOfService)
         .toolbar { closeButton }
+        .onChange(of: isPurchased) { oldValue, newValue in
+            guard confettiOnPurchaseStateChange else { return }
+            triggerConfetti()
+        }
     }
 }
 
@@ -98,11 +105,17 @@ private extension SubscriptionScreen {
             do {
                 try await service.syncStoreData(to: context)
                 if context.isProductPurchased(product) {
-                    confettiTrigger += 1
+                    triggerConfetti()
                 }
             } catch {
                 print(error)
             }
+        }
+    }
+    
+    func triggerConfetti() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            confettiTrigger += 1
         }
     }
 }
@@ -123,9 +136,10 @@ private extension SubscriptionScreen {
                 SubscriptionScreen(
                     info: .preview,
                     isModal: true,
-                    isPurchased: isPurchased
+                    isPurchased: isPurchased,
+                    confettiOnPurchaseStateChange: true
                 )
-                .overlay {
+                .toolbar {
                     Button("Toggle") {
                         isPurchased.toggle()
                     }

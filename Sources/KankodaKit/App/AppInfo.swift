@@ -67,6 +67,7 @@ public extension AppInfo {
         appBundleIdentifier: "com.kankoda.app",
         appStoreId: 123456,
         contactEmail: "info@kankoda.com",
+        subscriptionGroupId: "20877471",
         websiteUrl: "https://kankoda.com",
         privacyUrl: "https://kankoda.com/privacy",
         copyright: "Preview.Copyright"

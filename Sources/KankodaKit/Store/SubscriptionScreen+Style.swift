@@ -13,35 +13,39 @@ import SwiftUIKit
 
 public extension SubscriptionScreen {
 
-    struct Style {
+    /// The style type to use.
+    typealias Style = SubscriptionScreenStyle
+}
 
-        /// Create a custom subscription screen style.
-        ///
-        /// - Parameters:
-        ///  - topPadding: The content top padding, by default `20`.
-        ///  - iconSize: The top icon size, by default `125`.
-        ///  - contentMaxWidth: The custom content max width, by default `450`.
-        public init(
-            topPadding: Double = 25,
-            iconSize: Double = 125.0,
-            contentMaxWidth: Double = 450.0
-        ) {
-            self.topPadding = topPadding
-            self.iconSize = iconSize
-            self.contentMaxWidth = contentMaxWidth
-        }
+/// This style can be used to style a ``SubscriptionScreen``.
+public struct SubscriptionScreenStyle {
 
-        public var topPadding: Double
-        public var iconSize: Double
-        public var contentMaxWidth: Double
+    /// Create a custom subscription screen style.
+    ///
+    /// - Parameters:
+    ///  - topPadding: The content top padding, by default `20`.
+    ///  - iconSize: The top icon size, by default `125`.
+    ///  - contentMaxWidth: The custom content max width, by default `450`.
+    public init(
+        topPadding: Double = 25,
+        iconSize: Double = 125.0,
+        contentMaxWidth: Double = 450.0
+    ) {
+        self.topPadding = topPadding
+        self.iconSize = iconSize
+        self.contentMaxWidth = contentMaxWidth
     }
+
+    public var topPadding: Double
+    public var iconSize: Double
+    public var contentMaxWidth: Double
 }
 
 public extension View {
 
-    /// Apply a ``SubscriptionScreen/Style``.
+    /// Apply a ``SubscriptionScreenStyle``.
     func subscriptionScreenStyle(
-        _ style: SubscriptionScreen.Style
+        _ style: SubscriptionScreenStyle
     ) -> some View {
         self.environment(\.subscriptionScreenStyle, style)
     }
@@ -49,7 +53,7 @@ public extension View {
 
 public extension EnvironmentValues {
 
-    /// Apply a ``SubscriptionScreen/Style``.
-    @Entry var subscriptionScreenStyle = SubscriptionScreen.Style()
+    /// Apply a ``SubscriptionScreenStyle``.
+    @Entry var subscriptionScreenStyle = SubscriptionScreenStyle()
 }
 #endif

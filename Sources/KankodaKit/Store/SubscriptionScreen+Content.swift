@@ -13,6 +13,28 @@ import StoreKitPlus
 import ConfettiSwiftUI
 import SwiftUI
 
+/// This view renders a subscription screen info icon, using
+/// the current ``SubscriptionScreenStyle``.
+public struct SubscriptionScreenIcon: View {
+
+    /// Create a subscription screen icon.
+    public init(_ image: Image) {
+        self.image = image
+    }
+
+    private let image: Image
+
+    @Environment(\.subscriptionScreenStyle)
+    private var style
+
+    public var body: some View {
+        image
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(height: style.iconSize)
+    }
+}
+
 public extension SubscriptionScreen {
 
     /// This is the top content within a subscription screen.
@@ -21,30 +43,47 @@ public extension SubscriptionScreen {
     /// thus be previewed.
     struct StoreViewContent: View {
 
+        /// Create a content view that uses the info icon.
         public init(
             info: SubscriptionScreenInfo,
             isPurchased: Bool
+        ) where HeaderImage == SubscriptionScreenIcon {
+            self.init(
+                info: info,
+                isPurchased: isPurchased
+            ) {
+                SubscriptionScreenIcon(info.icon)
+            }
+        }
+
+        /// Create a content view with a custom header image.
+        public init(
+            info: SubscriptionScreenInfo,
+            isPurchased: Bool,
+            @ViewBuilder headerImage: () -> HeaderImage
         ) {
             self.info = info
             self.isPurchased = isPurchased
+            self.headerImage = headerImage()
         }
 
         private let info: SubscriptionScreenInfo
         private let isPurchased: Bool
+        private let headerImage: HeaderImage
 
         @Environment(\.subscriptionScreenStyle)
         private var style
 
         public var body: some View {
             ZStack {
-                VStack(spacing: 40) {
+                VStack(spacing: 30) {
                     if !isPurchased {
                         title(info.title)
                             .withTransition()
                     }
-                    // The icon is outside the conditions, so
+                    // The image is outside the conditions, so
                     // that it slides instead of transitions.
-                    icon
+                    headerImage
                     if isPurchased {
                         purchasedContent
                             .withTransition()
@@ -76,13 +115,6 @@ private extension SubscriptionScreen.StoreViewContent {
 }
 
 private extension SubscriptionScreen.StoreViewContent {
-    
-    var icon: some View {
-        info.icon
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(height: style.iconSize)
-    }
     
     @ViewBuilder
     func title(_ text: LocalizedStringResource?) -> some View {

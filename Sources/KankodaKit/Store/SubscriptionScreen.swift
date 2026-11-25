@@ -14,24 +14,48 @@ import StoreKitPlus
 import SwiftUI
 
 /// This is a standard Kankoda subscription screen.
-public struct SubscriptionScreen: View {
-    
+public struct SubscriptionScreen<HeaderImage: View>: View {
+
+    /// Create a subscription screen that uses the info icon.
     public init(
         info: SubscriptionScreenInfo,
         isModal: Bool = false,
         isPurchased: Bool = false,
         confettiOnPurchaseStateChange: Bool = false
+    ) where HeaderImage == SubscriptionScreenIcon {
+        self.init(
+            info: info,
+            isModal: isModal,
+            isPurchased: isPurchased,
+            confettiOnPurchaseStateChange: confettiOnPurchaseStateChange
+        ) {
+            SubscriptionScreenIcon(info.icon)
+        }
+    }
+
+    /// Create a subscription screen with a custom header image
+    /// that overrides the info icon.
+    ///
+    /// The style's icon size isn't applied to the custom view.
+    public init(
+        info: SubscriptionScreenInfo,
+        isModal: Bool = false,
+        isPurchased: Bool = false,
+        confettiOnPurchaseStateChange: Bool = false,
+        @ViewBuilder headerImage: () -> HeaderImage
     ) {
         self.info = info
         self.isModal = isModal
         self.isPurchased = isPurchased
         self.confettiOnPurchaseStateChange = confettiOnPurchaseStateChange
+        self.headerImage = headerImage()
     }
 
     private let info: SubscriptionScreenInfo
     private let isModal: Bool
     private let isPurchased: Bool
     private let confettiOnPurchaseStateChange: Bool
+    private let headerImage: HeaderImage
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.subscriptionScreenStyle) private var style
@@ -74,7 +98,9 @@ private extension SubscriptionScreen {
         StoreViewContent(
             info: info,
             isPurchased: isPurchased
-        )
+        ) {
+            headerImage
+        }
         .padding(.horizontal)
         .frame(maxWidth: .infinity)
     }

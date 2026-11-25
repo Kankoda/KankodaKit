@@ -29,6 +29,7 @@ public struct SubscriptionScreenInfo {
         icon: Image,
         title: LocalizedStringResource? = nil,
         text: LocalizedStringResource? = nil,
+        purchasedTitle: LocalizedStringResource,
         purchasedText: LocalizedStringResource,
         usps: [ProductUsp] = [],
         confettiEmojis: String = "👑",
@@ -39,6 +40,7 @@ public struct SubscriptionScreenInfo {
         self.icon = icon
         self.title = title
         self.text = text
+        self.purchasedTitle = purchasedTitle
         self.purchasedText = purchasedText
         self.usps = usps
         self.confettiEmojis = confettiEmojis
@@ -50,6 +52,7 @@ public struct SubscriptionScreenInfo {
     public let icon: Image
     public let title: LocalizedStringResource?
     public let text: LocalizedStringResource?
+    public let purchasedTitle: LocalizedStringResource
     public let purchasedText: LocalizedStringResource
     public let usps: [ProductUsp]
     public let confettiEmojis: String
@@ -65,30 +68,37 @@ extension SubscriptionScreenInfo {
         icon: String
     ) -> ProductUsp {
         .init(
-            title: .init(stringLiteral: title),
-            text: .init(stringLiteral: text),
+            title: verbatim(title),
+            text: verbatim(text),
             iconName: icon
         )
+    }
+    
+    /// Create a resource without adding the provided text to
+    /// the string catalog, which string literals would do.
+    private static func verbatim(
+        _ text: String
+    ) -> LocalizedStringResource {
+        .init(stringLiteral: text)
     }
     
     static var preview: Self {
         .init(
             appInfo: .preview,
             icon: .bookmark,
-            title: .init(stringLiteral: previewTitle),
-            text: .init(stringLiteral: previewText),
-            purchasedText: .init(stringLiteral: previewPurchasedText),
+            title: verbatim("Unlock Premium Features"),
+            text: nil, // verbatim(previewText),
+            purchasedTitle: verbatim("Premium Active"),
+            purchasedText: verbatim("Thank you for subscribing to Premium. We hope you will enjoy it."),
             usps: [
                 usp(title: "USP 1", text: "Nice feature", icon: "plus"),
                 usp(title: "USP 2", text: "Even better feature", icon: "checkmark"),
-                usp(title: "USP 3", text: "Best feature", icon: "crown")
+                usp(title: "USP 3", text: "Best feature", icon: "crown"),
+                usp(title: "USP 4", text: "Bestest feature", icon: "star"),
+                usp(title: "USP 5", text: "Bestilicious feature", icon: "trash")
             ],
             storeContext: .init(),
             storeService: PreviewService()
         )
     }
-    
-    private static var previewTitle: String { "PreviewTitle" }
-    private static var previewText: String { "PreviewText" }
-    private static var previewPurchasedText: String { "PreviewPurchased" }
 }

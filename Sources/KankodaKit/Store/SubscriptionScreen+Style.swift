@@ -20,23 +20,19 @@ public extension SubscriptionScreen {
         /// - Parameters:
         ///  - topPadding: The content top padding, by default `20`.
         ///  - iconSize: The top icon size, by default `125`.
-        ///  - iconShadow: The icon shadow style, if any`.
         ///  - contentMaxWidth: The custom content max width, by default `450`.
         public init(
             topPadding: Double = 25,
             iconSize: Double = 125.0,
-            iconShadow: ViewShadowStyle = .none,
             contentMaxWidth: Double = 450.0
         ) {
             self.topPadding = topPadding
             self.iconSize = iconSize
-            self.iconShadow = iconShadow
             self.contentMaxWidth = contentMaxWidth
         }
 
         public var topPadding: Double
         public var iconSize: Double
-        public var iconShadow: ViewShadowStyle
         public var contentMaxWidth: Double
     }
 }

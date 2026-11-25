@@ -1,12 +1,19 @@
 # Release Notes
 
 
+## 2.4
+
+These versions:
+
+- Redesign the subscription screen.
+- Remove `ObservablePersistency` dependency.
+
+
 ## 2.3
 
 These versions:
 
 - Downgrade deployment target to iOS 18.
-- Remove `ObservablePersistency` dependency.
 - Update `OnboardingKit` to closed-source version 0.4.1.
 - Deprecate no longer needed custom onboarding button views.
 - Fix `KankodaOnboardingPage` animating non-current pages on the first page change.

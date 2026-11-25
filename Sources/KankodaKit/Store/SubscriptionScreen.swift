@@ -18,8 +18,8 @@ public struct SubscriptionScreen: View {
     
     public init(
         info: SubscriptionScreenInfo,
-        isModal: Bool,
-        isPurchased: Bool
+        isModal: Bool = false,
+        isPurchased: Bool = false
     ) {
         self.info = info
         self.isModal = isModal
@@ -39,11 +39,7 @@ public struct SubscriptionScreen: View {
         SubscriptionStoreView(
             groupID: info.appInfo.subscriptionGroupId
         ) {
-            StoreViewContent(
-                info: info,
-                isPurchased: isPurchased
-            )
-            .padding(.horizontal)
+            content
         }
         .multilineTextAlignment(.center)
         .withPurchaseConfetti(
@@ -58,6 +54,7 @@ public struct SubscriptionScreen: View {
         #endif
         .storeButton(.hidden, for: .cancellation)
         // .storeButton(.visible, for: .restorePurchases)
+        .subscriptionStoreControlStyle(.paddedCompactPicker, placement: .bottomBar)
         .subscriptionStorePolicyDestination(url: info.appInfo.urls.privacyPolicy!, for: .privacyPolicy)
         .subscriptionStorePolicyDestination(url: info.appInfo.urls.termsAndConditions!, for: .termsOfService)
         .toolbar { closeButton }
@@ -65,23 +62,22 @@ public struct SubscriptionScreen: View {
 }
 
 private extension SubscriptionScreen {
+    
+    var content: some View {
+        StoreViewContent(
+            info: info,
+            isPurchased: isPurchased
+        )
+        .padding(.horizontal)
+        .frame(maxWidth: .infinity)
+    }
 
     @ViewBuilder
     var closeButton: some View {
-        if !isPurchased {
-            Button(action: dismiss.callAsFunction) {
-                Text(.subscriptionScreenMaybeLater)
-            }
-        } else if isModal {
-            Button(.close) {
-                dismiss()
-            }
-            .labelStyle(.titleOnly)
+        if isModal {
+            Button(.dismiss, action: dismiss.callAsFunction)
         }
     }
-}
-
-private extension SubscriptionScreen {
 
     func handleSubscription(
         of product: Product,
@@ -113,11 +109,28 @@ private extension SubscriptionScreen {
 
 #Preview {
     
-    SubscriptionScreen(
-        info: .preview,
-        isModal: false,
-        isPurchased: true
-    )
-    .background(Color.red)
+    SubscriptionScreen(info: .preview)
+}
+
+#Preview("Sheet") {
+    
+    @Previewable @AppStorage("isUnlocked")
+    var isPurchased = false
+    
+    Button("Show") {}
+        .sheet(isPresented: .constant(true)) {
+            NavigationStack {
+                SubscriptionScreen(
+                    info: .preview,
+                    isModal: true,
+                    isPurchased: isPurchased
+                )
+                .overlay {
+                    Button("Toggle") {
+                        isPurchased.toggle()
+                    }
+                }
+            }
+        }
 }
 #endif

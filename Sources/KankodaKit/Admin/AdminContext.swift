@@ -7,18 +7,24 @@
 //
 
 import SwiftUI
-import ObservablePersistency
 
 /// This class can manage the admin mode of an app.
 @Observable
-public class AdminContext: ObservablePersisted {
+public class AdminContext {
 
-    private static let adminKeyId = PackageInfo.appStorageKey("admin.isAdminModeEnabled")
-    private static let adminKey = key(adminKeyId, default: false)
+    public init(store: UserDefaults = .standard) {
+        self.store = store
+        self.isAdminModeEnabled = store.bool(forKey: Self.adminKey)
+    }
+
+    @ObservationIgnored
+    private let store: UserDefaults
+
+    private static let adminKey = PackageInfo.appStorageKey("admin.isAdminModeEnabled")
 
     /// Whether or not admin mode is enabled.
-    public var isAdminModeEnabled = getValue(for: adminKey) {
-        didSet { setValue(isAdminModeEnabled, for: Self.adminKey) }
+    public var isAdminModeEnabled: Bool {
+        didSet { store.set(isAdminModeEnabled, forKey: Self.adminKey) }
     }
 }
 

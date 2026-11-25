@@ -21,8 +21,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/danielsaidi/BadgeIcon.git", .upToNextMajor(from: "2.1.5")),
         .package(url: "https://github.com/simibac/ConfettiSwiftUI.git", .upToNextMajor(from: "2.0.3")),
-        .package(url: "https://github.com/danielsaidi/ObservablePersistency.git", .upToNextMajor(from: "0.1.0")),
-        .package(url: "https://github.com/Kankoda/OnboardingKit.git", .upToNextMajor(from: "0.4.1")),
+        .package(url: "https://github.com/Kankoda/OnboardingKit.git", .upToNextMajor(from: "0.4.2")),
         .package(url: "https://github.com/danielsaidi/PresentationKit.git", .upToNextMajor(from: "1.4.0")),
         .package(url: "https://github.com/danielsaidi/StandardActions.git", .upToNextMajor(from: "2.0.0")),
         .package(url: "https://github.com/danielsaidi/StoreKitPlus.git", .upToNextMajor(from: "1.0.0")),
@@ -34,7 +33,6 @@ let package = Package(
             dependencies: [
                 "BadgeIcon",
                 "ConfettiSwiftUI",
-                "ObservablePersistency",
                 "OnboardingKit",
                 "PresentationKit",
                 "StandardActions",

@@ -1,5 +1,5 @@
 {
-  "originHash" : "f45082a23cf759025ffd60066b7ea441327cd44453bb0c364eded6acd5e76146",
+  "originHash" : "8edac271613180f1f5cb1a5831c0dc80a621b8ea92b0beaaacffb36b7699b29d",
   "pins" : [
     {
       "identity" : "badgeicon",
@@ -29,21 +29,12 @@
       }
     },
     {
-      "identity" : "observablepersistency",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/danielsaidi/ObservablePersistency.git",
-      "state" : {
-        "revision" : "18f24501b59e015d01a5cf69bca1ce9b5583186d",
-        "version" : "0.1.0"
-      }
-    },
-    {
       "identity" : "onboardingkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Kankoda/OnboardingKit.git",
       "state" : {
-        "revision" : "c532a7c60a46ee1b84f79aa40dcd417ad186c857",
-        "version" : "0.4.1"
+        "revision" : "2ec8adc7886d1effb1fa2760b97a9616e0b7208a",
+        "version" : "0.4.2"
       }
     },
     {

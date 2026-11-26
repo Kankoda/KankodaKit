@@ -61,6 +61,7 @@ public struct SubscriptionScreen<HeaderImage: View>: View {
     @Environment(\.subscriptionScreenStyle) private var style
 
     @State private var confettiTrigger = 0
+    @State private var isRestoringPurchases = false
 
     public var body: some View {
         SubscriptionStoreView(
@@ -80,7 +81,7 @@ public struct SubscriptionScreen<HeaderImage: View>: View {
         .storeButton(.visible, for: .policies)
         #endif
         .storeButton(.hidden, for: .cancellation)
-        // .storeButton(.visible, for: .restorePurchases)
+        .storeButton(.hidden, for: .restorePurchases)
         .subscriptionStoreControlStyle(.paddedCompactPicker, placement: .bottomBar)
         .subscriptionStorePolicyDestination(url: info.appInfo.urls.privacyPolicy!, for: .privacyPolicy)
         .subscriptionStorePolicyDestination(url: info.appInfo.urls.termsAndConditions!, for: .termsOfService)
@@ -95,14 +96,30 @@ public struct SubscriptionScreen<HeaderImage: View>: View {
 private extension SubscriptionScreen {
     
     var content: some View {
-        StoreViewContent(
-            info: info,
-            isPurchased: isPurchased
-        ) {
-            headerImage
+        VStack(spacing: 30) {
+            StoreViewContent(
+                info: info,
+                isPurchased: isPurchased
+            ) {
+                headerImage
+            }
+            restorePurchasesButton
         }
         .padding(.horizontal)
         .frame(maxWidth: .infinity)
+        .animation(.smooth, value: isPurchased)
+    }
+
+    @ViewBuilder
+    var restorePurchasesButton: some View {
+        if !isPurchased {
+            Button(.subscriptionScreenRestorePurchases, action: restorePurchases)
+                .buttonStyle(.plain)
+                .font(.footnote)
+                .foregroundStyle(.tint)
+                .disabled(isRestoringPurchases)
+                .transition(.blurReplace)
+        }
     }
 
     @ViewBuilder
@@ -122,6 +139,23 @@ private extension SubscriptionScreen {
         }
     }
     
+    /// Sync with the App Store, which may require the user
+    /// to sign in, then sync the store data to the context.
+    func restorePurchases() {
+        nonisolated(unsafe) let service = info.storeService
+        let context = info.storeContext
+        isRestoringPurchases = true
+        Task {
+            defer { isRestoringPurchases = false }
+            do {
+                try await AppStore.sync()
+                try await service.syncStoreData(to: context)
+            } catch {
+                print(error)
+            }
+        }
+    }
+
     func syncState(
         for product: Product
     ) {

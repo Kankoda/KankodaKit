@@ -8,6 +8,7 @@ These versions:
 - Redesign the subscription screen.
 - Remove `ObservablePersistency` dependency.
 - Add support for a custom `SubscriptionScreen` header image.
+- Finish verified `SubscriptionScreen` purchase transactions.
 
 
 ## 2.3

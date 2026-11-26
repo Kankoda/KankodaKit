@@ -134,8 +134,25 @@ private extension SubscriptionScreen {
         with result: Result<Product.PurchaseResult, Error>
     ) {
         switch result {
-        case .success: syncState(for: product)
+        case .success(let purchaseResult):
+            finishTransaction(in: purchaseResult)
+            syncState(for: product)
         case .failure: return
+        }
+    }
+
+    /// Finish a verified transaction, to tell StoreKit that
+    /// the purchase has been handled. StoreKit will keep on
+    /// delivering unfinished transactions to the app.
+    func finishTransaction(
+        in result: Product.PurchaseResult
+    ) {
+        guard
+            case .success(let verification) = result,
+            case .verified(let transaction) = verification
+        else { return }
+        Task {
+            await transaction.finish()
         }
     }
     
